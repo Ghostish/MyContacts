@@ -1,0 +1,254 @@
+TASK com.android.dialer id=61
+  ACTIVITY com.android.dialer/.DialtactsActivity bbd3655 pid=31390
+    Local Activity 2162a1a State:
+      mResumed=true mStopped=false mFinished=false
+      mChangingConfigurations=false
+      mCurrentConfig={1.0 310mcc260mnc en_US ldltr sw360dp w360dp h568dp 480dpi nrml port finger qwerty/v/v dpad/v s.6}
+      mLoadersStarted=true
+      Active Fragments in e60094b:
+        #0: ListsFragment{cbaff28 #0 id=0x7f080099 favorites}
+          mFragmentId=#7f080099 mContainerId=#7f080099 mTag=favorites
+          mState=5 mIndex=0 mWho=android:fragment:0 mBackStackNesting=0
+          mAdded=true mRemoving=false mResumed=true mFromLayout=false mInLayout=false
+          mHidden=false mDetached=false mMenuVisible=true mHasMenu=false
+          mRetainInstance=false mRetaining=false mUserVisibleHint=false
+          mFragmentManager=FragmentManager{e60094b in HostCallbacks{64d0441}}
+          mHost=android.app.Activity$HostCallbacks@64d0441
+          mContainer=android.widget.FrameLayout{15ccde6 V.E...... ........ 0,0-1080,1704 #7f080099 app:id/dialtacts_frame}
+          mView=android.widget.FrameLayout{123ef27 V.E...... ........ 0,0-1080,1704 #7f0800a8 app:id/lists_frame}
+          Child FragmentManager{e54e5d4 in ListsFragment{cbaff28}}:
+            Active Fragments in e54e5d4:
+              #0: SpeedDialFragment{e24a37d #0 id=0x7f0800aa android:switcher:2131230890:0}
+                mFragmentId=#7f0800aa mContainerId=#7f0800aa mTag=android:switcher:2131230890:0
+                mState=5 mIndex=0 mWho=android:fragment:0:0 mBackStackNesting=0
+                mAdded=true mRemoving=false mResumed=true mFromLayout=false mInLayout=false
+                mHidden=false mDetached=false mMenuVisible=true mHasMenu=false
+                mRetainInstance=false mRetaining=false mUserVisibleHint=true
+                mFragmentManager=FragmentManager{e54e5d4 in ListsFragment{cbaff28}}
+                mHost=android.app.Activity$HostCallbacks@64d0441
+                mParentFragment=ListsFragment{cbaff28 #0 id=0x7f080099 favorites}
+                mContainer=android.support.v4.view.ViewPager{f17e272 VFED..... ........ 0,321-1080,1704 #7f0800aa app:id/lists_pager}
+                mView=android.widget.FrameLayout{a5656c3 V.E...... ........ 0,0-1080,1383}
+                Loader Manager:
+                  Active Loaders:
+                    #1: LoaderInfo{3048b40 #1 : CursorLoader{edcfa79}}
+                      mId=1 mArgs=null
+                      mCallbacks=com.android.dialer.list.SpeedDialFragment$ContactTileLoaderListener@afdb3be
+                      mLoader=CursorLoader{edcfa79 id=1}
+                        mId=1 mListener=LoaderInfo{3048b40 #1 : CursorLoader{edcfa79}}
+                        mStarted=true mContentChanged=false mProcessingChange=false
+                        mUri=content://com.android.contacts/contacts/strequent?strequent_phone_only=true
+                        mProjection=[_id, display_name, starred, photo_uri, lookup, data1, data2, data3, is_super_primary, pinned, contact_id]
+                        mSelection=null
+                        mSelectionArgs=null
+                        mSortOrder=null
+                        mCursor=android.content.ContentResolver$CursorWrapperInner@dbd9c1f
+                        mContentChanged=false
+                      mHaveData=true  mDeliveredData=true
+                      mData=android.content.ContentResolver$CursorWrapperInner@dbd9c1f
+                      mStarted=true mReportNextStart=false mDestroyed=false
+                      mRetaining=false mRetainingStarted=false mListenerRegistered=true
+                Child FragmentManager{e471b6c in SpeedDialFragment{e24a37d}}:
+                  FragmentManager misc state:
+                    mHost=android.app.Activity$HostCallbacks@64d0441
+                    mContainer=android.app.Fragment$1@29c535
+                    mParent=SpeedDialFragment{e24a37d #0 id=0x7f0800aa android:switcher:2131230890:0}
+                    mCurState=5 mStateSaved=false mDestroyed=false
+              #1: CallLogFragment{7dd4dca #1 id=0x7f0800aa android:switcher:2131230890:1}
+                mFragmentId=#7f0800aa mContainerId=#7f0800aa mTag=android:switcher:2131230890:1
+                mState=3 mIndex=1 mWho=android:fragment:0:1 mBackStackNesting=0
+                mAdded=true mRemoving=false mResumed=false mFromLayout=false mInLayout=false
+                mHidden=false mDetached=false mMenuVisible=false mHasMenu=true
+                mRetainInstance=false mRetaining=false mUserVisibleHint=false
+                mFragmentManager=FragmentManager{e54e5d4 in ListsFragment{cbaff28}}
+                mHost=android.app.Activity$HostCallbacks@64d0441
+                mParentFragment=ListsFragment{cbaff28 #0 id=0x7f080099 favorites}
+                mContainer=android.support.v4.view.ViewPager{f17e272 VFED..... ........ 0,321-1080,1704 #7f0800aa app:id/lists_pager}
+                mView=android.widget.FrameLayout{b29db3b V.E...... ........ 1080,0-2160,1383}
+                Child FragmentManager{c408258 in CallLogFragment{7dd4dca}}:
+                  FragmentManager misc state:
+                    mHost=android.app.Activity$HostCallbacks@64d0441
+                    mContainer=android.app.Fragment$1@73e7fb1
+                    mParent=CallLogFragment{7dd4dca #1 id=0x7f0800aa android:switcher:2131230890:1}
+                    mCurState=2 mStateSaved=false mDestroyed=false
+              #2: AllContactsFragment{46a7c96 #2 id=0x7f0800aa android:switcher:2131230890:2}
+                mFragmentId=#7f0800aa mContainerId=#7f0800aa mTag=android:switcher:2131230890:2
+                mState=3 mIndex=2 mWho=android:fragment:0:2 mBackStackNesting=0
+                mAdded=true mRemoving=false mResumed=false mFromLayout=false mInLayout=false
+                mHidden=false mDetached=false mMenuVisible=false mHasMenu=false
+                mRetainInstance=false mRetaining=false mUserVisibleHint=false
+                mFragmentManager=FragmentManager{e54e5d4 in ListsFragment{cbaff28}}
+                mHost=android.app.Activity$HostCallbacks@64d0441
+                mParentFragment=ListsFragment{cbaff28 #0 id=0x7f080099 favorites}
+                mContainer=android.support.v4.view.ViewPager{f17e272 VFED..... ........ 0,321-1080,1704 #7f0800aa app:id/lists_pager}
+                mView=android.widget.LinearLayout{550f017 V.E...... ........ 2160,0-3240,1383 #7f080018 app:id/pinned_header_list_layout}
+                Loader Manager:
+                Child FragmentManager{5676c04 in AllContactsFragment{46a7c96}}:
+                  FragmentManager misc state:
+                    mHost=android.app.Activity$HostCallbacks@64d0441
+                    mContainer=android.app.Fragment$1@f0a65ed
+                    mParent=AllContactsFragment{46a7c96 #2 id=0x7f0800aa android:switcher:2131230890:2}
+                    mCurState=2 mStateSaved=false mDestroyed=false
+            Added Fragments:
+              #0: SpeedDialFragment{e24a37d #0 id=0x7f0800aa android:switcher:2131230890:0}
+              #1: CallLogFragment{7dd4dca #1 id=0x7f0800aa android:switcher:2131230890:1}
+              #2: AllContactsFragment{46a7c96 #2 id=0x7f0800aa android:switcher:2131230890:2}
+            FragmentManager misc state:
+              mHost=android.app.Activity$HostCallbacks@64d0441
+              mContainer=android.app.Fragment$1@4c9cc22
+              mParent=ListsFragment{cbaff28 #0 id=0x7f080099 favorites}
+              mCurState=5 mStateSaved=false mDestroyed=false
+        #1: RegularSearchFragment{4e390b6 #1 id=0x7f080099 search}
+          mFragmentId=#7f080099 mContainerId=#7f080099 mTag=search
+          mState=5 mIndex=1 mWho=android:fragment:1 mBackStackNesting=0
+          mAdded=true mRemoving=false mResumed=true mFromLayout=false mInLayout=false
+          mHidden=false mDetached=false mMenuVisible=true mHasMenu=false
+          mRetainInstance=false mRetaining=false mUserVisibleHint=true
+          mFragmentManager=FragmentManager{e60094b in HostCallbacks{64d0441}}
+          mHost=android.app.Activity$HostCallbacks@64d0441
+          mNextAnim=17498112
+          mContainer=android.widget.FrameLayout{15ccde6 V.E...... ........ 0,0-1080,1704 #7f080099 app:id/dialtacts_frame}
+          mView=android.widget.LinearLayout{dc041b7 V.E...... ........ 0,0-1080,1704 #7f080018 app:id/pinned_header_list_layout}
+          Loader Manager:
+            Active Loaders:
+              #-1: LoaderInfo{96bed24 #-1 : DirectoryListLoader{30d208d}}
+                mId=-1 mArgs=null
+                mCallbacks=RegularSearchFragment{4e390b6 #1 id=0x7f080099 search}
+                mLoader=DirectoryListLoader{30d208d id=-1}
+                  mId=-1 mListener=LoaderInfo{96bed24 #-1 : DirectoryListLoader{30d208d}}
+                  mStarted=true mContentChanged=false mProcessingChange=false
+                mHaveData=true  mDeliveredData=true
+                mData=android.database.MatrixCursor@6900242
+                mStarted=true mReportNextStart=false mDestroyed=false
+                mRetaining=false mRetainingStarted=false mListenerRegistered=true
+              #0: LoaderInfo{d0d4253 #0 : ContactEntryListFragment$3{80cb790}}
+                mId=0 mArgs=Bundle[{directoryId=0}]
+                mCallbacks=RegularSearchFragment{4e390b6 #1 id=0x7f080099 search}
+                mLoader=ContactEntryListFragment$3{80cb790 id=0}
+                  mId=0 mListener=LoaderInfo{d0d4253 #0 : ContactEntryListFragment$3{80cb790}}
+                  mStarted=true mContentChanged=false mProcessingChange=false
+                  mUri=content://com.android.contacts/data/callables/filter/?directory=0&remove_duplicate_entries=true
+                  mProjection=[_id, data2, data3, data1, contact_id, lookup, photo_id, display_name, photo_thumb_uri]
+                  mSelection=length(data1) < 1000
+                  mSelectionArgs=null
+                  mSortOrder=sort_key
+                  mCursor=android.content.ContentResolver$CursorWrapperInner@6b83889
+                  mContentChanged=false
+                mHaveData=true  mDeliveredData=true
+                mData=android.content.ContentResolver$CursorWrapperInner@6b83889
+                mStarted=true mReportNextStart=false mDestroyed=false
+                mRetaining=false mRetainingStarted=false mListenerRegistered=true
+          Child FragmentManager{a0008e in RegularSearchFragment{4e390b6}}:
+            FragmentManager misc state:
+              mHost=android.app.Activity$HostCallbacks@64d0441
+              mContainer=android.app.Fragment$1@1fb0af
+              mParent=RegularSearchFragment{4e390b6 #1 id=0x7f080099 search}
+              mCurState=5 mStateSaved=false mDestroyed=false
+      Added Fragments:
+        #0: ListsFragment{cbaff28 #0 id=0x7f080099 favorites}
+        #1: RegularSearchFragment{4e390b6 #1 id=0x7f080099 search}
+      FragmentManager misc state:
+        mHost=android.app.Activity$HostCallbacks@64d0441
+        mContainer=android.app.Activity$HostCallbacks@64d0441
+        mCurState=5 mStateSaved=false mDestroyed=false
+    ViewRoot:
+      mAdded=true mRemoved=false
+      mConsumeBatchedInputScheduled=false
+      mConsumeBatchedInputImmediatelyScheduled=false
+      mPendingInputEventCount=0
+      mProcessInputEventsScheduled=false
+      mTraversalScheduled=false
+      android.view.ViewRootImpl$NativePreImeInputStage: mQueueLength=0
+      android.view.ViewRootImpl$ImeInputStage: mQueueLength=0
+      android.view.ViewRootImpl$NativePostImeInputStage: mQueueLength=0
+    Choreographer:
+      mFrameScheduled=false
+      mLastFrameTime=10990016 (308 ms ago)
+    View Hierarchy:
+      com.android.internal.policy.PhoneWindow$DecorView{a6a76b3 V.ED..... R....... 0,0-1080,1920}
+        com.android.internal.widget.ActionBarOverlayLayout{f14470 V.E...... ........ 0,0-1080,1776 #10203ae android:id/decor_content_parent}
+          android.widget.FrameLayout{83473e9 V.E...... ........ 0,72-1080,1776 #1020002 android:id/content}
+            android.widget.FrameLayout{8dc886e VFE...... ........ 0,0-1080,1704 #7f080097 app:id/dialtacts_mainlayout}
+              android.widget.FrameLayout{a8bcb0f V.E...... ........ 0,0-1080,1704 #7f080098 app:id/dialtacts_container}
+                android.widget.FrameLayout{15ccde6 V.E...... ........ 0,0-1080,1704 #7f080099 app:id/dialtacts_frame}
+                  android.widget.FrameLayout{123ef27 V.E...... ........ 0,0-1080,1704 #7f0800a8 app:id/lists_frame}
+                    android.widget.LinearLayout{1fe379c V.E...... ........ 0,0-1080,1704}
+                      android.widget.FrameLayout{cd765a5 V.E...... ........ 0,0-1080,192}
+                      com.android.contacts.common.list.ViewPagerTabs{b4cbd7a VFED..... ........ 0,192-1080,321 #7f0800a9 app:id/lists_pager_header}
+                        com.android.contacts.common.list.ViewPagerTabStrip{7c4092b V.ED..... ........ 0,0-1080,129}
+                          android.view.View{b853188 V.ED..CL. ..S..... 0,0-360,129}
+                          android.view.View{3fdb721 V.ED..CL. ........ 360,0-720,129}
+                          android.view.View{5593746 V.ED..CL. ........ 720,0-1080,129}
+                      android.support.v4.view.ViewPager{f17e272 VFED..... ........ 0,321-1080,1704 #7f0800aa app:id/lists_pager}
+                        android.widget.FrameLayout{a5656c3 V.E...... ........ 0,0-1080,1383}
+                          android.widget.FrameLayout{bf80d07 V.E...... ........ 0,0-1080,0 #7f0800d5 app:id/contact_tile_frame}
+                            com.android.dialer.list.PhoneFavoriteListView{6ffde34 G.ED..C.. ......I. 3,0-1080,1383 #7f0800d6 app:id/contact_tile_list}
+                          com.android.dialer.widget.EmptyContentView{dda45d V.E...C.. ........ 0,333-1080,1049 #7f080019 app:id/empty_list_view}
+                            android.widget.ImageView{36181d2 V.ED..... ........ 0,0-1080,378 #7f0800a2 app:id/emptyListViewImage}
+                            android.widget.TextView{7e72a3 V.ED..... ........ 0,378-1080,491 #7f0800a3 app:id/emptyListViewMessage}
+                            android.widget.TextView{9d6a9a0 VFED..C.. ........ 309,491-770,596 #7f0800a4 app:id/emptyListViewAction}
+                            android.widget.Space{9d52959 I.ED..... ......I. 0,596-1080,716}
+                        android.widget.FrameLayout{b29db3b V.E...... ........ 1080,0-2160,1383}
+                          android.support.v7.widget.RecyclerView{631e91e GFED..... ......ID 0,0-1080,1383 #7f080043 app:id/recycler_view}
+                            android.support.v7.widget.CardView{37b95ff V.E...C.. ......ID 36,12-1044,132}
+                              android.widget.TextView{58cbfcc V.ED..... ......ID 318,31-689,88}
+                          com.android.dialer.widget.EmptyContentView{3260215 V.E...C.. ........ 0,333-1080,1049 #7f080019 app:id/empty_list_view}
+                            android.widget.ImageView{d0f792a V.ED..... ........ 0,0-1080,378 #7f0800a2 app:id/emptyListViewImage}
+                            android.widget.TextView{6fd931b V.ED..... ........ 0,378-1080,491 #7f0800a3 app:id/emptyListViewMessage}
+                            android.widget.TextView{eac0cb8 VFED..C.. ........ 336,491-744,596 #7f0800a4 app:id/emptyListViewAction}
+                            android.widget.Space{971aa91 I.ED..... ......I. 0,596-1080,716}
+                        android.widget.LinearLayout{550f017 V.E...... ........ 2160,0-3240,1383 #7f080018 app:id/pinned_header_list_layout}
+                          android.widget.FrameLayout{483fdf6 V.E...... ......ID 0,0-1080,0}
+                            android.widget.FrameLayout{5d845f7 G.E...... ......I. 0,0-0,0 #7f080013 app:id/account_filter_header_container}
+                              android.widget.TextView{6713c64 V.ED..... ......I. 0,0-0,0 #7f080014 app:id/account_filter_header}
+                          android.widget.FrameLayout{7f55ecd V.E...... ........ 0,0-1080,1383}
+                            com.android.contacts.common.list.PinnedHeaderListView{5ea0382 G.ED.VCL. ......I. 0,0-0,0 #102000a android:id/list}
+                            com.android.dialer.widget.EmptyContentView{a414a93 G.E...C.. ......I. 0,0-0,0 #7f080019 app:id/empty_list_view}
+                              android.widget.ImageView{337bad0 V.ED..... ......I. 0,0-0,0 #7f0800a2 app:id/emptyListViewImage}
+                              android.widget.TextView{6861ac9 V.ED..... ......I. 0,0-0,0 #7f0800a3 app:id/emptyListViewMessage}
+                              android.widget.TextView{3b8d5ce VFED..C.. ......I. 0,0-0,0 #7f0800a4 app:id/emptyListViewAction}
+                              android.widget.Space{22bfcef I.ED..... ......I. 0,0-0,0}
+                    com.android.dialer.list.RemoveView{3a5b3fc V.E...... ........ 0,192-1080,321 #7f0800ab app:id/remove_view}
+                      android.widget.LinearLayout{b4c9a85 G.E...... ......ID 0,0-0,0 #7f0800ac app:id/remove_view_content}
+                        android.widget.ImageView{e9080da V.ED..... ......I. 0,0-0,0 #7f0800ad app:id/remove_view_icon}
+                        android.widget.TextView{d65790b V.ED..... ......ID 0,0-0,0 #7f0800ae app:id/remove_view_text}
+                  android.widget.LinearLayout{dc041b7 V.E...... ........ 0,0-1080,1704 #7f080018 app:id/pinned_header_list_layout}
+                    android.widget.FrameLayout{badbcbc V.E...... ......ID 0,0-1080,0}
+                      android.widget.FrameLayout{de2d445 G.E...C.. ......I. 0,0-0,0 #7f080013 app:id/account_filter_header_container}
+                        android.widget.TextView{89f979a V.ED..... ......I. 0,0-0,0 #7f080014 app:id/account_filter_header}
+                    android.widget.FrameLayout{740a8cb V.E...... ........ 0,0-1080,1704}
+                      android.widget.LinearLayout{1f7e8a8 I.E...... ......I. 0,0-1080,1704 #7f080064 app:id/list_card}
+                        android.view.View{9616fc1 V.ED..... ......ID 0,0-0,1704}
+                        android.view.View{ecf9366 V.ED..... ......ID 0,0-0,1704}
+                        android.view.View{42f06a7 V.ED..... ......ID 0,0-0,1704}
+                      com.android.contacts.common.list.PinnedHeaderListView{836e754 GFED.VCL. ......I. 0,0-0,0 #102000a android:id/list}
+                      android.widget.ProgressBar{8d446fd G.ED..... ......I. 0,0-0,0 #7f080065 app:id/search_progress}
+                      com.android.dialer.widget.EmptyContentView{4b17ff2 V.E...C.. ........ 0,0-1080,1704}
+                        android.widget.ImageView{bbb6643 G.ED..... ......I. 0,0-0,0 #7f0800a2 app:id/emptyListViewImage}
+                        android.widget.TextView{2c524c0 G.ED..... ......I. 0,0-0,0 #7f0800a3 app:id/emptyListViewMessage}
+                        android.widget.TextView{ba355f9 GFED..C.. ......I. 0,0-0,0 #7f0800a4 app:id/emptyListViewAction}
+                        android.widget.Space{53a93e I.ED..... ......I. 0,0-1080,120}
+                    android.widget.Space{524239f I.ED..... ......I. 0,1704-1080,1704}
+              android.widget.FrameLayout{89813e8 G.E...... ......ID 456,1488-624,1656 #7f08009a app:id/floating_action_button_container}
+                android.widget.ImageButton{c415a01 GFED..C.. ......I. 0,0-168,168 #7f08009b app:id/floating_action_button}
+              android.widget.FrameLayout{f05d0a6 V.E...... ........ 0,0-1080,1704 #7f08009c app:id/activity_overlay}
+                android.widget.ImageView{1709ae7 G.ED..... ......I. 0,0-0,0 #7f08009d app:id/contact_tile_drag_shadow_overlay}
+          com.android.internal.widget.ActionBarContainer{1ce8694 V.E...... ........ 0,72-1080,264 #10203af android:id/action_bar_container}
+            android.widget.Toolbar{c68953d V.E...... ........ 0,0-1080,192 #10203b0 android:id/action_bar}
+              com.android.dialer.widget.SearchEditTextLayout{2e5132 V.E...C.. ........ 0,0-1080,192 #7f0800c6 app:id/search_view_container}
+                android.widget.LinearLayout{f21fe83 G.E...... ......I. 0,0-1078,190 #7f0800c7 app:id/search_box_collapsed}
+                  android.widget.ImageView{9577800 G.ED..C.. ......I. 36,30-120,114 #7f0800c8 app:id/search_magnifying_glass}
+                  android.widget.TextView{ce4839 G.ED..CL. ......I. 198,43-792,100 #7f0800c9 app:id/search_box_start_search}
+                  android.widget.ImageView{6ec4e7e G.ED..C.. ......I. 804,30-888,114 #7f0800ca app:id/voice_search_button}
+                  android.widget.ImageButton{5fbffdf GFED..C.. ......I. 912,30-996,114 #7f0800cb app:id/dialtacts_options_menu_button}
+                android.widget.LinearLayout{9bc142c V.E...... ........ 0,0-1080,192 #7f0800c2 app:id/search_box_expanded}
+                  android.widget.ImageButton{9422ef5 VFED..C.. ........ 42,54-126,138 #7f0800c3 app:id/search_back_button}
+                  android.widget.EditText{1fad48a VFED..CL. .F...... 213,54-1080,138 #7f0800c4 app:id/search_view}
+                  android.widget.ImageView{14abafb G.ED..C.. ......I. 0,0-0,0 #7f0800c5 app:id/search_close_button}
+              android.widget.ActionMenuView{aec4718 V.E...... ........ 1080,0-1080,168}
+            com.android.internal.widget.ActionBarContextView{8d3c571 G.E...... ......I. 0,0-0,0 #10203b1 android:id/action_context_bar}
+        android.view.View{eb9af56 V.ED..... ........ 0,1776-1080,1920 #1020030 android:id/navigationBarBackground}
+        android.view.View{b000bd7 V.ED..... ........ 0,0-1080,72 #102002f android:id/statusBarBackground}
+    Looper (main, tid 1) {1eabcc4}
+      Message 0: { when=+183ms callback=android.widget.Editor$Blink target=android.widget.Editor$Blink }
+      (Total messages: 1, polling=false, quitting=false)

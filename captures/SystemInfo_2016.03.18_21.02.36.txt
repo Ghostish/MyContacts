@@ -1,0 +1,176 @@
+TASK learn.android.kangel.mycontacts id=1090
+  ACTIVITY learn.android.kangel.mycontacts/.activities.MainActivity 5237e44 pid=28805
+    Local FragmentActivity 5bf0ace State:
+      mCreated=truemResumed=true mStopped=false mReallyStopped=false
+      mLoadersStarted=true
+    Active Fragments in 705cb0e:
+      #0: CallHistoryFragment{8e38f1d #0 id=0x7f0d006b android:switcher:2131558507:1}
+        mFragmentId=#7f0d006b mContainerId=#7f0d006b mTag=android:switcher:2131558507:1
+        mState=5 mIndex=0 mWho=android:fragment:0 mBackStackNesting=0
+        mAdded=true mRemoving=false mFromLayout=false mInLayout=false
+        mHidden=false mDetached=false mMenuVisible=false mHasMenu=false
+        mRetainInstance=false mRetaining=false mUserVisibleHint=false
+        mFragmentManager=FragmentManager{705cb0e in HostCallbacks{c29e92f}}
+        mHost=android.support.v4.app.FragmentActivity$HostCallbacks@c29e92f
+        mContainer=android.support.v4.view.ViewPager{c3ecb3c VFED..... ........ 0,237-720,1277 #7f0d006b app:id/pager}
+        mView=android.widget.FrameLayout{51100c5 V.E...... ........ 720,0-1440,1040}
+        mInnerView=android.widget.FrameLayout{51100c5 V.E...... ........ 720,0-1440,1040}
+        Child FragmentManager{3d78a1a in CallHistoryFragment{8e38f1d}}:
+          FragmentManager misc state:
+            mHost=android.support.v4.app.FragmentActivity$HostCallbacks@c29e92f
+            mContainer=android.support.v4.app.Fragment$1@8f5e94b
+            mParent=CallHistoryFragment{8e38f1d #0 id=0x7f0d006b android:switcher:2131558507:1}
+            mCurState=5 mStateSaved=false mDestroyed=false
+      #1: CallHistoryFragment{8cb5f28 #1 id=0x7f0d006b android:switcher:2131558507:0}
+        mFragmentId=#7f0d006b mContainerId=#7f0d006b mTag=android:switcher:2131558507:0
+        mState=5 mIndex=1 mWho=android:fragment:1 mBackStackNesting=0
+        mAdded=true mRemoving=false mFromLayout=false mInLayout=false
+        mHidden=false mDetached=false mMenuVisible=true mHasMenu=false
+        mRetainInstance=false mRetaining=false mUserVisibleHint=true
+        mFragmentManager=FragmentManager{705cb0e in HostCallbacks{c29e92f}}
+        mHost=android.support.v4.app.FragmentActivity$HostCallbacks@c29e92f
+        mContainer=android.support.v4.view.ViewPager{c3ecb3c VFED..... ........ 0,237-720,1277 #7f0d006b app:id/pager}
+        mView=android.widget.FrameLayout{685e441 V.E...... ........ 0,0-720,1040}
+        mInnerView=android.widget.FrameLayout{685e441 V.E...... ........ 0,0-720,1040}
+        Child FragmentManager{dd42de6 in CallHistoryFragment{8cb5f28}}:
+          FragmentManager misc state:
+            mHost=android.support.v4.app.FragmentActivity$HostCallbacks@c29e92f
+            mContainer=android.support.v4.app.Fragment$1@f37cf27
+            mParent=CallHistoryFragment{8cb5f28 #1 id=0x7f0d006b android:switcher:2131558507:0}
+            mCurState=5 mStateSaved=false mDestroyed=false
+    Added Fragments:
+      #0: CallHistoryFragment{8cb5f28 #1 id=0x7f0d006b android:switcher:2131558507:0}
+      #1: CallHistoryFragment{8e38f1d #0 id=0x7f0d006b android:switcher:2131558507:1}
+    FragmentManager misc state:
+      mHost=android.support.v4.app.FragmentActivity$HostCallbacks@c29e92f
+      mContainer=android.support.v4.app.FragmentActivity$HostCallbacks@c29e92f
+      mCurState=5 mStateSaved=false mDestroyed=false
+    View Hierarchy:
+      com.android.internal.policy.PhoneWindow$DecorView{b0b45d4 V.E..... ... 0,0-720,1280}
+        android.widget.LinearLayout{90b837d V.E..... ... 0,0-720,1184}
+          android.view.ViewStub{ba54272 G.E..... ... 0,0-0,0 #10203b4 android:id/action_mode_bar_stub}
+          android.widget.FrameLayout{5c836c3 V.E..... ... 0,48-720,1184}
+            android.support.v7.widget.FitWindowsLinearLayout{4c0eb40 V.E..... ... 0,0-720,1136 #7f0d0055 app:id/action_bar_root}
+              android.support.v7.widget.ViewStubCompat{151da79 G.E..... ... 0,0-0,0 #7f0d0056 app:id/action_mode_bar_stub}
+              android.support.v7.widget.ContentFrameLayout{30113be V.E..... ... 0,0-720,1136 #1020002 android:id/content}
+                android.support.design.widget.CoordinatorLayout{e6d7c1f VFE..... F.. 0,0-720,1136}
+                  android.support.design.widget.AppBarLayout{f697b6c V.E..... ... 0,-3-720,237}
+                    android.support.v7.widget.CardView{50ca535 V.E..... ... 16,16-704,128}
+                      android.support.v7.widget.SearchView{cb6adca VFE..... ... 6,8-682,104 #7f0d0069 app:id/search_view}
+                        android.widget.LinearLayout{6f7bb3b V.E..... ... 0,0-676,96 #7f0d005d app:id/search_bar}
+                          android.support.v7.widget.AppCompatTextView{d28e258 G.ED.... ... 0,0-0,0 #7f0d005e app:id/search_badge}
+                          android.support.v7.widget.AppCompatImageView{76f5fb1 VFED..C. ... 0,0-96,96 #7f0d005f app:id/search_button}
+                          android.widget.LinearLayout{d79dc96 G.E..... ... 16,8-660,80 #7f0d0060 app:id/search_edit_frame}
+                            android.support.v7.widget.AppCompatImageView{1cd017 G.ED.... ... 0,0-0,0 #7f0d0061 app:id/search_mag_icon}
+                            android.widget.LinearLayout{c75cc04 V.E..... ... 0,0-644,72 #7f0d0062 app:id/search_plate}
+                              android.support.v7.widget.SearchView$SearchAutoComplete{16945ed VFED..CL ... 0,0-564,72 #7f0d0063 app:id/search_src_text}
+                              android.support.v7.widget.AppCompatImageView{f6f2c22 VFED..C. ... 564,0-644,72 #7f0d0064 app:id/search_close_btn}
+                            android.widget.LinearLayout{61456b3 G.E..... ... 0,0-0,0 #7f0d0065 app:id/submit_area}
+                              android.support.v7.widget.AppCompatImageView{a85a470 GFED..C. ... 0,0-0,0 #7f0d0066 app:id/search_go_btn}
+                              android.support.v7.widget.AppCompatImageView{1a153e9 GFED..C. ... 0,0-0,0 #7f0d0067 app:id/search_voice_btn}
+                    android.support.design.widget.TabLayout{877e86e VFED.... ... 0,144-720,240 #7f0d006a app:id/tab}
+                      android.support.design.widget.TabLayout$SlidingTabStrip{6f3ab0f V.ED.... ... 0,0-720,96}
+                        android.support.design.widget.TabLayout$TabView{78979c VFE...C. .S. 0,0-360,96}
+                          android.support.v7.widget.AppCompatImageView{3245a5 V.ED.... .S. 156,24-204,72}
+                          android.support.v7.widget.AppCompatTextView{93e1d7a G.ED.... .S. 0,0-0,0}
+                        android.support.design.widget.TabLayout$TabView{2c9e92b VFE...C. ... 360,0-720,96}
+                          android.support.v7.widget.AppCompatImageView{7459188 V.ED.... ... 156,24-204,72}
+                          android.support.v7.widget.AppCompatTextView{2269721 G.ED.... ... 0,0-0,0}
+                  android.support.v4.view.ViewPager{c3ecb3c VFED.... ... 0,237-720,1277 #7f0d006b app:id/pager}
+                    android.widget.FrameLayout{51100c5 V.E..... ... 720,0-1440,1040}
+                      android.widget.LinearLayout{1009746 V.E..... ... 0,0-720,1040}
+                        learn.android.kangel.mycontacts.MyRecyclerView{17bed07 VFED.... ... 0,0-720,1040 #7f0d0085 app:id/fast_scroll_recycler_view}
+                          android.support.v7.widget.CardView{e663e34 V.E..... ... 16,16-704,176}
+                            android.widget.RelativeLayout{8b4845d V.E..... ... 6,8-682,152}
+                              com.alexzh.circleimageview.CircleImageView{21ee1d2 V.ED.... ... 16,24-112,120 #7f0d0075 app:id/head_show}
+                              android.widget.LinearLayout{a6052a3 V.E..... ... 144,23-490,121}
+                                android.support.v7.widget.AppCompatTextView{14309a0 V.ED.... ... 0,0-200,49 #7f0d0076 app:id/caller_name_or_num}
+                                android.support.v7.widget.AppCompatTextView{83a0959 V.ED.... ... 0,49-346,98 #7f0d0077 app:id/call_info}
+                          android.support.v7.widget.CardView{365491e V.E..... ... 16,176-704,336}
+                            android.widget.RelativeLayout{99b75ff V.E..... ... 6,8-682,152}
+                              com.alexzh.circleimageview.CircleImageView{75f1fcc V.ED.... ... 16,24-112,120 #7f0d0075 app:id/head_show}
+                              android.widget.LinearLayout{2f8e215 V.E..... ... 144,23-490,121}
+                                android.support.v7.widget.AppCompatTextView{a18d92a V.ED.... ... 0,0-200,49 #7f0d0076 app:id/caller_name_or_num}
+                                android.support.v7.widget.AppCompatTextView{f3b731b V.ED.... ... 0,49-346,98 #7f0d0077 app:id/call_info}
+                          android.support.v7.widget.CardView{b446cb8 V.E..... ... 16,336-704,496}
+                            android.widget.RelativeLayout{3928a91 V.E..... ... 6,8-682,152}
+                              com.alexzh.circleimageview.CircleImageView{8c35df6 V.ED.... ... 16,24-112,120 #7f0d0075 app:id/head_show}
+                              android.widget.LinearLayout{41425f7 V.E..... ... 144,23-490,121}
+                                android.support.v7.widget.AppCompatTextView{42f9c64 V.ED.... ... 0,0-200,49 #7f0d0076 app:id/caller_name_or_num}
+                                android.support.v7.widget.AppCompatTextView{3443ecd V.ED.... ... 0,49-346,98 #7f0d0077 app:id/call_info}
+                          android.support.v7.widget.CardView{a496e77 V.E..... ... 16,496-704,656}
+                            android.widget.RelativeLayout{ebf6382 V.E..... ... 6,8-682,152}
+                              com.alexzh.circleimageview.CircleImageView{5b2a93 V.ED.... ... 16,24-112,120 #7f0d0075 app:id/head_show}
+                              android.widget.LinearLayout{e7c1ad0 V.E..... ... 144,23-490,121}
+                                android.support.v7.widget.AppCompatTextView{7e2fac9 V.ED.... ... 0,0-200,49 #7f0d0076 app:id/caller_name_or_num}
+                                android.support.v7.widget.AppCompatTextView{48435ce V.ED.... ... 0,49-346,98 #7f0d0077 app:id/call_info}
+                          android.support.v7.widget.CardView{9d67876 V.E..... ... 16,656-704,816}
+                            android.widget.RelativeLayout{3dcef V.E..... ... 6,8-682,152}
+                              com.alexzh.circleimageview.CircleImageView{ed013fc V.ED.... ... 16,24-112,120 #7f0d0075 app:id/head_show}
+                              android.widget.LinearLayout{5977a85 V.E..... ... 144,23-490,121}
+                                android.support.v7.widget.AppCompatTextView{b1e0da V.ED.... ... 0,0-200,49 #7f0d0076 app:id/caller_name_or_num}
+                                android.support.v7.widget.AppCompatTextView{db590b V.ED.... ... 0,49-346,98 #7f0d0077 app:id/call_info}
+                          android.support.v7.widget.CardView{fef7f11 V.E..... ... 16,816-704,976}
+                            android.widget.RelativeLayout{c0873e8 V.E..... ... 6,8-682,152}
+                              com.alexzh.circleimageview.CircleImageView{5a3a01 V.ED.... ... 16,24-112,120 #7f0d0075 app:id/head_show}
+                              android.widget.LinearLayout{1dd30a6 V.E..... ... 144,23-490,121}
+                                android.support.v7.widget.AppCompatTextView{6647ae7 V.ED.... ... 0,0-200,49 #7f0d0076 app:id/caller_name_or_num}
+                                android.support.v7.widget.AppCompatTextView{be4e694 V.ED.... ... 0,49-346,98 #7f0d0077 app:id/call_info}
+                          android.support.v7.widget.CardView{7f67ae4 V.E..... ... 16,976-704,1136}
+                            android.widget.RelativeLayout{92f753d V.E..... ... 6,8-682,152}
+                              com.alexzh.circleimageview.CircleImageView{91bb132 V.ED.... ... 16,24-112,120 #7f0d0075 app:id/head_show}
+                              android.widget.LinearLayout{f73de83 V.E..... ... 144,23-490,121}
+                                android.support.v7.widget.AppCompatTextView{e73d800 V.ED.... ... 0,0-200,49 #7f0d0076 app:id/caller_name_or_num}
+                                android.support.v7.widget.AppCompatTextView{3232839 V.ED.... ... 0,49-346,98 #7f0d0077 app:id/call_info}
+                        android.widget.ProgressBar{14fae7e G.ED.... ... 0,0-0,0 #7f0d0086 app:id/loadingView}
+                      android.view.View{98bdfdf V.ED.... ... 0,0-720,6}
+                    android.widget.FrameLayout{685e441 V.E..... ... 0,0-720,1040}
+                      android.widget.LinearLayout{43e742c V.E..... ... 0,0-720,1040}
+                        learn.android.kangel.mycontacts.MyRecyclerView{c050ef5 VFED.... ... 0,0-720,1040 #7f0d0085 app:id/fast_scroll_recycler_view}
+                          android.support.v7.widget.CardView{f34348a V.E..... ... 16,16-704,176}
+                            android.widget.RelativeLayout{df89afb V.E..... ... 6,8-682,152}
+                              com.alexzh.circleimageview.CircleImageView{b34a718 V.ED.... ... 16,24-112,120 #7f0d0075 app:id/head_show}
+                              android.widget.LinearLayout{4e4a571 V.E..... ... 144,23-490,121}
+                                android.support.v7.widget.AppCompatTextView{6290f56 V.ED.... ... 0,0-200,49 #7f0d0076 app:id/caller_name_or_num}
+                                android.support.v7.widget.AppCompatTextView{4abebd7 V.ED.... ... 0,49-346,98 #7f0d0077 app:id/call_info}
+                          android.support.v7.widget.CardView{e591cc4 V.E..... ... 16,176-704,336}
+                            android.widget.RelativeLayout{64d27ad V.E..... ... 6,8-682,152}
+                              com.alexzh.circleimageview.CircleImageView{dbecae2 V.ED.... ... 16,24-112,120 #7f0d0075 app:id/head_show}
+                              android.widget.LinearLayout{8d96e73 V.E..... ... 144,23-490,121}
+                                android.support.v7.widget.AppCompatTextView{42d4130 V.ED.... ... 0,0-200,49 #7f0d0076 app:id/caller_name_or_num}
+                                android.support.v7.widget.AppCompatTextView{c4191a9 V.ED.... ... 0,49-346,98 #7f0d0077 app:id/call_info}
+                          android.support.v7.widget.CardView{402b32e V.E..... ... 16,336-704,496}
+                            android.widget.RelativeLayout{b527ecf V.E..... ... 6,8-682,152}
+                              com.alexzh.circleimageview.CircleImageView{7dd405c V.ED.... ... 16,24-112,120 #7f0d0075 app:id/head_show}
+                              android.widget.LinearLayout{5f89f65 V.E..... ... 144,23-490,121}
+                                android.support.v7.widget.AppCompatTextView{88ad43a V.ED.... ... 0,0-200,49 #7f0d0076 app:id/caller_name_or_num}
+                                android.support.v7.widget.AppCompatTextView{ea238eb V.ED.... ... 0,49-346,98 #7f0d0077 app:id/call_info}
+                          android.support.v7.widget.CardView{bdc7b13 V.E..... ... 16,496-704,656}
+                            android.widget.RelativeLayout{92c0648 V.E..... ... 6,8-682,152}
+                              com.alexzh.circleimageview.CircleImageView{558cce1 V.ED.... ... 16,24-112,120 #7f0d0075 app:id/head_show}
+                              android.widget.LinearLayout{c41fa06 V.E..... ... 144,23-490,121}
+                                android.support.v7.widget.AppCompatTextView{8e978c7 V.ED.... ... 0,0-200,49 #7f0d0076 app:id/caller_name_or_num}
+                                android.support.v7.widget.AppCompatTextView{f1f3ef4 V.ED.... ... 0,49-346,98 #7f0d0077 app:id/call_info}
+                          android.support.v7.widget.CardView{a29a602 V.E..... ... 16,656-704,816}
+                            android.widget.RelativeLayout{a34561d V.E..... ... 6,8-682,152}
+                              com.alexzh.circleimageview.CircleImageView{1f3b092 V.ED.... ... 16,24-112,120 #7f0d0075 app:id/head_show}
+                              android.widget.LinearLayout{77ada63 V.E..... ... 144,23-490,121}
+                                android.support.v7.widget.AppCompatTextView{96b5660 V.ED.... ... 0,0-200,49 #7f0d0076 app:id/caller_name_or_num}
+                                android.support.v7.widget.AppCompatTextView{5453719 V.ED.... ... 0,49-346,98 #7f0d0077 app:id/call_info}
+                          android.support.v7.widget.CardView{dbbfb4d V.E..... ... 16,816-704,976}
+                            android.widget.RelativeLayout{b9843de V.E..... ... 6,8-682,152}
+                              com.alexzh.circleimageview.CircleImageView{36b9bf V.ED.... ... 16,24-112,120 #7f0d0075 app:id/head_show}
+                              android.widget.LinearLayout{c9f788c V.E..... ... 144,23-490,121}
+                                android.support.v7.widget.AppCompatTextView{ee92bd5 V.ED.... ... 0,0-200,49 #7f0d0076 app:id/caller_name_or_num}
+                                android.support.v7.widget.AppCompatTextView{60bfea V.ED.... ... 0,49-346,98 #7f0d0077 app:id/call_info}
+                          android.support.v7.widget.CardView{e126150 V.E..... ... 16,976-704,1136}
+                            android.widget.RelativeLayout{ca732db V.E..... ... 6,8-682,152}
+                              com.alexzh.circleimageview.CircleImageView{5119178 V.ED.... ... 16,24-112,120 #7f0d0075 app:id/head_show}
+                              android.widget.LinearLayout{d9db051 V.E..... ... 144,23-490,121}
+                                android.support.v7.widget.AppCompatTextView{782f0b6 V.ED.... ... 0,0-200,49 #7f0d0076 app:id/caller_name_or_num}
+                                android.support.v7.widget.AppCompatTextView{adc21b7 V.ED.... ... 0,49-346,98 #7f0d0077 app:id/call_info}
+                        android.widget.ProgressBar{c8a4d24 G.ED.... ... 0,0-0,0 #7f0d0086 app:id/loadingView}
+                      android.view.View{83c008d V.ED.... ... 0,0-720,6}
+                  android.support.design.widget.FloatingActionButton{3c56242 VFED..C. ... 576,992-688,1104 #7f0d006c app:id/fab}
+        android.view.View{72253 V.ED.... ... 0,1184-720,1280 #1020030 android:id/navigationBarBackground}
+        android.view.View{eb11790 V.ED.... ... 0,0-720,48 #102002f android:id/statusBarBackground}

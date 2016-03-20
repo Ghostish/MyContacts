@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="72dp"
+    android:background="?selectableItemBackground"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+        <com.alexzh.circleimageview.CircleImageView
+            android:id="@+id/head_show"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="8dp"
+            android:scaleType="fitCenter"
+            android:src="@drawable/ic_default_head_show_white_24dp"
+            app:view_backgroundColor="@color/colorPrimary" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/contact_name"
+            android:layout_toEndOf="@id/head_show"
+            android:text="Kangel Zenn"
+            android:layout_centerVertical="true"/>
+    </RelativeLayout>
+
+

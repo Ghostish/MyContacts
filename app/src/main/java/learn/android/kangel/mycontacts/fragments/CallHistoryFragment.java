@@ -5,52 +5,39 @@ import android.os.Bundle;
 import android.provider.CallLog;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.support.v4.content.ContextCompat;
+import android.support.v4.app.LoaderManager;
+import android.support.v4.content.CursorLoader;
+import android.support.v4.content.Loader;
 import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import learn.android.kangel.mycontacts.DateParseUtil;
-import learn.android.kangel.mycontacts.adapters.CallHistoryAdapter;
 import learn.android.kangel.mycontacts.MyRecyclerView;
 import learn.android.kangel.mycontacts.R;
-import learn.android.kangel.mycontacts.adapters.SimpleSectionedRecyclerViewAdapter;
+import learn.android.kangel.mycontacts.adapters.CallHistoryAdapter;
 
 /**
  * Created by Kangel on 2016/3/17.
  */
-public class CallHistoryFragment extends RecyclerViewFragemt {
-
-
-    public static CallHistoryFragment newInstance(RecyclerView.Adapter adapter) {
-        CallHistoryFragment f = new CallHistoryFragment();
-        f.adapter = adapter;
-        return f;
-    }
-
-    @Override
-    public void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setRetainInstance(true);
-    }
-
-    @Override
-    public void onDetach() {
-        super.onDetach();
-        if (adapter != null) {
-            ((CallHistoryAdapter) adapter).updateCursor(null);
-        }
-    }
+public class CallHistoryFragment extends Fragment implements LoaderManager.LoaderCallbacks<Cursor> {
+    private CallHistoryAdapter mAdapter;
+    private final static int QUERY_CALL_HISTORY = 2;
+    private final static String[] CALL_LOG_PROJECTION = new String[]
+            {
+                    CallLog.Calls.CACHED_NAME,
+                    CallLog.Calls.NUMBER,
+                    CallLog.Calls.TYPE,
+                    CallLog.Calls.DATE
+            };
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.recyclerview_layout, container, false);
-        recyclerView = (MyRecyclerView) v.findViewById(R.id.fast_scroll_recycler_view);
+        MyRecyclerView recyclerView = (MyRecyclerView) v.findViewById(R.id.fast_scroll_recycler_view);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         recyclerView.setHasFixedSize(false);
         ImageView emptyImage = (ImageView) v.findViewById(R.id.empty_image);
@@ -66,9 +53,34 @@ public class CallHistoryFragment extends RecyclerViewFragemt {
         sections[2] = new SimpleSectionedRecyclerViewAdapter.Section(getFirstOlderPosition(), "更早");
         sectionedRecyclerViewAdapter.setSections(sections);
         recyclerView.setAdapter(sectionedRecyclerViewAdapter);*/
-        recyclerView.setAdapter(adapter);
+        mAdapter = new CallHistoryAdapter(getActivity(),null);
+        recyclerView.setAdapter(mAdapter);
         recyclerView.setEmptyView(v.findViewById(R.id.empty_view));
+        getLoaderManager().initLoader(QUERY_CALL_HISTORY, null, this);
         return v;
     }
 
+    @Override
+    public Loader<Cursor> onCreateLoader(int id, Bundle args) {
+        if (id == QUERY_CALL_HISTORY) {
+            return new CursorLoader(getActivity(), CallLog.Calls.CONTENT_URI, CALL_LOG_PROJECTION, null, null, CallLog.Calls.DATE + " desc");
+        }
+        return null;
+    }
+
+    @Override
+    public void onLoadFinished(Loader<Cursor> loader, Cursor data) {
+        if (loader.getId() == QUERY_CALL_HISTORY) {
+            mAdapter.updateCursor(data);
+            mAdapter.notifyDataSetChanged();
+        }
+    }
+
+    @Override
+    public void onLoaderReset(Loader<Cursor> loader) {
+        if (loader.getId() == QUERY_CALL_HISTORY) {
+            mAdapter.updateCursor(null);
+            mAdapter.notifyDataSetChanged();
+        }
+    }
 }

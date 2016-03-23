@@ -2,6 +2,7 @@ package learn.android.kangel.mycontacts.adapters;
 
 import android.content.Context;
 import android.database.Cursor;
+import android.os.Bundle;
 import android.provider.CallLog;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -12,10 +13,7 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import java.util.Date;
-
 import learn.android.kangel.mycontacts.DateParseUtil;
-import learn.android.kangel.mycontacts.MyRecyclerView;
 import learn.android.kangel.mycontacts.R;
 import learn.android.kangel.mycontacts.activities.RecyclerViewActivity;
 
@@ -123,7 +121,10 @@ public class CallHistoryAdapter extends RecyclerView.Adapter<CallHistoryAdapter.
         @Override
         public void onClick(View v) {
             if (context instanceof RecyclerViewActivity) {
-                ((RecyclerViewActivity) context).onRecyclerViewItemClick(getAdapterPosition(), TAG_DIAL, null);
+                cursor.moveToPosition(getAdapterPosition());
+                Bundle data = new Bundle();
+                data.putString("number", cursor.getString(cursor.getColumnIndex(CallLog.Calls.NUMBER)));
+                ((RecyclerViewActivity) context).onRecyclerViewItemClick(getAdapterPosition(), TAG_DIAL, data);
             }
         }
     }

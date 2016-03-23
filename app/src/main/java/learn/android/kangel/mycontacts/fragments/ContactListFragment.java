@@ -1,7 +1,13 @@
 package learn.android.kangel.mycontacts.fragments;
 
+import android.database.Cursor;
 import android.os.Bundle;
+import android.provider.ContactsContract;
 import android.support.annotation.Nullable;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.LoaderManager;
+import android.support.v4.content.CursorLoader;
+import android.support.v4.content.Loader;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -10,37 +16,57 @@ import android.view.ViewGroup;
 
 import learn.android.kangel.mycontacts.MyRecyclerView;
 import learn.android.kangel.mycontacts.R;
+import learn.android.kangel.mycontacts.adapters.CallHistoryAdapter;
 import learn.android.kangel.mycontacts.adapters.ContactListAdapter;
 
 /**
  * Created by Kangel on 2016/3/19.
  */
-public class ContactListFragment extends RecyclerViewFragemt{
-    @Override
-    public void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setRetainInstance(true);
-    }
-    public static ContactListFragment newInstance(RecyclerView.Adapter adapter) {
-        ContactListFragment f = new ContactListFragment();
-        f.adapter = adapter;
-        return f;
-    }
-    @Override
-    public void onDetach() {
-        super.onDetach();
-        if (adapter != null) {
-            ((ContactListAdapter) adapter).updateCursor(null);
-        }
-    }
+public class ContactListFragment extends Fragment implements LoaderManager.LoaderCallbacks<Cursor> {
+    private final static int QUERY_CONTACT = 1;
+    private ContactListAdapter mAdapter;
+    private static final String[] CONTACT_PROJECTION =
+            {
+                    ContactsContract.Contacts._ID,
+                    ContactsContract.Contacts.LOOKUP_KEY,
+                    ContactsContract.Contacts.DISPLAY_NAME_PRIMARY,
+                    ContactsContract.Contacts.SORT_KEY_PRIMARY
+
+            };
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.recyclerview_layout, container, false);
-        recyclerView = (MyRecyclerView) v.findViewById(R.id.fast_scroll_recycler_view);
+        MyRecyclerView recyclerView = (MyRecyclerView) v.findViewById(R.id.fast_scroll_recycler_view);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         recyclerView.setHasFixedSize(true);
-        recyclerView.setAdapter(adapter);
+        mAdapter = new ContactListAdapter(getActivity(), null);
+        recyclerView.setAdapter(mAdapter);
+        getLoaderManager().initLoader(QUERY_CONTACT, null, this);
         return v;
+    }
+
+
+    @Override
+    public Loader<Cursor> onCreateLoader(int id, Bundle args) {
+        if (id == QUERY_CONTACT) {
+            return new CursorLoader(getActivity(), ContactsContract.Contacts.CONTENT_URI, CONTACT_PROJECTION, null, null, ContactsContract.Contacts.SORT_KEY_PRIMARY);
+        }
+        return null;
+    }
+
+    @Override
+    public void onLoadFinished(Loader<Cursor> loader, Cursor data) {
+        if (loader.getId() == QUERY_CONTACT) {
+            mAdapter.updateCursor(data);
+            mAdapter.notifyDataSetChanged();
+        }
+    }
+
+    @Override
+    public void onLoaderReset(Loader<Cursor> loader) {
+        mAdapter.updateCursor(null);
+        mAdapter.notifyDataSetChanged();
     }
 }

@@ -9,7 +9,6 @@ import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.CallLog;
-import android.provider.ContactsContract;
 import android.support.annotation.NonNull;
 import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.CoordinatorLayout;
@@ -20,12 +19,10 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.content.ContextCompat;
-import android.support.v4.content.CursorLoader;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.SearchView;
-import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 
@@ -37,17 +34,11 @@ import learn.android.kangel.mycontacts.adapters.ContactListAdapter;
 import learn.android.kangel.mycontacts.fragments.CallHistoryFragment;
 import learn.android.kangel.mycontacts.fragments.ContactListFragment;
 
-public class MainActivity extends AppCompatActivity implements View.OnClickListener, android.support.v4.app.LoaderManager.LoaderCallbacks<Cursor>, RecyclerViewActivity {
+public class MainActivity extends AppCompatActivity implements View.OnClickListener, RecyclerViewActivity {
     private SearchView searchView;
-    private Cursor callLogCursor;
-    private Cursor contactCursor;
-    private CallHistoryAdapter callHistoryAdapter;
-    private ContactListAdapter contactListAdapter;
     private final static int REQUEST_CALL_LOG_CONTACTS = 110;
     private CallHistoryFragment callHistoryFragment;
     private ContactListFragment contactListFragment;
-    private final static int QUERY_CONTACT = 1;
-    private final static int QUERY_CALL_HISTORY = 2;
     int appbarHeight = 0;
 
 
@@ -56,21 +47,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     Manifest.permission.READ_CALL_LOG,
                     Manifest.permission.READ_CONTACTS
             };
-    private final static String[] CALL_LOG_PROJECTION = new String[]
-            {
-                    CallLog.Calls.CACHED_NAME,
-                    CallLog.Calls.NUMBER,
-                    CallLog.Calls.TYPE,
-                    CallLog.Calls.DATE
-            };
-    private static final String[] PROJECTION =
-            {
-                    ContactsContract.Contacts._ID,
-                    ContactsContract.Contacts.LOOKUP_KEY,
-                    ContactsContract.Contacts.DISPLAY_NAME_PRIMARY,
-                    ContactsContract.Contacts.SORT_KEY_PRIMARY
-
-            };
+    private ViewPager pager;
 
 
     @Override
@@ -88,22 +65,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 ActivityCompat.requestPermissions(MainActivity.this, REQUEST_PERMISSION, REQUEST_CALL_LOG_CONTACTS);
             }
         } else {
-                getSupportLoaderManager().restartLoader(QUERY_CALL_HISTORY, null, MainActivity.this);
-                getSupportLoaderManager().restartLoader(QUERY_CONTACT, null, MainActivity.this);
+            pager.setAdapter(new contactPagerAdapter(getSupportFragmentManager()));
         }
 
     }
 
-    @Override
-    protected void onDestroy() {
-        if (callLogCursor != null && !callLogCursor.isClosed()) {
-            callLogCursor.close();
-        }
-        if (contactCursor != null && !contactCursor.isClosed()) {
-            contactCursor.close();
-        }
-        super.onDestroy();
-    }
 
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
@@ -111,9 +77,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             case REQUEST_CALL_LOG_CONTACTS: {
                 // If request is cancelled, the result arrays are empty.
                 if (grantResults.length == 2 && grantResults[0] == PackageManager.PERMISSION_GRANTED && grantResults[1] == PackageManager.PERMISSION_GRANTED) {
-                    getSupportLoaderManager().restartLoader(QUERY_CALL_HISTORY, null, MainActivity.this);
-                    getSupportLoaderManager().restartLoader(QUERY_CONTACT, null, MainActivity.this);
-
+                    pager.setAdapter(new contactPagerAdapter(getSupportFragmentManager()));
                 } else {
                     Snackbar.make(findViewById(R.id.coordinator), R.string.permission_deny, Snackbar.LENGTH_INDEFINITE).show();
                 }
@@ -161,82 +125,18 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         tabLayout.addTab(tabLayout.newTab().setIcon(R.drawable.ic_account_box_white_24dp));
         tabLayout.setBackgroundColor(ContextCompat.getColor(this, R.color.colorPrimary));
         tabLayout.setSelectedTabIndicatorColor(Color.WHITE);
-        if (savedInstanceState == null) {
-            callHistoryAdapter = new CallHistoryAdapter(this, null);
-            contactListAdapter = new ContactListAdapter(this, null);
-        }else {
-            List<Fragment> fragments = getSupportFragmentManager().getFragments();
-            for (Fragment f : fragments) {
-                if (f instanceof CallHistoryFragment) {
-                    callHistoryAdapter = (CallHistoryAdapter) ((CallHistoryFragment) f).getAdapter();
-                }
-                if (f instanceof ContactListFragment) {
-                    contactListAdapter = (ContactListAdapter) ((ContactListFragment) f).getAdapter();
-                }
-            }
-        }
-        ViewPager pager = (ViewPager) findViewById(R.id.pager);
-        pager.setAdapter(new contactPagerAdapter(getSupportFragmentManager()));
+        pager = (ViewPager) findViewById(R.id.pager);
         tabLayout.setOnTabSelectedListener(new TabLayout.ViewPagerOnTabSelectedListener(pager));
         pager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
         searchView = (SearchView) findViewById(R.id.search_view);
     }
 
-    @Override
-    public android.support.v4.content.Loader<Cursor> onCreateLoader(int id, Bundle args) {
-        Log.i("CONTENT_URI", ContactsContract.Contacts.CONTENT_URI.toString());
-        switch (id) {
-            case QUERY_CONTACT:
-                return new CursorLoader(MainActivity.this, ContactsContract.Contacts.CONTENT_URI, PROJECTION, null, null, ContactsContract.Contacts.SORT_KEY_PRIMARY);
-            case QUERY_CALL_HISTORY:
-                return new CursorLoader(MainActivity.this, CallLog.Calls.CONTENT_URI, CALL_LOG_PROJECTION, null, null, CallLog.Calls.DATE + " desc");
-            default:
-                return null;
-        }
-
-    }
-
-    @Override
-    public void onLoadFinished(android.support.v4.content.Loader<Cursor> loader, Cursor data) {
-        switch (loader.getId()) {
-            case QUERY_CONTACT: {
-                contactCursor = data;
-                contactListAdapter.updateCursor(data);
-                contactListAdapter.notifyDataSetChanged();
-                break;
-            }
-            case QUERY_CALL_HISTORY: {
-                callLogCursor = data;
-                callHistoryAdapter.updateCursor(data);
-                callHistoryAdapter.notifyDataSetChanged();
-                break;
-            }
-        }
-    }
-
-    @Override
-    public void onLoaderReset(android.support.v4.content.Loader<Cursor> loader) {
-        switch (loader.getId()) {
-            case QUERY_CONTACT: {
-                contactCursor = null;
-                contactListAdapter.updateCursor(null);
-                break;
-            }
-            case QUERY_CALL_HISTORY: {
-                callLogCursor = null;
-                callHistoryAdapter.updateCursor(null);
-                break;
-            }
-        }
-    }
 
     @Override
     public void onRecyclerViewItemClick(int position, Object tag, Bundle data) {
         switch (((String) tag)) {
             case CallHistoryAdapter.TAG_DIAL: {
-                Cursor c = callHistoryAdapter.getCursor();
-                c.moveToPosition(position);
-                String number = c.getString(c.getColumnIndex(CallLog.Calls.NUMBER));
+                String number = data.getString("number");
                 Intent intent = new Intent(Intent.ACTION_DIAL, Uri.parse("tel:" + number));
                 startActivity(intent);
             }
@@ -253,9 +153,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         @Override
         public Fragment getItem(int position) {
             if (position == 0) {
-                return callHistoryFragment = CallHistoryFragment.newInstance(callHistoryAdapter);
+                return callHistoryFragment = new CallHistoryFragment();
             } else {
-                return contactListFragment = ContactListFragment.newInstance(contactListAdapter);
+                return contactListFragment = new ContactListFragment();
             }
         }
 

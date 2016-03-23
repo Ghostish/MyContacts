@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android"
+    android:opacity="opaque">
+    <item android:drawable="@android:color/white" />
+    <item
+        android:drawable="?attr/colorPrimary"
+        android:height="180dp"
+        android:gravity="top"/>
+    <item
+        android:drawable="@drawable/toolbar_shadow"
+        android:top="180dp"
+        android:height="3dp" />
+</layer-list>

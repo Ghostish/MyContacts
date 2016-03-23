@@ -1,6 +1,7 @@
 package learn.android.kangel.mycontacts.activities;
 
 import android.Manifest;
+import android.animation.ValueAnimator;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.database.Cursor;
@@ -10,6 +11,8 @@ import android.os.Bundle;
 import android.provider.CallLog;
 import android.provider.ContactsContract;
 import android.support.annotation.NonNull;
+import android.support.design.widget.AppBarLayout;
+import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.Snackbar;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.ActivityCompat;
@@ -20,8 +23,11 @@ import android.support.v4.content.ContextCompat;
 import android.support.v4.content.CursorLoader;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.CardView;
 import android.support.v7.widget.SearchView;
+import android.util.Log;
 import android.view.View;
+import android.view.ViewGroup;
 
 import learn.android.kangel.mycontacts.R;
 import learn.android.kangel.mycontacts.adapters.CallHistoryAdapter;
@@ -36,7 +42,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private CallHistoryFragment callHistoryFragment;
     private ContactListFragment contactListFragment;
     private final static int QUERY_CONTACT = 1;
-    private final static int QUERY_CALL_HISTROY = 2;
+    private final static int QUERY_CALL_HISTORY = 2;
+    int appbarHeight = 0;
+
 
     private final static String[] REQUEST_PERMISSION = new String[]
             {
@@ -54,7 +62,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             {
                     ContactsContract.Contacts._ID,
                     ContactsContract.Contacts.LOOKUP_KEY,
-                    ContactsContract.Contacts.DISPLAY_NAME_PRIMARY
+                    ContactsContract.Contacts.DISPLAY_NAME_PRIMARY,
+                    ContactsContract.Contacts.SORT_KEY_PRIMARY
 
             };
 
@@ -63,6 +72,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         initView();
+
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.READ_CALL_LOG) != PackageManager.PERMISSION_GRANTED ||
                 ActivityCompat.checkSelfPermission(this, Manifest.permission.READ_CONTACTS) != PackageManager.PERMISSION_GRANTED) {
             if (ActivityCompat.shouldShowRequestPermissionRationale(MainActivity.this, Manifest.permission.READ_CALL_LOG) ||
@@ -72,8 +82,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 ActivityCompat.requestPermissions(MainActivity.this, REQUEST_PERMISSION, REQUEST_CALL_LOG_CONTACTS);
             }
         } else {
-            callLogCursor = getContentResolver().query(CallLog.Calls.CONTENT_URI, CALL_LOG_PROJECTION, null, null, CallLog.Calls.DATE + " desc");
-            getSupportLoaderManager().initLoader(QUERY_CONTACT, null, MainActivity.this);
+            if (savedInstanceState == null) {
+                getSupportLoaderManager().initLoader(QUERY_CALL_HISTORY, null, MainActivity.this);
+                getSupportLoaderManager().initLoader(QUERY_CONTACT, null, MainActivity.this);
+            } else {
+                getSupportLoaderManager().restartLoader(QUERY_CALL_HISTORY, null, MainActivity.this);
+                getSupportLoaderManager().restartLoader(QUERY_CONTACT, null, MainActivity.this);
+            }
         }
 
     }
@@ -95,7 +110,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             case REQUEST_CALL_LOG_CONTACTS: {
                 // If request is cancelled, the result arrays are empty.
                 if (grantResults.length == 2 && grantResults[0] == PackageManager.PERMISSION_GRANTED && grantResults[1] == PackageManager.PERMISSION_GRANTED) {
-                    getSupportLoaderManager().initLoader(QUERY_CALL_HISTROY, null, MainActivity.this);
+                    getSupportLoaderManager().initLoader(QUERY_CALL_HISTORY, null, MainActivity.this);
                     getSupportLoaderManager().initLoader(QUERY_CONTACT, null, MainActivity.this);
 
                 } else {
@@ -114,6 +129,29 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
     }
 
+    @Override
+    public void onWindowFocusChanged(boolean hasFocus) {
+        super.onWindowFocusChanged(hasFocus);
+        if (hasFocus && appbarHeight == 0) {
+            TabLayout tabLayout = (TabLayout) findViewById(R.id.tab);
+            appbarHeight += tabLayout.getHeight();
+            CardView cardView = (CardView) findViewById(R.id.search_view_card);
+            ViewGroup.MarginLayoutParams lp = (ViewGroup.MarginLayoutParams) cardView.getLayoutParams();
+            appbarHeight += cardView.getHeight() + lp.topMargin + lp.bottomMargin;
+            final AppBarLayout appBarLayout = (AppBarLayout) findViewById(R.id.app_bar);
+
+            ValueAnimator animator = ValueAnimator.ofInt(((int) getResources().getDimension(R.dimen.app_bar_layout_initial)), appbarHeight);
+            animator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
+                @Override
+                public void onAnimationUpdate(ValueAnimator animation) {
+                    CoordinatorLayout.LayoutParams params = (CoordinatorLayout.LayoutParams) appBarLayout.getLayoutParams();
+                    params.height = (int) animation.getAnimatedValue();
+                    appBarLayout.setLayoutParams(params);
+                }
+            });
+            animator.start();
+        }
+    }
 
     private void initView() {
 
@@ -131,10 +169,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     @Override
     public android.support.v4.content.Loader<Cursor> onCreateLoader(int id, Bundle args) {
+        Log.i("CONTENT_URI", ContactsContract.Contacts.CONTENT_URI.toString());
         switch (id) {
             case QUERY_CONTACT:
-                return new CursorLoader(MainActivity.this, ContactsContract.Contacts.CONTENT_URI, PROJECTION, null, null, ContactsContract.Contacts.DISPLAY_NAME_PRIMARY);
-            case QUERY_CALL_HISTROY:
+                return new CursorLoader(MainActivity.this, ContactsContract.Contacts.CONTENT_URI, PROJECTION, null, null, ContactsContract.Contacts.SORT_KEY_PRIMARY);
+            case QUERY_CALL_HISTORY:
                 return new CursorLoader(MainActivity.this, CallLog.Calls.CONTENT_URI, CALL_LOG_PROJECTION, null, null, CallLog.Calls.DATE + " desc");
             default:
                 return null;
@@ -152,7 +191,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 }
                 break;
             }
-            case QUERY_CALL_HISTROY: {
+            case QUERY_CALL_HISTORY: {
                 callLogCursor = data;
                 if (callHistoryFragment != null) {
                     callHistoryFragment.updateRecyclerView(data);
@@ -164,6 +203,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     @Override
     public void onLoaderReset(android.support.v4.content.Loader<Cursor> loader) {
+        callHistoryFragment.updateRecyclerView(null);
+        contactListFragment.updateRecyclerView(null);
     }
 
     @Override
@@ -189,9 +230,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         @Override
         public Fragment getItem(int position) {
             if (position == 0) {
-                return callHistoryFragment = CallHistoryFragment.newInstance(callLogCursor);
+                return callHistoryFragment == null ? callHistoryFragment = CallHistoryFragment.newInstance(null) : callHistoryFragment;
             } else {
-                return contactListFragment = ContactListFragment.newInstance(contactCursor);
+                return contactListFragment == null ? contactListFragment = ContactListFragment.newInstance(null) : contactListFragment;
             }
         }
 

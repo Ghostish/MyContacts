@@ -43,7 +43,6 @@ public class CallHistoryFragment extends RecyclerViewFragemt {
         View v = inflater.inflate(R.layout.recyclerview_layout, container, false);
         recyclerView = (MyRecyclerView) v.findViewById(R.id.fast_scroll_recycler_view);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
-        recyclerView.setHasFixedSize(true);
         adapter = new CallHistoryAdapter(getActivity(), cursor);
         ImageView emptyImage = (ImageView) v.findViewById(R.id.empty_image);
         TextView emptyDesc = (TextView) v.findViewById(R.id.empty_desc);
@@ -51,13 +50,14 @@ public class CallHistoryFragment extends RecyclerViewFragemt {
         String callHistory = getActivity().getString(R.string.call_history);
         emptyDesc.setText(String.format(descFormat, callHistory));
         emptyImage.setImageResource(R.drawable.ic_history_black_48dp);
-        sectionedRecyclerViewAdapter = new SimpleSectionedRecyclerViewAdapter(getActivity(), R.layout.item_call_history_header, R.id.header_text, adapter);
+       /* sectionedRecyclerViewAdapter = new SimpleSectionedRecyclerViewAdapter(getActivity(), R.layout.item_call_history_header, R.id.header_text, adapter);
         SimpleSectionedRecyclerViewAdapter.Section[] sections = new SimpleSectionedRecyclerViewAdapter.Section[3];
         sections[0] = new SimpleSectionedRecyclerViewAdapter.Section(getFirstTodayPosition(), "最近");
         sections[1] = new SimpleSectionedRecyclerViewAdapter.Section(getFirstYesterdayPosition(), "昨天");
         sections[2] = new SimpleSectionedRecyclerViewAdapter.Section(getFirstOlderPosition(), "更早");
         sectionedRecyclerViewAdapter.setSections(sections);
-        recyclerView.setAdapter(sectionedRecyclerViewAdapter);
+        recyclerView.setAdapter(sectionedRecyclerViewAdapter);*/
+        recyclerView.setAdapter(adapter);
         recyclerView.setEmptyView(v.findViewById(R.id.empty_view));
         return v;
     }
@@ -79,7 +79,7 @@ public class CallHistoryFragment extends RecyclerViewFragemt {
                 }
                 result++;
             } while (cursor.moveToNext());
-            return result == cursor.getCount() ? 0 : result;
+            return result == cursor.getCount() ? getFirstTodayPosition() : result;
         }
         return result;
     }
@@ -109,7 +109,7 @@ public class CallHistoryFragment extends RecyclerViewFragemt {
                 }
                 result++;
             } while (cursor.moveToNext());
-            return result == cursor.getCount() ? 0 : result;
+            return result == cursor.getCount() ?getFirstYesterdayPosition() : result;
         }
         return result;
     }

@@ -1,6 +1,6 @@
 -- Merging decision tree log ---
 manifest
-ADDED from G:\CD\android_project\MyContacts\app\src\main\AndroidManifest.xml:2:1-30:12
+ADDED from G:\CD\android_project\MyContacts\app\src\main\AndroidManifest.xml:2:1-31:12
 	package
 		ADDED from G:\CD\android_project\MyContacts\app\src\main\AndroidManifest.xml:3:5-46
 		INJECTED from G:\CD\android_project\MyContacts\app\src\main\AndroidManifest.xml
@@ -21,8 +21,12 @@ uses-permission#android.permission.READ_CONTACTS
 ADDED from G:\CD\android_project\MyContacts\app\src\main\AndroidManifest.xml:6:5-72
 	android:name
 		ADDED from G:\CD\android_project\MyContacts\app\src\main\AndroidManifest.xml:6:22-69
+uses-permission#android.permission.WRITE_CONTACTS
+ADDED from G:\CD\android_project\MyContacts\app\src\main\AndroidManifest.xml:7:5-73
+	android:name
+		ADDED from G:\CD\android_project\MyContacts\app\src\main\AndroidManifest.xml:7:22-70
 application
-ADDED from G:\CD\android_project\MyContacts\app\src\main\AndroidManifest.xml:8:5-28:19
+ADDED from G:\CD\android_project\MyContacts\app\src\main\AndroidManifest.xml:9:5-29:19
 MERGED from [com.android.support:appcompat-v7:23.2.1] G:\CD\android_project\MyContacts\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\23.2.1\AndroidManifest.xml:25:5-20
 MERGED from [com.android.support:support-v4:23.2.1] G:\CD\android_project\MyContacts\app\build\intermediates\exploded-aar\com.android.support\support-v4\23.2.1\AndroidManifest.xml:22:5-20
 MERGED from [com.android.support:animated-vector-drawable:23.2.1] G:\CD\android_project\MyContacts\app\build\intermediates\exploded-aar\com.android.support\animated-vector-drawable\23.2.1\AndroidManifest.xml:7:5-20
@@ -45,41 +49,41 @@ MERGED from [com.android.support:support-v4:23.2.1] G:\CD\android_project\MyCont
 MERGED from [com.android.support:support-v4:23.2.1] G:\CD\android_project\MyContacts\app\build\intermediates\exploded-aar\com.android.support\support-v4\23.2.1\AndroidManifest.xml:22:5-20
 MERGED from [com.alexzh:circleimageview:1.1.4] G:\CD\android_project\MyContacts\app\build\intermediates\exploded-aar\com.alexzh\circleimageview\1.1.4\AndroidManifest.xml:11:5-14:19
 	android:label
-		ADDED from G:\CD\android_project\MyContacts\app\src\main\AndroidManifest.xml:11:9-41
+		ADDED from G:\CD\android_project\MyContacts\app\src\main\AndroidManifest.xml:12:9-41
 	android:supportsRtl
-		ADDED from G:\CD\android_project\MyContacts\app\src\main\AndroidManifest.xml:12:9-35
+		ADDED from G:\CD\android_project\MyContacts\app\src\main\AndroidManifest.xml:13:9-35
 	android:allowBackup
-		ADDED from G:\CD\android_project\MyContacts\app\src\main\AndroidManifest.xml:9:9-35
+		ADDED from G:\CD\android_project\MyContacts\app\src\main\AndroidManifest.xml:10:9-35
 	android:icon
-		ADDED from G:\CD\android_project\MyContacts\app\src\main\AndroidManifest.xml:10:9-43
+		ADDED from G:\CD\android_project\MyContacts\app\src\main\AndroidManifest.xml:11:9-43
 	android:theme
-		ADDED from G:\CD\android_project\MyContacts\app\src\main\AndroidManifest.xml:13:9-40
+		ADDED from G:\CD\android_project\MyContacts\app\src\main\AndroidManifest.xml:14:9-40
 activity#learn.android.kangel.mycontacts.activities.MainActivity
-ADDED from G:\CD\android_project\MyContacts\app\src\main\AndroidManifest.xml:14:9-26:20
+ADDED from G:\CD\android_project\MyContacts\app\src\main\AndroidManifest.xml:15:9-27:20
 	android:launchMode
-		ADDED from G:\CD\android_project\MyContacts\app\src\main\AndroidManifest.xml:16:13-43
+		ADDED from G:\CD\android_project\MyContacts\app\src\main\AndroidManifest.xml:17:13-43
 	android:name
-		ADDED from G:\CD\android_project\MyContacts\app\src\main\AndroidManifest.xml:15:13-52
+		ADDED from G:\CD\android_project\MyContacts\app\src\main\AndroidManifest.xml:16:13-52
 intent-filter#android.intent.action.MAIN+android.intent.action.SEARCH+android.intent.category.LAUNCHER
-ADDED from G:\CD\android_project\MyContacts\app\src\main\AndroidManifest.xml:17:13-22:29
+ADDED from G:\CD\android_project\MyContacts\app\src\main\AndroidManifest.xml:18:13-23:29
 action#android.intent.action.MAIN
-ADDED from G:\CD\android_project\MyContacts\app\src\main\AndroidManifest.xml:18:17-69
+ADDED from G:\CD\android_project\MyContacts\app\src\main\AndroidManifest.xml:19:17-69
 	android:name
-		ADDED from G:\CD\android_project\MyContacts\app\src\main\AndroidManifest.xml:18:25-66
+		ADDED from G:\CD\android_project\MyContacts\app\src\main\AndroidManifest.xml:19:25-66
 action#android.intent.action.SEARCH
-ADDED from G:\CD\android_project\MyContacts\app\src\main\AndroidManifest.xml:19:17-71
+ADDED from G:\CD\android_project\MyContacts\app\src\main\AndroidManifest.xml:20:17-71
 	android:name
-		ADDED from G:\CD\android_project\MyContacts\app\src\main\AndroidManifest.xml:19:25-68
+		ADDED from G:\CD\android_project\MyContacts\app\src\main\AndroidManifest.xml:20:25-68
 category#android.intent.category.LAUNCHER
-ADDED from G:\CD\android_project\MyContacts\app\src\main\AndroidManifest.xml:21:17-77
+ADDED from G:\CD\android_project\MyContacts\app\src\main\AndroidManifest.xml:22:17-77
 	android:name
-		ADDED from G:\CD\android_project\MyContacts\app\src\main\AndroidManifest.xml:21:27-74
+		ADDED from G:\CD\android_project\MyContacts\app\src\main\AndroidManifest.xml:22:27-74
 meta-data#android.app.searchable
-ADDED from G:\CD\android_project\MyContacts\app\src\main\AndroidManifest.xml:23:13-25:54
+ADDED from G:\CD\android_project\MyContacts\app\src\main\AndroidManifest.xml:24:13-26:54
 	android:resource
-		ADDED from G:\CD\android_project\MyContacts\app\src\main\AndroidManifest.xml:25:17-51
+		ADDED from G:\CD\android_project\MyContacts\app\src\main\AndroidManifest.xml:26:17-51
 	android:name
-		ADDED from G:\CD\android_project\MyContacts\app\src\main\AndroidManifest.xml:24:17-54
+		ADDED from G:\CD\android_project\MyContacts\app\src\main\AndroidManifest.xml:25:17-54
 uses-sdk
 INJECTED from G:\CD\android_project\MyContacts\app\src\main\AndroidManifest.xml reason: use-sdk injection requested
 MERGED from [com.android.support:appcompat-v7:23.2.1] G:\CD\android_project\MyContacts\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\23.2.1\AndroidManifest.xml:21:5-23:78

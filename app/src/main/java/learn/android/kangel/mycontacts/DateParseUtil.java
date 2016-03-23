@@ -55,4 +55,37 @@ public class DateParseUtil {
         Date datetime = new Date(date);
         return isYesterdayDate(datetime);
     }
+
+    public static boolean isSameDay(Date date1, Date date2) {
+        Calendar datetimeA = Calendar.getInstance();
+        Calendar datetimeB = Calendar.getInstance();
+        datetimeA.setTime(date1);
+        datetimeB.setTime(date2);
+        return (datetimeA.get(Calendar.YEAR) == datetimeB.get(Calendar.YEAR) && datetimeA.get(Calendar.DAY_OF_YEAR) == datetimeB.get(Calendar.DAY_OF_YEAR));
+    }
+
+    public static boolean isSameDay(Long date1, Long date2) {
+        Date mDate1 = new Date(date1);
+        Date mDate2 = new Date(date2);
+        return isSameDay(mDate1, mDate2);
+    }
+
+    public static String getDateString(Date date) {
+        if (isTodayDate(date)) {
+            return "今天";
+        }
+        if (isYesterdayDate(date)) {
+            return "昨天";
+        }
+        return "更早";
+    }
+    public static String getDateString(Long date) {
+        if (isTodayDate(date)) {
+            return "今天";
+        }
+        if (isYesterdayDate(date)) {
+            return "昨天";
+        }
+        return "更早";
+    }
 }

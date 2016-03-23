@@ -12,7 +12,6 @@ import learn.android.kangel.mycontacts.MyRecyclerView;
 public abstract class RecyclerViewFragemt extends Fragment {
     protected MyRecyclerView recyclerView;
     protected RecyclerView.Adapter adapter;
-    protected Cursor cursor;
 
     public RecyclerView getRecyclerView() {
         return recyclerView;
@@ -22,5 +21,4 @@ public abstract class RecyclerViewFragemt extends Fragment {
         return adapter;
     }
 
-    public abstract void updateRecyclerView(Cursor cursor);
 }

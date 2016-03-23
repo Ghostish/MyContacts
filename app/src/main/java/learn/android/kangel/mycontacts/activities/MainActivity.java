@@ -31,6 +31,7 @@ import android.view.ViewGroup;
 
 import learn.android.kangel.mycontacts.R;
 import learn.android.kangel.mycontacts.adapters.CallHistoryAdapter;
+import learn.android.kangel.mycontacts.adapters.ContactListAdapter;
 import learn.android.kangel.mycontacts.fragments.CallHistoryFragment;
 import learn.android.kangel.mycontacts.fragments.ContactListFragment;
 
@@ -66,6 +67,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     ContactsContract.Contacts.SORT_KEY_PRIMARY
 
             };
+    private CallHistoryAdapter callHistoryAdapter;
+    private ContactListAdapter contactListAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -160,6 +163,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         tabLayout.addTab(tabLayout.newTab().setIcon(R.drawable.ic_account_box_white_24dp));
         tabLayout.setBackgroundColor(ContextCompat.getColor(this, R.color.colorPrimary));
         tabLayout.setSelectedTabIndicatorColor(Color.WHITE);
+        callHistoryAdapter = new CallHistoryAdapter(this, null);
+        contactListAdapter = new ContactListAdapter(this, null);
         ViewPager pager = (ViewPager) findViewById(R.id.pager);
         pager.setAdapter(new contactPagerAdapter(getSupportFragmentManager()));
         tabLayout.setOnTabSelectedListener(new TabLayout.ViewPagerOnTabSelectedListener(pager));
@@ -187,14 +192,16 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             case QUERY_CONTACT: {
                 contactCursor = data;
                 if (contactListFragment != null) {
-                    contactListFragment.updateRecyclerView(data);
+                    contactListAdapter.updateCursor(data);
+                    contactListAdapter.notifyDataSetChanged();
                 }
                 break;
             }
             case QUERY_CALL_HISTORY: {
                 callLogCursor = data;
                 if (callHistoryFragment != null) {
-                    callHistoryFragment.updateRecyclerView(data);
+                    callHistoryAdapter.updateCursor(data);
+                    callHistoryAdapter.notifyDataSetChanged();
                 }
                 break;
             }
@@ -203,15 +210,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     @Override
     public void onLoaderReset(android.support.v4.content.Loader<Cursor> loader) {
-        callHistoryFragment.updateRecyclerView(null);
-        contactListFragment.updateRecyclerView(null);
+        callHistoryAdapter.updateCursor(null);
+        contactListAdapter.updateCursor(null);
     }
 
     @Override
     public void onRecyclerViewItemClick(int position, Object tag, Bundle data) {
         switch (((String) tag)) {
             case CallHistoryAdapter.TAG_DIAL: {
-                position = callHistoryFragment.getSectionedRecyclerViewAdapter().sectionedPositionToPosition(position);
                 callLogCursor.moveToPosition(position);
                 String number = callLogCursor.getString(callLogCursor.getColumnIndex(CallLog.Calls.NUMBER));
                 Intent intent = new Intent(Intent.ACTION_DIAL, Uri.parse("tel:" + number));
@@ -230,9 +236,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         @Override
         public Fragment getItem(int position) {
             if (position == 0) {
-                return callHistoryFragment == null ? callHistoryFragment = CallHistoryFragment.newInstance(null) : callHistoryFragment;
+                return  callHistoryFragment = CallHistoryFragment.newInstance(callHistoryAdapter);
             } else {
-                return contactListFragment == null ? contactListFragment = ContactListFragment.newInstance(null) : contactListFragment;
+                return contactListFragment = ContactListFragment.newInstance(contactListAdapter);
             }
         }
 

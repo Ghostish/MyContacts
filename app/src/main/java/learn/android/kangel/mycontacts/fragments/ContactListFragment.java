@@ -4,6 +4,7 @@ import android.database.Cursor;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,9 +18,14 @@ import learn.android.kangel.mycontacts.adapters.ContactListAdapter;
  * Created by Kangel on 2016/3/19.
  */
 public class ContactListFragment extends RecyclerViewFragemt{
-    public static ContactListFragment newInstance(Cursor cursor) {
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setRetainInstance(true);
+    }
+    public static ContactListFragment newInstance(RecyclerView.Adapter adapter) {
         ContactListFragment f = new ContactListFragment();
-        f.cursor = cursor;
+        f.adapter = adapter;
         return f;
     }
     @Nullable
@@ -29,14 +35,7 @@ public class ContactListFragment extends RecyclerViewFragemt{
         recyclerView = (MyRecyclerView) v.findViewById(R.id.fast_scroll_recycler_view);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         recyclerView.setHasFixedSize(true);
-        adapter = new ContactListAdapter(getActivity(), cursor);
         recyclerView.setAdapter(adapter);
         return v;
-    }
-    @Override
-    public void updateRecyclerView(Cursor cursor) {
-        this.cursor = cursor;
-        ((ContactListAdapter) adapter).updateCursor(cursor);
-        adapter.notifyDataSetChanged();
     }
 }

@@ -25,16 +25,17 @@ import learn.android.kangel.mycontacts.adapters.SimpleSectionedRecyclerViewAdapt
  */
 public class CallHistoryFragment extends RecyclerViewFragemt {
 
-    public SimpleSectionedRecyclerViewAdapter getSectionedRecyclerViewAdapter() {
-        return sectionedRecyclerViewAdapter;
+
+    public static CallHistoryFragment newInstance(RecyclerView.Adapter adapter) {
+        CallHistoryFragment f = new CallHistoryFragment();
+        f.adapter = adapter;
+        return f;
     }
 
-    private SimpleSectionedRecyclerViewAdapter sectionedRecyclerViewAdapter;
-
-    public static CallHistoryFragment newInstance(Cursor cursor) {
-        CallHistoryFragment f = new CallHistoryFragment();
-        f.cursor = cursor;
-        return f;
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setRetainInstance(true);
     }
 
     @Nullable
@@ -43,7 +44,6 @@ public class CallHistoryFragment extends RecyclerViewFragemt {
         View v = inflater.inflate(R.layout.recyclerview_layout, container, false);
         recyclerView = (MyRecyclerView) v.findViewById(R.id.fast_scroll_recycler_view);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
-        adapter = new CallHistoryAdapter(getActivity(), cursor);
         ImageView emptyImage = (ImageView) v.findViewById(R.id.empty_image);
         TextView emptyDesc = (TextView) v.findViewById(R.id.empty_desc);
         String descFormat = getActivity().getString(R.string.empty_desc);
@@ -62,55 +62,4 @@ public class CallHistoryFragment extends RecyclerViewFragemt {
         return v;
     }
 
-    @Override
-    public void updateRecyclerView(Cursor cursor) {
-        this.cursor = cursor;
-        ((CallHistoryAdapter) adapter).updateCursor(cursor);
-        adapter.notifyDataSetChanged();
-    }
-
-    private int getFirstYesterdayPosition() {
-        int result = getFirstTodayPosition();
-        if (cursor != null) {
-            cursor.moveToPosition(result);
-            do {
-                if (DateParseUtil.isYesterdayDate(cursor.getLong(cursor.getColumnIndex(CallLog.Calls.DATE)))) {
-                    break;
-                }
-                result++;
-            } while (cursor.moveToNext());
-            return result == cursor.getCount() ? getFirstTodayPosition() : result;
-        }
-        return result;
-    }
-
-    private int getFirstTodayPosition() {
-        int result = 0;
-        if (cursor != null) {
-            cursor.moveToPosition(result);
-            do {
-                if (DateParseUtil.isTodayDate(cursor.getLong(cursor.getColumnIndex(CallLog.Calls.DATE)))) {
-                    break;
-                }
-                result++;
-            } while (cursor.moveToNext());
-            return result == cursor.getCount() ? 0 : result;
-        }
-        return result;
-    }
-
-    private int getFirstOlderPosition() {
-        int result = getFirstYesterdayPosition();
-        if (cursor != null) {
-            cursor.moveToPosition(result);
-            do {
-                if (!DateParseUtil.isYesterdayDate(cursor.getLong(cursor.getColumnIndex(CallLog.Calls.DATE)))) {
-                    break;
-                }
-                result++;
-            } while (cursor.moveToNext());
-            return result == cursor.getCount() ?getFirstYesterdayPosition() : result;
-        }
-        return result;
-    }
 }

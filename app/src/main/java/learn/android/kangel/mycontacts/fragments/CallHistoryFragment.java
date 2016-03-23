@@ -52,6 +52,7 @@ public class CallHistoryFragment extends RecyclerViewFragemt {
         View v = inflater.inflate(R.layout.recyclerview_layout, container, false);
         recyclerView = (MyRecyclerView) v.findViewById(R.id.fast_scroll_recycler_view);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+        recyclerView.setHasFixedSize(false);
         ImageView emptyImage = (ImageView) v.findViewById(R.id.empty_image);
         TextView emptyDesc = (TextView) v.findViewById(R.id.empty_desc);
         String descFormat = getActivity().getString(R.string.empty_desc);

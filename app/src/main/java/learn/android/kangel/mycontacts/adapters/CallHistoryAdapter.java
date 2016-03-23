@@ -24,11 +24,16 @@ import learn.android.kangel.mycontacts.activities.RecyclerViewActivity;
  */
 public class CallHistoryAdapter extends RecyclerView.Adapter<CallHistoryAdapter.ViewHolder> {
     private Cursor cursor;
+
     private Context context;
     private final static String infoString = "%s,%s";
     public final static String TAG_DIAL = "DIAL_NUMBER";
     private final static int TYPE_HEADER = 110;
     private final static int TYPE_ITEM = 111;
+
+    public Cursor getCursor() {
+        return cursor;
+    }
 
     public void updateCursor(Cursor cursor) {
         this.cursor = cursor;
@@ -60,7 +65,7 @@ public class CallHistoryAdapter extends RecyclerView.Adapter<CallHistoryAdapter.
         cursor.moveToPrevious();
         Long date2 = cursor.getLong(cursor.getColumnIndex(CallLog.Calls.DATE));
 
-        if (!DateParseUtil.isSameDay(date1, date2) && (DateParseUtil.isTodayDate(date1)) || DateParseUtil.isYesterdayDate(date1) || DateParseUtil.isTodayDate(date2) || DateParseUtil.isYesterdayDate(date2)) {
+        if (!DateParseUtil.isSameDay(date1, date2) && (DateParseUtil.isTodayDate(date1) || DateParseUtil.isYesterdayDate(date1) || DateParseUtil.isTodayDate(date2) || DateParseUtil.isYesterdayDate(date2))) {
             return TYPE_HEADER;
         }
         return TYPE_ITEM;

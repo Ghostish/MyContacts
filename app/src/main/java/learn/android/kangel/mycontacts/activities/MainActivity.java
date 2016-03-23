@@ -29,7 +29,6 @@ import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 
-import java.util.Iterator;
 import java.util.List;
 
 import learn.android.kangel.mycontacts.R;
@@ -42,6 +41,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private SearchView searchView;
     private Cursor callLogCursor;
     private Cursor contactCursor;
+    private CallHistoryAdapter callHistoryAdapter;
+    private ContactListAdapter contactListAdapter;
     private final static int REQUEST_CALL_LOG_CONTACTS = 110;
     private CallHistoryFragment callHistoryFragment;
     private ContactListFragment contactListFragment;
@@ -70,8 +71,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     ContactsContract.Contacts.SORT_KEY_PRIMARY
 
             };
-    private CallHistoryAdapter callHistoryAdapter;
-    private ContactListAdapter contactListAdapter;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -88,13 +88,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 ActivityCompat.requestPermissions(MainActivity.this, REQUEST_PERMISSION, REQUEST_CALL_LOG_CONTACTS);
             }
         } else {
-            if (savedInstanceState == null) {
-                getSupportLoaderManager().initLoader(QUERY_CALL_HISTORY, null, MainActivity.this);
-                getSupportLoaderManager().initLoader(QUERY_CONTACT, null, MainActivity.this);
-            } else {
                 getSupportLoaderManager().restartLoader(QUERY_CALL_HISTORY, null, MainActivity.this);
                 getSupportLoaderManager().restartLoader(QUERY_CONTACT, null, MainActivity.this);
-            }
         }
 
     }
@@ -116,8 +111,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             case REQUEST_CALL_LOG_CONTACTS: {
                 // If request is cancelled, the result arrays are empty.
                 if (grantResults.length == 2 && grantResults[0] == PackageManager.PERMISSION_GRANTED && grantResults[1] == PackageManager.PERMISSION_GRANTED) {
-                    getSupportLoaderManager().initLoader(QUERY_CALL_HISTORY, null, MainActivity.this);
-                    getSupportLoaderManager().initLoader(QUERY_CONTACT, null, MainActivity.this);
+                    getSupportLoaderManager().restartLoader(QUERY_CALL_HISTORY, null, MainActivity.this);
+                    getSupportLoaderManager().restartLoader(QUERY_CONTACT, null, MainActivity.this);
 
                 } else {
                     Snackbar.make(findViewById(R.id.coordinator), R.string.permission_deny, Snackbar.LENGTH_INDEFINITE).show();
@@ -239,8 +234,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public void onRecyclerViewItemClick(int position, Object tag, Bundle data) {
         switch (((String) tag)) {
             case CallHistoryAdapter.TAG_DIAL: {
-                callLogCursor.moveToPosition(position);
-                String number = callLogCursor.getString(callLogCursor.getColumnIndex(CallLog.Calls.NUMBER));
+                Cursor c = callHistoryAdapter.getCursor();
+                c.moveToPosition(position);
+                String number = c.getString(c.getColumnIndex(CallLog.Calls.NUMBER));
                 Intent intent = new Intent(Intent.ACTION_DIAL, Uri.parse("tel:" + number));
                 startActivity(intent);
             }

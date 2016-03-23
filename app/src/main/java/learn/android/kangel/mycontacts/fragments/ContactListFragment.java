@@ -1,6 +1,5 @@
 package learn.android.kangel.mycontacts.fragments;
 
-import android.database.Cursor;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.LinearLayoutManager;
@@ -11,7 +10,6 @@ import android.view.ViewGroup;
 
 import learn.android.kangel.mycontacts.MyRecyclerView;
 import learn.android.kangel.mycontacts.R;
-import learn.android.kangel.mycontacts.adapters.CallHistoryAdapter;
 import learn.android.kangel.mycontacts.adapters.ContactListAdapter;
 
 /**
@@ -27,6 +25,13 @@ public class ContactListFragment extends RecyclerViewFragemt{
         ContactListFragment f = new ContactListFragment();
         f.adapter = adapter;
         return f;
+    }
+    @Override
+    public void onDetach() {
+        super.onDetach();
+        if (adapter != null) {
+            ((ContactListAdapter) adapter).updateCursor(null);
+        }
     }
     @Nullable
     @Override

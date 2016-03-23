@@ -11,7 +11,12 @@ import learn.android.kangel.mycontacts.MyRecyclerView;
  */
 public abstract class RecyclerViewFragemt extends Fragment {
     protected MyRecyclerView recyclerView;
+
     protected RecyclerView.Adapter adapter;
+
+    public void setAdapter(RecyclerView.Adapter adapter) {
+        this.adapter = adapter;
+    }
 
     public RecyclerView getRecyclerView() {
         return recyclerView;

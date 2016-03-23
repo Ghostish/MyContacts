@@ -29,6 +29,9 @@ import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 
+import java.util.Iterator;
+import java.util.List;
+
 import learn.android.kangel.mycontacts.R;
 import learn.android.kangel.mycontacts.adapters.CallHistoryAdapter;
 import learn.android.kangel.mycontacts.adapters.ContactListAdapter;
@@ -74,7 +77,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        initView();
+        initView(savedInstanceState);
 
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.READ_CALL_LOG) != PackageManager.PERMISSION_GRANTED ||
                 ActivityCompat.checkSelfPermission(this, Manifest.permission.READ_CONTACTS) != PackageManager.PERMISSION_GRANTED) {
@@ -156,15 +159,27 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
     }
 
-    private void initView() {
+    private void initView(Bundle savedInstanceState) {
 
         TabLayout tabLayout = (TabLayout) findViewById(R.id.tab);
         tabLayout.addTab(tabLayout.newTab().setIcon(R.drawable.ic_history_white_24dp));
         tabLayout.addTab(tabLayout.newTab().setIcon(R.drawable.ic_account_box_white_24dp));
         tabLayout.setBackgroundColor(ContextCompat.getColor(this, R.color.colorPrimary));
         tabLayout.setSelectedTabIndicatorColor(Color.WHITE);
-        callHistoryAdapter = new CallHistoryAdapter(this, null);
-        contactListAdapter = new ContactListAdapter(this, null);
+        if (savedInstanceState == null) {
+            callHistoryAdapter = new CallHistoryAdapter(this, null);
+            contactListAdapter = new ContactListAdapter(this, null);
+        }else {
+            List<Fragment> fragments = getSupportFragmentManager().getFragments();
+            for (Fragment f : fragments) {
+                if (f instanceof CallHistoryFragment) {
+                    callHistoryAdapter = (CallHistoryAdapter) ((CallHistoryFragment) f).getAdapter();
+                }
+                if (f instanceof ContactListFragment) {
+                    contactListAdapter = (ContactListAdapter) ((ContactListFragment) f).getAdapter();
+                }
+            }
+        }
         ViewPager pager = (ViewPager) findViewById(R.id.pager);
         pager.setAdapter(new contactPagerAdapter(getSupportFragmentManager()));
         tabLayout.setOnTabSelectedListener(new TabLayout.ViewPagerOnTabSelectedListener(pager));
@@ -191,18 +206,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         switch (loader.getId()) {
             case QUERY_CONTACT: {
                 contactCursor = data;
-                if (contactListFragment != null) {
-                    contactListAdapter.updateCursor(data);
-                    contactListAdapter.notifyDataSetChanged();
-                }
+                contactListAdapter.updateCursor(data);
+                contactListAdapter.notifyDataSetChanged();
                 break;
             }
             case QUERY_CALL_HISTORY: {
                 callLogCursor = data;
-                if (callHistoryFragment != null) {
-                    callHistoryAdapter.updateCursor(data);
-                    callHistoryAdapter.notifyDataSetChanged();
-                }
+                callHistoryAdapter.updateCursor(data);
+                callHistoryAdapter.notifyDataSetChanged();
                 break;
             }
         }
@@ -210,8 +221,18 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     @Override
     public void onLoaderReset(android.support.v4.content.Loader<Cursor> loader) {
-        callHistoryAdapter.updateCursor(null);
-        contactListAdapter.updateCursor(null);
+        switch (loader.getId()) {
+            case QUERY_CONTACT: {
+                contactCursor = null;
+                contactListAdapter.updateCursor(null);
+                break;
+            }
+            case QUERY_CALL_HISTORY: {
+                callLogCursor = null;
+                callHistoryAdapter.updateCursor(null);
+                break;
+            }
+        }
     }
 
     @Override
@@ -236,7 +257,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         @Override
         public Fragment getItem(int position) {
             if (position == 0) {
-                return  callHistoryFragment = CallHistoryFragment.newInstance(callHistoryAdapter);
+                return callHistoryFragment = CallHistoryFragment.newInstance(callHistoryAdapter);
             } else {
                 return contactListFragment = ContactListFragment.newInstance(contactListAdapter);
             }

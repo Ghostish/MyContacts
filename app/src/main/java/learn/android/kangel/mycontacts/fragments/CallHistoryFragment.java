@@ -38,6 +38,14 @@ public class CallHistoryFragment extends RecyclerViewFragemt {
         setRetainInstance(true);
     }
 
+    @Override
+    public void onDetach() {
+        super.onDetach();
+        if (adapter != null) {
+            ((CallHistoryAdapter) adapter).updateCursor(null);
+        }
+    }
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {

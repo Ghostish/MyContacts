@@ -4,14 +4,13 @@ import android.Manifest;
 import android.animation.ValueAnimator;
 import android.content.Intent;
 import android.content.pm.PackageManager;
-import android.database.Cursor;
 import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
-import android.provider.CallLog;
 import android.support.annotation.NonNull;
 import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.CoordinatorLayout;
+import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.ActivityCompat;
@@ -19,6 +18,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.content.ContextCompat;
+import android.support.v4.view.ViewCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.CardView;
@@ -26,11 +26,8 @@ import android.support.v7.widget.SearchView;
 import android.view.View;
 import android.view.ViewGroup;
 
-import java.util.List;
-
 import learn.android.kangel.mycontacts.R;
 import learn.android.kangel.mycontacts.adapters.CallHistoryAdapter;
-import learn.android.kangel.mycontacts.adapters.ContactListAdapter;
 import learn.android.kangel.mycontacts.fragments.CallHistoryFragment;
 import learn.android.kangel.mycontacts.fragments.ContactListFragment;
 
@@ -39,6 +36,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private final static int REQUEST_CALL_LOG_CONTACTS = 110;
     private CallHistoryFragment callHistoryFragment;
     private ContactListFragment contactListFragment;
+    private FloatingActionButton fab;
     int appbarHeight = 0;
 
 
@@ -115,6 +113,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 }
             });
             animator.start();
+            ViewCompat.animate(fab).scaleY(1.0f).scaleX(1.0f).start();
         }
     }
 
@@ -129,6 +128,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         tabLayout.setOnTabSelectedListener(new TabLayout.ViewPagerOnTabSelectedListener(pager));
         pager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
         searchView = (SearchView) findViewById(R.id.search_view);
+        fab = (FloatingActionButton) findViewById(R.id.fab);
     }
 
 

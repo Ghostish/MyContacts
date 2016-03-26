@@ -2,6 +2,7 @@ package learn.android.kangel.mycontacts.adapters;
 
 import android.content.Context;
 import android.database.Cursor;
+import android.os.Bundle;
 import android.provider.ContactsContract;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
@@ -16,6 +17,7 @@ import com.github.promeg.pinyinhelper.Pinyin;
 import com.simplecityapps.recyclerview_fastscroll.views.FastScrollRecyclerView;
 
 import learn.android.kangel.mycontacts.R;
+import learn.android.kangel.mycontacts.activities.RecyclerViewActivity;
 
 /**
  * Created by Kangel on 2016/3/19.
@@ -23,8 +25,7 @@ import learn.android.kangel.mycontacts.R;
 public class ContactListAdapter extends RecyclerView.Adapter<ContactListAdapter.ViewHolder> implements FastScrollRecyclerView.SectionedAdapter {
     private Cursor cursor;
     private Context context;
-
-
+    public static final String TAG = "Contact_List_ADAPTER";
     public ContactListAdapter(Context context, Cursor cursor) {
         this.cursor = cursor;
         this.context = context;
@@ -67,7 +68,7 @@ public class ContactListAdapter extends RecyclerView.Adapter<ContactListAdapter.
         return "#";
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder {
+    public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         ImageView headShow;
         TextView nameText;
 
@@ -75,6 +76,17 @@ public class ContactListAdapter extends RecyclerView.Adapter<ContactListAdapter.
             super(itemView);
             headShow = (ImageView) itemView.findViewById(R.id.head_show);
             nameText = (TextView) itemView.findViewById(R.id.contact_name);
+            itemView.setOnClickListener(this);
+        }
+
+        @Override
+        public void onClick(View v) {
+            cursor.moveToPosition(getAdapterPosition());
+            if (context instanceof RecyclerViewActivity) {
+                Bundle data = new Bundle();
+                data.putString("lookUpKey",cursor.getString(cursor.getColumnIndex(ContactsContract.Contacts.LOOKUP_KEY)));
+                ((RecyclerViewActivity) context).onRecyclerViewItemClick(getAdapterPosition(), TAG, data);
+            }
         }
     }
 }

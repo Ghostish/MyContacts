@@ -15,7 +15,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:foreground="?android:selectableItemBackground"
-        android:minHeight="72dp"
+        android:minHeight="@dimen/list_item_height"
         app:cardUseCompatPadding="true">
 
         <RelativeLayout

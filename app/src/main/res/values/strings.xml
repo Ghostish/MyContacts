@@ -4,4 +4,8 @@
     <string name="permission_deny">无法获得通讯录和通话记录权限</string>
     <string name="empty_desc">您没有任何%1$S</string>
     <string name="call_history">通话记录</string>
+    <string name="type_home">住宅</string>
+    <string name="type_mobile">手机</string>
+    <string name="type_work">工作</string>
+    <string name="type_other">其他</string>
 </resources>

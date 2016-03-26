@@ -2,11 +2,14 @@ package learn.android.kangel.mycontacts.activities;
 
 import android.Manifest;
 import android.animation.ValueAnimator;
+import android.content.ContentProviderOperation;
+import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
+import android.provider.ContactsContract;
 import android.support.annotation.NonNull;
 import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.CoordinatorLayout;
@@ -17,25 +20,33 @@ import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.view.ViewCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.SearchView;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
+
+import java.util.ArrayList;
 
 import learn.android.kangel.mycontacts.R;
 import learn.android.kangel.mycontacts.adapters.CallHistoryAdapter;
+import learn.android.kangel.mycontacts.adapters.ContactListAdapter;
 import learn.android.kangel.mycontacts.fragments.CallHistoryFragment;
 import learn.android.kangel.mycontacts.fragments.ContactListFragment;
+import learn.android.kangel.mycontacts.fragments.SearchFragment;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener, RecyclerViewActivity {
     private SearchView searchView;
     private final static int REQUEST_CALL_LOG_CONTACTS = 110;
     private CallHistoryFragment callHistoryFragment;
     private ContactListFragment contactListFragment;
+    private SearchFragment mSearchFragment;
     private FloatingActionButton fab;
     int appbarHeight = 0;
 
@@ -43,7 +54,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private final static String[] REQUEST_PERMISSION = new String[]
             {
                     Manifest.permission.READ_CALL_LOG,
-                    Manifest.permission.READ_CONTACTS
+                    Manifest.permission.READ_CONTACTS,
+                    Manifest.permission.WRITE_CONTACTS
             };
     private ViewPager pager;
 
@@ -55,7 +67,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         initView(savedInstanceState);
 
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.READ_CALL_LOG) != PackageManager.PERMISSION_GRANTED ||
-                ActivityCompat.checkSelfPermission(this, Manifest.permission.READ_CONTACTS) != PackageManager.PERMISSION_GRANTED) {
+                ActivityCompat.checkSelfPermission(this, Manifest.permission.READ_CONTACTS) != PackageManager.PERMISSION_GRANTED ||
+                ActivityCompat.checkSelfPermission(this, Manifest.permission.WRITE_CONTACTS) != PackageManager.PERMISSION_GRANTED) {
             if (ActivityCompat.shouldShowRequestPermissionRationale(MainActivity.this, Manifest.permission.READ_CALL_LOG) ||
                     ActivityCompat.shouldShowRequestPermissionRationale(MainActivity.this, Manifest.permission.READ_CONTACTS)) {
                 Snackbar.make(findViewById(R.id.coordinator), R.string.permission_deny, Snackbar.LENGTH_INDEFINITE).show();
@@ -74,7 +87,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         switch (requestCode) {
             case REQUEST_CALL_LOG_CONTACTS: {
                 // If request is cancelled, the result arrays are empty.
-                if (grantResults.length == 2 && grantResults[0] == PackageManager.PERMISSION_GRANTED && grantResults[1] == PackageManager.PERMISSION_GRANTED) {
+                if (grantResults.length == 3 &&
+                        grantResults[0] == PackageManager.PERMISSION_GRANTED &&
+                        grantResults[1] == PackageManager.PERMISSION_GRANTED &&
+                        grantResults[2] == PackageManager.PERMISSION_GRANTED) {
                     pager.setAdapter(new contactPagerAdapter(getSupportFragmentManager()));
                 } else {
                     Snackbar.make(findViewById(R.id.coordinator), R.string.permission_deny, Snackbar.LENGTH_INDEFINITE).show();
@@ -89,6 +105,61 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.search_view_card:
+                FragmentManager fm = getSupportFragmentManager();
+                FragmentTransaction ft = fm.beginTransaction();
+                if (mSearchFragment == null) {
+                    mSearchFragment = new SearchFragment();
+                }
+                ft.add(R.id.coordinator, mSearchFragment, "search");
+                ft.addToBackStack(null);
+                ft.commit();
+                break;
+            case R.id.fab:
+                ArrayList<ContentProviderOperation> ops =
+                        new ArrayList<ContentProviderOperation>();
+                ContentProviderOperation.Builder op =
+                        ContentProviderOperation.newInsert(ContactsContract.RawContacts.CONTENT_URI)
+                                .withValue(ContactsContract.RawContacts.ACCOUNT_TYPE, "com.kangel.mycontact")
+                                .withValue(ContactsContract.RawContacts.ACCOUNT_NAME, "cookie.yo.local");
+
+                ops.add(op.build());
+                op =
+                        ContentProviderOperation.newInsert(ContactsContract.Data.CONTENT_URI)
+                                .withValueBackReference(ContactsContract.Data.RAW_CONTACT_ID, 0)
+
+                                .withValue(ContactsContract.Data.MIMETYPE,
+                                        ContactsContract.CommonDataKinds.StructuredName.CONTENT_ITEM_TYPE)
+
+                                .withValue(ContactsContract.CommonDataKinds.StructuredName.DISPLAY_NAME, "abc");
+
+                ops.add(op.build());
+
+                op =
+                        ContentProviderOperation.newInsert(ContactsContract.Data.CONTENT_URI)
+                                .withValueBackReference(ContactsContract.Data.RAW_CONTACT_ID, 0)
+                                .withValue(ContactsContract.Data.MIMETYPE,
+                                        ContactsContract.CommonDataKinds.Email.CONTENT_ITEM_TYPE)
+                                .withValue(ContactsContract.CommonDataKinds.Email.ADDRESS, "abc@gmail.com")
+                                .withValue(ContactsContract.CommonDataKinds.Email.TYPE, 0);
+                op.withYieldAllowed(true);
+                ops.add(op.build());
+                try {
+
+                    getContentResolver().applyBatch(ContactsContract.AUTHORITY, ops);
+                } catch (Exception e) {
+
+                    // Display a warning
+                    Context ctx = getApplicationContext();
+
+                    CharSequence txt = "failed";
+                    int duration = Toast.LENGTH_SHORT;
+                    Toast toast = Toast.makeText(ctx, txt, duration);
+                    toast.show();
+
+                    // Log exception
+                    Log.e("APPLYBATCH", "Exception encountered while inserting contact: " + e);
+                }
+                break;
         }
     }
 
@@ -139,6 +210,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 String number = data.getString("number");
                 Intent intent = new Intent(Intent.ACTION_DIAL, Uri.parse("tel:" + number));
                 startActivity(intent);
+                break;
+            }
+            case ContactListAdapter.TAG: {
+                String lookUpkey = data.getString("lookUpKey");
+                Intent intent = new Intent(MainActivity.this, ContactDetailActivity.class);
+                intent.putExtra("lookUpKey", lookUpkey);
+                startActivity(intent);
+                break;
             }
         }
     }

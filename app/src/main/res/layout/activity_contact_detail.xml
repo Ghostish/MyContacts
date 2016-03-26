@@ -33,7 +33,7 @@
                 android:layout_height="72dp"
                 android:layout_gravity="center_vertical"
                 android:layout_margin="48dp"
-                android:src="@drawable/ic_default_head_show_white_24dp"
+                android:src="@mipmap/material_background"
                 app:layout_collapseMode="parallax"
                 app:view_backgroundColor="@android:color/darker_gray" />
 
@@ -51,22 +51,30 @@
         android:padding="@dimen/content_padding"
         app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
-        <ViewStub
-            android:id="@+id/phone_view_stub"
-            layout="@layout/card_recyclerview"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
 
-        <ViewStub
-            android:id="@+id/email_view_stub"
-            layout="@layout/card_recyclerview"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            <ViewStub
+                android:id="@+id/phone_view_stub"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout="@layout/card_recyclerview" />
 
-        <ViewStub
-            android:id="@+id/others_view_stub"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            <ViewStub
+                android:id="@+id/email_view_stub"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout="@layout/card_recyclerview" />
+
+            <ViewStub
+                android:id="@+id/others_view_stub"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout="@layout/card_recyclerview" />
+        </LinearLayout>
+
     </android.support.v4.widget.NestedScrollView>
 
     <android.support.design.widget.FloatingActionButton

@@ -1,0 +1,152 @@
+TASK org.telegram.messenger id=2028
+  ACTIVITY org.telegram.messenger/org.telegram.ui.LaunchActivity 2ba2d2c pid=30608
+    Local Activity 8cb5f28 State:
+      mResumed=true mStopped=false mFinished=false
+      mChangingConfigurations=false
+      mCurrentConfig={1.0 460mcc2mnc zh_CN ldltr sw360dp w360dp h568dp 320dpi nrml port finger -keyb/v/h -nav/h s.407 themeResource=themes:{}}
+      mLoadersStarted=true
+      FragmentManager misc state:
+        mHost=android.app.Activity$HostCallbacks@71d4b0d
+        mContainer=android.app.Activity$HostCallbacks@71d4b0d
+        mCurState=5 mStateSaved=false mDestroyed=false
+    ViewRoot:
+      mAdded=true mRemoved=false
+      mConsumeBatchedInputScheduled=false
+      mConsumeBatchedInputImmediatelyScheduled=false
+      mPendingInputEventCount=0
+      mProcessInputEventsScheduled=false
+      mTraversalScheduled=false
+      android.view.ViewRootImpl$NativePreImeInputStage: mQueueLength=0
+      android.view.ViewRootImpl$ImeInputStage: mQueueLength=0
+      android.view.ViewRootImpl$NativePostImeInputStage: mQueueLength=0
+    Choreographer:
+      mFrameScheduled=false
+      mLastFrameTime=527833174 (7874 ms ago)
+    View Hierarchy:
+      com.android.internal.policy.PhoneWindow$DecorView{d651ac2 V.E...... R....... 0,0-720,1280}
+        android.widget.LinearLayout{63fb0d3 V.E...... ........ 0,0-720,1184}
+          android.view.ViewStub{730c410 G.E...... ......I. 0,0-0,0 #10203b4 android:id/action_mode_bar_stub}
+          android.widget.FrameLayout{fe08b09 V.E...... ........ 0,0-720,1184 #1020002 android:id/content}
+            org.telegram.ui.ActionBar.DrawerLayoutContainer{eee210e VFED..... ........ 0,0-720,1184}
+              org.telegram.ui.ActionBar.ActionBarLayout{84a872f V.E...... ........ 0,0-720,1184}
+                org.telegram.ui.ActionBar.ActionBarLayout$LinearLayoutContainer{a46113c G.E...... ......ID 0,0-720,1184}
+                org.telegram.ui.ActionBar.ActionBarLayout$LinearLayoutContainer{97dcec5 V.E...... ........ 0,0-720,1184}
+                  org.telegram.ui.SettingsActivity$3{ef401a V.E...... ........ 0,0-720,1184}
+                    android.widget.ListView{982674b VFED..C.. .F...... 0,160-720,1184}
+                      org.telegram.ui.Cells.EmptyCell{7010528 V.E...... ........ 0,0-720,176}
+                      org.telegram.ui.Cells.EmptyCell{ff19241 V.E...... ........ 0,176-720,208}
+                      org.telegram.ui.Cells.HeaderCell{3b143e6 V.E...... ........ 0,208-720,284}
+                        android.widget.TextView{f0e2d27 V.ED..... ........ 34,30-686,76}
+                      org.telegram.ui.Cells.TextDetailSettingsCell{df54bd4 V.ED..... ........ 0,284-720,413}
+                        android.widget.TextView{884117d V.ED..... ........ 34,20-312,63}
+                        android.widget.TextView{13db872 V.ED..... ........ 34,70-107,106}
+                      org.telegram.ui.Cells.TextDetailSettingsCell{fa674c3 V.E...... ........ 0,413-720,541}
+                        android.widget.TextView{3455140 V.ED..... ........ 34,20-110,63}
+                        android.widget.TextView{ac54879 V.ED..... ........ 34,70-152,106}
+                      org.telegram.ui.Cells.ShadowSectionCell{8aae9be V.ED..... ........ 0,541-720,565}
+                      org.telegram.ui.Cells.HeaderCell{af19a1f V.E...... ........ 0,565-720,641}
+                        android.widget.TextView{8ce416c V.ED..... ........ 34,30-686,76}
+                      org.telegram.ui.Cells.TextSettingsCell{d48f335 V.ED..... ........ 0,641-720,738}
+                        android.widget.TextView{227e3ca V.ED..... ........ 34,0-686,97}
+                        android.widget.TextView{a9fb93b I.ED..... ......ID 686,0-686,0}
+                        android.widget.ImageView{f140858 I.ED..... ......I. 686,48-686,48}
+                      org.telegram.ui.Cells.TextSettingsCell{2228db1 V.ED..... ........ 0,738-720,835}
+                        android.widget.TextView{7c87296 V.ED..... ........ 34,0-686,97}
+                        android.widget.TextView{946ae17 I.ED..... ......ID 686,0-686,0}
+                        android.widget.ImageView{8ed5204 I.ED..... ......I. 686,48-686,48}
+                      org.telegram.ui.Cells.TextSettingsCell{f2153ed V.ED..... ........ 0,835-720,932}
+                        android.widget.TextView{f112222 V.ED..... ........ 34,0-686,97}
+                        android.widget.TextView{afe14b3 I.ED..... ......ID 686,0-686,0}
+                        android.widget.ImageView{def8a70 I.ED..... ......I. 686,48-686,48}
+                      org.telegram.ui.Cells.TextSettingsCell{dcc41e9 V.ED..... ........ 0,932-720,1029}
+                        android.widget.TextView{f433e6e V.ED..... ........ 34,0-565,97}
+                        android.widget.TextView{3bb490f V.ED..... ........ 581,0-686,97}
+                        android.widget.ImageView{79add9c I.ED..... ......I. 686,48-686,48}
+                    org.telegram.ui.ActionBar.ActionBar{f1e13a5 V.E...... ........ 0,0-720,160}
+                      org.telegram.ui.ActionBar.ActionBarMenu{68d37a V.E...... ........ 624,48-720,160}
+                        org.telegram.ui.ActionBar.ActionBarMenuItem{76d672b V.E...C.. ........ 0,0-96,112}
+                          android.widget.ImageView{5463788 V.ED..... ........ 0,0-96,112}
+                      android.widget.ImageView{f014521 V.ED..C.. ........ 0,48-108,160}
+                    android.view.View{f20ad46 V.ED..... ........ 0,0-720,176}
+                    android.view.View{fd94b07 V.ED..... ........ 0,0-720,6}
+                    org.telegram.ui.Components.BackupImageView{2cb4434 V.ED..C.. ........ 128,0-212,84}
+                    android.widget.TextView{38c125d V.ED..... ........ 236,0-436,49}
+                    android.widget.TextView{12a57d2 V.ED..... ........ 236,0-311,38}
+                    android.widget.ImageView{43590a3 V.ED..C.. ........ 576,0-688,112}
+              org.telegram.ui.LaunchActivity$3{df26fa0 GFED..C.. ......ID -607,0-1,1184}
+                org.telegram.ui.Cells.DrawerProfileCell{3fc7759 V.E...... ......ID 0,0-608,344}
+                  android.widget.ImageView{6b21f1e I.ED..... ......I. 0,204-608,344}
+                  org.telegram.ui.Components.BackupImageView{e8693ff V.ED..... ......ID 32,82-160,210}
+                  android.widget.TextView{69ee5cc V.ED..... ......ID 32,247-576,288}
+                  android.widget.TextView{3743015 V.ED..... ......ID 32,290-576,326}
+                org.telegram.ui.Cells.EmptyCell{45d0f2a V.E...... ......ID 0,344-608,360}
+                org.telegram.ui.Cells.DrawerActionCell{aba711b V.E...... ......ID 0,360-608,456}
+                  android.widget.TextView{5ba92b8 V.ED..... ......ID 28,0-576,96}
+                org.telegram.ui.Cells.DrawerActionCell{b74b891 V.E...... ......ID 0,456-608,552}
+                  android.widget.TextView{214f3f6 V.ED..... ......ID 28,0-576,96}
+                org.telegram.ui.Cells.DrawerActionCell{b8503f7 V.E...... ......ID 0,552-608,648}
+                  android.widget.TextView{6e22264 V.ED..... ......ID 28,0-576,96}
+                org.telegram.ui.Cells.DividerCell{21b4ccd V.ED..... ......ID 0,648-608,681}
+                org.telegram.ui.Cells.DrawerActionCell{a945982 V.E...... ......ID 0,681-608,777}
+                  android.widget.TextView{fbe893 V.ED..... ......ID 28,0-576,96}
+                org.telegram.ui.Cells.DrawerActionCell{d100d0 V.E...... ......ID 0,777-608,873}
+                  android.widget.TextView{81ce8c9 V.ED..... ......ID 28,0-576,96}
+                org.telegram.ui.Cells.DrawerActionCell{7b28bce V.E...... .....AID 0,873-608,969}
+                  android.widget.TextView{cf27aef V.ED..... .....AID 28,0-576,96}
+                org.telegram.ui.Cells.DrawerActionCell{88d59fc V.E...... ......ID 0,969-608,1065}
+                  android.widget.TextView{a824885 V.ED..... ......ID 28,0-576,96}
+              org.telegram.ui.Components.PasscodeView{76f96da G.ED..... ......I. 0,0-0,0}
+                android.widget.FrameLayout{115d70b V.E...... ......I. 0,0-0,0}
+                android.widget.FrameLayout{b5419e8 V.E...... ......I. 0,0-0,0}
+                  android.widget.ImageView{423e801 V.ED..... ......I. 0,0-0,0}
+                  android.widget.TextView{5c046a6 V.ED..... ......ID 0,0-0,0}
+                  org.telegram.ui.Components.PasscodeView$AnimatingTextView{2c8d8e7 V.E...... ......I. 0,0-0,0}
+                    android.widget.TextView{b44ec94 V.ED..... ......ID 0,0-0,0}
+                    android.widget.TextView{ae6033d V.ED..... ......ID 0,0-0,0}
+                    android.widget.TextView{71a2732 V.ED..... ......ID 0,0-0,0}
+                    android.widget.TextView{c01c83 V.ED..... ......ID 0,0-0,0}
+                    android.widget.TextView{ace3e00 V.ED..... ......ID 0,0-0,0}
+                    android.widget.TextView{4b49639 V.ED..... ......ID 0,0-0,0}
+                    android.widget.TextView{fbf847e V.ED..... ......ID 0,0-0,0}
+                    android.widget.TextView{65dfddf V.ED..... ......ID 0,0-0,0}
+                  android.widget.EditText{2d93a2c VFED..CL. ......I. 0,0-0,0}
+                  android.widget.ImageView{3f5cf5 V.ED..C.. ......I. 0,0-0,0}
+                  android.widget.FrameLayout{3cb6a8a V.E...... ......I. 0,0-0,0}
+                android.widget.FrameLayout{8ce98fb V.E...... ......I. 0,0-0,0}
+                  android.widget.TextView{fb5cd18 V.ED..... ......ID 0,0-0,0}
+                  android.widget.TextView{d75d371 V.ED..... ......ID 0,0-0,0}
+                  android.widget.TextView{bfda556 V.ED..... ......ID 0,0-0,0}
+                  android.widget.TextView{9e3c9d7 V.ED..... ......ID 0,0-0,0}
+                  android.widget.TextView{c6a2c4 V.ED..... ......ID 0,0-0,0}
+                  android.widget.TextView{1c335ad V.ED..... ......ID 0,0-0,0}
+                  android.widget.TextView{b46c0e2 V.ED..... ......ID 0,0-0,0}
+                  android.widget.TextView{cb12c73 V.ED..... ......ID 0,0-0,0}
+                  android.widget.TextView{6ed2730 V.ED..... ......ID 0,0-0,0}
+                  android.widget.TextView{40a7fa9 V.ED..... ......ID 0,0-0,0}
+                  android.widget.TextView{114092e V.ED..... ......ID 0,0-0,0}
+                  android.widget.TextView{7e81ccf V.ED..... ......ID 0,0-0,0}
+                  android.widget.TextView{db5865c V.ED..... ......ID 0,0-0,0}
+                  android.widget.TextView{c626d65 V.ED..... ......ID 0,0-0,0}
+                  android.widget.TextView{45b8a3a V.ED..... ......ID 0,0-0,0}
+                  android.widget.TextView{1f3b6eb V.ED..... ......ID 0,0-0,0}
+                  android.widget.TextView{b42ac48 V.ED..... ......ID 0,0-0,0}
+                  android.widget.TextView{3917ae1 V.ED..... ......ID 0,0-0,0}
+                  android.widget.TextView{3681006 V.ED..... ......ID 0,0-0,0}
+                  android.widget.TextView{2d4d6c7 V.ED..... ......ID 0,0-0,0}
+                  android.widget.ImageView{2fa44f4 V.ED..... ......I. 0,0-0,0}
+                  android.widget.FrameLayout{e49e41d V.E...CL. ......I. 0,0-0,0}
+                  android.widget.FrameLayout{4652692 V.E...C.. ......I. 0,0-0,0}
+                  android.widget.FrameLayout{7be1863 V.E...C.. ......I. 0,0-0,0}
+                  android.widget.FrameLayout{6f0bc60 V.E...C.. ......I. 0,0-0,0}
+                  android.widget.FrameLayout{25a519 V.E...C.. ......I. 0,0-0,0}
+                  android.widget.FrameLayout{2ab19de V.E...C.. ......I. 0,0-0,0}
+                  android.widget.FrameLayout{46fd7bf V.E...C.. ......I. 0,0-0,0}
+                  android.widget.FrameLayout{4153e8c V.E...C.. ......I. 0,0-0,0}
+                  android.widget.FrameLayout{26279d5 V.E...C.. ......I. 0,0-0,0}
+                  android.widget.FrameLayout{4caf5ea V.E...C.. ......I. 0,0-0,0}
+                  android.widget.FrameLayout{e5430db V.E...C.. ......I. 0,0-0,0}
+        android.view.View{51db778 V.ED..... ........ 0,1184-720,1280 #1020030 android:id/navigationBarBackground}
+        android.view.View{a5dde51 V.ED..... ........ 0,0-720,48 #102002f android:id/statusBarBackground}
+    Looper (main, tid 1) {75a86b6}
+      Message 0: { when=+59m51s839ms callback=com.google.android.gms.measurement.internal.zzf$1 target=android.os.Handler }
+      (Total messages: 1, polling=false, quitting=false)

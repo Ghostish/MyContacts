@@ -1,0 +1,85 @@
+Applications Graphics Acceleration Info:
+Uptime: 79802 Realtime: 79802
+
+** Graphics info for pid 1201 [learn.android.kangel.mycontacts] **
+
+Recent DisplayList operations
+                      ResetShader
+                      SetupShader
+                      DrawRect
+                      ResetShader
+                      RestoreToCount
+                      Save
+                      Translate
+                      Rotate
+                      SetupShader
+                      DrawPath
+                      ResetShader
+                      SetupShader
+                      DrawRect
+                      ResetShader
+                      RestoreToCount
+                      Save
+                      Translate
+                      Rotate
+                      SetupShader
+                      DrawPath
+                      ResetShader
+                      SetupShader
+                      DrawRect
+                      ResetShader
+                      RestoreToCount
+                      Translate
+                      DrawRoundRect
+                      Save
+                      ClipRect
+                      DrawDisplayList
+                        DrawDisplayList
+                        DrawDisplayList
+                        DrawDisplayList
+                      RestoreToCount
+              DrawDisplayList
+                SetupShader
+                DrawRect
+                ResetShader
+          DrawDisplayList
+        DrawPatch
+  RestoreToCount
+DrawRect
+DrawRect
+DrawPath
+DrawRect
+DrawRect
+DrawPath
+DrawRect
+DrawRoundRect
+DrawRect
+
+Caches:
+Current memory usage / total memory usage (bytes):
+  TextureCache           215616 / 25165824
+  LayerCache             147456 / 16777216
+  RenderBufferCache           0 /  2097152
+  GradientCache           24576 /   524288
+  PathCache               13192 / 10485760
+  TextDropShadowCache         0 /  2097152
+  FontRenderer 0         524288 /   524288
+Other:
+  FboCache                    1 /       16
+  PatchCache                  3 /      512
+Total memory usage:
+  925128 bytes, 0.88 MB
+
+Profile data in ms:
+
+	learn.android.kangel.mycontacts/learn.android.kangel.mycontacts.activities.MainActivity/android.view.ViewRootImpl@52939488
+View hierarchy:
+
+  learn.android.kangel.mycontacts/learn.android.kangel.mycontacts.activities.MainActivity/android.view.ViewRootImpl@52939488
+  57 views, 39.11 kB of display lists, 29 frames rendered
+
+
+Total ViewRootImpl: 1
+Total Views:        57
+Total DisplayList:  39.11 kB
+

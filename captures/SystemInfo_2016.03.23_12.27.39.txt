@@ -1,0 +1,141 @@
+TASK learn.android.kangel.mycontacts id=3
+  ACTIVITY learn.android.kangel.mycontacts/.activities.MainActivity 527e5278 pid=1201
+    Local FragmentActivity 52a0c410 State:
+      mCreated=truemResumed=true mStopped=false mReallyStopped=false
+      mLoadersStarted=true
+      Loader Manager 52795038:
+        Active Loaders:
+          #1: LoaderInfo{52930054 #1 : CursorLoader{5284e7a4}}
+            mId=1 mArgs=null
+            mCallbacks=learn.android.kangel.mycontacts.activities.MainActivity@52a0c410
+            mLoader=CursorLoader{5284e7a4 id=1}
+              mId=1 mListener=LoaderInfo{52930054 #1 : CursorLoader{5284e7a4}}
+              mStarted=true mContentChanged=false mProcessingChange=false
+              mUri=content://com.android.contacts/contacts
+              mProjection=[_id, lookup, display_name, sort_key]
+              mSelection=null
+              mSelectionArgs=null
+              mSortOrder=sort_key
+              mCursor=android.content.ContentResolver$CursorWrapperInner@529498e8
+              mContentChanged=false
+            mHaveData=true  mDeliveredData=true
+            mData=android.content.ContentResolver$CursorWrapperInner@529498e8
+            mStarted=true mReportNextStart=false mDestroyed=false
+            mRetaining=false mRetainingStarted=false mListenerRegistered=true
+          #2: LoaderInfo{5293186c #2 : CursorLoader{52931094}}
+            mId=2 mArgs=null
+            mCallbacks=learn.android.kangel.mycontacts.activities.MainActivity@52a0c410
+            mLoader=CursorLoader{52931094 id=2}
+              mId=2 mListener=LoaderInfo{5293186c #2 : CursorLoader{52931094}}
+              mStarted=true mContentChanged=false mProcessingChange=false
+              mUri=content://call_log/calls
+              mProjection=[name, number, type, date]
+              mSelection=null
+              mSelectionArgs=null
+              mSortOrder=date desc
+              mCursor=android.content.ContentResolver$CursorWrapperInner@529304a8
+              mContentChanged=false
+            mHaveData=true  mDeliveredData=true
+            mData=android.content.ContentResolver$CursorWrapperInner@529304a8
+            mStarted=true mReportNextStart=false mDestroyed=false
+            mRetaining=false mRetainingStarted=false mListenerRegistered=true
+    Active Fragments in 52a0c564:
+      #0: CallHistoryFragment{5283a52c #0 id=0x7f0d006e android:switcher:2131558510:0}
+        mFragmentId=#7f0d006e mContainerId=#7f0d006e mTag=android:switcher:2131558510:0
+        mState=5 mIndex=0 mWho=android:fragment:0 mBackStackNesting=0
+        mAdded=true mRemoving=false mFromLayout=false mInLayout=false
+        mHidden=false mDetached=false mMenuVisible=true mHasMenu=false
+        mRetainInstance=true mRetaining=false mUserVisibleHint=true
+        mFragmentManager=FragmentManager{52a0c564 in HostCallbacks{52a0c548}}
+        mHost=android.support.v4.app.FragmentActivity$HostCallbacks@52a0c548
+        mContainer=android.support.v4.view.ViewPager{5293ad04 VFED.... ........ 0,232-1196,854 #7f0d006e app:id/pager}
+        mView=android.widget.FrameLayout{52930bf4 V.E..... ........ 0,0-1196,622}
+        mInnerView=android.widget.FrameLayout{52930bf4 V.E..... ........ 0,0-1196,622}
+        Child FragmentManager{5283d968 in CallHistoryFragment{5283a52c}}:
+          FragmentManager misc state:
+            mHost=android.support.v4.app.FragmentActivity$HostCallbacks@52a0c548
+            mContainer=android.support.v4.app.Fragment$1@52879524
+            mParent=CallHistoryFragment{5283a52c #0 id=0x7f0d006e android:switcher:2131558510:0}
+            mCurState=5 mStateSaved=false mDestroyed=false
+      #1: ContactListFragment{5283aad0 #1 id=0x7f0d006e android:switcher:2131558510:1}
+        mFragmentId=#7f0d006e mContainerId=#7f0d006e mTag=android:switcher:2131558510:1
+        mState=5 mIndex=1 mWho=android:fragment:1 mBackStackNesting=0
+        mAdded=true mRemoving=false mFromLayout=false mInLayout=false
+        mHidden=false mDetached=false mMenuVisible=false mHasMenu=false
+        mRetainInstance=true mRetaining=false mUserVisibleHint=false
+        mFragmentManager=FragmentManager{52a0c564 in HostCallbacks{52a0c548}}
+        mHost=android.support.v4.app.FragmentActivity$HostCallbacks@52a0c548
+        mContainer=android.support.v4.view.ViewPager{5293ad04 VFED.... ........ 0,232-1196,854 #7f0d006e app:id/pager}
+        mView=android.widget.FrameLayout{52937efc V.E..... ........ 1196,0-2392,622}
+        mInnerView=android.widget.FrameLayout{52937efc V.E..... ........ 1196,0-2392,622}
+        Child FragmentManager{5292c450 in ContactListFragment{5283aad0}}:
+          FragmentManager misc state:
+            mHost=android.support.v4.app.FragmentActivity$HostCallbacks@52a0c548
+            mContainer=android.support.v4.app.Fragment$1@5292d2ac
+            mParent=ContactListFragment{5283aad0 #1 id=0x7f0d006e android:switcher:2131558510:1}
+            mCurState=5 mStateSaved=false mDestroyed=false
+    Added Fragments:
+      #0: CallHistoryFragment{5283a52c #0 id=0x7f0d006e android:switcher:2131558510:0}
+      #1: ContactListFragment{5283aad0 #1 id=0x7f0d006e android:switcher:2131558510:1}
+    FragmentManager misc state:
+      mHost=android.support.v4.app.FragmentActivity$HostCallbacks@52a0c548
+      mContainer=android.support.v4.app.FragmentActivity$HostCallbacks@52a0c548
+      mCurState=5 mStateSaved=false mDestroyed=false
+    View Hierarchy:
+      com.android.internal.policy.impl.PhoneWindow$DecorView{52a0e21c V.E..... ... 0,0-1196,768}
+        android.widget.LinearLayout{52a0e5b0 V.E..... ... 0,0-1196,768}
+          android.view.ViewStub{52a0eb10 G.E..... ... 0,0-0,0 #1020338}
+          android.widget.FrameLayout{52a0ec14 V.E..... ... 0,50-1196,768}
+            android.support.v7.widget.FitWindowsLinearLayout{52a0e068 V.E..... ... 0,0-1196,718 #7f0d0055 app:id/action_bar_root}
+              android.support.v7.widget.ViewStubCompat{52a0f828 G.E..... ... 0,0-0,0 #7f0d0056 app:id/action_mode_bar_stub}
+              android.support.v7.widget.ContentFrameLayout{52a0fa1c V.ED.... ... 0,0-1196,718 #1020002 android:id/content}
+                android.support.design.widget.CoordinatorLayout{52a104f4 VFE..... F.. 0,0-1196,718 #7f0d0069 app:id/coordinator}
+                  android.support.design.widget.AppBarLayout{52a10850 V.E..... ... 0,0-1196,232 #7f0d006a app:id/app_bar}
+                    android.support.v7.widget.CardView{52a10af0 V.E...C. ... 16,16-1180,120 #7f0d006b app:id/search_view_card}
+                      android.support.v7.widget.SearchView{52a10e90 V.E..... ... 6,8-1158,96 #7f0d006c app:id/search_view}
+                        android.widget.LinearLayout{52a11280 V.E..... ... 0,0-1152,88 #7f0d005d app:id/search_bar}
+                          android.support.v7.widget.AppCompatTextView{52a11800 G.ED.... ... 0,0-0,0 #7f0d005e app:id/search_badge}
+                          android.support.v7.widget.AppCompatImageView{52a121bc GFED..C. ... 0,0-0,0 #7f0d005f app:id/search_button}
+                          android.widget.LinearLayout{52a145d0 V.E..... ... 16,8-1136,80 #7f0d0060 app:id/search_edit_frame}
+                            android.support.v7.widget.AppCompatImageView{52a14764 V.ED.... ... 16,12-80,60 #7f0d0061 app:id/search_mag_icon}
+                            android.widget.LinearLayout{52a148d4 V.E..... ... 80,0-1120,72 #7f0d0062 app:id/search_plate}
+                              android.support.v7.widget.SearchView$SearchAutoComplete{52a14ad4 VFED..CL ... 0,0-1040,72 #7f0d0063 app:id/search_src_text}
+                              android.support.v7.widget.AppCompatImageView{52a1e0fc GFED..C. ... 0,0-0,0 #7f0d0064 app:id/search_close_btn}
+                            android.widget.LinearLayout{52a1e6e8 G.E..... ... 0,0-0,0 #7f0d0065 app:id/submit_area}
+                              android.support.v7.widget.AppCompatImageView{52a1e87c GFED..C. ... 0,0-0,0 #7f0d0066 app:id/search_go_btn}
+                              android.support.v7.widget.AppCompatImageView{52a1ee68 GFED..C. ... 0,0-0,0 #7f0d0067 app:id/search_voice_btn}
+                    android.support.design.widget.TabLayout{52a24e9c VFED.... ... 0,136-1196,232 #7f0d006d app:id/tab}
+                      android.support.design.widget.TabLayout$SlidingTabStrip{5293082c V.ED.... ... 0,0-1196,96}
+                        android.support.design.widget.TabLayout$TabView{52932e20 VFE...C. .S. 0,0-598,96}
+                          android.support.v7.widget.AppCompatImageView{5292bf3c V.ED.... .S. 275,24-323,72}
+                          android.support.v7.widget.AppCompatTextView{52938de8 G.ED.... .S. 0,0-0,0}
+                        android.support.design.widget.TabLayout$TabView{529330c8 VFE...C. ... 598,0-1196,96}
+                          android.support.v7.widget.AppCompatImageView{52933360 V.ED.... ... 275,24-323,72}
+                          android.support.v7.widget.AppCompatTextView{52a15060 G.ED.... ... 0,0-0,0}
+                  android.support.v4.view.ViewPager{5293ad04 VFED.... ... 0,232-1196,854 #7f0d006e app:id/pager}
+                    android.widget.FrameLayout{52930bf4 V.E..... ... 0,0-1196,622}
+                      android.widget.LinearLayout{52a087dc V.E..... ... 0,0-1196,622}
+                        learn.android.kangel.mycontacts.MyRecyclerView{52937d28 VFED.... ... 0,0-1196,622 #7f0d008d app:id/fast_scroll_recycler_view}
+                          android.widget.LinearLayout{5293fccc V.E..... ... 16,16-1180,176}
+                            android.view.ViewStub{5290f59c G.E..... ... 0,0-0,0 #7f0d0078}
+                            android.support.v7.widget.CardView{52933990 V.ED.... ... 0,0-1164,160}
+                              android.widget.RelativeLayout{52936928 V.E..... ... 6,8-1158,152}
+                                com.alexzh.circleimageview.CircleImageView{5293cad4 V.ED.... ... 16,24-112,120 #7f0d0079 app:id/head_show}
+                                android.widget.LinearLayout{5293b240 V.E..... ... 144,24-992,120}
+                                  android.support.v7.widget.AppCompatTextView{52911f58 V.ED.... ... 0,0-60,48 #7f0d007b app:id/caller_name_or_num}
+                                  android.widget.LinearLayout{52a08b50 V.E..... ... 0,48-413,96}
+                                    android.support.v7.widget.AppCompatImageView{52a08684 V.ED.... ... 0,0-48,48 #7f0d007c app:id/call_type}
+                                    android.support.v7.widget.AppCompatTextView{52912e4c V.ED.... ... 48,5-413,43 #7f0d007d app:id/call_info}
+                                android.support.v7.widget.AppCompatImageButton{52930ad4 VFED..C. ... 1008,0-1152,144 #7f0d007a app:id/call_button}
+                      android.widget.RelativeLayout{5294473c G.E..... ... 0,0-1196,718 #7f0d008e app:id/empty_view}
+                        android.support.v7.widget.AppCompatImageView{529382bc V.ED.... ... 498,108-698,308 #7f0d008f app:id/empty_image}
+                        android.support.v7.widget.AppCompatTextView{529322b0 V.ED.... ... 472,340-724,378 #7f0d0090 app:id/empty_desc}
+                      android.view.View{5292b370 V.ED.... ... 0,0-1196,6}
+                    android.widget.FrameLayout{52937efc V.E..... ... 1196,0-2392,622}
+                      android.widget.LinearLayout{5293aa5c V.E..... ... 0,0-1196,622}
+                        learn.android.kangel.mycontacts.MyRecyclerView{52940dc8 VFED.... ... 0,0-1196,622 #7f0d008d app:id/fast_scroll_recycler_view}
+                      android.widget.RelativeLayout{5293a530 V.E..... ... 0,0-1196,622 #7f0d008e app:id/empty_view}
+                        android.support.v7.widget.AppCompatImageView{5293a6e4 V.ED.... ... 498,60-698,260 #7f0d008f app:id/empty_image}
+                        android.support.v7.widget.AppCompatTextView{52870be8 V.ED.... ... 598,292-598,330 #7f0d0090 app:id/empty_desc}
+                      android.view.View{5293bd9c V.ED.... ... 0,0-1196,6}
+                  android.support.design.widget.FloatingActionButton{52838528 VFED..C. ... 1028,538-1188,722 #7f0d006f app:id/fab}

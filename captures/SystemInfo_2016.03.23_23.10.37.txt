@@ -1,0 +1,258 @@
+TASK com.android.dialer id=1834
+  ACTIVITY com.android.dialer/.DialtactsActivity e1b81e6 pid=17709
+    Local Activity 9694db9 State:
+      mResumed=true mStopped=false mFinished=false
+      mChangingConfigurations=false
+      mCurrentConfig={1.0 460mcc2mnc zh_CN ldltr sw360dp w360dp h568dp 320dpi nrml port finger -keyb/v/h -nav/h s.367 themeResource=themes:{}}
+      mLoadersStarted=true
+      Active Fragments in d9aa5fe:
+        #0: ListsFragment{9e0415f #0 id=0x7f0a0136 favorites}
+          mFragmentId=#7f0a0136 mContainerId=#7f0a0136 mTag=favorites
+          mState=5 mIndex=0 mWho=android:fragment:0 mBackStackNesting=0
+          mAdded=true mRemoving=false mResumed=true mFromLayout=false mInLayout=false
+          mHidden=false mDetached=false mMenuVisible=true mHasMenu=false
+          mRetainInstance=false mRetaining=false mUserVisibleHint=true
+          mFragmentManager=FragmentManager{d9aa5fe in HostCallbacks{6e0f7ac}}
+          mHost=android.app.Activity$HostCallbacks@6e0f7ac
+          mContainer=android.widget.FrameLayout{df7240a V.E...... ........ 0,0-720,1136 #7f0a0136 app:id/dialtacts_frame}
+          mView=android.widget.FrameLayout{8f1947b V.E...... ........ 0,0-720,1136 #7f0a0147 app:id/lists_frame}
+          Child FragmentManager{c3be298 in ListsFragment{9e0415f}}:
+            Active Fragments in c3be298:
+              #0: SpeedDialFragment{e19faf1 #0 id=0x7f0a0149 android:switcher:2131362121:0}
+                mFragmentId=#7f0a0149 mContainerId=#7f0a0149 mTag=android:switcher:2131362121:0
+                mState=5 mIndex=0 mWho=android:fragment:0:0 mBackStackNesting=0
+                mAdded=true mRemoving=false mResumed=true mFromLayout=false mInLayout=false
+                mHidden=false mDetached=false mMenuVisible=true mHasMenu=false
+                mRetainInstance=false mRetaining=false mUserVisibleHint=true
+                mFragmentManager=FragmentManager{c3be298 in ListsFragment{9e0415f}}
+                mHost=android.app.Activity$HostCallbacks@6e0f7ac
+                mParentFragment=ListsFragment{9e0415f #0 id=0x7f0a0136 favorites}
+                mContainer=android.support.v4.view.ViewPager{2eb76d6 VFED..... ........ 0,214-720,1136 #7f0a0149 app:id/lists_pager}
+                mView=android.widget.FrameLayout{bfafd57 V.E...... ........ 0,0-720,922}
+                Loader Manager:
+                  Active Loaders:
+                    #1: LoaderInfo{b589044 #1 : CursorLoader{942552d}}
+                      mId=1 mArgs=null
+                      mCallbacks=com.android.dialer.list.SpeedDialFragment$ContactTileLoaderListener@5002a62
+                      mLoader=CursorLoader{942552d id=1}
+                        mId=1 mListener=LoaderInfo{b589044 #1 : CursorLoader{942552d}}
+                        mStarted=true mContentChanged=false mProcessingChange=false
+                        mUri=content://com.android.contacts/contacts/strequent?strequent_phone_only=true
+                        mProjection=[_id, display_name, starred, photo_uri, lookup, account_type, account_name, data1, data2, data3, is_super_primary, pinned, contact_id]
+                        mSelection=null
+                        mSelectionArgs=null
+                        mSortOrder=null
+                        mCursor=android.content.ContentResolver$CursorWrapperInner@7c817f3
+                        mContentChanged=false
+                      mHaveData=true  mDeliveredData=true
+                      mData=android.content.ContentResolver$CursorWrapperInner@7c817f3
+                      mStarted=true mReportNextStart=false mDestroyed=false
+                      mRetaining=false mRetainingStarted=false mListenerRegistered=true
+                Child FragmentManager{706cb0 in SpeedDialFragment{e19faf1}}:
+                  FragmentManager misc state:
+                    mHost=android.app.Activity$HostCallbacks@6e0f7ac
+                    mContainer=android.app.Fragment$1@11c1729
+                    mParent=SpeedDialFragment{e19faf1 #0 id=0x7f0a0149 android:switcher:2131362121:0}
+                    mCurState=5 mStateSaved=false mDestroyed=false
+              #1: CallLogFragment{aba8aae #1 id=0x7f0a0149 android:switcher:2131362121:1}
+                mFragmentId=#7f0a0149 mContainerId=#7f0a0149 mTag=android:switcher:2131362121:1
+                mState=3 mIndex=1 mWho=android:fragment:0:1 mBackStackNesting=0
+                mAdded=true mRemoving=false mResumed=false mFromLayout=false mInLayout=false
+                mHidden=false mDetached=false mMenuVisible=false mHasMenu=true
+                mRetainInstance=false mRetaining=false mUserVisibleHint=false
+                mFragmentManager=FragmentManager{c3be298 in ListsFragment{9e0415f}}
+                mHost=android.app.Activity$HostCallbacks@6e0f7ac
+                mParentFragment=ListsFragment{9e0415f #0 id=0x7f0a0136 favorites}
+                mContainer=android.support.v4.view.ViewPager{2eb76d6 VFED..... ........ 0,214-720,1136 #7f0a0149 app:id/lists_pager}
+                mView=android.widget.FrameLayout{842404f V.E...... ........ 720,0-1440,922}
+                Child FragmentManager{fe7a3dc in CallLogFragment{aba8aae}}:
+                  FragmentManager misc state:
+                    mHost=android.app.Activity$HostCallbacks@6e0f7ac
+                    mContainer=android.app.Fragment$1@1b5fce5
+                    mParent=CallLogFragment{aba8aae #1 id=0x7f0a0149 android:switcher:2131362121:1}
+                    mCurState=2 mStateSaved=false mDestroyed=false
+              #2: AllContactsFragment{ba8a3ba #2 id=0x7f0a0149 android:switcher:2131362121:2}
+                mFragmentId=#7f0a0149 mContainerId=#7f0a0149 mTag=android:switcher:2131362121:2
+                mState=3 mIndex=2 mWho=android:fragment:0:2 mBackStackNesting=0
+                mAdded=true mRemoving=false mResumed=false mFromLayout=false mInLayout=false
+                mHidden=false mDetached=false mMenuVisible=false mHasMenu=false
+                mRetainInstance=false mRetaining=false mUserVisibleHint=false
+                mFragmentManager=FragmentManager{c3be298 in ListsFragment{9e0415f}}
+                mHost=android.app.Activity$HostCallbacks@6e0f7ac
+                mParentFragment=ListsFragment{9e0415f #0 id=0x7f0a0136 favorites}
+                mContainer=android.support.v4.view.ViewPager{2eb76d6 VFED..... ........ 0,214-720,1136 #7f0a0149 app:id/lists_pager}
+                mView=android.widget.LinearLayout{48c926b V.E...... ........ 1440,0-2160,922 #7f0a007c app:id/pinned_header_list_layout}
+                Loader Manager:
+                Child FragmentManager{e3921c8 in AllContactsFragment{ba8a3ba}}:
+                  FragmentManager misc state:
+                    mHost=android.app.Activity$HostCallbacks@6e0f7ac
+                    mContainer=android.app.Fragment$1@f4e8261
+                    mParent=AllContactsFragment{ba8a3ba #2 id=0x7f0a0149 android:switcher:2131362121:2}
+                    mCurState=2 mStateSaved=false mDestroyed=false
+            Added Fragments:
+              #0: SpeedDialFragment{e19faf1 #0 id=0x7f0a0149 android:switcher:2131362121:0}
+              #1: CallLogFragment{aba8aae #1 id=0x7f0a0149 android:switcher:2131362121:1}
+              #2: AllContactsFragment{ba8a3ba #2 id=0x7f0a0149 android:switcher:2131362121:2}
+            FragmentManager misc state:
+              mHost=android.app.Activity$HostCallbacks@6e0f7ac
+              mContainer=android.app.Fragment$1@82d4186
+              mParent=ListsFragment{9e0415f #0 id=0x7f0a0136 favorites}
+              mCurState=5 mStateSaved=false mDestroyed=false
+      Added Fragments:
+        #0: ListsFragment{9e0415f #0 id=0x7f0a0136 favorites}
+      FragmentManager misc state:
+        mHost=android.app.Activity$HostCallbacks@6e0f7ac
+        mContainer=android.app.Activity$HostCallbacks@6e0f7ac
+        mCurState=5 mStateSaved=false mDestroyed=false
+    ViewRoot:
+      mAdded=true mRemoved=false
+      mConsumeBatchedInputScheduled=false
+      mConsumeBatchedInputImmediatelyScheduled=false
+      mPendingInputEventCount=0
+      mProcessInputEventsScheduled=false
+      mTraversalScheduled=false
+      android.view.ViewRootImpl$NativePreImeInputStage: mQueueLength=0
+      android.view.ViewRootImpl$ImeInputStage: mQueueLength=0
+      android.view.ViewRootImpl$NativePostImeInputStage: mQueueLength=0
+    Choreographer:
+      mFrameScheduled=false
+      mLastFrameTime=442149916 (2062 ms ago)
+    View Hierarchy:
+      com.android.internal.policy.PhoneWindow$DecorView{8dfea47 V.ED..... R....... 0,0-720,1280}
+        com.android.internal.widget.ActionBarOverlayLayout{aa29274 V.E...... ........ 0,0-720,1184 #10203b9 android:id/decor_content_parent}
+          android.widget.FrameLayout{98fe39d V.E...... ........ 0,48-720,1184 #1020002 android:id/content}
+            android.widget.FrameLayout{20bf012 VFE...... .F...... 0,0-720,1136 #7f0a0134 app:id/dialtacts_mainlayout}
+              android.widget.FrameLayout{226e3e3 V.E...... ........ 0,0-720,1136 #7f0a0135 app:id/dialtacts_container}
+                android.widget.FrameLayout{df7240a V.E...... ........ 0,0-720,1136 #7f0a0136 app:id/dialtacts_frame}
+                  android.widget.FrameLayout{8f1947b V.E...... ........ 0,0-720,1136 #7f0a0147 app:id/lists_frame}
+                    android.widget.LinearLayout{89061e0 V.E...... ........ 0,0-720,1136}
+                      android.widget.FrameLayout{68c1c99 V.E...... ........ 0,0-720,128}
+                      com.android.contacts.common.list.ViewPagerTabs{1b4fb5e VFED..... ........ 0,128-720,214 #7f0a0148 app:id/lists_pager_header}
+                        com.android.contacts.common.list.ViewPagerTabStrip{759db3f V.ED..... ........ 0,0-720,86}
+                          android.view.View{3c9bc0c V.ED..CL. ..S..... 0,0-240,86}
+                          android.view.View{178e955 V.ED..CL. ........ 240,0-480,86}
+                          android.view.View{4516f6a V.ED..CL. ........ 480,0-720,86}
+                      android.support.v4.view.ViewPager{2eb76d6 VFED..... ........ 0,214-720,1136 #7f0a0149 app:id/lists_pager}
+                        android.widget.FrameLayout{bfafd57 V.E...... ........ 0,0-720,922}
+                          android.widget.FrameLayout{c9aec5b V.E...... ........ 0,0-720,922 #7f0a0185 app:id/contact_tile_frame}
+                            com.android.dialer.list.PhoneFavoriteListView{b5c8cf8 VFED..C.. ........ 2,0-720,922 #7f0a0186 app:id/contact_tile_list}
+                              com.android.dialer.list.PhoneFavoriteSquareTileView{92bc5d1 V.E...CL. ........ 0,4-359,276 #7f0a0161 app:id/contact_tile}
+                                android.widget.RelativeLayout{e8f1836 VFE...... ........ 0,0-359,272 #7f0a0162 app:id/contact_favorite_card}
+                                  com.android.contacts.common.widget.LayoutSuppressingImageView{1642bd V.ED..... ........ 0,0-359,272 #7f0a00fd app:id/contact_tile_image}
+                                  android.widget.LinearLayout{c11f337 V.E...... ........ 0,0-359,272}
+                                    android.view.View{f4980a4 V.ED..... ........ 0,0-359,163}
+                                    android.view.View{a55ee0d V.ED..... ........ 0,163-359,272 #7f0a0163 app:id/shadow_overlay}
+                                  android.widget.LinearLayout{2c81c2 V.E...... ........ 0,183-359,272}
+                                    android.widget.LinearLayout{888bd3 V.E...... ........ 24,0-335,41}
+                                      android.widget.TextView{cf00310 V.ED..... ........ 0,0-311,41 #7f0a00fe app:id/contact_tile_name}
+                                      android.widget.ImageView{1805e09 G.ED..... ......I. 0,0-0,0 #7f0a0164 app:id/contact_star_icon}
+                                    android.widget.TextView{444f80e V.ED..... ........ 24,41-335,71 #7f0a0102 app:id/contact_tile_phone_type}
+                                  android.view.View{dc6122f VFED..... ........ 0,0-359,272 #7f0a0104 app:id/contact_tile_push_state}
+                                  android.widget.ImageButton{63a403c VFED..C.. ........ 287,0-359,72 #7f0a0165 app:id/contact_tile_secondary_button}
+                              com.android.dialer.list.PhoneFavoriteSquareTileView{c7d1c5 V.E...CL. ........ 359,4-718,276 #7f0a0161 app:id/contact_tile}
+                                android.widget.RelativeLayout{a5c871a VFE...... ........ 0,0-359,272 #7f0a0162 app:id/contact_favorite_card}
+                                  com.android.contacts.common.widget.LayoutSuppressingImageView{cfe30b2 V.ED..... ........ 0,0-359,272 #7f0a00fd app:id/contact_tile_image}
+                                  android.widget.LinearLayout{2aba24b V.E...... ........ 0,0-359,272}
+                                    android.view.View{f892428 V.ED..... ........ 0,0-359,272}
+                                    android.view.View{558c541 G.ED..... ......I. 0,0-0,0 #7f0a0163 app:id/shadow_overlay}
+                                  android.widget.LinearLayout{42bfae6 V.E...... ........ 0,183-359,272}
+                                    android.widget.LinearLayout{1101827 V.E...... ........ 24,0-335,41}
+                                      android.widget.TextView{605ad4 V.ED..... ........ 0,0-311,41 #7f0a00fe app:id/contact_tile_name}
+                                      android.widget.ImageView{8ab747d G.ED..... ......I. 0,0-0,0 #7f0a0164 app:id/contact_star_icon}
+                                    android.widget.TextView{42cdf72 V.ED..... ........ 24,41-335,71 #7f0a0102 app:id/contact_tile_phone_type}
+                                  android.view.View{75c0fc3 VFED..... ........ 0,0-359,272 #7f0a0104 app:id/contact_tile_push_state}
+                                  android.widget.ImageButton{2d25040 VFED..C.. ........ 287,0-359,72 #7f0a0165 app:id/contact_tile_secondary_button}
+                              com.android.dialer.list.PhoneFavoriteSquareTileView{97fdb79 V.E...CL. ........ 0,276-359,548 #7f0a0161 app:id/contact_tile}
+                                android.widget.RelativeLayout{8e580be VFE...... ........ 0,0-359,272 #7f0a0162 app:id/contact_favorite_card}
+                                  com.android.contacts.common.widget.LayoutSuppressingImageView{6bd2803 V.ED..... ........ 0,0-359,272 #7f0a00fd app:id/contact_tile_image}
+                                  android.widget.LinearLayout{7e5e51f V.E...... ........ 0,0-359,272}
+                                    android.view.View{dac306c V.ED..... ........ 0,0-359,163}
+                                    android.view.View{899b635 V.ED..... ........ 0,163-359,272 #7f0a0163 app:id/shadow_overlay}
+                                  android.widget.LinearLayout{f4eaca V.E...... ........ 0,183-359,272}
+                                    android.widget.LinearLayout{a0db43b V.E...... ........ 24,0-335,41}
+                                      android.widget.TextView{561e758 V.ED..... ........ 0,0-311,41 #7f0a00fe app:id/contact_tile_name}
+                                      android.widget.ImageView{53c80b1 G.ED..... ......I. 0,0-0,0 #7f0a0164 app:id/contact_star_icon}
+                                    android.widget.TextView{3dee996 V.ED..... ........ 24,41-335,71 #7f0a0102 app:id/contact_tile_phone_type}
+                                  android.view.View{1195917 VFED..... ........ 0,0-359,272 #7f0a0104 app:id/contact_tile_push_state}
+                                  android.widget.ImageButton{fba2104 VFED..C.. ........ 287,0-359,72 #7f0a0165 app:id/contact_tile_secondary_button}
+                          com.android.dialer.widget.EmptyContentView{56776ed G.E...C.. ......I. 0,0-0,0 #7f0a007d app:id/empty_list_view}
+                            android.widget.ImageView{b980922 V.ED..... ......I. 0,0-0,0 #7f0a0141 app:id/emptyListViewImage}
+                            android.widget.TextView{4d06fb3 V.ED..... ......I. 0,0-0,0 #7f0a0142 app:id/emptyListViewMessage}
+                            android.widget.TextView{63a4970 VFED..C.. ......I. 0,0-0,0 #7f0a0143 app:id/emptyListViewAction}
+                            android.widget.Space{5d194e9 I.ED..... ......I. 0,0-0,0}
+                        android.widget.FrameLayout{842404f V.E...... ........ 720,0-1440,922}
+                          android.support.v7.widget.RecyclerView{ad1956e VFED..... ........ 0,0-720,922 #7f0a00b0 app:id/recycler_view}
+                            android.widget.LinearLayout{7d8540f V.E...... ........ 16,0-704,230 #7f0a00b1 app:id/call_log_list_item}
+                              android.widget.TextView{3528c9c V.ED..... ........ 16,0-72,86 #7f0a00b2 app:id/call_log_day_group_label}
+                              android.support.v7.widget.CardView{da596a5 V.E...... ........ 8,94-680,222 #7f0a00b3 app:id/call_log_row}
+                                android.widget.LinearLayout{c059a7a V.E...... ........ 0,0-672,128}
+                                  android.widget.LinearLayout{7d0222b VFE...CL. ........ 0,0-672,128 #7f0a00b4 app:id/primary_action_view}
+                                    android.widget.QuickContactBadge{841cf68 VFED..C.. ........ 16,24-96,104 #7f0a00a0 app:id/quick_contact_photo}
+                                    android.widget.LinearLayout{649d688 V.E...... ........ 128,24-576,104}
+                                      android.widget.TextView{1fdf821 V.ED..... ........ 0,0-190,38 #7f0a00b6 app:id/name}
+                                      android.widget.TextView{542e446 G.ED..... ......I. 0,0-0,0 #7f0a00b7 app:id/voicemail_transcription}
+                                      android.widget.LinearLayout{32cb607 V.E...... ........ 0,42-441,80 #7f0a00b8 app:id/call_type}
+                                        com.android.dialer.calllog.CallTypeIconsView{9e9d334 V.ED..... ........ 0,10-75,27 #7f0a00b9 app:id/call_type_icons}
+                                        android.widget.TextView{520f55d V.ED..... ........ 83,0-433,38 #7f0a00ba app:id/call_location_and_date}
+                                      android.widget.TextView{cb8fed2 G.ED..... ......I. 0,0-0,0 #7f0a00bb app:id/call_account_label}
+                                    android.widget.ImageView{d4aba3 V.ED..C.. ........ 576,28-648,100 #7f0a00bc app:id/primary_action_button}
+                                  android.view.ViewStub{9eaeea0 G.E...... ......I. 0,0-0,0 #7f0a00bd app:id/call_log_entry_actions_stub}
+                            android.widget.LinearLayout{d7c8a59 V.E...... ........ 16,230-704,374 #7f0a00b1 app:id/call_log_list_item}
+                              android.widget.TextView{a04361e G.ED..... ......I. 0,0-0,0 #7f0a00b2 app:id/call_log_day_group_label}
+                              android.support.v7.widget.CardView{57c5eff V.E...... ........ 8,8-680,136 #7f0a00b3 app:id/call_log_row}
+                                android.widget.LinearLayout{32054cc V.E...... ........ 0,0-672,128}
+                                  android.widget.LinearLayout{627315 VFE...CL. ........ 0,0-672,128 #7f0a00b4 app:id/primary_action_view}
+                                    android.widget.QuickContactBadge{7a42c67 VFED..C.. ........ 16,24-96,104 #7f0a00a0 app:id/quick_contact_photo}
+                                    android.widget.LinearLayout{39962a V.E...... ........ 128,24-576,104}
+                                      android.widget.TextView{2c1ec1b V.ED..... ........ 0,0-97,38 #7f0a00b6 app:id/name}
+                                      android.widget.TextView{a63f1b8 G.ED..... ......I. 0,0-0,0 #7f0a00b7 app:id/voicemail_transcription}
+                                      android.widget.LinearLayout{c842b91 V.E...... ........ 0,42-204,80 #7f0a00b8 app:id/call_type}
+                                        com.android.dialer.calllog.CallTypeIconsView{cb2eaf6 V.ED..... ........ 0,10-25,27 #7f0a00b9 app:id/call_type_icons}
+                                        android.widget.TextView{c092ef7 V.ED..... ........ 33,0-196,38 #7f0a00ba app:id/call_location_and_date}
+                                      android.widget.TextView{6427164 G.ED..... ......I. 0,0-0,0 #7f0a00bb app:id/call_account_label}
+                                    android.widget.ImageView{2eefcd V.ED..C.. ........ 576,28-648,100 #7f0a00bc app:id/primary_action_button}
+                                  android.view.ViewStub{69ac082 G.E...... ......I. 0,0-0,0 #7f0a00bd app:id/call_log_entry_actions_stub}
+                            android.support.v7.widget.CardView{d17c393 V.E...C.. ........ 24,382-696,462}
+                              android.widget.TextView{7673fd0 V.ED..... ........ 224,21-448,59}
+                          com.android.dialer.widget.EmptyContentView{747bbc9 G.E...C.. ......I. 0,0-0,0 #7f0a007d app:id/empty_list_view}
+                            android.widget.ImageView{b3862ce V.ED..... ......I. 0,0-0,0 #7f0a0141 app:id/emptyListViewImage}
+                            android.widget.TextView{e7105ef V.ED..... ......I. 0,0-0,0 #7f0a0142 app:id/emptyListViewMessage}
+                            android.widget.TextView{bc888fc VFED..C.. ......I. 0,0-0,0 #7f0a0143 app:id/emptyListViewAction}
+                            android.widget.Space{d074b85 I.ED..... ......I. 0,0-0,0}
+                        android.widget.LinearLayout{48c926b V.E...... ........ 1440,0-2160,922 #7f0a007c app:id/pinned_header_list_layout}
+                          android.widget.FrameLayout{2fbddda V.E...... ......ID 0,0-720,0}
+                            android.widget.FrameLayout{372120b G.E...... ......I. 0,0-0,0 #7f0a0077 app:id/account_filter_header_container}
+                              android.widget.TextView{89338e8 V.ED..... ......I. 0,0-0,0 #7f0a0078 app:id/account_filter_header}
+                          android.widget.FrameLayout{d761b01 V.E...... ........ 0,0-720,922}
+                            com.android.contacts.common.list.PinnedHeaderListView{b49fda6 G.ED.VCL. ......I. 0,0-0,0 #102000a android:id/list}
+                            com.android.dialer.widget.EmptyContentView{e2dc3e7 G.E...C.. ......I. 0,0-0,0 #7f0a007d app:id/empty_list_view}
+                              android.widget.ImageView{6d6fb94 V.ED..... ......I. 0,0-0,0 #7f0a0141 app:id/emptyListViewImage}
+                              android.widget.TextView{2a8663d V.ED..... ......I. 0,0-0,0 #7f0a0142 app:id/emptyListViewMessage}
+                              android.widget.TextView{1084e32 VFED..C.. ......I. 0,0-0,0 #7f0a0143 app:id/emptyListViewAction}
+                              android.widget.Space{508b783 I.ED..... ......I. 0,0-0,0}
+                    com.android.dialer.list.RemoveView{ef23d00 V.E...... ........ 0,128-720,214 #7f0a014a app:id/remove_view}
+                      android.widget.LinearLayout{9ba2939 G.E...... ......ID 0,0-0,0 #7f0a014b app:id/remove_view_content}
+                        android.widget.ImageView{7e91b7e V.ED..... ......I. 0,0-0,0 #7f0a014c app:id/remove_view_icon}
+                        android.widget.TextView{61548df V.ED..... ......ID 0,0-0,0 #7f0a014d app:id/remove_view_text}
+              android.widget.FrameLayout{ebe292c V.E...... ........ 304,992-416,1104 #7f0a0137 app:id/floating_action_button_container}
+                android.widget.ImageButton{b8b1ff5 VFED..C.. ........ 0,0-112,112 #7f0a0138 app:id/floating_action_button}
+              android.widget.FrameLayout{42f93fb V.E...... ........ 0,0-720,1136 #7f0a0139 app:id/activity_overlay}
+                android.widget.ImageView{67aac18 G.ED..... ......I. 0,0-0,0 #7f0a013a app:id/contact_tile_drag_shadow_overlay}
+          com.android.internal.widget.ActionBarContainer{53ac671 V.E...... ........ 0,48-720,176 #10203ba android:id/action_bar_container}
+            android.widget.Toolbar{ee31c56 V.E...... ........ 0,0-720,128 #10203bb android:id/action_bar}
+              com.android.dialer.widget.SearchEditTextLayout{9d974d7 V.E...C.. ........ 16,16-704,112 #7f0a0178 app:id/search_view_container}
+                android.widget.LinearLayout{87a71c4 V.E...... ........ 0,0-688,96 #7f0a0179 app:id/search_box_collapsed}
+                  android.widget.ImageView{c6458ad V.ED..C.. ........ 24,20-80,76 #7f0a017a app:id/search_magnifying_glass}
+                  android.widget.TextView{c8ca7e2 V.ED..CL. ........ 132,29-528,67 #7f0a017b app:id/search_box_start_search}
+                  android.widget.ImageView{dd68773 V.ED..C.. ........ 536,20-592,76 #7f0a017c app:id/voice_search_button}
+                  android.widget.ImageButton{78ee630 VFED..C.. ........ 608,20-664,76 #7f0a017d app:id/dialtacts_options_menu_button}
+                android.widget.LinearLayout{b1ad2a9 G.E...... ......I. 0,0-0,0 #7f0a0174 app:id/search_box_expanded}
+                  android.widget.ImageButton{e51602e VFED..C.. ......I. 0,0-0,0 #7f0a0175 app:id/search_back_button}
+                  android.widget.EditText{58827cf VFED..CL. ......ID 0,0-0,0 #7f0a0176 app:id/search_view}
+                  android.widget.ImageView{34355c V.ED..C.. ......I. 0,0-0,0 #7f0a0177 app:id/search_close_button}
+              android.widget.ActionMenuView{fa4f065 V.E...... ......I. 720,0-720,112}
+            com.android.internal.widget.ActionBarContextView{d97513a G.E...... ......I. 0,0-0,0 #10203bc android:id/action_context_bar}
+        android.view.View{10971eb V.ED..... ........ 0,1184-720,1280 #1020030 android:id/navigationBarBackground}
+        android.view.View{87d4b48 V.ED..... ........ 0,0-720,48 #102002f android:id/statusBarBackground}
+    Looper (main, tid 1) {bf92de1}
+      (Total messages: 0, polling=false, quitting=false)

@@ -1,0 +1,460 @@
+TASK android.task.contacts id=1895
+  ACTIVITY com.android.contacts/.quickcontact.QuickContactActivity 3d405f1 pid=19131
+    Local Activity 4e979e5 State:
+      mResumed=true mStopped=false mFinished=false
+      mChangingConfigurations=false
+      mCurrentConfig={1.0 460mcc2mnc zh_CN ldltr sw360dp w360dp h568dp 320dpi nrml port finger -keyb/v/h -nav/h s.407 themeResource=themes:{}}
+      mLoadersStarted=true
+      Loader Manager 6aadcba:
+        Active Loaders:
+          #0: LoaderInfo{7dcd76b #0 : ContactLoader{a6c82c8}}
+            mId=0 mArgs=null
+            mCallbacks=com.android.contacts.quickcontact.QuickContactActivity$7@ebccf61
+            mLoader=ContactLoader{a6c82c8 id=0}
+              mId=0 mListener=LoaderInfo{7dcd76b #0 : ContactLoader{a6c82c8}}
+              mStarted=true mContentChanged=false mProcessingChange=false
+            mHaveData=true  mDeliveredData=true
+            mData={requested=content://com.android.contacts/contacts/lookup/173i378905b38f6557df/64,lookupkey=173i378905b38f6557df,uri=content://com.android.contacts/contacts/lookup/173i378905b38f6557df/64,status=LOADED}
+            mStarted=true mReportNextStart=false mDestroyed=false
+            mRetaining=false mRetainingStarted=false mListenerRegistered=true
+          #1: LoaderInfo{39a0a86 #1 : SmsInteractionsLoader{16f7f47}}
+            mId=1 mArgs=Bundle[{com.android.contacts.quickcontact.QuickContactActivity.KEY_LOADER_EXTRA_PHONES=[Ljava.lang.String;@d2b0374}]
+            mCallbacks=com.android.contacts.quickcontact.QuickContactActivity$8@616009d
+            mLoader=SmsInteractionsLoader{16f7f47 id=1}
+              mId=1 mListener=LoaderInfo{39a0a86 #1 : SmsInteractionsLoader{16f7f47}}
+              mStarted=true mContentChanged=false mProcessingChange=false
+            mHaveData=true  mDeliveredData=true
+            mData=[]
+            mStarted=true mReportNextStart=false mDestroyed=false
+            mRetaining=false mRetainingStarted=false mListenerRegistered=true
+          #2: LoaderInfo{1fc4912 #2 : CalendarInteractionsLoader{c9ac8e3}}
+            mId=2 mArgs=Bundle[{com.android.contacts.quickcontact.QuickContactActivity.KEY_LOADER_EXTRA_EMAILS=null}]
+            mCallbacks=com.android.contacts.quickcontact.QuickContactActivity$8@616009d
+            mLoader=CalendarInteractionsLoader{c9ac8e3 id=2}
+              mId=2 mListener=LoaderInfo{1fc4912 #2 : CalendarInteractionsLoader{c9ac8e3}}
+              mStarted=true mContentChanged=false mProcessingChange=false
+            mHaveData=true  mDeliveredData=true
+            mData=[]
+            mStarted=true mReportNextStart=false mDestroyed=false
+            mRetaining=false mRetainingStarted=false mListenerRegistered=true
+          #3: LoaderInfo{9aee2e0 #3 : CallLogInteractionsLoader{1d70999}}
+            mId=3 mArgs=Bundle[{com.android.contacts.quickcontact.QuickContactActivity.KEY_LOADER_EXTRA_PHONES=[Ljava.lang.String;@d2b0374}]
+            mCallbacks=com.android.contacts.quickcontact.QuickContactActivity$8@616009d
+            mLoader=CallLogInteractionsLoader{1d70999 id=3}
+              mId=3 mListener=LoaderInfo{9aee2e0 #3 : CallLogInteractionsLoader{1d70999}}
+              mStarted=true mContentChanged=false mProcessingChange=false
+            mHaveData=true  mDeliveredData=true
+            mData=[]
+            mStarted=true mReportNextStart=false mDestroyed=false
+            mRetaining=false mRetainingStarted=false mListenerRegistered=true
+      Active Fragments in 2d1e45e:
+        #0: SelectAccountDialogFragmentListener{5a7103f #0 select_account_fragment}
+          mFragmentId=#0 mContainerId=#0 mTag=select_account_fragment
+          mState=5 mIndex=0 mWho=android:fragment:0 mBackStackNesting=0
+          mAdded=true mRemoving=false mResumed=true mFromLayout=false mInLayout=false
+          mHidden=false mDetached=false mMenuVisible=true mHasMenu=false
+          mRetainInstance=true mRetaining=false mUserVisibleHint=true
+          mFragmentManager=FragmentManager{2d1e45e in HostCallbacks{ecf4d0c}}
+          mHost=android.app.Activity$HostCallbacks@ecf4d0c
+          Child FragmentManager{b05a655 in SelectAccountDialogFragmentListener{5a7103f}}:
+            FragmentManager misc state:
+              mHost=android.app.Activity$HostCallbacks@ecf4d0c
+              mContainer=android.app.Fragment$1@4d3e86a
+              mParent=SelectAccountDialogFragmentListener{5a7103f #0 select_account_fragment}
+              mCurState=5 mStateSaved=false mDestroyed=false
+      Added Fragments:
+        #0: SelectAccountDialogFragmentListener{5a7103f #0 select_account_fragment}
+      FragmentManager misc state:
+        mHost=android.app.Activity$HostCallbacks@ecf4d0c
+        mContainer=android.app.Activity$HostCallbacks@ecf4d0c
+        mCurState=5 mStateSaved=false mDestroyed=false
+    ViewRoot:
+      mAdded=true mRemoved=false
+      mConsumeBatchedInputScheduled=false
+      mConsumeBatchedInputImmediatelyScheduled=false
+      mPendingInputEventCount=0
+      mProcessInputEventsScheduled=false
+      mTraversalScheduled=false
+      android.view.ViewRootImpl$NativePreImeInputStage: mQueueLength=0
+      android.view.ViewRootImpl$ImeInputStage: mQueueLength=0
+      android.view.ViewRootImpl$NativePostImeInputStage: mQueueLength=0
+    Choreographer:
+      mFrameScheduled=false
+      mLastFrameTime=472689227 (8293 ms ago)
+    View Hierarchy:
+      com.android.internal.policy.PhoneWindow$DecorView{b06715b V.ED..... R....... 0,0-720,1280}
+        android.widget.LinearLayout{faa2df8 V.E...... ........ 0,0-720,1184}
+          android.view.ViewStub{b4752d1 G.E...... ......I. 0,0-0,0 #10203b4 android:id/action_mode_bar_stub}
+          android.widget.FrameLayout{7402136 V.E...... ........ 0,48-720,1184 #1020002 android:id/content}
+            com.android.contacts.widget.MultiShrinkScroller{630c837 V.ED..... ........ 0,0-720,1136 #7f0f00ed app:id/multiscroller}
+              android.widget.LinearLayout{15031a4 V.E...... ........ 0,0-720,1136}
+                android.view.View{71d4b0d V.ED..C.. ........ 0,0-720,0 #7f0f00ee app:id/transparent_view}
+                android.widget.FrameLayout{d651ac2 V.E...... ........ 0,0-720,432 #7f0f00df app:id/toolbar_parent}
+                  com.android.contacts.widget.QuickContactImageView{63fb0d3 V.ED..... ........ 0,0-720,432 #7f0f0036 app:id/photo}
+                  android.view.View{730c410 V.ED..C.. ........ 0,0-720,432 #7f0f0039 app:id/photo_touch_intercept_overlay}
+                  android.view.View{fe08b09 V.ED..... ........ 0,331-720,432 #7f0f00f9 app:id/title_gradient}
+                  android.view.View{eee210e V.ED..... ........ 0,0-720,112 #7f0f00fa app:id/action_bar_gradient}
+                  android.widget.Toolbar{84a872f V.E...... ........ 400,0-720,112 #7f0f00e5 app:id/toolbar}
+                    android.widget.FrameLayout{a46113c V.E...... ........ 32,29-32,83}
+                      android.widget.TextView{97dcec5 V.ED..... ......ID 0,0-0,54 #7f0f00ff app:id/placeholder_textview}
+                    android.widget.ActionMenuView{ef401a V.E...... ........ 32,0-320,112}
+                      com.android.internal.view.menu.ActionMenuItemView{982674b VFED..CL. ........ 0,8-96,104 #7f0f012b app:id/menu_star}
+                      com.android.internal.view.menu.ActionMenuItemView{7010528 VFED..CL. ........ 96,8-192,104 #7f0f012c app:id/menu_edit}
+                      android.widget.ActionMenuPresenter$OverflowMenuButton{ff19241 VFED..C.. ........ 192,8-288,104}
+                com.android.contacts.widget.TouchlessScrollView{3b143e6 VFED..... ........ 0,432-720,1136 #7f0f00f1 app:id/content_scroller}
+                  android.widget.LinearLayout{f0e2d27 V.E...... ........ 0,0-720,704 #7f0f00f2 app:id/card_container}
+                    com.android.contacts.quickcontact.ExpandingEntryCardView{df54bd4 G.E...... ......ID 0,0-0,0 #7f0f00f3 app:id/no_contact_data_card}
+                      android.widget.LinearLayout{884117d V.E...... ......I. 0,0-0,0 #7f0f00b7 app:id/container}
+                        android.widget.TextView{13db872 G.ED..... ......I. 0,0-0,0 #7f0f006e app:id/title}
+                        android.view.View{fa674c3 G.ED..... ......ID 0,0-0,0 #7f0f00b8 app:id/title_separator}
+                        android.widget.LinearLayout{3455140 V.E...... ......I. 0,0-0,0 #7f0f00b9 app:id/content_area_linear_layout}
+                    com.android.contacts.quickcontact.ExpandingEntryCardView{ac54879 V.E...... ........ 16,24-704,310 #7f0f00f4 app:id/communication_card}
+                      android.widget.LinearLayout{8aae9be V.E...... ........ 0,0-688,286 #7f0f00b7 app:id/container}
+                        android.widget.TextView{af19a1f G.ED..... ......I. 0,0-0,0 #7f0f006e app:id/title}
+                        android.view.View{8ce416c G.ED..... ......ID 0,0-0,0 #7f0f00b8 app:id/title_separator}
+                        android.widget.LinearLayout{d48f335 V.E...... ........ 0,0-688,286 #7f0f00b9 app:id/content_area_linear_layout}
+                          com.android.contacts.quickcontact.ExpandingEntryCardView$EntryView{a9fb93b V.E...CL. ........ 0,0-688,157}
+                            android.widget.ImageView{f140858 V.ED..... ........ 40,54-88,102 #7f0f001f app:id/icon}
+                            android.widget.TextView{2228db1 V.ED..... ........ 142,40-568,83 #7f0f00b1 app:id/header}
+                            android.widget.TextView{7c87296 G.ED..... ......ID 0,0-0,0 #7f0f00b3 app:id/sub_header}
+                            android.widget.ImageView{946ae17 G.ED..... ......I. 0,0-0,0 #7f0f00b4 app:id/icon_sub_header}
+                            android.widget.TextView{8ed5204 V.ED..... ........ 142,87-568,125 #7f0f004c app:id/text}
+                            android.widget.ImageView{f2153ed G.ED..... ......I. 0,0-0,0 #7f0f00b5 app:id/icon_text}
+                            android.widget.ImageView{f112222 V.ED..C.. ........ 600,40-648,122 #7f0f00b2 app:id/icon_alternate}
+                            android.widget.ImageView{afe14b3 G.ED..... ......I. 0,0-0,0 #7f0f00b6 app:id/third_icon}
+                          com.android.contacts.quickcontact.ExpandingEntryCardView$EntryView{def8a70 V.E...CL. ........ 0,157-688,286}
+                            android.widget.ImageView{dcc41e9 I.ED..... ......I. 40,26-88,74 #7f0f001f app:id/icon}
+                            android.widget.TextView{f433e6e V.ED..... ........ 142,12-568,55 #7f0f00b1 app:id/header}
+                            android.widget.TextView{3bb490f G.ED..... ......ID 0,0-0,0 #7f0f00b3 app:id/sub_header}
+                            android.widget.ImageView{79add9c G.ED..... ......I. 0,0-0,0 #7f0f00b4 app:id/icon_sub_header}
+                            android.widget.TextView{f1e13a5 V.ED..... ........ 142,59-568,97 #7f0f004c app:id/text}
+                            android.widget.ImageView{68d37a G.ED..... ......I. 0,0-0,0 #7f0f00b5 app:id/icon_text}
+                            android.widget.ImageView{76d672b V.ED..C.. ........ 600,12-648,94 #7f0f00b2 app:id/icon_alternate}
+                            android.widget.ImageView{5463788 G.ED..... ......I. 0,0-0,0 #7f0f00b6 app:id/third_icon}
+                    com.android.contacts.quickcontact.ExpandingEntryCardView{f014521 G.E...... ......ID 0,0-0,0 #7f0f00f5 app:id/recent_card}
+                      android.widget.LinearLayout{f20ad46 V.E...... ......I. 0,0-0,0 #7f0f00b7 app:id/container}
+                        android.widget.TextView{fd94b07 V.ED..... ......I. 0,0-0,0 #7f0f006e app:id/title}
+                        android.view.View{2cb4434 V.ED..... ......ID 0,0-0,0 #7f0f00b8 app:id/title_separator}
+                        android.widget.LinearLayout{38c125d V.E...... ......I. 0,0-0,0 #7f0f00b9 app:id/content_area_linear_layout}
+                    com.android.contacts.quickcontact.ExpandingEntryCardView{12a57d2 V.E...... ........ 16,334-704,596 #7f0f00f6 app:id/about_card}
+                      android.widget.LinearLayout{43590a3 V.E...... ........ 0,0-688,262 #7f0f00b7 app:id/container}
+                        android.widget.TextView{df26fa0 V.ED..... ........ 0,0-273,107 #7f0f006e app:id/title}
+                        android.view.View{3fc7759 V.ED..... ........ 0,107-688,109 #7f0f00b8 app:id/title_separator}
+                        android.widget.LinearLayout{6b21f1e V.E...... ........ 0,109-688,262 #7f0f00b9 app:id/content_area_linear_layout}
+                          com.android.contacts.quickcontact.ExpandingEntryCardView$EntryView{e8693ff V.E....L. ........ 0,0-688,153}
+                            android.widget.ImageView{69ee5cc G.ED..... ......I. 0,0-0,0 #7f0f001f app:id/icon}
+                            android.widget.TextView{3743015 V.ED..... ........ 40,36-72,79 #7f0f00b1 app:id/header}
+                            android.widget.TextView{45d0f2a G.ED..... ......ID 0,0-0,0 #7f0f00b3 app:id/sub_header}
+                            android.widget.ImageView{aba711b G.ED..... ......I. 0,0-0,0 #7f0f00b4 app:id/icon_sub_header}
+                            android.widget.TextView{5ba92b8 V.ED..... ........ 40,83-131,121 #7f0f004c app:id/text}
+                            android.widget.ImageView{b74b891 G.ED..... ......I. 0,0-0,0 #7f0f00b5 app:id/icon_text}
+                            android.widget.ImageView{214f3f6 G.ED..... ......I. 0,0-0,0 #7f0f00b2 app:id/icon_alternate}
+                            android.widget.ImageView{b8503f7 G.ED..... ......I. 0,0-0,0 #7f0f00b6 app:id/third_icon}
+              android.widget.LinearLayout{6e22264 V.E...... ........ 32,322-688,403 #7f0f00fb app:id/contact_info}
+                android.widget.TextView{21b4ccd V.ED..... ........ 0,0-656,81 #7f0f00fc app:id/large_title}
+                android.widget.TextView{a945982 G.ED..... ......I. 0,0-0,0 #7f0f00fd app:id/contact_spam_count}
+                android.widget.TextView{fbe893 G.ED..... ......ID 0,0-0,0 #7f0f00fe app:id/contact_info_attribution}
+        android.view.View{d100d0 V.ED..... ........ 0,1184-720,1280 #1020030 android:id/navigationBarBackground}
+        android.view.View{81ce8c9 V.ED..... ........ 0,0-720,48 #102002f android:id/statusBarBackground}
+    Looper (main, tid 1) {9b9b4d6}
+      (Total messages: 0, polling=false, quitting=false)
+
+  ACTIVITY com.android.contacts/.activities.PeopleActivity 91fa1e1 pid=19131
+    Local Activity c4e7632 State:
+      mResumed=false mStopped=false mFinished=false
+      mChangingConfigurations=false
+      mCurrentConfig={1.0 460mcc2mnc zh_CN ldltr sw360dp w360dp h568dp 320dpi nrml port finger -keyb/v/h -nav/h s.407 themeResource=themes:{}}
+      mLoadersStarted=true
+      Active Fragments in caf6357:
+        #0: ContactTileListFragment{33bfe44 #0 id=0x7f0f00e0 tab-pager-favorite}
+          mFragmentId=#7f0f00e0 mContainerId=#7f0f00e0 mTag=tab-pager-favorite
+          mState=4 mIndex=0 mWho=android:fragment:0 mBackStackNesting=0
+          mAdded=true mRemoving=false mResumed=false mFromLayout=false mInLayout=false
+          mHidden=false mDetached=false mMenuVisible=true mHasMenu=false
+          mRetainInstance=false mRetaining=false mUserVisibleHint=false
+          mFragmentManager=FragmentManager{caf6357 in HostCallbacks{49c2b2d}}
+          mHost=android.app.Activity$HostCallbacks@49c2b2d
+          mSavedViewState={2131689554=android.view.AbsSavedState$1@d744862, 2131689570=AbsListView.SavedState{7b28bce selectedId=-9223372036854775808 firstId=-1 viewTop=0 position=0 height=912 filter=null checkState=null}, 2131689571=android.view.AbsSavedState$1@d744862}
+          mContainer=android.support.v4.view.ViewPager{e1cbab0 VFED..... ........ 0,224-720,1136 #7f0f00e0 app:id/tab_pager}
+          mView=android.widget.FrameLayout{73d4d29 V.E...... ........ -720,0-0,912}
+          Loader Manager:
+            Active Loaders:
+              #0: LoaderInfo{95288ae #0 : CursorLoader{25d664f}}
+                mId=0 mArgs=null
+                mCallbacks=com.android.contacts.list.ContactTileListFragment$1@70ad1dc
+                mLoader=CursorLoader{25d664f id=0}
+                  mId=0 mListener=LoaderInfo{95288ae #0 : CursorLoader{25d664f}}
+                  mStarted=true mContentChanged=false mProcessingChange=false
+                  mUri=content://com.android.contacts/contacts/strequent
+                  mProjection=[_id, display_name, starred, photo_uri, lookup, account_type, account_name, contact_presence, contact_status, photo_id]
+                  mSelection=null
+                  mSelectionArgs=null
+                  mSortOrder=display_name COLLATE NOCASE ASC
+                  mCursor=android.content.ContentResolver$CursorWrapperInner@7b492e5
+                  mContentChanged=false
+                mHaveData=true  mDeliveredData=true
+                mData=android.content.ContentResolver$CursorWrapperInner@7b492e5
+                mStarted=true mReportNextStart=false mDestroyed=false
+                mRetaining=false mRetainingStarted=false mListenerRegistered=true
+          Child FragmentManager{ec281ba in ContactTileListFragment{33bfe44}}:
+            FragmentManager misc state:
+              mHost=android.app.Activity$HostCallbacks@49c2b2d
+              mContainer=android.app.Fragment$1@c34186b
+              mParent=ContactTileListFragment{33bfe44 #0 id=0x7f0f00e0 tab-pager-favorite}
+              mCurState=4 mStateSaved=true mDestroyed=false
+        #1: MultiSelectContactsListFragment{f612fc8 #1 id=0x7f0f00e0 tab-pager-all}
+          mFragmentId=#7f0f00e0 mContainerId=#7f0f00e0 mTag=tab-pager-all
+          mState=4 mIndex=1 mWho=android:fragment:1 mBackStackNesting=0
+          mAdded=true mRemoving=false mResumed=false mFromLayout=false mInLayout=false
+          mHidden=false mDetached=false mMenuVisible=true mHasMenu=false
+          mRetainInstance=false mRetaining=false mUserVisibleHint=true
+          mFragmentManager=FragmentManager{caf6357 in HostCallbacks{49c2b2d}}
+          mHost=android.app.Activity$HostCallbacks@49c2b2d
+          mSavedViewState={2131689501=android.view.AbsSavedState$1@d744862, 2131689502=android.view.AbsSavedState$1@d744862, 2131689554=android.view.AbsSavedState$1@d744862, 2131689555=android.view.AbsSavedState$1@d744862, 2131689556=android.widget.ProgressBar$SavedState@cf27aef}
+          mContainer=android.support.v4.view.ViewPager{e1cbab0 VFED..... ........ 0,224-720,1136 #7f0f00e0 app:id/tab_pager}
+          mView=android.widget.LinearLayout{606ff86 V.E...... ........ 0,0-720,912 #7f0f0053 app:id/pinned_header_list_layout}
+          Loader Manager:
+            Active Loaders:
+              #0: LoaderInfo{a79d047 #0 : ProfileAndContactsLoader{13d8074}}
+                mId=0 mArgs=Bundle[{directoryId=0}]
+                mCallbacks=MultiSelectContactsListFragment{f612fc8 #1 id=0x7f0f00e0 tab-pager-all}
+                mLoader=ProfileAndContactsLoader{13d8074 id=0}
+                  mId=0 mListener=LoaderInfo{a79d047 #0 : ProfileAndContactsLoader{13d8074}}
+                  mStarted=true mContentChanged=false mProcessingChange=false
+                  mUri=content://com.android.contacts/contacts?android.provider.extra.ADDRESS_BOOK_INDEX=true&directory=0
+                  mProjection=[_id, display_name, contact_presence, contact_status, photo_id, photo_thumb_uri, lookup, is_user_profile, account_type, account_name]
+                  mSelection=
+                  mSelectionArgs=[]
+                  mSortOrder=sort_key
+                  mCursor=com.android.contacts.common.list.ProfileAndContactsLoader$1@20b399d
+                  mContentChanged=false
+                mHaveData=true  mDeliveredData=true
+                mData=com.android.contacts.common.list.ProfileAndContactsLoader$1@20b399d
+                mStarted=true mReportNextStart=false mDestroyed=false
+                mRetaining=false mRetainingStarted=false mListenerRegistered=true
+          Child FragmentManager{6c38e12 in MultiSelectContactsListFragment{f612fc8}}:
+            FragmentManager misc state:
+              mHost=android.app.Activity$HostCallbacks@49c2b2d
+              mContainer=android.app.Fragment$1@a7929e3
+              mParent=MultiSelectContactsListFragment{f612fc8 #1 id=0x7f0f00e0 tab-pager-all}
+              mCurState=4 mStateSaved=true mDestroyed=false
+        #2: GroupBrowseListFragment{8ec2fe0 #2 id=0x7f0f00e0 tab-pager-groups}
+          mFragmentId=#7f0f00e0 mContainerId=#7f0f00e0 mTag=tab-pager-groups
+          mState=4 mIndex=2 mWho=android:fragment:2 mBackStackNesting=0
+          mAdded=true mRemoving=false mResumed=false mFromLayout=false mInLayout=false
+          mHidden=false mDetached=false mMenuVisible=true mHasMenu=false
+          mRetainInstance=false mRetaining=false mUserVisibleHint=false
+          mFragmentManager=FragmentManager{caf6357 in HostCallbacks{49c2b2d}}
+          mHost=android.app.Activity$HostCallbacks@49c2b2d
+          mSavedViewState={2131689550=android.view.AbsSavedState$1@d744862, 2131689561=android.view.AbsSavedState$1@d744862, 2131689665=AbsListView.SavedState{88d59fc selectedId=-9223372036854775808 firstId=-1 viewTop=0 position=0 height=912 filter=null checkState=null}, 2131689666=android.view.AbsSavedState$1@d744862}
+          mContainer=android.support.v4.view.ViewPager{e1cbab0 VFED..... ........ 0,224-720,1136 #7f0f00e0 app:id/tab_pager}
+          mView=android.widget.LinearLayout{d48795e V.E...... ........ 720,0-1440,912}
+          Loader Manager:
+            Active Loaders:
+              #1: LoaderInfo{98a813f #1 : GroupListLoader{9146a0c}}
+                mId=1 mArgs=null
+                mCallbacks=com.android.contacts.group.GroupBrowseListFragment$1@748ff55
+                mLoader=GroupListLoader{9146a0c id=1}
+                  mId=1 mListener=LoaderInfo{98a813f #1 : GroupListLoader{9146a0c}}
+                  mStarted=true mContentChanged=false mProcessingChange=false
+                  mUri=content://com.android.contacts/groups_summary
+                  mProjection=[account_name, account_type, data_set, _id, title, summ_count]
+                  mSelection=account_type NOT NULL AND account_name NOT NULL AND auto_add=0 AND favorites=0 AND deleted=0
+                  mSelectionArgs=null
+                  mSortOrder=account_id
+                  mCursor=android.content.ContentResolver$CursorWrapperInner@89ecd6a
+                  mContentChanged=false
+                mHaveData=true  mDeliveredData=true
+                mData=android.content.ContentResolver$CursorWrapperInner@89ecd6a
+                mStarted=true mReportNextStart=false mDestroyed=false
+                mRetaining=false mRetainingStarted=false mListenerRegistered=true
+          Child FragmentManager{82ff25b in GroupBrowseListFragment{8ec2fe0}}:
+            FragmentManager misc state:
+              mHost=android.app.Activity$HostCallbacks@49c2b2d
+              mContainer=android.app.Fragment$1@5a41af8
+              mParent=GroupBrowseListFragment{8ec2fe0 #2 id=0x7f0f00e0 tab-pager-groups}
+              mCurState=4 mStateSaved=true mDestroyed=false
+      Added Fragments:
+        #0: ContactTileListFragment{33bfe44 #0 id=0x7f0f00e0 tab-pager-favorite}
+        #1: MultiSelectContactsListFragment{f612fc8 #1 id=0x7f0f00e0 tab-pager-all}
+        #2: GroupBrowseListFragment{8ec2fe0 #2 id=0x7f0f00e0 tab-pager-groups}
+      FragmentManager misc state:
+        mHost=android.app.Activity$HostCallbacks@49c2b2d
+        mContainer=android.app.Activity$HostCallbacks@49c2b2d
+        mCurState=4 mStateSaved=true mDestroyed=false
+    ViewRoot:
+      mAdded=true mRemoved=false
+      mConsumeBatchedInputScheduled=false
+      mConsumeBatchedInputImmediatelyScheduled=false
+      mPendingInputEventCount=0
+      mProcessInputEventsScheduled=false
+      mTraversalScheduled=false
+      android.view.ViewRootImpl$NativePreImeInputStage: mQueueLength=0
+      android.view.ViewRootImpl$ImeInputStage: mQueueLength=0
+      android.view.ViewRootImpl$NativePostImeInputStage: mQueueLength=0
+    Choreographer:
+      mFrameScheduled=false
+      mLastFrameTime=472689227 (8305 ms ago)
+    View Hierarchy:
+      com.android.internal.policy.PhoneWindow$DecorView{ae73bd1 V.ED..... R....... 0,0-720,1280}
+        android.widget.LinearLayout{d545636 V.E...... ........ 0,0-720,1184}
+          android.view.ViewStub{2f15937 G.E...... ......I. 0,0-0,0 #10203b4 android:id/action_mode_bar_stub}
+          android.widget.FrameLayout{17beea4 V.E...... ........ 0,48-720,1184 #1020002 android:id/content}
+            android.widget.RelativeLayout{b52c40d V.E...... ........ 0,0-720,1136 #7f0f005a app:id/list_container}
+              android.widget.LinearLayout{9079fc2 V.E...... ........ 0,0-720,224 #7f0f00df app:id/toolbar_parent}
+                android.widget.FrameLayout{cf851d3 V.E...... ........ 0,0-720,112 #7f0f00e4 app:id/toolbar_frame}
+                  android.widget.Toolbar{adb5110 V.E...... ........ 0,0-720,112 #7f0f00e5 app:id/toolbar}
+                    android.widget.TextView{4749409 V.ED..... ........ 32,29-152,83}
+                    android.widget.ActionMenuView{2b3f60e V.E...... ........ 528,0-720,112}
+                      com.android.internal.view.menu.ActionMenuItemView{86c382f VFED..CL. ........ 0,8-96,104 #7f0f0121 app:id/menu_search}
+                      android.widget.ActionMenuPresenter$OverflowMenuButton{28c6e3c VFED..C.. ........ 96,8-192,104}
+                com.android.contacts.common.list.ViewPagerTabs{dc967c5 VFED..... ........ 0,112-720,224 #7f0f00e3 app:id/lists_pager_header}
+                  com.android.contacts.common.list.ViewPagerTabStrip{3bd651a V.ED..... ........ 0,0-720,112}
+                    android.widget.TextView{88e284b V.ED..CL. ........ 0,0-221,112}
+                    android.widget.TextView{9d03228 V.ED..CL. ..S..... 221,0-526,112}
+                    android.widget.TextView{fddbb41 V.ED..CL. ........ 526,0-720,112}
+              android.support.v4.view.ViewPager{e1cbab0 VFED..... ........ 0,224-720,1136 #7f0f00e0 app:id/tab_pager}
+                android.widget.FrameLayout{73d4d29 V.E...... ........ -720,0-0,912}
+                  android.widget.LinearLayout{5bcb8e6 I.E...... ......I. 0,0-720,912 #7f0f0052 app:id/list_card}
+                    android.view.View{994fe27 V.ED..... ......ID 0,0-0,912}
+                    android.view.View{30a48d4 V.ED..... ......ID 0,0-0,912}
+                    android.view.View{589ca7d V.ED..... ......ID 0,0-0,912}
+                  android.widget.ListView{10b7d72 VFED.VC.. ........ 0,0-720,912 #7f0f0062 app:id/contact_tile_list}
+                    android.widget.TextView{a4955c3 V.ED..... ........ 0,0-720,127 #7f0f006e app:id/title}
+                    com.android.contacts.common.list.ContactTileAdapter$ContactTileRow{12d1e40 V.E...... ........ 0,127-720,255}
+                      com.android.contacts.common.list.ContactTileFrequentView{4ed9179 VFE...C.. ........ 32,0-688,128}
+                        android.widget.LinearLayout{80ffebe V.E...... ........ 0,0-656,128}
+                          com.android.contacts.common.widget.LayoutSuppressingImageView{b774baa V.ED..... ........ 0,24-80,104 #7f0f005b app:id/contact_tile_image}
+                          android.widget.TextView{3618b1f V.ED..... ........ 110,42-656,85 #7f0f005c app:id/contact_tile_name}
+                    com.android.contacts.common.list.ContactTileAdapter$ContactTileRow{1e5de6c V.E...... ........ 0,255-720,383}
+                      com.android.contacts.common.list.ContactTileFrequentView{c2ccc35 VFE...C.. ........ 32,0-688,128}
+                        android.widget.LinearLayout{b4948ca V.E...... ........ 0,0-656,128}
+                          com.android.contacts.common.widget.LayoutSuppressingImageView{a55339b V.ED..... ........ 0,24-80,104 #7f0f005b app:id/contact_tile_image}
+                          android.widget.TextView{89dba3b V.ED..... ........ 110,42-656,85 #7f0f005c app:id/contact_tile_name}
+                    com.android.contacts.common.list.ContactTileAdapter$ContactTileRow{e887558 V.E...... ........ 0,383-720,511}
+                      com.android.contacts.common.list.ContactTileFrequentView{deaf6b1 VFE...C.. ........ 32,0-688,128}
+                        android.widget.LinearLayout{21b2796 V.E...... ........ 0,0-656,128}
+                          com.android.contacts.common.widget.LayoutSuppressingImageView{e26338 V.ED..... ........ 0,24-80,104 #7f0f005b app:id/contact_tile_image}
+                          android.widget.TextView{fa3bf17 V.ED..... ........ 110,42-656,85 #7f0f005c app:id/contact_tile_name}
+                  android.widget.TextView{fbb8f04 G.ED..... ......ID 0,96-720,912 #7f0f0063 app:id/contact_tile_list_empty}
+                android.widget.LinearLayout{606ff86 V.E...... ........ 0,0-720,912 #7f0f0053 app:id/pinned_header_list_layout}
+                  android.widget.FrameLayout{9874ced V.E...... ........ 0,0-720,0}
+                    android.widget.FrameLayout{45a2722 G.E...C.. ......I. 0,0-0,0 #7f0f001d app:id/account_filter_header_container}
+                      android.widget.TextView{89b35b3 V.ED..... ......I. 0,0-0,0 #7f0f001e app:id/account_filter_header}
+                  android.widget.FrameLayout{fe49770 V.E...... ........ 0,0-720,912}
+                    android.widget.LinearLayout{b18cae9 I.E...... ......I. 0,0-720,912 #7f0f0052 app:id/list_card}
+                      android.view.View{97936e V.ED..... ......ID 0,0-0,912}
+                      android.view.View{4897a0f V.ED..... ......ID 0,0-0,912}
+                      android.view.View{853ba9c V.ED..... ......ID 0,0-0,912}
+                    com.android.contacts.common.list.PinnedHeaderListView{f2a2ca5 VFED.VCL. .F...... 0,0-720,912 #102000a android:id/list}
+                      com.android.contacts.common.list.ContactListItemView{b2d787a V.E...... ........ 0,-62-720,66 #3b}
+                        com.android.contacts.common.widget.CheckableImageView{6ba4705 V.ED..... ........ 158,24-238,104}
+                        android.widget.TextView{56da82b V.ED..... ........ 268,42-656,85 #7f0f0006 app:id/cliv_name_textview}
+                      com.android.contacts.common.list.ContactListItemView{52fe488 V.E...... ........ 0,66-720,194 #6e}
+                        android.widget.TextView{635ee21 V.ED..... ........ 32,37-128,91}
+                        com.android.contacts.common.widget.CheckableImageView{1d1f35a V.ED..... ........ 158,24-238,104}
+                        android.widget.TextView{20aa246 V.ED..... ........ 268,42-656,85 #7f0f0006 app:id/cliv_name_textview}
+                      com.android.contacts.common.list.ContactListItemView{41c9c07 V.E...... ........ 0,194-720,322 #5c}
+                        com.android.contacts.common.widget.CheckableImageView{26398b V.ED..... ........ 158,24-238,104}
+                        android.widget.TextView{c22c134 V.ED..... ........ 268,42-656,85 #7f0f0006 app:id/cliv_name_textview}
+                      com.android.contacts.common.list.ContactListItemView{3e24b5d V.E...... ........ 0,322-720,450 #42}
+                        android.widget.TextView{13e9cd2 V.ED..... ........ 32,37-128,91}
+                        com.android.contacts.common.widget.CheckableImageView{2510a68 V.ED..... ........ 158,24-238,104}
+                        android.widget.TextView{7dcf1a3 V.ED..... ........ 268,42-656,85 #7f0f0006 app:id/cliv_name_textview}
+                      com.android.contacts.common.list.ContactListItemView{1c4bca0 V.E...... ........ 0,450-720,578 #40}
+                        com.android.contacts.common.widget.CheckableImageView{f3b731b V.ED..... ........ 158,24-238,104}
+                        android.widget.TextView{5fd4059 V.ED..... ........ 268,42-656,85 #7f0f0006 app:id/cliv_name_textview}
+                      com.android.contacts.common.list.ContactListItemView{445b41e V.E...... ........ 0,578-720,706 #7b}
+                        com.android.contacts.common.widget.CheckableImageView{3928a91 V.ED..... ........ 158,24-238,104}
+                        android.widget.TextView{bc304ff V.ED..... ........ 268,42-656,85 #7f0f0006 app:id/cliv_name_textview}
+                      com.android.contacts.common.list.ContactListItemView{9c902cc V.E...... ........ 0,706-720,834 #39}
+                        com.android.contacts.common.widget.CheckableImageView{8c35df6 V.ED..... ........ 158,24-238,104}
+                        android.widget.TextView{f388915 V.ED..... ........ 268,42-656,85 #7f0f0006 app:id/cliv_name_textview}
+                      com.android.contacts.common.list.ContactListItemView{14f42a V.E...... ........ 0,834-720,962 #45}
+                        com.android.contacts.common.widget.CheckableImageView{41425f7 V.ED..... ........ 158,24-238,104}
+                        android.widget.TextView{dccf21b V.ED..... ........ 268,42-656,85 #7f0f0006 app:id/cliv_name_textview}
+                    android.widget.ProgressBar{de97fb8 G.ED..... ......I. 0,0-0,0 #7f0f0054 app:id/search_progress}
+                android.widget.LinearLayout{d48795e V.E...... ........ 720,0-1440,912}
+                  com.android.contacts.common.list.AutoScrollListView{1a5a191 VFED.VC.. ........ 0,0-720,912 #7f0f00c1 app:id/list}
+                    android.widget.LinearLayout{1e628f6 V.E...... ........ 0,0-720,183}
+                      android.view.View{3be94f7 G.ED..... ......ID 0,0-0,0 #7f0f0042 app:id/divider}
+                      android.widget.LinearLayout{792df64 V.E...... ........ 32,0-656,64 #7f0f00c3 app:id/group_list_header}
+                        android.view.View{4f1c5cd V.ED..... ......ID 0,0-624,0 #7f0f00c0 app:id/header_extra_top_padding}
+                        android.widget.LinearLayout{ec3de82 V.E...... ........ 0,0-624,64}
+                          android.widget.TextView{1bd8993 V.ED..... ........ 0,13-624,51 #7f0f0029 app:id/account_type}
+                          android.widget.TextView{8508dd0 V.ED..... ......ID 624,15-624,48 #7f0f002a app:id/account_name}
+                      android.widget.LinearLayout{461f1c9 V.E...... ........ 32,64-656,183}
+                        android.widget.TextView{fd560ce V.ED..... ........ 0,16-72,65 #7f0f009d app:id/label}
+                        android.widget.TextView{ead2bef V.ED..... ........ 0,65-135,103 #7f0f009f app:id/count}
+                    android.widget.LinearLayout{cf8b6fc V.E...... ........ 0,183-720,304}
+                      android.view.View{8ee185 V.ED..... ........ 32,0-656,2 #7f0f0042 app:id/divider}
+                      android.widget.LinearLayout{76abbda G.E...... ......I. 0,0-0,0 #7f0f00c3 app:id/group_list_header}
+                        android.view.View{24a980b G.ED..... ......I. 0,0-0,0 #7f0f00c0 app:id/header_extra_top_padding}
+                        android.widget.LinearLayout{79846e8 V.E...... ......I. 0,0-0,0}
+                          android.widget.TextView{e11101 V.ED..... ......I. 0,0-0,0 #7f0f0029 app:id/account_type}
+                          android.widget.TextView{ac8bba6 V.ED..... ......ID 0,0-0,0 #7f0f002a app:id/account_name}
+                      android.widget.LinearLayout{908a9e7 V.E...... ........ 32,2-656,121}
+                        android.widget.TextView{c1ee994 V.ED..... ........ 0,16-72,65 #7f0f009d app:id/label}
+                        android.widget.TextView{ccbc3d V.ED..... ........ 0,65-135,103 #7f0f009f app:id/count}
+                    android.widget.LinearLayout{cb4ec32 V.E...... ........ 0,304-720,425}
+                      android.view.View{9abfd83 V.ED..... ........ 32,0-656,2 #7f0f0042 app:id/divider}
+                      android.widget.LinearLayout{bcb0b00 G.E...... ......I. 0,0-0,0 #7f0f00c3 app:id/group_list_header}
+                        android.view.View{4cddf39 G.ED..... ......I. 0,0-0,0 #7f0f00c0 app:id/header_extra_top_padding}
+                        android.widget.LinearLayout{4c1997e V.E...... ......I. 0,0-0,0}
+                          android.widget.TextView{8a6eedf V.ED..... ......I. 0,0-0,0 #7f0f0029 app:id/account_type}
+                          android.widget.TextView{b55d72c V.ED..... ......ID 0,0-0,0 #7f0f002a app:id/account_name}
+                      android.widget.LinearLayout{32435f5 V.E...... ........ 32,2-656,121}
+                        android.widget.TextView{f59cf8a V.ED..... ........ 0,16-72,65 #7f0f009d app:id/label}
+                        android.widget.TextView{53599fb V.ED..... ........ 0,65-135,103 #7f0f009f app:id/count}
+                    android.widget.LinearLayout{fdf3a18 V.E...... ........ 0,425-720,608}
+                      android.view.View{c4f3c71 G.ED..... ......ID 0,0-0,0 #7f0f0042 app:id/divider}
+                      android.widget.LinearLayout{28d5a56 V.E...... ........ 32,0-656,64 #7f0f00c3 app:id/group_list_header}
+                        android.view.View{c39dad7 G.ED..... ......I. 0,0-0,0 #7f0f00c0 app:id/header_extra_top_padding}
+                        android.widget.LinearLayout{e99dfc4 V.E...... ........ 0,0-624,64}
+                          android.widget.TextView{f4a2ead V.ED..... ........ 0,13-350,51 #7f0f0029 app:id/account_type}
+                          android.widget.TextView{39cc5e2 V.ED..... ........ 350,15-624,48 #7f0f002a app:id/account_name}
+                      android.widget.LinearLayout{cd74d73 V.E...... ........ 32,64-656,183}
+                        android.widget.TextView{b373430 V.ED..... ........ 0,16-119,65 #7f0f009d app:id/label}
+                        android.widget.TextView{58808a9 V.ED..... ........ 0,65-151,103 #7f0f009f app:id/count}
+                    android.widget.LinearLayout{9455e2e V.E...... ........ 0,608-720,729}
+                      android.view.View{acf4dcf V.ED..... ........ 32,0-656,2 #7f0f0042 app:id/divider}
+                      android.widget.LinearLayout{113635c G.E...... ......I. 0,0-0,0 #7f0f00c3 app:id/group_list_header}
+                        android.view.View{2af8665 G.ED..... ......I. 0,0-0,0 #7f0f00c0 app:id/header_extra_top_padding}
+                        android.widget.LinearLayout{6cd2f3a V.E...... ......I. 0,0-0,0}
+                          android.widget.TextView{a9cf7eb V.ED..... ......I. 0,0-0,0 #7f0f0029 app:id/account_type}
+                          android.widget.TextView{3215948 V.ED..... ......ID 0,0-0,0 #7f0f002a app:id/account_name}
+                      android.widget.LinearLayout{41723e1 V.E...... ........ 32,2-656,121}
+                        android.widget.TextView{bcf0506 V.ED..... ........ 0,16-106,65 #7f0f009d app:id/label}
+                        android.widget.TextView{35127c7 V.ED..... ........ 0,65-135,103 #7f0f009f app:id/count}
+                    android.widget.LinearLayout{e96c1f4 V.E...... ........ 0,729-720,850}
+                      android.view.View{c011d1d V.ED..... ........ 32,0-656,2 #7f0f0042 app:id/divider}
+                      android.widget.LinearLayout{4c66b92 G.E...... ......I. 0,0-0,0 #7f0f00c3 app:id/group_list_header}
+                        android.view.View{22e7963 G.ED..... ......I. 0,0-0,0 #7f0f00c0 app:id/header_extra_top_padding}
+                        android.widget.LinearLayout{c580960 V.E...... ......I. 0,0-0,0}
+                          android.widget.TextView{4976e19 V.ED..... ......I. 0,0-0,0 #7f0f0029 app:id/account_type}
+                          android.widget.TextView{85baede V.ED..... ......ID 0,0-0,0 #7f0f002a app:id/account_name}
+                      android.widget.LinearLayout{c0548bf V.E...... ........ 32,2-656,121}
+                        android.widget.TextView{d245b8c V.ED..... ........ 0,16-172,65 #7f0f009d app:id/label}
+                        android.widget.TextView{6a7d2d5 V.ED..... ........ 0,65-135,103 #7f0f009f app:id/count}
+                    android.widget.LinearLayout{d6fdaea V.E...... ........ 0,850-720,971}
+                      android.view.View{84fb1db V.ED..... ........ 32,0-656,2 #7f0f0042 app:id/divider}
+                      android.widget.LinearLayout{c81a478 G.E...... ......I. 0,0-0,0 #7f0f00c3 app:id/group_list_header}
+                        android.view.View{1fc751 G.ED..... ......I. 0,0-0,0 #7f0f00c0 app:id/header_extra_top_padding}
+                        android.widget.LinearLayout{5e8bbb6 V.E...... ......I. 0,0-0,0}
+                          android.widget.TextView{20d90b7 V.ED..... ......I. 0,0-0,0 #7f0f0029 app:id/account_type}
+                          android.widget.TextView{6689024 V.ED..... ......ID 0,0-0,0 #7f0f002a app:id/account_name}
+                      android.widget.LinearLayout{648878d V.E...... ........ 32,2-656,121}
+                        android.widget.TextView{a3cdd42 V.ED..... ........ 0,16-59,65 #7f0f009d app:id/label}
+                        android.widget.TextView{a608153 V.ED..... ........ 0,65-151,103 #7f0f009f app:id/count}
+                  android.widget.TextView{bb08a90 G.ED..... ......ID 0,96-720,155 #7f0f0059 app:id/empty}
+                  android.widget.LinearLayout{fc30f89 G.E...... ......I. 0,0-0,0 #7f0f00c2 app:id/add_accounts}
+                    android.widget.TextView{1bf8b8e V.ED..... ......ID 0,0-0,0}
+                    android.widget.Button{8e7dfaf VFED..C.. ......I. 0,0-0,0 #7f0f004e app:id/add_account_button}
+              android.widget.FrameLayout{13bbfbc G.E...... ......I. 0,0-0,0 #7f0f00e1 app:id/contacts_unavailable_view}
+                android.widget.FrameLayout{2441b45 V.E...... ......I. 0,0-0,0 #7f0f00e2 app:id/contacts_unavailable_container}
+              android.widget.FrameLayout{3acd29a V.E...... ........ 576,992-688,1104 #7f0f00bd app:id/floating_action_button_container}
+                android.widget.ImageButton{5dcc7cb VFED..C.. ........ 0,0-112,112 #7f0f00be app:id/floating_action_button}
+        android.view.View{5e31ba8 V.ED..... ........ 0,1184-720,1280 #1020030 android:id/navigationBarBackground}
+        android.view.View{1026c1 V.ED..... ........ 0,0-720,48 #102002f android:id/statusBarBackground}
+    Looper (main, tid 1) {9b9b4d6}
+      (Total messages: 0, polling=false, quitting=false)

@@ -25,7 +25,9 @@
                 android:name="android.app.searchable"
                 android:resource="@xml/searchable" />
         </activity>
-        <activity android:name=".activities.ContactDetailActivity" />
+        <activity
+            android:name=".activities.ContactDetailActivity"
+            android:parentActivityName=".activities.MainActivity" />
 
     </application>
 

@@ -60,9 +60,8 @@ public class ContactListAdapter extends RecyclerView.Adapter<ContactListAdapter.
         String sortKey = cursor.getString(cursor.getColumnIndex(ContactsContract.Contacts.SORT_KEY_PRIMARY));
         if (sortKey != null) {
             char initial = sortKey.charAt(0);
-            Log.d("key", sortKey + " " + initial);
             if (Character.isLetter(initial)) {
-                return String.valueOf(Pinyin.toPinyin(initial).charAt(0));
+                return String.valueOf(Character.toUpperCase(Pinyin.toPinyin(initial).charAt(0)));
             }
         }
         return "#";

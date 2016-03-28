@@ -11,4 +11,11 @@
     <string name="send_email">发送邮件</string>
     <string name="copy_to_clipboard">复制到剪贴板</string>
     <string name="copy_successfully">已复制</string>
+    <string name="fail_to_send_Email">无邮件应用，发送失败</string>
+    <string name="dialog_cancel">取消</string>
+    <string name="dialog_ok">确认</string>
+    <string name="title_delete_contact">删除联系人</string>
+    <string name="msg_delete_contact">删除后无法恢复</string>
+    <string name="toast_contact_deleted">删除成功</string>
+    <string name="warm_sms">关怀短信</string>
 </resources>

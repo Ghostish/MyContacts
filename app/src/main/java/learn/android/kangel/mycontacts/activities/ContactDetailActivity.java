@@ -1,6 +1,9 @@
 package learn.android.kangel.mycontacts.activities;
 
+import android.content.ContentProviderOperation;
+import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.graphics.Color;
 import android.net.Uri;
@@ -10,34 +13,39 @@ import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.v4.app.LoaderManager;
 import android.support.v4.content.CursorLoader;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.Toolbar;
 import android.text.ClipboardManager;
+import android.util.Log;
 import android.view.ContextMenu;
 import android.view.LayoutInflater;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewStub;
-import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import learn.android.kangel.mycontacts.R;
+import learn.android.kangel.mycontacts.fragments.ConfirmDialogFragment;
 
 /**
  * Created by Kangel on 2016/3/24.
  */
-public class ContactDetailActivity extends AppCompatActivity implements LoaderManager.LoaderCallbacks<Cursor>, View.OnClickListener {
-    private LinearLayout container;
+public class ContactDetailActivity extends AppCompatActivity implements LoaderManager.LoaderCallbacks<Cursor>, View.OnClickListener,ConfirmDialogFragment.onConfirmDialogButtonClickListener {
     private CollapsingToolbarLayout collapsingToolbarLayout;
+    private ConfirmDialogFragment mConfirmDialog;
     private final static int DETAILS_QUERY_ID = 0;
     private final static int NAME_QUERY_ID = 1;
     private final static int EMAIL_QUERY_ID = 2;
     private final static int PHONE_QUERY_ID = 3;
     private final static String TAG_PHONE = "PHONE";
     private final static String TAG_EMAIL = "EMAIL";
+    private String infoString;
     private static final String[] PROJECTION =
             new String[]{
                     ContactsContract.Data._ID,
@@ -58,10 +66,10 @@ public class ContactDetailActivity extends AppCompatActivity implements LoaderMa
                     ContactsContract.Data.DATA14,
                     ContactsContract.Data.DATA15*/
             };
-    private static int MIME_INDEX = 1;
-    private static int DATA1_INDEX = 2;
-    private static int DATA2_INDEX = 3;
-    private static int DATA3_INDEX = 4;
+    private static final int MIME_INDEX = 1;
+    private static final int DATA1_INDEX = 2;
+    private static final int DATA2_INDEX = 3;
+    private static final int DATA3_INDEX = 4;
 
     private static final String SORT_ORDER = ContactsContract.Data.MIMETYPE;
     private static final String SELECTION = ContactsContract.Data.LOOKUP_KEY + " = ?" + " AND " +
@@ -88,7 +96,7 @@ public class ContactDetailActivity extends AppCompatActivity implements LoaderMa
         super.onCreate(savedInstanceState);
         mLookupKey = getIntent().getStringExtra("lookUpKey");
         setContentView(R.layout.activity_contact_detail);
-        container = (LinearLayout) findViewById(R.id.container);
+        setSupportActionBar((Toolbar) findViewById(R.id.tool_bar));
         collapsingToolbarLayout = (CollapsingToolbarLayout) findViewById(R.id.collapsing_tool_bar);
         getSupportLoaderManager().initLoader(NAME_QUERY_ID, null, this);
         getSupportLoaderManager().initLoader(PHONE_QUERY_ID, null, this);
@@ -154,24 +162,16 @@ public class ContactDetailActivity extends AppCompatActivity implements LoaderMa
                     for (int i = 0; i < data.getCount(); i++) {
                         data.moveToPosition(i);
                         View v = LayoutInflater.from(this).inflate(R.layout.item_contact_info, container, false);
-                        TextView infoText = (TextView) v.findViewById(R.id.info_text);
-                        TextView hintText = (TextView) v.findViewById(R.id.hint_text);
-                        ImageView indicateIcon = (ImageView) v.findViewById(R.id.indicate_icon);
-                        ImageView action = (ImageView) v.findViewById(R.id.action_icon);
-                        action.setVisibility(View.VISIBLE);
+                        ViewHolder holder = new ViewHolder(v, TAG_PHONE);
+                        holder.actionButton.setVisibility(View.VISIBLE);
                         if (i == 0) {
-                            indicateIcon.setImageResource(R.drawable.ic_call_black_24dp);
+                            holder.indicateIcon.setImageResource(R.drawable.ic_call_black_24dp);
                         }
-                        action.setImageResource(R.drawable.ic_message_black_24dp);
-                        infoText.setText(data.getString(DATA1_INDEX));
+                        holder.actionButton.setImageResource(R.drawable.ic_message_black_24dp);
+                        holder.infoText.setText(data.getString(DATA1_INDEX));
                         int type = data.getInt(DATA2_INDEX);
                         CharSequence typeString = ContactsContract.CommonDataKinds.Phone.getTypeLabel(getResources(), type, data.getString(DATA3_INDEX));
-                        hintText.setText(typeString);
-                        v.setOnClickListener(this);
-                        action.setOnClickListener(this);
-                        action.setTag(infoText.getText()); //put number which is used to send sms in the actionButton
-                        v.setTag(TAG_PHONE);
-                        registerForContextMenu(v);
+                        holder.hintText.setText(typeString);
                         container.addView(v);
                     }
                 }
@@ -185,18 +185,14 @@ public class ContactDetailActivity extends AppCompatActivity implements LoaderMa
                     for (int i = 0; i < data.getCount(); i++) {
                         data.moveToPosition(i);
                         View v = LayoutInflater.from(this).inflate(R.layout.item_contact_info, container, false);
-                        TextView infoText = (TextView) v.findViewById(R.id.info_text);
-                        TextView hintText = (TextView) v.findViewById(R.id.hint_text);
-                        ImageView indicateIcon = (ImageView) v.findViewById(R.id.indicate_icon);
+                        ViewHolder holder = new ViewHolder(v, TAG_EMAIL);
                         if (i == 0) {
-                            indicateIcon.setImageResource(R.drawable.ic_email_black_24dp);
+                            holder.indicateIcon.setImageResource(R.drawable.ic_email_black_24dp);
                         }
-                        infoText.setText(data.getString(DATA1_INDEX));
+                        holder.infoText.setText(data.getString(DATA1_INDEX));
                         int type = data.getInt(DATA2_INDEX);
                         CharSequence typeString = ContactsContract.CommonDataKinds.Email.getTypeLabel(getResources(), type, data.getString(DATA3_INDEX));
-                        hintText.setText(typeString);
-                        v.setTag(TAG_EMAIL);
-                        registerForContextMenu(v);
+                        holder.hintText.setText(typeString);
                         container.addView(v);
                     }
                 }
@@ -215,20 +211,25 @@ public class ContactDetailActivity extends AppCompatActivity implements LoaderMa
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.info_item: {
-                String tag = (String) v.getTag();
-                switch (tag) {
+                ViewHolder holder = (ViewHolder) v.getTag();
+                switch (holder.tag) {
                     case TAG_PHONE:
-                        TextView infoText = (TextView) v.findViewById(R.id.info_text);
-                        Intent intent = new Intent(Intent.ACTION_DIAL, Uri.parse("tel:" + infoText.getText()));
+                        Intent intent = new Intent(Intent.ACTION_DIAL, Uri.parse("tel:" + holder.infoText.getText()));
                         startActivity(intent);
                         break;
                 }
                 break;
             }
             case R.id.action_icon: {
-                String number = (String) v.getTag();
-                startActivity(new Intent(Intent.ACTION_VIEW, Uri.fromParts("sms", number, null)));
+                ViewHolder holder = (ViewHolder) v.getTag();
+                startActivity(new Intent(Intent.ACTION_VIEW, Uri.fromParts("sms", holder.infoText.getText().toString(), null)));
                 break;
+            }
+            case R.id.delete_button: {
+                if (mConfirmDialog == null) {
+                    mConfirmDialog = ConfirmDialogFragment.newInstance(R.string.title_delete_contact, R.string.msg_delete_contact, R.style.mAlertDialogStyle);
+                }
+                mConfirmDialog.show(getSupportFragmentManager(),"confirm");
             }
         }
     }
@@ -237,11 +238,14 @@ public class ContactDetailActivity extends AppCompatActivity implements LoaderMa
     public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
         super.onCreateContextMenu(menu, v, menuInfo);
         MenuInflater inflater = getMenuInflater();
-        switch ((String)v.getTag()) {
+        ViewHolder holder = (ViewHolder) v.getTag();
+        switch (holder.tag) {
             case TAG_PHONE:
+                infoString = holder.infoText.getText().toString();
                 inflater.inflate(R.menu.menu_context_phone, menu);
                 break;
             case TAG_EMAIL:
+                infoString = holder.infoText.getText().toString();
                 inflater.inflate(R.menu.menu_context_email, menu);
                 break;
         }
@@ -251,13 +255,45 @@ public class ContactDetailActivity extends AppCompatActivity implements LoaderMa
     public boolean onContextItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.copy:
-                AdapterView.AdapterContextMenuInfo info = (AdapterView.AdapterContextMenuInfo) item.getMenuInfo();
-                TextView infoText = (TextView) info.targetView.findViewById(R.id.info_text);
                 ClipboardManager clipboard = (ClipboardManager) getSystemService(CLIPBOARD_SERVICE);
-                clipboard.setText(infoText.getText().toString());
+                clipboard.setText(infoString);
                 Toast.makeText(ContactDetailActivity.this, getString(R.string.copy_successfully), Toast.LENGTH_SHORT).show();
+                return true;
+            case R.id.send_email:
+                Uri mailTo = Uri.parse("mailto:" + infoString);
+                Intent intent = new Intent(Intent.ACTION_SENDTO, mailTo);
+                //Verify There is an App to Receive the Intent
+                PackageManager packageManager = getPackageManager();
+                List activities = packageManager.queryIntentActivities(intent, PackageManager.MATCH_DEFAULT_ONLY);
+                if (activities.size() > 0) {
+                    startActivity(intent);
+                } else {
+                    Toast.makeText(ContactDetailActivity.this, getString(R.string.fail_to_send_Email), Toast.LENGTH_SHORT).show();
+                }
+                return true;
+            case R.id.warm_sms:{
+                // TODO: 2016/3/26 send warm sms
+            }
+            default:
+                return super.onContextItemSelected(item);
         }
-        return true;
+    }
+
+    @Override
+    public void onNegativeButtonClick() {
+
+    }
+
+    @Override
+    public void onPositiveButtonClick() {
+        deleteThisContact();
+        Toast.makeText(getApplicationContext(),R.string.toast_contact_deleted,Toast.LENGTH_SHORT).show();
+        finish();
+    }
+
+    private void deleteThisContact() {
+        Uri uri = Uri.withAppendedPath(ContactsContract.Contacts.CONTENT_LOOKUP_URI, mLookupKey);
+        getContentResolver().delete(uri, null, null);
     }
 
     class ViewHolder {
@@ -265,11 +301,21 @@ public class ContactDetailActivity extends AppCompatActivity implements LoaderMa
         TextView hintText;
         ImageView indicateIcon;
         ImageView actionButton;
-        ViewHolder(View v){
-            TextView infoText = (TextView) v.findViewById(R.id.info_text);
-            TextView hintText = (TextView) v.findViewById(R.id.hint_text);
-            ImageView indicateIcon = (ImageView) v.findViewById(R.id.indicate_icon);
-            ImageView action = (ImageView) v.findViewById(R.id.action_icon);
+        String tag;
+
+        ViewHolder(View v, String tag) {
+            infoText = (TextView) v.findViewById(R.id.info_text);
+            hintText = (TextView) v.findViewById(R.id.hint_text);
+            indicateIcon = (ImageView) v.findViewById(R.id.indicate_icon);
+            this.tag = tag;
+            if (TAG_PHONE.equals(tag)) {
+                actionButton = (ImageView) v.findViewById(R.id.action_icon);
+                actionButton.setOnClickListener(ContactDetailActivity.this);
+                actionButton.setTag(this);
+            }
+            v.setTag(this);
+            registerForContextMenu(v);
+            v.setOnClickListener(ContactDetailActivity.this);
         }
 
     }

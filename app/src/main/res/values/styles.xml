@@ -1,3 +1,7 @@
 <resources>
+    <style name="mAlertDialogStyle" parent="Theme.AppCompat.Light.Dialog.Alert">
+        <!-- Used for the buttons -->
+        <item name="colorAccent">@color/colorPrimary</item>
 
+    </style>
 </resources>

@@ -32,7 +32,9 @@
                 android:name="android.app.searchable"
                 android:resource="@xml/searchable" />
         </activity>
-        <activity android:name="learn.android.kangel.mycontacts.activities.ContactDetailActivity" />
+        <activity
+            android:name="learn.android.kangel.mycontacts.activities.ContactDetailActivity"
+            android:parentActivityName="learn.android.kangel.mycontacts.activities.MainActivity" />
     </application>
 
 </manifest>

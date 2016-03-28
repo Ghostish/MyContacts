@@ -533,10 +533,11 @@ int dimen indicate_icon_size 0x7f09006d
 int dimen item_touch_helper_max_drag_scroll_per_frame 0x7f09006e
 int dimen item_touch_helper_swipe_escape_max_velocity 0x7f09006f
 int dimen item_touch_helper_swipe_escape_velocity 0x7f090070
-int dimen list_item_height 0x7f090071
-int dimen notification_large_icon_height 0x7f090072
-int dimen notification_large_icon_width 0x7f090073
-int dimen notification_subtext_size 0x7f090074
+int dimen list_head_show_size 0x7f090071
+int dimen list_item_height 0x7f090072
+int dimen notification_large_icon_height 0x7f090073
+int dimen notification_large_icon_width 0x7f090074
+int dimen notification_subtext_size 0x7f090075
 int drawable abc_ab_share_pack_mtrl_alpha 0x7f020000
 int drawable abc_action_bar_item_background_material 0x7f020001
 int drawable abc_btn_borderless_material 0x7f020002
@@ -856,6 +857,7 @@ int layout select_dialog_item_material 0x7f040036
 int layout select_dialog_multichoice_material 0x7f040037
 int layout select_dialog_singlechoice_material 0x7f040038
 int layout support_simple_spinner_dropdown_item 0x7f040039
+int layout view_stub_contact_header_text 0x7f04003a
 int menu menu_context_email 0x7f0e0000
 int menu menu_context_phone 0x7f0e0001
 int mipmap ic_launcher 0x7f030000

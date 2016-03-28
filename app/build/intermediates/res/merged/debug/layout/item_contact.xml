@@ -1,29 +1,41 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="72dp"
     android:background="?selectableItemBackground"
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    android:padding="8dp">
 
-        <com.alexzh.circleimageview.CircleImageView
-            android:id="@+id/head_show"
-            android:layout_width="48dp"
-            android:layout_height="48dp"
-            android:layout_centerVertical="true"
-            android:layout_marginLeft="8dp"
-            android:layout_marginRight="8dp"
-            android:scaleType="fitCenter"
-            android:src="@drawable/ic_default_head_show_white_24dp"
-            app:view_backgroundColor="@color/colorPrimary" />
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/contact_name"
-            android:layout_toEndOf="@id/head_show"
-            android:text="Kangel Zenn"
-            android:textAppearance="?android:textAppearanceMedium"
-            android:layout_centerVertical="true"/>
-    </RelativeLayout>
+    <ViewStub
+        android:id="@+id/header_view_stub"
+        android:layout_width="48dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_centerVertical="true"
+        android:layout="@layout/view_stub_contact_header_text" />
+
+    <com.alexzh.circleimageview.CircleImageView
+        android:id="@+id/head_show"
+        android:layout_width="36dp"
+        android:layout_height="36dp"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="64dp"
+        android:layout_marginRight="8dp"
+        android:layout_toEndOf="@+id/header_view_stub"
+        android:scaleType="fitCenter"
+        android:src="@drawable/ic_default_head_show_white_24dp"
+        app:view_backgroundColor="@color/colorPrimary" />
+
+    <TextView
+        android:id="@+id/contact_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_toEndOf="@id/head_show"
+        android:minEms="12"
+        android:text="Kangel Zenn"
+        android:textColor="@android:color/primary_text_light"
+        android:textAppearance="?android:textAppearanceSmall" />
+</RelativeLayout>
 
 

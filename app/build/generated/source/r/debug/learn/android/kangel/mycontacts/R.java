@@ -2421,10 +2421,11 @@ containing a value of this type.
         public static final int item_touch_helper_max_drag_scroll_per_frame=0x7f09006e;
         public static final int item_touch_helper_swipe_escape_max_velocity=0x7f09006f;
         public static final int item_touch_helper_swipe_escape_velocity=0x7f090070;
-        public static final int list_item_height=0x7f090071;
-        public static final int notification_large_icon_height=0x7f090072;
-        public static final int notification_large_icon_width=0x7f090073;
-        public static final int notification_subtext_size=0x7f090074;
+        public static final int list_head_show_size=0x7f090071;
+        public static final int list_item_height=0x7f090072;
+        public static final int notification_large_icon_height=0x7f090073;
+        public static final int notification_large_icon_width=0x7f090074;
+        public static final int notification_subtext_size=0x7f090075;
     }
     public static final class drawable {
         public static final int abc_ab_share_pack_mtrl_alpha=0x7f020000;
@@ -2752,6 +2753,7 @@ containing a value of this type.
         public static final int select_dialog_multichoice_material=0x7f040037;
         public static final int select_dialog_singlechoice_material=0x7f040038;
         public static final int support_simple_spinner_dropdown_item=0x7f040039;
+        public static final int view_stub_contact_header_text=0x7f04003a;
     }
     public static final class menu {
         public static final int menu_context_email=0x7f0e0000;

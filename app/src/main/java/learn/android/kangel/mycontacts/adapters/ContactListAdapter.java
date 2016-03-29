@@ -65,11 +65,11 @@ public class ContactListAdapter extends RecyclerView.Adapter<ContactListAdapter.
         if (holder.headerText != null) {
             holder.headerText.setText(getSectionName(position));
         }
-        int oldPosition = holder.headShow.getTag() == null ? -1 : (int) holder.headShow.getTag();
+       /* int oldPosition = holder.headShow.getTag() == null ? -1 : (int) holder.headShow.getTag();
         if (oldPosition != position) {
             holder.headShow.setImageResource(R.drawable.ic_default_head_show_white_24dp);
-        }
-        if (isIdle) {
+        }*/
+        if (true) {
             holder.headShow.setTag(position);
             mHeadShowLoader.bindImageView(holder.headShow, context, cursor.getInt(cursor.getColumnIndex(ContactsContract.Contacts._ID)));
         }

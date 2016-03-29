@@ -123,7 +123,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public void onWindowFocusChanged(boolean hasFocus) {
         super.onWindowFocusChanged(hasFocus);
         if (hasFocus && appbarHeight == 0) {
-            TabLayout tabLayout = (TabLayout) findViewById(R.id.tab);
+            /*TabLayout tabLayout = (TabLayout) findViewById(R.id.tab);
             appbarHeight += tabLayout.getHeight();
             CardView cardView = (CardView) findViewById(R.id.search_view_card);
             ViewGroup.MarginLayoutParams lp = (ViewGroup.MarginLayoutParams) cardView.getLayoutParams();
@@ -139,7 +139,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     appBarLayout.setLayoutParams(params);
                 }
             });
-            animator.start();
+            animator.start();*/
             ViewCompat.animate(fab).scaleY(1.0f).scaleX(1.0f).start();
         }
     }

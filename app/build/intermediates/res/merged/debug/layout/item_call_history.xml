@@ -22,16 +22,14 @@
             android:layout_width="match_parent"
             android:layout_height="72dp">
 
-            <com.alexzh.circleimageview.CircleImageView
+            <de.hdodenhof.circleimageview.CircleImageView
                 android:id="@+id/head_show"
                 android:layout_width="@dimen/list_head_show_size"
                 android:layout_height="@dimen/list_head_show_size"
                 android:layout_centerVertical="true"
                 android:layout_marginLeft="8dp"
                 android:layout_marginRight="8dp"
-                android:scaleType="fitCenter"
-                android:src="@drawable/ic_default_head_show_white_24dp"
-                app:view_backgroundColor="@color/colorPrimary" />
+                android:src="@drawable/default_head_show_list" />
 
             <LinearLayout
                 android:layout_width="match_parent"

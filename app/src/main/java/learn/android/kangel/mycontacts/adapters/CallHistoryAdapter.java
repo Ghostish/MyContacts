@@ -14,6 +14,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import learn.android.kangel.mycontacts.DateParseUtil;
+import learn.android.kangel.mycontacts.HeadShowLoader;
 import learn.android.kangel.mycontacts.R;
 import learn.android.kangel.mycontacts.activities.RecyclerViewActivity;
 
@@ -32,6 +33,7 @@ public class CallHistoryAdapter extends RecyclerView.Adapter<CallHistoryAdapter.
     public Cursor getCursor() {
         return cursor;
     }
+    private HeadShowLoader mHeadShowLoader = new HeadShowLoader();
 
     public void updateCursor(Cursor cursor) {
         this.cursor = cursor;
@@ -88,12 +90,12 @@ public class CallHistoryAdapter extends RecyclerView.Adapter<CallHistoryAdapter.
         if (holder.headerText != null) {
             holder.headerText.setText(DateParseUtil.getDateString(cursor.getLong(cursor.getColumnIndex(CallLog.Calls.DATE))));
         }
-        /*int photoId = cursor.getInt(cursor.getColumnIndex(CallLog.Calls.CACHED_PHOTO_ID));
-        if (photoId != 0) {
-            holder.headShow.setImageResource(photoId);
-        }else {
-            holder.headShow.setImageResource(R.drawable.ic_default_head_show_white_24dp);
-        }*/
+       /* int oldPosition = holder.headShow.getTag() == null ? -1 : (int) holder.headShow.getTag();
+        if (oldPosition != position) {
+            holder.headShow.setImageResource(R.drawable.default_head_show_list);
+        }
+        holder.headShow.setTag(position);*/
+        mHeadShowLoader.bindImageView(holder.headShow,context,cursor.getString(cursor.getColumnIndex(CallLog.Calls.NUMBER)));
     }
 
     @Override

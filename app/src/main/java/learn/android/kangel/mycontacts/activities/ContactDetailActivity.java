@@ -1,16 +1,15 @@
 package learn.android.kangel.mycontacts.activities;
 
 import android.content.ContentProviderOperation;
-import android.content.ContentUris;
-import android.content.Context;
 import android.content.Intent;
+import android.content.OperationApplicationException;
 import android.content.pm.PackageManager;
-import android.content.res.AssetFileDescriptor;
 import android.database.Cursor;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.RemoteException;
 import android.provider.ContactsContract;
 import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.v4.app.LoaderManager;
@@ -30,13 +29,12 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.alexzh.circleimageview.CircleImageView;
 
-import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
 
+import de.hdodenhof.circleimageview.CircleImageView;
 import learn.android.kangel.mycontacts.R;
 import learn.android.kangel.mycontacts.fragments.ConfirmDialogFragment;
 
@@ -97,6 +95,8 @@ public class ContactDetailActivity extends AppCompatActivity implements LoaderMa
     private String[] mSelectionArgs = {""};
 
     private String mLookupKey;
+    private LinearLayout EmailContainer;
+    private LinearLayout phoneNumContainer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -108,7 +108,9 @@ public class ContactDetailActivity extends AppCompatActivity implements LoaderMa
         collapsingToolbarLayout.setTitle("");
         CircleImageView imageView = (CircleImageView) findViewById(R.id.head_show);
         InputStream in = ContactsContract.Contacts.openContactPhotoInputStream(getContentResolver(), Uri.withAppendedPath(ContactsContract.Contacts.CONTENT_LOOKUP_URI, mLookupKey));
-        imageView.setImageBitmap(BitmapFactory.decodeStream(in));
+        if (in != null) {
+            imageView.setImageBitmap(BitmapFactory.decodeStream(in));
+        }
         getSupportLoaderManager().initLoader(NAME_QUERY_ID, null, this);
         getSupportLoaderManager().initLoader(PHONE_QUERY_ID, null, this);
         getSupportLoaderManager().initLoader(EMAIL_QUERY_ID, null, this);
@@ -167,12 +169,15 @@ public class ContactDetailActivity extends AppCompatActivity implements LoaderMa
             }
             case PHONE_QUERY_ID: {
                 if (data != null && data.getCount() > 0) {
-                    ViewStub viewStub = (ViewStub) findViewById(R.id.phone_view_stub);
-                    View panel = viewStub.inflate();
-                    LinearLayout container = (LinearLayout) panel.findViewById(R.id.container);
+                    if (phoneNumContainer == null) {
+                        ViewStub viewStub = (ViewStub) findViewById(R.id.phone_view_stub);
+                        View panel = viewStub.inflate();
+                        phoneNumContainer = (LinearLayout) panel.findViewById(R.id.container);
+                    }
+                    phoneNumContainer.removeAllViews();
                     for (int i = 0; i < data.getCount(); i++) {
                         data.moveToPosition(i);
-                        View v = LayoutInflater.from(this).inflate(R.layout.item_contact_info, container, false);
+                        View v = LayoutInflater.from(this).inflate(R.layout.item_contact_info, phoneNumContainer, false);
                         ViewHolder holder = new ViewHolder(v, TAG_PHONE);
                         holder.actionButton.setVisibility(View.VISIBLE);
                         if (i == 0) {
@@ -183,19 +188,22 @@ public class ContactDetailActivity extends AppCompatActivity implements LoaderMa
                         int type = data.getInt(DATA2_INDEX);
                         CharSequence typeString = ContactsContract.CommonDataKinds.Phone.getTypeLabel(getResources(), type, data.getString(DATA3_INDEX));
                         holder.hintText.setText(typeString);
-                        container.addView(v);
+                        phoneNumContainer.addView(v);
                     }
                 }
                 break;
             }
             case EMAIL_QUERY_ID: {
                 if (data != null && data.getCount() > 0) {
-                    ViewStub viewStub = (ViewStub) findViewById(R.id.email_view_stub);
-                    View panel = viewStub.inflate();
-                    LinearLayout container = (LinearLayout) panel.findViewById(R.id.container);
+                    if (EmailContainer == null) {
+                        ViewStub viewStub = (ViewStub) findViewById(R.id.email_view_stub);
+                        View panel = viewStub.inflate();
+                        EmailContainer = (LinearLayout) panel.findViewById(R.id.container);
+                    }
+                    EmailContainer.removeAllViews();
                     for (int i = 0; i < data.getCount(); i++) {
                         data.moveToPosition(i);
-                        View v = LayoutInflater.from(this).inflate(R.layout.item_contact_info, container, false);
+                        View v = LayoutInflater.from(this).inflate(R.layout.item_contact_info, EmailContainer, false);
                         ViewHolder holder = new ViewHolder(v, TAG_EMAIL);
                         if (i == 0) {
                             holder.indicateIcon.setImageResource(R.drawable.ic_email_black_24dp);
@@ -204,7 +212,7 @@ public class ContactDetailActivity extends AppCompatActivity implements LoaderMa
                         int type = data.getInt(DATA2_INDEX);
                         CharSequence typeString = ContactsContract.CommonDataKinds.Email.getTypeLabel(getResources(), type, data.getString(DATA3_INDEX));
                         holder.hintText.setText(typeString);
-                        container.addView(v);
+                        EmailContainer.addView(v);
                     }
                 }
                 break;
@@ -241,6 +249,25 @@ public class ContactDetailActivity extends AppCompatActivity implements LoaderMa
                     mConfirmDialog = ConfirmDialogFragment.newInstance(R.string.title_delete_contact, R.string.msg_delete_contact, R.style.mAlertDialogStyle);
                 }
                 mConfirmDialog.show(getSupportFragmentManager(), "confirm");
+                break;
+            }
+            case R.id.fab: {
+                if (true) {
+                    ArrayList<ContentProviderOperation> ops = new ArrayList<ContentProviderOperation>();
+                    ContentProviderOperation.Builder op = ContentProviderOperation.newUpdate(ContactsContract.Data.CONTENT_URI)
+                            .withSelection(ContactsContract.Data.LOOKUP_KEY + " = ? and " + ContactsContract.Data.MIMETYPE + " ='" + ContactsContract.CommonDataKinds.Phone.CONTENT_ITEM_TYPE + "'", mSelectionArgs)
+                            .withValue(ContactsContract.CommonDataKinds.Phone.NUMBER, "122222");
+                    op.withYieldAllowed(true);
+                    ops.add(op.build());
+                    try {
+                        getContentResolver().applyBatch(ContactsContract.AUTHORITY, ops);
+                        finish();
+                    } catch (RemoteException | OperationApplicationException e) {
+                        e.printStackTrace();
+                        Log.e("error", "applyerror");
+                    }
+                }
+                break;
             }
         }
     }

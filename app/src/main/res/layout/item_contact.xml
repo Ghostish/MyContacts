@@ -14,7 +14,7 @@
         android:layout_centerVertical="true"
         android:layout="@layout/view_stub_contact_header_text" />
 
-    <ImageView
+    <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/head_show"
         android:layout_width="@dimen/list_head_show_size"
         android:layout_height="@dimen/list_head_show_size"

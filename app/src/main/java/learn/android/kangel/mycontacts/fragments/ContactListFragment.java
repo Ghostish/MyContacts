@@ -14,6 +14,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import java.security.cert.TrustAnchor;
+
 import learn.android.kangel.mycontacts.MyRecyclerView;
 import learn.android.kangel.mycontacts.R;
 import learn.android.kangel.mycontacts.adapters.CallHistoryAdapter;
@@ -31,7 +33,6 @@ public class ContactListFragment extends Fragment implements LoaderManager.Loade
                     ContactsContract.Contacts.LOOKUP_KEY,
                     ContactsContract.Contacts.DISPLAY_NAME_PRIMARY,
                     ContactsContract.Contacts.SORT_KEY_PRIMARY
-
             };
 
     @Nullable
@@ -43,6 +44,14 @@ public class ContactListFragment extends Fragment implements LoaderManager.Loade
         recyclerView.setHasFixedSize(true);
         mAdapter = new ContactListAdapter(getActivity(), null);
         recyclerView.setAdapter(mAdapter);
+        recyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
+            @Override
+            public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
+                super.onScrollStateChanged(recyclerView, newState);
+                mAdapter.isIdle = newState == RecyclerView.SCROLL_STATE_IDLE|| newState == RecyclerView.SCROLL_STATE_DRAGGING;
+                mAdapter.notifyDataSetChanged();
+            }
+        });
         getLoaderManager().initLoader(QUERY_CONTACT, null, this);
         return v;
     }

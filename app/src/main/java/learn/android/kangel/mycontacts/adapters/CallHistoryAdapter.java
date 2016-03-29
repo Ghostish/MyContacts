@@ -84,10 +84,16 @@ public class CallHistoryAdapter extends RecyclerView.Adapter<CallHistoryAdapter.
                 break;
         }
         holder.numOrName.setText(cursor.getString(cursor.getColumnIndex(CallLog.Calls.CACHED_NAME)) == null ? cursor.getString(cursor.getColumnIndex(CallLog.Calls.NUMBER)) : cursor.getString(cursor.getColumnIndex(CallLog.Calls.CACHED_NAME)));
-        holder.callInfo.setText(String.format(infoString, DateParseUtil.getTimeString(cursor.getLong(cursor.getColumnIndex(CallLog.Calls.DATE))), "locationHere"));
+        holder.callInfo.setText(String.format(infoString, DateParseUtil.getTimeString(cursor.getLong(cursor.getColumnIndex(CallLog.Calls.DATE))), cursor.getString(cursor.getColumnIndex(CallLog.Calls.GEOCODED_LOCATION))));
         if (holder.headerText != null) {
             holder.headerText.setText(DateParseUtil.getDateString(cursor.getLong(cursor.getColumnIndex(CallLog.Calls.DATE))));
         }
+        /*int photoId = cursor.getInt(cursor.getColumnIndex(CallLog.Calls.CACHED_PHOTO_ID));
+        if (photoId != 0) {
+            holder.headShow.setImageResource(photoId);
+        }else {
+            holder.headShow.setImageResource(R.drawable.ic_default_head_show_white_24dp);
+        }*/
     }
 
     @Override

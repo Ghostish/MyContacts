@@ -1,10 +1,13 @@
 package learn.android.kangel.mycontacts.activities;
 
 import android.content.ContentProviderOperation;
+import android.content.ContentUris;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.content.res.AssetFileDescriptor;
 import android.database.Cursor;
+import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
@@ -27,6 +30,10 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.alexzh.circleimageview.CircleImageView;
+
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -36,7 +43,7 @@ import learn.android.kangel.mycontacts.fragments.ConfirmDialogFragment;
 /**
  * Created by Kangel on 2016/3/24.
  */
-public class ContactDetailActivity extends AppCompatActivity implements LoaderManager.LoaderCallbacks<Cursor>, View.OnClickListener,ConfirmDialogFragment.onConfirmDialogButtonClickListener {
+public class ContactDetailActivity extends AppCompatActivity implements LoaderManager.LoaderCallbacks<Cursor>, View.OnClickListener, ConfirmDialogFragment.onConfirmDialogButtonClickListener {
     private CollapsingToolbarLayout collapsingToolbarLayout;
     private ConfirmDialogFragment mConfirmDialog;
     private final static int DETAILS_QUERY_ID = 0;
@@ -98,6 +105,10 @@ public class ContactDetailActivity extends AppCompatActivity implements LoaderMa
         setContentView(R.layout.activity_contact_detail);
         setSupportActionBar((Toolbar) findViewById(R.id.tool_bar));
         collapsingToolbarLayout = (CollapsingToolbarLayout) findViewById(R.id.collapsing_tool_bar);
+        collapsingToolbarLayout.setTitle("");
+        CircleImageView imageView = (CircleImageView) findViewById(R.id.head_show);
+        InputStream in = ContactsContract.Contacts.openContactPhotoInputStream(getContentResolver(), Uri.withAppendedPath(ContactsContract.Contacts.CONTENT_LOOKUP_URI, mLookupKey));
+        imageView.setImageBitmap(BitmapFactory.decodeStream(in));
         getSupportLoaderManager().initLoader(NAME_QUERY_ID, null, this);
         getSupportLoaderManager().initLoader(PHONE_QUERY_ID, null, this);
         getSupportLoaderManager().initLoader(EMAIL_QUERY_ID, null, this);
@@ -229,7 +240,7 @@ public class ContactDetailActivity extends AppCompatActivity implements LoaderMa
                 if (mConfirmDialog == null) {
                     mConfirmDialog = ConfirmDialogFragment.newInstance(R.string.title_delete_contact, R.string.msg_delete_contact, R.style.mAlertDialogStyle);
                 }
-                mConfirmDialog.show(getSupportFragmentManager(),"confirm");
+                mConfirmDialog.show(getSupportFragmentManager(), "confirm");
             }
         }
     }
@@ -271,7 +282,7 @@ public class ContactDetailActivity extends AppCompatActivity implements LoaderMa
                     Toast.makeText(ContactDetailActivity.this, getString(R.string.fail_to_send_Email), Toast.LENGTH_SHORT).show();
                 }
                 return true;
-            case R.id.warm_sms:{
+            case R.id.warm_sms: {
                 // TODO: 2016/3/26 send warm sms
             }
             default:
@@ -287,7 +298,7 @@ public class ContactDetailActivity extends AppCompatActivity implements LoaderMa
     @Override
     public void onPositiveButtonClick() {
         deleteThisContact();
-        Toast.makeText(getApplicationContext(),R.string.toast_contact_deleted,Toast.LENGTH_SHORT).show();
+        Toast.makeText(getApplicationContext(), R.string.toast_contact_deleted, Toast.LENGTH_SHORT).show();
         finish();
     }
 

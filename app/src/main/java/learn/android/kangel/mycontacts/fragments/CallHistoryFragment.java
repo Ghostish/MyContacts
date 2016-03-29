@@ -30,7 +30,8 @@ public class CallHistoryFragment extends Fragment implements LoaderManager.Loade
                     CallLog.Calls.CACHED_NAME,
                     CallLog.Calls.NUMBER,
                     CallLog.Calls.TYPE,
-                    CallLog.Calls.DATE
+                    CallLog.Calls.DATE,
+                    CallLog.Calls.GEOCODED_LOCATION
             };
 
     @Nullable

@@ -170,8 +170,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             }
             case ContactListAdapter.TAG: {
                 String lookUpkey = data.getString("lookUpKey");
+                int contactId = data.getInt("contactId");
                 Intent intent = new Intent(MainActivity.this, ContactDetailActivity.class);
                 intent.putExtra("lookUpKey", lookUpkey);
+                intent.putExtra("contactId", contactId);
                 startActivity(intent);
                 break;
             }

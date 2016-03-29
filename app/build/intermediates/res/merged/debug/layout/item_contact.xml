@@ -14,17 +14,18 @@
         android:layout_centerVertical="true"
         android:layout="@layout/view_stub_contact_header_text" />
 
-    <com.alexzh.circleimageview.CircleImageView
+    <ImageView
         android:id="@+id/head_show"
-        android:layout_width="36dp"
-        android:layout_height="36dp"
+        android:layout_width="@dimen/list_head_show_size"
+        android:layout_height="@dimen/list_head_show_size"
         android:layout_centerVertical="true"
         android:layout_marginLeft="64dp"
         android:layout_marginRight="8dp"
         android:layout_toEndOf="@+id/header_view_stub"
-        android:scaleType="fitCenter"
+        android:scaleType="centerCrop"
+        android:background="@drawable/circle_background"
         android:src="@drawable/ic_default_head_show_white_24dp"
-        app:view_backgroundColor="@color/colorPrimary" />
+         />
 
     <TextView
         android:id="@+id/contact_name"

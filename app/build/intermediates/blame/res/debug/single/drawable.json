@@ -48,6 +48,10 @@
         "source": "G:\\CD\\android_project\\MyContacts\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.2.1\\res\\drawable\\abc_list_selector_holo_light.xml"
     },
     {
+        "merged": "G:\\CD\\android_project\\MyContacts\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\circle_background.xml",
+        "source": "G:\\CD\\android_project\\MyContacts\\app\\src\\main\\res\\drawable\\circle_background.xml"
+    },
+    {
         "merged": "G:\\CD\\android_project\\MyContacts\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\toolbar_shadow.xml",
         "source": "G:\\CD\\android_project\\MyContacts\\app\\src\\main\\res\\drawable\\toolbar_shadow.xml"
     },

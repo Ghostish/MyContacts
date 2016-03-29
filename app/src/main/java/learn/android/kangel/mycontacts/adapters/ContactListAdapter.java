@@ -14,9 +14,11 @@ import android.view.ViewStub;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.alexzh.circleimageview.CircleImageView;
 import com.github.promeg.pinyinhelper.Pinyin;
 import com.simplecityapps.recyclerview_fastscroll.views.FastScrollRecyclerView;
 
+import learn.android.kangel.mycontacts.HeadShowLoader;
 import learn.android.kangel.mycontacts.R;
 import learn.android.kangel.mycontacts.activities.RecyclerViewActivity;
 
@@ -28,6 +30,8 @@ public class ContactListAdapter extends RecyclerView.Adapter<ContactListAdapter.
     private Context context;
     public static final String TAG = "Contact_List_ADAPTER";
     private static final int TYPE_HEADER = 11, TYPE_NORMAL = 12;
+    private final HeadShowLoader mHeadShowLoader = new HeadShowLoader();
+    public boolean isIdle = true;
 
     public ContactListAdapter(Context context, Cursor cursor) {
         this.cursor = cursor;
@@ -60,6 +64,14 @@ public class ContactListAdapter extends RecyclerView.Adapter<ContactListAdapter.
         holder.nameText.setText(cursor.getString(cursor.getColumnIndex(ContactsContract.Contacts.DISPLAY_NAME_PRIMARY)));
         if (holder.headerText != null) {
             holder.headerText.setText(getSectionName(position));
+        }
+        int oldPosition = holder.headShow.getTag() == null ? -1 : (int) holder.headShow.getTag();
+        if (oldPosition != position) {
+            holder.headShow.setImageResource(R.drawable.ic_default_head_show_white_24dp);
+        }
+        if (isIdle) {
+            holder.headShow.setTag(position);
+            mHeadShowLoader.bindImageView(holder.headShow, context, cursor.getInt(cursor.getColumnIndex(ContactsContract.Contacts._ID)));
         }
     }
 
@@ -103,9 +115,11 @@ public class ContactListAdapter extends RecyclerView.Adapter<ContactListAdapter.
             cursor.moveToPosition(getAdapterPosition());
             if (context instanceof RecyclerViewActivity) {
                 Bundle data = new Bundle();
+                data.putInt("contactId",cursor.getInt(cursor.getColumnIndex(ContactsContract.Contacts._ID)));
                 data.putString("lookUpKey", cursor.getString(cursor.getColumnIndex(ContactsContract.Contacts.LOOKUP_KEY)));
                 ((RecyclerViewActivity) context).onRecyclerViewItemClick(getAdapterPosition(), TAG, data);
             }
         }
     }
+
 }

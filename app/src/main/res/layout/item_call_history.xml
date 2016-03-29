@@ -24,8 +24,8 @@
 
             <com.alexzh.circleimageview.CircleImageView
                 android:id="@+id/head_show"
-                android:layout_width="48dp"
-                android:layout_height="48dp"
+                android:layout_width="@dimen/list_head_show_size"
+                android:layout_height="@dimen/list_head_show_size"
                 android:layout_centerVertical="true"
                 android:layout_marginLeft="8dp"
                 android:layout_marginRight="8dp"

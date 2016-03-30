@@ -103,9 +103,12 @@ public class ContactDetailActivity extends AppCompatActivity implements LoaderMa
         super.onCreate(savedInstanceState);
         mLookupKey = getIntent().getStringExtra("lookUpKey");
         setContentView(R.layout.activity_contact_detail);
-        setSupportActionBar((Toolbar) findViewById(R.id.tool_bar));
+        Toolbar toolbar = (Toolbar) findViewById(R.id.tool_bar);
+        toolbar.setTitle("");
+        setSupportActionBar(toolbar);
         collapsingToolbarLayout = (CollapsingToolbarLayout) findViewById(R.id.collapsing_tool_bar);
-        collapsingToolbarLayout.setTitle("");
+        collapsingToolbarLayout.setExpandedTitleColor(Color.WHITE);
+        collapsingToolbarLayout.setCollapsedTitleTextColor(Color.WHITE);
         CircleImageView imageView = (CircleImageView) findViewById(R.id.head_show);
         InputStream in = ContactsContract.Contacts.openContactPhotoInputStream(getContentResolver(), Uri.withAppendedPath(ContactsContract.Contacts.CONTENT_LOOKUP_URI, mLookupKey));
         if (in != null) {
@@ -161,8 +164,6 @@ public class ContactDetailActivity extends AppCompatActivity implements LoaderMa
             case NAME_QUERY_ID: {
                 if (data != null && data.moveToNext()) {
                     collapsingToolbarLayout.setTitleEnabled(true);
-                    collapsingToolbarLayout.setExpandedTitleColor(Color.WHITE);
-                    collapsingToolbarLayout.setCollapsedTitleTextColor(Color.WHITE);
                     collapsingToolbarLayout.setTitle(data.getString(DATA1_INDEX));
                 }
                 break;

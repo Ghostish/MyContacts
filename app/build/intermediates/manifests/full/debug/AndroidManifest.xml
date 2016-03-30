@@ -35,6 +35,9 @@
         <activity
             android:name="learn.android.kangel.mycontacts.activities.ContactDetailActivity"
             android:parentActivityName="learn.android.kangel.mycontacts.activities.MainActivity" />
+        <activity
+            android:name="learn.android.kangel.mycontacts.activities.EditContactActivity"
+            android:parentActivityName="learn.android.kangel.mycontacts.activities.MainActivity" />
     </application>
 
 </manifest>

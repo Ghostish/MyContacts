@@ -4,10 +4,10 @@
     <item android:drawable="@android:color/white" />
     <item
         android:drawable="?attr/colorPrimary"
-        android:height="180dp"
+        android:height="?attr/actionBarSize"
         android:gravity="top"/>
     <item
         android:drawable="@drawable/toolbar_shadow"
-        android:top="180dp"
-        android:height="3dp" />
+        android:height="3dp"
+        android:top="?attr/actionBarSize" />
 </layer-list>

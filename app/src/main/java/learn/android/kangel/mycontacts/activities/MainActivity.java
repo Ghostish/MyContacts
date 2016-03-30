@@ -42,7 +42,6 @@ import learn.android.kangel.mycontacts.fragments.ContactListFragment;
 import learn.android.kangel.mycontacts.fragments.SearchFragment;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener, RecyclerViewActivity {
-    private SearchView searchView;
     private final static int REQUEST_CALL_LOG_CONTACTS = 110;
     private CallHistoryFragment callHistoryFragment;
     private ContactListFragment contactListFragment;
@@ -110,12 +109,24 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 if (mSearchFragment == null) {
                     mSearchFragment = new SearchFragment();
                 }
-                ft.add(R.id.coordinator, mSearchFragment, "search");
-                ft.addToBackStack(null);
-                ft.commit();
+                if (!mSearchFragment.isVisible()) {
+                    ft.add(R.id.coordinator, mSearchFragment, "search");
+                    ft.addToBackStack(null);
+                    ft.commit();
+                    if (fab.isShown()) {
+                        fab.hide();
+                    }
+                }
                 break;
             case R.id.fab:
+                Intent intent = new Intent(MainActivity.this, EditContactActivity.class);
+                startActivity(intent);
                 break;
+            case R.id.exit_button:{
+                if (mSearchFragment.isVisible()) {
+                    getSupportFragmentManager().popBackStack();
+                }
+            }
         }
     }
 
@@ -146,16 +157,26 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     private void initView(Bundle savedInstanceState) {
 
-        TabLayout tabLayout = (TabLayout) findViewById(R.id.tab);
+        final TabLayout tabLayout = (TabLayout) findViewById(R.id.tab);
         tabLayout.addTab(tabLayout.newTab().setIcon(R.drawable.ic_history_white_24dp));
         tabLayout.addTab(tabLayout.newTab().setIcon(R.drawable.ic_account_box_white_24dp));
         tabLayout.setBackgroundColor(ContextCompat.getColor(this, R.color.colorPrimary));
         tabLayout.setSelectedTabIndicatorColor(Color.WHITE);
         pager = (ViewPager) findViewById(R.id.pager);
         tabLayout.setOnTabSelectedListener(new TabLayout.ViewPagerOnTabSelectedListener(pager));
-        pager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
-        searchView = (SearchView) findViewById(R.id.search_view);
         fab = (FloatingActionButton) findViewById(R.id.fab);
+        pager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
+        getSupportFragmentManager().addOnBackStackChangedListener(new FragmentManager.OnBackStackChangedListener() {
+            @Override
+            public void onBackStackChanged() {
+                if (mSearchFragment != null && mSearchFragment.isVisible()) {
+                    fab.hide();
+                }else {
+                    fab.show();
+                }
+            }
+        });
+
     }
 
 
@@ -201,4 +222,5 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             return 2;
         }
     }
+
 }

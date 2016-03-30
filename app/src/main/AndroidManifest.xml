@@ -28,7 +28,9 @@
         <activity
             android:name=".activities.ContactDetailActivity"
             android:parentActivityName=".activities.MainActivity" />
-
+        <activity
+            android:name=".activities.EditContactActivity"
+            android:parentActivityName=".activities.MainActivity" />
     </application>
 
 </manifest>

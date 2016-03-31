@@ -83,14 +83,33 @@ public class HeadShowLoader {
     }
 
     public void bindImageView(final ImageView imageView, final Context context, final String number) {
-        String[] projection = new String[]{ContactsContract.Contacts._ID};
-        Uri contactUri = Uri.withAppendedPath(ContactsContract.Contacts.CONTENT_FILTER_URI,
-                Uri.encode(number));
-        Cursor c = context.getContentResolver().query(contactUri, projection,
+        String[] projection = new String[]{ContactsContract.CommonDataKinds.Phone.CONTACT_ID, ContactsContract.CommonDataKinds.Phone.NUMBER};
+        Uri mUri = Uri.withAppendedPath(ContactsContract.CommonDataKinds.Phone.CONTENT_FILTER_URI, Uri.encode(number));
+        Cursor c = context.getContentResolver().query(mUri, projection,
                 null, null, null);
-        if (c != null && c.moveToFirst()) {
-            long contactId = c.getLong(c.getColumnIndex(ContactsContract.Contacts._ID));
-            bindImageView(imageView, context, contactId);
+        try {
+            if (c != null && c.moveToFirst()) {
+                long contactId = c.getLong(0);
+                String retrievedNumber = c.getString(1);
+                /**
+                 *compare the two numbers to see if they are really matched
+                 */
+                StringBuilder sb = new StringBuilder();
+                for (int i = 0; i < retrievedNumber.length(); i++) {
+                    char ch = retrievedNumber.charAt(i);
+                    if (Character.isDigit(ch)) {
+                        sb.append(ch);
+                    }
+                }
+                if (sb.toString().equals(number)) {
+                    bindImageView(imageView, context, contactId);
+                    return;
+                }
+            }
+        } finally {
+            c.close();
         }
+        imageView.setImageResource(R.drawable.default_head_show_list);
+
     }
 }

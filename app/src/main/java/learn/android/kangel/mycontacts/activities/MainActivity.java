@@ -30,6 +30,7 @@ import android.support.v7.widget.SearchView;
 import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Toast;
 
 import java.util.ArrayList;
@@ -122,11 +123,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 Intent intent = new Intent(MainActivity.this, EditContactActivity.class);
                 startActivity(intent);
                 break;
-            case R.id.exit_button:{
-                if (mSearchFragment.isVisible()) {
-                    getSupportFragmentManager().popBackStack();
-                }
-            }
         }
     }
 
@@ -173,6 +169,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     fab.hide();
                 }else {
                     fab.show();
+                    InputMethodManager imm = (InputMethodManager)MainActivity.this.getSystemService(Context.INPUT_METHOD_SERVICE);
+                    imm.hideSoftInputFromWindow(getWindow().getDecorView().getWindowToken(), 0);
                 }
             }
         });

@@ -78,6 +78,10 @@ public class SearchResultAdapter extends BaseAdapter {
         return convertView;
     }
 
+    public Cursor getCursor() {
+        return cursor;
+    }
+
     class ViewHolder {
         ImageView headShow;
         TextView nameText;

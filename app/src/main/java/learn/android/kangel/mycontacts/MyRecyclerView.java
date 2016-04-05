@@ -18,6 +18,7 @@ public class MyRecyclerView extends FastScrollRecyclerView {
 
     public interface EndlessScrollingAdapter {
         void onLoadMore();
+        boolean canLoadMore();
     }
 
     public void setLoadingView(View loadingView) {
@@ -42,9 +43,9 @@ public class MyRecyclerView extends FastScrollRecyclerView {
     @Override
     public void onScrolled(int dx, int dy) {
         super.onScrolled(dx, dy);
-        if (!ViewCompat.canScrollVertically(this, 1)) {
+        if (!ViewCompat.canScrollVertically(this, 1)&&ViewCompat.canScrollVertically(this, -1)) {
             final Adapter adapter = getAdapter();
-            if (adapter instanceof EndlessScrollingAdapter && !isLoading) {
+            if (adapter instanceof EndlessScrollingAdapter && !isLoading && ((EndlessScrollingAdapter) adapter).canLoadMore()) {
                 loadingView.setVisibility(VISIBLE);
                 isLoading = true;
                 new Handler().postDelayed(new Runnable() {
@@ -54,7 +55,7 @@ public class MyRecyclerView extends FastScrollRecyclerView {
                         loadingView.setVisibility(GONE);
                         isLoading = false;
                     }
-                }, 3000);
+                }, 1000);
             }
         }
     }

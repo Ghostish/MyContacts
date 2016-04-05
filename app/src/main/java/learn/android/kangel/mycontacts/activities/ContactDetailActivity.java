@@ -253,7 +253,7 @@ public class ContactDetailActivity extends AppCompatActivity implements LoaderMa
                 break;
             }
             case R.id.fab: {
-                if (true) {
+                if (false) {
                     ArrayList<ContentProviderOperation> ops = new ArrayList<ContentProviderOperation>();
                     ContentProviderOperation.Builder op = ContentProviderOperation.newUpdate(ContactsContract.Data.CONTENT_URI)
                             .withSelection(ContactsContract.Data.LOOKUP_KEY + " = ? and " + ContactsContract.Data.MIMETYPE + " ='" + ContactsContract.CommonDataKinds.Phone.CONTENT_ITEM_TYPE + "'", mSelectionArgs)

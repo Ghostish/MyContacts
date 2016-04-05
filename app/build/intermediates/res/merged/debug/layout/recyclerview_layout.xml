@@ -23,14 +23,21 @@
 
         </learn.android.kangel.mycontacts.MyRecyclerView>
 
+        <ProgressBar
+            android:layout_weight="1"
+            android:id="@+id/progress_view"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:visibility="gone"
+            android:indeterminate="true" />
 
     </LinearLayout>
 
     <RelativeLayout
         android:id="@+id/empty_view"
-        android:visibility="gone"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:visibility="gone">
 
         <ImageView
             android:id="@+id/empty_image"

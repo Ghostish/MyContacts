@@ -308,6 +308,7 @@
     <string name="empty_desc">您没有任何%1$S</string>
     <string name="fail_to_send_Email">无邮件应用，发送失败</string>
     <string name="msg_delete_contact">删除后无法恢复</string>
+    <string name="name">姓名</string>
     <string name="permission_deny">无法获得通讯录和通话记录权限</string>
     <string name="search_hint">输入姓名或电话</string>
     <string name="send_email">发送邮件</string>

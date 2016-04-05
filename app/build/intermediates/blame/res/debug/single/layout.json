@@ -44,6 +44,14 @@
         "source": "G:\\CD\\android_project\\MyContacts\\app\\src\\main\\res\\layout\\item_contact_info.xml"
     },
     {
+        "merged": "G:\\CD\\android_project\\MyContacts\\app\\build\\intermediates\\res\\merged\\debug\\layout\\item_name_editor.xml",
+        "source": "G:\\CD\\android_project\\MyContacts\\app\\src\\main\\res\\layout\\item_name_editor.xml"
+    },
+    {
+        "merged": "G:\\CD\\android_project\\MyContacts\\app\\build\\intermediates\\res\\merged\\debug\\layout\\activity_edit_contact.xml",
+        "source": "G:\\CD\\android_project\\MyContacts\\app\\src\\main\\res\\layout\\activity_edit_contact.xml"
+    },
+    {
         "merged": "G:\\CD\\android_project\\MyContacts\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_activity_chooser_view.xml",
         "source": "G:\\CD\\android_project\\MyContacts\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.2.1\\res\\layout\\abc_activity_chooser_view.xml"
     },

@@ -18,4 +18,5 @@
     <string name="msg_delete_contact">删除后无法恢复</string>
     <string name="toast_contact_deleted">删除成功</string>
     <string name="warm_sms">关怀短信</string>
+    <string name="name">姓名</string>
 </resources>

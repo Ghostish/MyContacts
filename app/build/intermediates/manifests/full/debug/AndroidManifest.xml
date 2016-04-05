@@ -20,7 +20,8 @@
         android:theme="@style/AppTheme" >
         <activity
             android:name="learn.android.kangel.mycontacts.activities.MainActivity"
-            android:launchMode="singleTop" >
+            android:launchMode="singleTop"
+            android:theme="@style/AppTheme.Splash" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <action android:name="android.intent.action.SEARCH" />

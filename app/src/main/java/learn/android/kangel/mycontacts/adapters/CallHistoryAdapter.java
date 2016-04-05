@@ -15,13 +15,14 @@ import android.widget.TextView;
 
 import learn.android.kangel.mycontacts.DateParseUtil;
 import learn.android.kangel.mycontacts.HeadShowLoader;
+import learn.android.kangel.mycontacts.MyRecyclerView;
 import learn.android.kangel.mycontacts.R;
 import learn.android.kangel.mycontacts.activities.RecyclerViewActivity;
 
 /**
  * Created by Kangel on 2016/3/17.
  */
-public class CallHistoryAdapter extends RecyclerView.Adapter<CallHistoryAdapter.ViewHolder> {
+public class CallHistoryAdapter extends RecyclerView.Adapter<CallHistoryAdapter.ViewHolder> implements MyRecyclerView.EndlessScrollingAdapter {
     private Cursor cursor;
 
     private Context context;
@@ -29,10 +30,13 @@ public class CallHistoryAdapter extends RecyclerView.Adapter<CallHistoryAdapter.
     public final static String TAG_DIAL = "DIAL_NUMBER";
     private final static int TYPE_HEADER = 110;
     private final static int TYPE_ITEM = 111;
+    private int showCount = 10;
+    private final static int increment = 20;
 
     public Cursor getCursor() {
         return cursor;
     }
+
     private HeadShowLoader mHeadShowLoader = new HeadShowLoader();
 
     public void updateCursor(Cursor cursor) {
@@ -95,12 +99,24 @@ public class CallHistoryAdapter extends RecyclerView.Adapter<CallHistoryAdapter.
             holder.headShow.setImageResource(R.drawable.default_head_show_list);
         }
         holder.headShow.setTag(position);*/
-        mHeadShowLoader.bindImageView(holder.headShow,context,cursor.getString(cursor.getColumnIndex(CallLog.Calls.NUMBER)));
+        mHeadShowLoader.bindImageView(holder.headShow, context, cursor.getString(cursor.getColumnIndex(CallLog.Calls.NUMBER)));
     }
 
     @Override
     public int getItemCount() {
-        return cursor != null ? cursor.getCount() : 0;
+        return cursor != null ? cursor.getCount() >= showCount ? showCount : cursor.getCount() : 0;
+    }
+
+    @Override
+    public void onLoadMore() {
+        int oldShowCount = showCount;
+        showCount = showCount + increment > cursor.getCount() ? cursor.getCount() : showCount + increment;
+        notifyItemRangeChanged(oldShowCount, showCount - oldShowCount);
+    }
+
+    @Override
+    public boolean canLoadMore() {
+        return cursor.getCount() > showCount;
     }
 
 

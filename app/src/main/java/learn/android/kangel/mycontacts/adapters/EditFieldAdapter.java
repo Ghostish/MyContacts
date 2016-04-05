@@ -1,7 +1,11 @@
 package learn.android.kangel.mycontacts.adapters;
 
 import android.content.Context;
+import android.support.v4.hardware.fingerprint.FingerprintManagerCompatApi23;
 import android.support.v7.widget.RecyclerView;
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.util.Size;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,15 +22,33 @@ import learn.android.kangel.mycontacts.R;
  */
 public class EditFieldAdapter extends RecyclerView.Adapter<EditFieldAdapter.ViewHolder> {
     private Context context;
-    private final static int defaultSize = 3;
+    private int defaultSize = 3;
+    public final static int TYPE_NAME_FIELD = 23, TYPE_OTHER_FILED = 33;
+
     public EditFieldAdapter(Context context) {
         this.context = context;
     }
 
     @Override
+    public int getItemViewType(int position) {
+        if (position == 0) {
+            return TYPE_NAME_FIELD;
+        } else {
+            return TYPE_OTHER_FILED;
+        }
+    }
 
+    @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        return new ViewHolder(LayoutInflater.from(context).inflate(R.layout.item_edit_file, parent, false));
+        View v;
+        if (viewType == TYPE_NAME_FIELD) {
+            v = LayoutInflater.from(context).inflate(R.layout.item_name_editor, parent, false);
+            v.setTag(TYPE_NAME_FIELD);
+        } else {
+            v = LayoutInflater.from(context).inflate(R.layout.item_edit_file, parent, false);
+            v.setTag(TYPE_OTHER_FILED);
+        }
+        return new ViewHolder(v);
     }
 
     @Override
@@ -38,7 +60,7 @@ public class EditFieldAdapter extends RecyclerView.Adapter<EditFieldAdapter.View
 
     @Override
     public int getItemCount() {
-        return 5;
+        return defaultSize;
     }
 
     class ViewHolder extends RecyclerView.ViewHolder {
@@ -49,10 +71,39 @@ public class EditFieldAdapter extends RecyclerView.Adapter<EditFieldAdapter.View
 
         public ViewHolder(View itemView) {
             super(itemView);
-            indicateIcon = (ImageView) itemView.findViewById(R.id.indicate_icon);
-            typeSpinner = (Spinner) itemView.findViewById(R.id.type_spinner);
-            inputField = (EditText) itemView.findViewById(R.id.input_field);
-            deleteButton = (ImageButton) itemView.findViewById(R.id.delete_button);
+            Integer type = (Integer) itemView.getTag();
+            if (type == TYPE_OTHER_FILED) {
+                indicateIcon = (ImageView) itemView.findViewById(R.id.indicate_icon);
+                typeSpinner = (Spinner) itemView.findViewById(R.id.type_spinner);
+                inputField = (EditText) itemView.findViewById(R.id.input_field);
+                deleteButton = (ImageButton) itemView.findViewById(R.id.delete_button);
+            }
+            if (type == TYPE_NAME_FIELD) {
+                typeSpinner = (Spinner) itemView.findViewById(R.id.type_spinner);
+                inputField = (EditText) itemView.findViewById(R.id.name_field);
+            }
+            inputField.addTextChangedListener(new TextWatcher() {
+                @Override
+                public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+                }
+
+                @Override
+                public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+                }
+
+                @Override
+                public void afterTextChanged(Editable s) {
+                    if (!s.toString().isEmpty()) {
+                        defaultSize++;
+                        notifyItemInserted(getAdapterPosition() + 1);
+                    } else {
+                        defaultSize--;
+                        notifyItemRemoved(getAdapterPosition() + 1);
+                    }
+                }
+            });
         }
     }
 }

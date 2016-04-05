@@ -54,9 +54,10 @@ public class CallHistoryFragment extends Fragment implements LoaderManager.Loade
         sections[2] = new SimpleSectionedRecyclerViewAdapter.Section(getFirstOlderPosition(), "更早");
         sectionedRecyclerViewAdapter.setSections(sections);
         recyclerView.setAdapter(sectionedRecyclerViewAdapter);*/
-        mAdapter = new CallHistoryAdapter(getActivity(),null);
+        mAdapter = new CallHistoryAdapter(getActivity(), null);
         recyclerView.setAdapter(mAdapter);
         recyclerView.setEmptyView(v.findViewById(R.id.empty_view));
+        recyclerView.setLoadingView(v.findViewById(R.id.progress_view));
         getLoaderManager().initLoader(QUERY_CALL_HISTORY, null, this);
         return v;
     }

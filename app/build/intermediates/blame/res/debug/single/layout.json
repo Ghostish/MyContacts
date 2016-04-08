@@ -196,6 +196,10 @@
         "source": "G:\\CD\\android_project\\MyContacts\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.2.1\\res\\layout\\abc_select_dialog_material.xml"
     },
     {
+        "merged": "G:\\CD\\android_project\\MyContacts\\app\\build\\intermediates\\res\\merged\\debug\\layout\\custom_contact_editor_view_group.xml",
+        "source": "G:\\CD\\android_project\\MyContacts\\app\\src\\main\\res\\layout\\custom_contact_editor_view_group.xml"
+    },
+    {
         "merged": "G:\\CD\\android_project\\MyContacts\\app\\build\\intermediates\\res\\merged\\debug\\layout\\activity_main.xml",
         "source": "G:\\CD\\android_project\\MyContacts\\app\\src\\main\\res\\layout\\activity_main.xml"
     },

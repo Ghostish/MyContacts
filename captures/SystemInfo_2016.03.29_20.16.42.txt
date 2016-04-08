@@ -1,0 +1,298 @@
+Activity Resolver Table:
+  Full MIME Types:
+      vnd.android.cursor.dir/raw_contact:
+        284389c com.android.contacts/.activities.MultiPickContactActivity (3 filters)
+        508616e com.android.contacts/.activities.CompactContactEditorActivity
+        b55300f com.android.contacts/.activities.ContactEditorActivity
+      vnd.android.cursor.item/person:
+        33d2a5 com.android.contacts/.activities.ContactSelectionActivity (2 filters)
+        dd267a com.android.contacts/.quickcontact.QuickContactActivity (2 filters)
+        508616e com.android.contacts/.activities.CompactContactEditorActivity
+        b55300f com.android.contacts/.activities.ContactEditorActivity
+      vnd.android.cursor.dir/postal-address:
+        33d2a5 com.android.contacts/.activities.ContactSelectionActivity
+      vnd.android.cursor.dir/calls:
+        81500cc com.android.contacts/.NonPhoneActivity
+      vnd.android.cursor.dir/phone:
+        33d2a5 com.android.contacts/.activities.ContactSelectionActivity
+      vnd.android.cursor.item/postal-address:
+        33d2a5 com.android.contacts/.activities.ContactSelectionActivity
+      vnd.android.cursor.item/postal-address_v2:
+        33d2a5 com.android.contacts/.activities.ContactSelectionActivity
+      vnd.android.cursor.dir/email_v2:
+        33d2a5 com.android.contacts/.activities.ContactSelectionActivity
+      vnd.android.cursor.dir/person:
+        33d2a5 com.android.contacts/.activities.ContactSelectionActivity
+        284389c com.android.contacts/.activities.MultiPickContactActivity (3 filters)
+        28969da com.android.contacts/.activities.PeopleActivity
+        508616e com.android.contacts/.activities.CompactContactEditorActivity
+        b55300f com.android.contacts/.activities.ContactEditorActivity
+      vnd.android.cursor.item/contact:
+        33d2a5 com.android.contacts/.activities.ContactSelectionActivity (2 filters)
+        dd267a com.android.contacts/.quickcontact.QuickContactActivity (2 filters)
+        508616e com.android.contacts/.activities.CompactContactEditorActivity
+        b55300f com.android.contacts/.activities.ContactEditorActivity
+      vnd.android.cursor.dir/postal-address_v2:
+        33d2a5 com.android.contacts/.activities.ContactSelectionActivity
+      text/x-vcard:
+        215c271 com.android.contacts/.common.vcard.NfcImportVCardActivity
+        a341818 com.android.contacts/.common.vcard.ImportVCardActivity
+      text/directory:
+        a341818 com.android.contacts/.common.vcard.ImportVCardActivity
+      vnd.android.cursor.item/phone_v2:
+        33d2a5 com.android.contacts/.activities.ContactSelectionActivity
+      text/vcard:
+        215c271 com.android.contacts/.common.vcard.NfcImportVCardActivity
+        a341818 com.android.contacts/.common.vcard.ImportVCardActivity
+      vnd.android.cursor.item/phone:
+        33d2a5 com.android.contacts/.activities.ContactSelectionActivity
+      vnd.android.cursor.dir/contact:
+        33d2a5 com.android.contacts/.activities.ContactSelectionActivity
+        284389c com.android.contacts/.activities.MultiPickContactActivity (3 filters)
+        28969da com.android.contacts/.activities.PeopleActivity (2 filters)
+        508616e com.android.contacts/.activities.CompactContactEditorActivity
+        b55300f com.android.contacts/.activities.ContactEditorActivity
+      vnd.android.cursor.item/raw_contact:
+        33d2a5 com.android.contacts/.activities.ContactSelectionActivity
+        dd267a com.android.contacts/.quickcontact.QuickContactActivity
+        508616e com.android.contacts/.activities.CompactContactEditorActivity
+        b55300f com.android.contacts/.activities.ContactEditorActivity
+      vnd.android.cursor.dir/phone_v2:
+        33d2a5 com.android.contacts/.activities.ContactSelectionActivity
+      image/*:
+        d94ea9 com.android.contacts/.activities.AttachPhotoActivity
+
+  Base MIME Types:
+      vnd.android.cursor.dir:
+        33d2a5 com.android.contacts/.activities.ContactSelectionActivity (7 filters)
+        284389c com.android.contacts/.activities.MultiPickContactActivity (9 filters)
+        28969da com.android.contacts/.activities.PeopleActivity (3 filters)
+        508616e com.android.contacts/.activities.CompactContactEditorActivity (3 filters)
+        81500cc com.android.contacts/.NonPhoneActivity
+        b55300f com.android.contacts/.activities.ContactEditorActivity (3 filters)
+      vnd.android.cursor.item:
+        33d2a5 com.android.contacts/.activities.ContactSelectionActivity (9 filters)
+        dd267a com.android.contacts/.quickcontact.QuickContactActivity (5 filters)
+        508616e com.android.contacts/.activities.CompactContactEditorActivity (3 filters)
+        b55300f com.android.contacts/.activities.ContactEditorActivity (3 filters)
+      text:
+        215c271 com.android.contacts/.common.vcard.NfcImportVCardActivity (2 filters)
+        a341818 com.android.contacts/.common.vcard.ImportVCardActivity (3 filters)
+
+  Wild MIME Types:
+      image:
+        d94ea9 com.android.contacts/.activities.AttachPhotoActivity
+
+  Schemes:
+      mailto:
+        f4508ea com.android.contacts/.activities.ShowOrCreateActivity
+      tel:
+        81500cc com.android.contacts/.NonPhoneActivity
+        f4508ea com.android.contacts/.activities.ShowOrCreateActivity
+
+  Non-Data Actions:
+      com.android.contacts.action.LIST_CONTACTS_WITH_PHONES:
+        28969da com.android.contacts/.activities.PeopleActivity
+      com.android.contacts.action.MULTI_PICK_CALL:
+        284389c com.android.contacts/.activities.MultiPickContactActivity
+      com.android.contacts.action.LIST_STREQUENT:
+        28969da com.android.contacts/.activities.PeopleActivity
+      com.android.contacts.action.QUICK_CONTACT:
+        dd267a com.android.contacts/.quickcontact.QuickContactActivity
+      android.intent.action.MAIN:
+        28969da com.android.contacts/.activities.PeopleActivity
+        81500cc com.android.contacts/.NonPhoneActivity
+      android.intent.action.VIEW:
+        620e5ba com.android.contacts/.common.dialog.CallSubjectDialog
+      com.android.contacts.action.LIST_ALL_CONTACTS:
+        28969da com.android.contacts/.activities.PeopleActivity
+      android.provider.action.QUICK_CONTACT:
+        dd267a com.android.contacts/.quickcontact.QuickContactActivity
+      com.android.contacts.action.LIST_DEFAULT:
+        28969da com.android.contacts/.activities.PeopleActivity
+      com.android.contacts.action.MULTI_PICK_SIM:
+        284389c com.android.contacts/.activities.MultiPickContactActivity
+      com.android.contacts.action.LIST_STARRED:
+        28969da com.android.contacts/.activities.PeopleActivity
+      com.android.contacts.action.LIST_FREQUENT:
+        28969da com.android.contacts/.activities.PeopleActivity
+      com.android.contacts.action.JOIN_CONTACT:
+        33d2a5 com.android.contacts/.activities.ContactSelectionActivity
+      com.android.contacts.action.LIST_CONTACTS:
+        28969da com.android.contacts/.activities.PeopleActivity
+      android.intent.action.CREATE_SHORTCUT:
+        3653ec com.android.contacts/.ContactShortcut
+        93bd3b5 com.android.contacts/alias.DialShortcut
+        bf87a4a com.android.contacts/alias.MessageShortcut
+      android.intent.action.SEARCH:
+        28969da com.android.contacts/.activities.PeopleActivity
+
+  MIME Typed Actions:
+      com.android.contacts.action.QUICK_CONTACT:
+        dd267a com.android.contacts/.quickcontact.QuickContactActivity
+      android.intent.action.EDIT:
+        508616e com.android.contacts/.activities.CompactContactEditorActivity
+      android.intent.action.PICK:
+        33d2a5 com.android.contacts/.activities.ContactSelectionActivity
+      android.intent.action.VIEW:
+        dd267a com.android.contacts/.quickcontact.QuickContactActivity
+        28969da com.android.contacts/.activities.PeopleActivity
+        81500cc com.android.contacts/.NonPhoneActivity
+        a341818 com.android.contacts/.common.vcard.ImportVCardActivity
+      android.provider.action.QUICK_CONTACT:
+        dd267a com.android.contacts/.quickcontact.QuickContactActivity
+      android.intent.action.GET_CONTENT:
+        33d2a5 com.android.contacts/.activities.ContactSelectionActivity
+      com.android.contacts.action.MULTI_PICK:
+        284389c com.android.contacts/.activities.MultiPickContactActivity
+      com.android.contacts.action.FULL_INSERT:
+        b55300f com.android.contacts/.activities.ContactEditorActivity
+      android.intent.action.INSERT_OR_EDIT:
+        33d2a5 com.android.contacts/.activities.ContactSelectionActivity
+      com.android.contacts.action.FULL_EDIT:
+        b55300f com.android.contacts/.activities.ContactEditorActivity
+      android.intent.action.DELETE:
+        284389c com.android.contacts/.activities.MultiPickContactActivity
+      android.intent.action.INSERT:
+        508616e com.android.contacts/.activities.CompactContactEditorActivity
+      android.nfc.action.NDEF_DISCOVERED:
+        215c271 com.android.contacts/.common.vcard.NfcImportVCardActivity
+      com.android.contacts.action.MULTI_PICK_EMAIL:
+        284389c com.android.contacts/.activities.MultiPickContactActivity
+      android.intent.action.ATTACH_DATA:
+        d94ea9 com.android.contacts/.activities.AttachPhotoActivity
+      android.intent.action.SEARCH:
+        28969da com.android.contacts/.activities.PeopleActivity
+
+Service Resolver Table:
+  Full MIME Types:
+      vnd.android.cursor.item/contact:
+        ef55a24 com.android.contacts/.ViewNotificationService
+
+  Base MIME Types:
+      vnd.android.cursor.item:
+        ef55a24 com.android.contacts/.ViewNotificationService
+
+  MIME Typed Actions:
+      com.android.contacts.VIEW_NOTIFICATION:
+        ef55a24 com.android.contacts/.ViewNotificationService
+
+Registered ContentProviders:
+  com.android.contacts/android.support.v4.content.FileProvider:
+    Provider{14493ab com.android.contacts/android.support.v4.content.FileProvider}
+
+ContentProvider Authorities:
+  [com.android.contacts.files]:
+    Provider{14493ab com.android.contacts/android.support.v4.content.FileProvider}
+      applicationInfo=ApplicationInfo{9dff62 com.android.contacts}
+
+Key Set Manager:
+  [com.android.contacts]
+      Signing KeySets: 3
+
+Packages:
+  Package [com.android.contacts] (f05f41b):
+    userId=10003
+    sharedUser=SharedUserSetting{3f84a51 android.uid.shared/10003}
+    pkg=Package{30282b6 com.android.contacts}
+    codePath=/system/priv-app/Contacts
+    resourcePath=/system/priv-app/Contacts
+    legacyNativeLibraryDir=/system/priv-app/Contacts/lib
+    primaryCpuAbi=null
+    secondaryCpuAbi=null
+    versionCode=23 targetSdk=23
+    versionName=6.0.1
+    splits=[base]
+    applicationInfo=ApplicationInfo{9dff62 com.android.contacts}
+    flags=[ SYSTEM HAS_CODE ALLOW_CLEAR_USER_DATA ALLOW_BACKUP ]
+    privateFlags=[ PRIVILEGED ]
+    dataDir=/data/user/0/com.android.contacts
+    supportsScreens=[small, medium, large, xlarge, resizeable, anyDensity]
+    timeStamp=2009-01-01 07:00:00
+    firstInstallTime=2009-01-01 07:00:00
+    lastUpdateTime=2009-01-01 07:00:00
+    signatures=PackageSignatures{aa94bb7 [407f32b]}
+    installPermissionsFixed=true installStatus=1
+    pkgFlags=[ SYSTEM HAS_CODE ALLOW_CLEAR_USER_DATA ALLOW_BACKUP ]
+    requested permissions:
+      android.permission.CALL_PHONE
+      android.permission.READ_CONTACTS
+      android.permission.WRITE_CONTACTS
+      android.permission.MANAGE_ACCOUNTS
+      android.permission.GET_ACCOUNTS
+      android.permission.ACCESS_FINE_LOCATION
+      android.permission.ACCESS_COARSE_LOCATION
+      android.permission.READ_PROFILE
+      android.permission.WRITE_PROFILE
+      android.permission.INTERNET
+      android.permission.NFC
+      android.permission.READ_PHONE_STATE
+      android.permission.WAKE_LOCK
+      android.permission.WRITE_SETTINGS
+      android.permission.USE_CREDENTIALS
+      android.permission.VIBRATE
+      android.permission.READ_SYNC_SETTINGS
+      android.permission.READ_EXTERNAL_STORAGE
+      com.android.launcher.permission.INSTALL_SHORTCUT
+      android.permission.READ_CALL_LOG
+      android.permission.READ_SMS
+      android.permission.READ_CALENDAR
+      com.android.voicemail.permission.READ_VOICEMAIL
+      android.permission.READ_PHONE_BLACKLIST
+      android.permission.CHANGE_PHONE_BLACKLIST
+    install permissions:
+      android.permission.WRITE_SETTINGS: granted=true
+      android.permission.USE_CREDENTIALS: granted=true
+      android.permission.MANAGE_ACCOUNTS: granted=true
+      android.permission.NFC: granted=true
+      android.permission.PROCESS_PHONE_ACCOUNT_REGISTRATION: granted=true
+      android.permission.READ_PROFILE: granted=true
+      com.android.voicemail.permission.READ_VOICEMAIL: granted=true
+      android.permission.INTERNET: granted=true
+      android.permission.WRITE_PROFILE: granted=true
+      android.permission.MANAGE_USERS: granted=true
+      android.permission.INTERACT_ACROSS_USERS: granted=true
+      android.permission.BIND_DIRECTORY_SEARCH: granted=true
+      android.permission.READ_SYNC_SETTINGS: granted=true
+      android.permission.VIBRATE: granted=true
+      android.permission.SEND_CALL_LOG_CHANGE: granted=true
+      android.permission.READ_PHONE_BLACKLIST: granted=true
+      android.permission.CHANGE_PHONE_BLACKLIST: granted=true
+      com.android.launcher.permission.INSTALL_SHORTCUT: granted=true
+      android.permission.WAKE_LOCK: granted=true
+      android.permission.UPDATE_APP_OPS_STATS: granted=true
+    User 0:  installed=true hidden=false stopped=false notLaunched=false enabled=0
+
+Shared users:
+  SharedUser [android.uid.shared] (3f84a51):
+    userId=10003
+    install permissions:
+      android.permission.WRITE_SETTINGS: granted=true
+      android.permission.USE_CREDENTIALS: granted=true
+      android.permission.MANAGE_ACCOUNTS: granted=true
+      android.permission.NFC: granted=true
+      android.permission.PROCESS_PHONE_ACCOUNT_REGISTRATION: granted=true
+      android.permission.READ_PROFILE: granted=true
+      com.android.voicemail.permission.READ_VOICEMAIL: granted=true
+      android.permission.INTERNET: granted=true
+      android.permission.WRITE_PROFILE: granted=true
+      android.permission.MANAGE_USERS: granted=true
+      android.permission.INTERACT_ACROSS_USERS: granted=true
+      android.permission.BIND_DIRECTORY_SEARCH: granted=true
+      android.permission.READ_SYNC_SETTINGS: granted=true
+      android.permission.VIBRATE: granted=true
+      android.permission.SEND_CALL_LOG_CHANGE: granted=true
+      android.permission.READ_PHONE_BLACKLIST: granted=true
+      android.permission.CHANGE_PHONE_BLACKLIST: granted=true
+      com.android.launcher.permission.INSTALL_SHORTCUT: granted=true
+      android.permission.WAKE_LOCK: granted=true
+      android.permission.UPDATE_APP_OPS_STATS: granted=true
+    User 0: 
+      gids=[3003]
+      runtime permissions:
+        android.permission.READ_CALL_LOG: granted=true, flags=[ GRANTED_BY_DEFAULT ]
+        android.permission.READ_PHONE_STATE: granted=true, flags=[ GRANTED_BY_DEFAULT ]
+        android.permission.CALL_PHONE: granted=true, flags=[ GRANTED_BY_DEFAULT ]
+        android.permission.WRITE_CONTACTS: granted=true, flags=[ GRANTED_BY_DEFAULT ]
+        android.permission.GET_ACCOUNTS: granted=true, flags=[ GRANTED_BY_DEFAULT ]
+        android.permission.READ_CONTACTS: granted=true, flags=[ GRANTED_BY_DEFAULT ]

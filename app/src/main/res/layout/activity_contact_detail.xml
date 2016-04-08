@@ -28,7 +28,7 @@
                 app:layout_collapseMode="parallax"
                 app:layout_collapseParallaxMultiplier="0.9" />
 
-            <de.hdodenhof.circleimageview.CircleImageView
+            <com.alexzh.circleimageview.CircleImageView
                 android:id="@+id/head_show"
                 android:layout_width="72dp"
                 android:layout_height="72dp"
@@ -39,8 +39,9 @@
                 android:onClick="onClick"
                 android:scaleType="centerCrop"
                 android:src="@drawable/default_head_show_detail"
-                app:civ_border_color="#FF000000"
-                app:civ_border_width="2dp"
+                app:view_shadowDx="1dp"
+                app:view_shadowDy="1dp"
+                app:view_shadowRadius="2dp"
                 app:layout_collapseMode="parallax" />
 
             <android.support.v7.widget.Toolbar

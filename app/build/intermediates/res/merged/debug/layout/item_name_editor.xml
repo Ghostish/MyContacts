@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+
+    <ImageView
+        android:id="@+id/head_show"
+        android:layout_width="72dp"
+        android:layout_height="72dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginRight="8dp"
+        android:background="@android:color/darker_gray"
+        android:src="@drawable/ic_default_head_show_white_24dp" />
+
+    <EditText
+        android:id="@+id/name_field"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_toEndOf="@id/head_show"
+        android:hint="@string/name" />
+
+    <Spinner
+        android:id="@+id/type_spinner"
+        style="@style/Widget.AppCompat.Spinner.Underlined"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/name_field"
+        android:layout_toEndOf="@+id/head_show"
+        android:spinnerMode="dropdown" />
+</RelativeLayout>

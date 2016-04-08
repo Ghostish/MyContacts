@@ -1,0 +1,887 @@
+TASK com.tencent.pb id=2623
+  ACTIVITY com.tencent.pb/.contact.controller.ContactEditActivity 6648d2a pid=6807
+    Local FragmentActivity 906b158 State:
+      mCreated=truemResumed=true mStopped=false mReallyStopped=false
+      mLoadersStarted=true
+    FragmentManager misc state:
+      mActivity=com.tencent.pb.contact.controller.ContactEditActivity@906b158
+      mContainer=android.support.v4.app.FragmentActivity$2@c09547a
+      mCurState=5 mStateSaved=false mDestroyed=false
+    View Hierarchy:
+      com.android.internal.policy.PhoneWindow$DecorView{812542b V.ED.... ... 0,0-720,1184}
+        android.widget.LinearLayout{9b52088 V.E..... ... 0,0-720,1184}
+          android.view.ViewStub{3387a21 G.E..... ... 0,0-0,0 #10203b4 android:id/action_mode_bar_stub}
+          android.widget.FrameLayout{ac83e46 V.E..... ... 0,48-720,1184 #1020002 android:id/content}
+            com.tencent.pb.common.view.KeyboardListenRelativeLayout{a600807 VFE..... F.. 0,0-720,1136 #7f090156 app:id/contact_edit}
+              android.widget.ScrollView{9bfbd34 VFED.V.. ... 0,96-720,1136 #7f090157 app:id/scroll_view}
+                android.widget.LinearLayout{c81975d V.E..... ... 0,0-720,1751}
+                  android.widget.RelativeLayout{e39f8d2 V.E..... ... 40,32-680,314}
+                    com.tencent.pb.contact.view.PhotoImageView{ceb1da3 V.ED..C. ... 0,0-124,124 #7f090158 app:id/contact_photo_image}
+                    android.widget.LinearLayout{23578a0 V.E..... ... 149,0-640,282}
+                      android.widget.LinearLayout{cbb0c92 G.E...C. ... 0,0-0,0 #7f090159 app:id/contact_edit_merge_name_layout}
+                        android.widget.TextView{7454c59 V.ED.... ... 0,0-0,0 #7f09015a app:id/contact_edit_merge_name_text}
+                        android.widget.ImageView{b9ad01e V.ED.... ... 0,0-0,0}
+                      android.widget.EditText{84fa21d VFED..CL ... 0,0-491,94 #7f090137 app:id/contact_edit_name}
+                      android.widget.EditText{4650663 VFED..CL ... 0,94-491,188 #7f09015b app:id/contact_edit_company}
+                      android.widget.EditText{a881260 VFED..CL ... 0,188-491,282 #7f09015c app:id/contact_edit_job}
+                  com.tencent.pb.contact.view.ContactEditListView{187f0ff V.E..... ... 0,326-720,1719 #7f09015d app:id/contact_edit_list_view}
+                    com.tencent.pb.contact.view.ContactEditContentListView{6897ecc V.E..... ... 0,18-720,394}
+                      com.tencent.pb.contact.view.NewContactEditContentItem{af55515 V.E..... ... 40,0-680,94}
+                        android.widget.RelativeLayout{d9fd02a V.E..... ... 0,0-160,94}
+                          android.widget.TextView{8cbf48c V.ED..C. ... 0,0-160,94 #7f090139 app:id/contact_edit_content_item_label_text}
+                          android.widget.ImageView{8f49e1b V.ED.... ... 135,76-160,95 #7f09015f app:id/contact_edit_content_item_label_mask}
+                          android.view.View{c35bbb8 G.ED.... ... 0,0-0,0 #7f090160 app:id/contact_edit_content_item_left_vertical_divider}
+                        android.widget.LinearLayout{a632d91 V.E..... ... 160,0-640,94 #7f090161 app:id/contact_edit_content_item_main}
+                          android.widget.FrameLayout{342c4f6 V.E..... ... 0,0-480,94}
+                            android.widget.EditText{3a1f7d5 VFED..CL ... 0,0-400,94 #7f09013a app:id/contact_edit_content_item_edit_text}
+                            android.widget.ImageView{7b500f7 V.ED..C. ... 419,0-480,94 #7f090162 app:id/contact_edit_content_item_right_image_view}
+                            android.widget.ImageView{466db64 G.ED.... ... 0,0-0,0 #7f090163 app:id/contact_edit_content_item_right_image_view_arr}
+                      com.tencent.pb.contact.view.NewContactEditContentItem{9fc11cd V.E..... ... 40,94-680,188}
+                        android.widget.RelativeLayout{f4e3a82 V.E..... ... 0,0-160,94}
+                          android.widget.TextView{d89cd78 V.ED..C. ... 0,0-160,94 #7f090139 app:id/contact_edit_content_item_label_text}
+                          android.widget.ImageView{caeb593 V.ED.... ... 135,76-160,95 #7f09015f app:id/contact_edit_content_item_label_mask}
+                          android.view.View{46849d0 G.ED.... ... 0,0-0,0 #7f090160 app:id/contact_edit_content_item_left_vertical_divider}
+                        android.widget.LinearLayout{dc4fdc9 V.E..... ... 160,0-640,94 #7f090161 app:id/contact_edit_content_item_main}
+                          android.widget.FrameLayout{4a97cce V.E..... ... 0,0-480,94}
+                            android.widget.EditText{3173c51 VFED..CL ... 0,0-400,94 #7f09013a app:id/contact_edit_content_item_edit_text}
+                            android.widget.ImageView{58517ef V.ED..C. ... 419,0-480,94 #7f090162 app:id/contact_edit_content_item_right_image_view}
+                            android.widget.ImageView{8d032fc G.ED.... ... 0,0-0,0 #7f090163 app:id/contact_edit_content_item_right_image_view_arr}
+                      com.tencent.pb.contact.view.NewContactEditContentItem{b16ad85 V.E..... ... 40,188-680,282}
+                        android.widget.RelativeLayout{b6497da V.E..... ... 0,0-160,94}
+                          android.widget.TextView{a4a4924 V.ED..C. ... 0,0-160,94 #7f090139 app:id/contact_edit_content_item_label_text}
+                          android.widget.ImageView{cb5440b V.ED.... ... 135,76-160,95 #7f09015f app:id/contact_edit_content_item_label_mask}
+                          android.view.View{f6b82e8 G.ED.... ... 0,0-0,0 #7f090160 app:id/contact_edit_content_item_left_vertical_divider}
+                        android.widget.LinearLayout{a199d01 V.E..... ... 160,0-640,94 #7f090161 app:id/contact_edit_content_item_main}
+                          android.widget.FrameLayout{a8457a6 V.E..... ... 0,0-480,94}
+                            android.widget.EditText{9c24c8d VFED..CL ... 0,0-400,94 #7f09013a app:id/contact_edit_content_item_edit_text}
+                            android.widget.ImageView{d7215e7 V.ED..C. ... 419,0-480,94 #7f090162 app:id/contact_edit_content_item_right_image_view}
+                            android.widget.ImageView{3e9e594 G.ED.... ... 0,0-0,0 #7f090163 app:id/contact_edit_content_item_right_image_view_arr}
+                      com.tencent.pb.contact.view.NewContactEditContentItem{302083d V.E..... ... 40,282-680,376}
+                        android.widget.RelativeLayout{28e4832 V.E..... ... 0,0-160,94}
+                          android.widget.TextView{e74d390 V.ED..C. ... 0,0-160,94 #7f090139 app:id/contact_edit_content_item_label_text}
+                          android.widget.ImageView{9402983 V.ED.... ... 135,76-160,95 #7f09015f app:id/contact_edit_content_item_label_mask}
+                          android.view.View{b49c700 G.ED.... ... 0,0-0,0 #7f090160 app:id/contact_edit_content_item_left_vertical_divider}
+                        android.widget.LinearLayout{30beb39 V.E..... ... 160,0-640,94 #7f090161 app:id/contact_edit_content_item_main}
+                          android.widget.FrameLayout{4d4b57e V.E..... ... 0,0-480,94}
+                            android.widget.EditText{1942489 VFED..CL ... 0,0-400,94 #7f09013a app:id/contact_edit_content_item_edit_text}
+                            android.widget.ImageView{b51dadf G.ED..C. ... 0,0-0,0 #7f090162 app:id/contact_edit_content_item_right_image_view}
+                            android.widget.ImageView{a04532c G.ED.... ... 0,0-0,0 #7f090163 app:id/contact_edit_content_item_right_image_view_arr}
+                    com.tencent.pb.contact.view.ContactEditContentListView{53701f5 V.E..... ... 0,424-720,518}
+                      com.tencent.pb.contact.view.NewContactEditContentItem{382ab8a V.E..... ... 40,0-680,94}
+                        android.widget.RelativeLayout{5a345fb V.E..... ... 0,0-160,94}
+                          android.widget.TextView{67b98bc V.ED..C. ... 0,0-160,94 #7f090139 app:id/contact_edit_content_item_label_text}
+                          android.widget.ImageView{f97618 V.ED.... ... 135,76-160,95 #7f09015f app:id/contact_edit_content_item_label_mask}
+                          android.view.View{ac2c871 G.ED.... ... 0,0-0,0 #7f090160 app:id/contact_edit_content_item_left_vertical_divider}
+                        android.widget.LinearLayout{667f656 V.E..... ... 160,0-640,94 #7f090161 app:id/contact_edit_content_item_main}
+                          android.widget.FrameLayout{3d646d7 V.E..... ... 0,0-480,94}
+                            android.widget.EditText{8918045 VFED..CL ... 0,0-400,94 #7f09013a app:id/contact_edit_content_item_edit_text}
+                            android.widget.ImageView{d1bdbc4 G.ED..C. ... 0,0-0,0 #7f090162 app:id/contact_edit_content_item_right_image_view}
+                            android.widget.ImageView{f6a7aad G.ED.... ... 0,0-0,0 #7f090163 app:id/contact_edit_content_item_right_image_view_arr}
+                    com.tencent.pb.contact.view.ContactEditContentListView{8521e2 V.E..... ... 0,548-720,642}
+                      com.tencent.pb.contact.view.NewContactEditContentItem{fce7973 V.E..... ... 40,0-680,94}
+                        android.widget.RelativeLayout{5dcf030 V.E..... ... 0,0-160,94}
+                          android.widget.TextView{1c784a8 V.ED.... ... 0,0-160,94 #7f090139 app:id/contact_edit_content_item_label_text}
+                          android.widget.ImageView{56114a9 G.ED.... ... 0,0-0,0 #7f09015f app:id/contact_edit_content_item_label_mask}
+                          android.view.View{2577a2e V.ED.... ... 159,19-160,75 #7f090160 app:id/contact_edit_content_item_left_vertical_divider}
+                        android.widget.LinearLayout{40d39cf V.E..... ... 160,0-640,94 #7f090161 app:id/contact_edit_content_item_main}
+                          android.widget.FrameLayout{658df5c V.E..... ... 0,0-480,94}
+                            android.widget.EditText{e4edbc1 V.ED..CL ... 0,0-400,94 #7f09013a app:id/contact_edit_content_item_edit_text}
+                            android.widget.ImageView{50d5265 G.ED.... ... 0,0-0,0 #7f090162 app:id/contact_edit_content_item_right_image_view}
+                            android.widget.ImageView{4e50b3a V.ED.... ... 458,76-483,95 #7f090163 app:id/contact_edit_content_item_right_image_view_arr}
+                    com.tencent.pb.contact.view.ContactEditContentListView{7cda3eb V.E..... ... 0,672-720,766}
+                      com.tencent.pb.contact.view.NewContactEditContentItem{d429548 V.E..... ... 40,0-680,94}
+                        android.widget.RelativeLayout{c85afe1 V.E..... ... 0,0-160,94}
+                          android.widget.TextView{b644354 V.ED.... ... 0,0-160,94 #7f090139 app:id/contact_edit_content_item_label_text}
+                          android.widget.ImageView{988a106 G.ED.... ... 0,0-0,0 #7f09015f app:id/contact_edit_content_item_label_mask}
+                          android.view.View{e093c7 V.ED.... ... 159,19-160,75 #7f090160 app:id/contact_edit_content_item_left_vertical_divider}
+                        android.widget.LinearLayout{f8fbdf4 V.E..... ... 160,0-640,94 #7f090161 app:id/contact_edit_content_item_main}
+                          android.widget.FrameLayout{acc691d V.E..... ... 0,0-480,94}
+                            android.widget.EditText{d2c72fd V.ED..CL ... 0,0-400,94 #7f09013a app:id/contact_edit_content_item_edit_text}
+                            android.widget.ImageView{a7dc792 G.ED.... ... 0,0-0,0 #7f090162 app:id/contact_edit_content_item_right_image_view}
+                            android.widget.ImageView{748a563 V.ED.... ... 458,76-483,95 #7f090163 app:id/contact_edit_content_item_right_image_view_arr}
+                    com.tencent.pb.contact.view.ContactEditContentListView{9e4c560 V.E..... ... 0,796-720,890}
+                      com.tencent.pb.contact.view.NewContactEditContentItem{2cb7a19 V.E..... ... 40,0-680,94}
+                        android.widget.RelativeLayout{82ccade V.E..... ... 0,0-160,94}
+                          android.widget.TextView{16c40c0 V.ED.... ... 0,0-160,94 #7f090139 app:id/contact_edit_content_item_label_text}
+                          android.widget.ImageView{69634bf G.ED.... ... 0,0-0,0 #7f09015f app:id/contact_edit_content_item_label_mask}
+                          android.view.View{cc0d78c V.ED.... ... 159,19-160,75 #7f090160 app:id/contact_edit_content_item_left_vertical_divider}
+                        android.widget.LinearLayout{2109ed5 V.E..... ... 160,0-640,94 #7f090161 app:id/contact_edit_content_item_main}
+                          android.widget.FrameLayout{f36b6ea V.E..... ... 0,0-480,94}
+                            android.widget.EditText{b5241f9 V.ED..CL ... 0,0-400,94 #7f09013a app:id/contact_edit_content_item_edit_text}
+                            android.widget.ImageView{9035ddb G.ED.... ... 0,0-0,0 #7f090162 app:id/contact_edit_content_item_right_image_view}
+                            android.widget.ImageView{f69e078 V.ED.... ... 458,76-483,95 #7f090163 app:id/contact_edit_content_item_right_image_view_arr}
+                    com.tencent.pb.contact.view.ContactEditContentListView{7495351 V.E..... ... 0,920-720,1014}
+                      com.tencent.pb.contact.view.NewContactEditContentItem{34157b6 V.E..... ... 40,0-680,94}
+                        android.widget.RelativeLayout{84ffcb7 V.E..... ... 0,0-160,94}
+                          android.widget.TextView{734a8ec V.ED..C. ... 0,0-160,94 #7f090139 app:id/contact_edit_content_item_label_text}
+                          android.widget.ImageView{5988c24 V.ED.... ... 135,76-160,95 #7f09015f app:id/contact_edit_content_item_label_mask}
+                          android.view.View{47ed38d G.ED.... ... 0,0-0,0 #7f090160 app:id/contact_edit_content_item_left_vertical_divider}
+                        android.widget.LinearLayout{a833942 V.E..... ... 160,0-640,94 #7f090161 app:id/contact_edit_content_item_main}
+                          android.widget.FrameLayout{5dad53 V.E..... ... 0,0-480,94}
+                            android.widget.EditText{f6c04b5 VFED..CL ... 0,0-400,94 #7f09013a app:id/contact_edit_content_item_edit_text}
+                            android.widget.ImageView{3e44690 G.ED..C. ... 0,0-0,0 #7f090162 app:id/contact_edit_content_item_right_image_view}
+                            android.widget.ImageView{9121b89 G.ED.... ... 0,0-0,0 #7f090163 app:id/contact_edit_content_item_right_image_view_arr}
+                    com.tencent.pb.contact.view.ContactEditContentListView{60fa78e V.E..... ... 0,1044-720,1138}
+                      com.tencent.pb.contact.view.NewContactEditContentItem{f8bcbaf V.E..... ... 40,0-680,94}
+                        android.widget.RelativeLayout{eef3bbc V.E..... ... 0,0-160,94}
+                          android.widget.TextView{e3967d8 V.ED..C. ... 0,0-160,94 #7f090139 app:id/contact_edit_content_item_label_text}
+                          android.widget.ImageView{f77e745 V.ED.... ... 135,76-160,95 #7f09015f app:id/contact_edit_content_item_label_mask}
+                          android.view.View{2e2ae9a G.ED.... ... 0,0-0,0 #7f090160 app:id/contact_edit_content_item_left_vertical_divider}
+                        android.widget.LinearLayout{d373cb V.E..... ... 160,0-640,94 #7f090161 app:id/contact_edit_content_item_main}
+                          android.widget.FrameLayout{15257a8 V.E..... ... 0,0-480,94}
+                            android.widget.EditText{5253731 VFED..CL ... 0,0-400,94 #7f09013a app:id/contact_edit_content_item_edit_text}
+                            android.widget.ImageView{ab4b2c1 G.ED..C. ... 0,0-0,0 #7f090162 app:id/contact_edit_content_item_right_image_view}
+                            android.widget.ImageView{fad1a66 G.ED.... ... 0,0-0,0 #7f090163 app:id/contact_edit_content_item_right_image_view_arr}
+                    com.tencent.pb.contact.view.ContactEditContentListView{ba381a7 V.E..... ... 0,1168-720,1262}
+                      com.tencent.pb.contact.view.NewContactEditContentItem{4494654 V.E..... ... 40,0-680,94}
+                        android.widget.RelativeLayout{f98b9fd V.E..... ... 0,0-160,94}
+                          android.widget.TextView{1c92984 V.ED.... ... 0,0-160,94 #7f090139 app:id/contact_edit_content_item_label_text}
+                          android.widget.ImageView{36076f2 G.ED.... ... 0,0-0,0 #7f09015f app:id/contact_edit_content_item_label_mask}
+                          android.view.View{57c9143 V.ED.... ... 159,19-160,75 #7f090160 app:id/contact_edit_content_item_left_vertical_divider}
+                        android.widget.LinearLayout{71e73c0 V.E..... ... 160,0-640,94 #7f090161 app:id/contact_edit_content_item_main}
+                          android.widget.FrameLayout{5bbf8f9 V.E..... ... 0,0-480,94}
+                            android.widget.EditText{d65156d V.ED..CL ... 0,0-400,94 #7f09013a app:id/contact_edit_content_item_edit_text}
+                            android.widget.ImageView{7b103e G.ED.... ... 0,0-0,0 #7f090162 app:id/contact_edit_content_item_right_image_view}
+                            android.widget.ImageView{14cfe9f V.ED.... ... 458,76-483,95 #7f090163 app:id/contact_edit_content_item_right_image_view_arr}
+                    com.tencent.pb.contact.view.ContactEditContentListView{1570bec V.E..... ... 0,1292-720,1381}
+                      com.tencent.pb.contact.view.NewContactEditContentItem{c3a2bb5 V.E..... ... 40,0-680,89}
+                        android.widget.TextView{64a9b69 G.ED.... ... 0,0-0,0 #7f090139 app:id/contact_edit_content_item_label_text}
+                        android.widget.EditText{55459ee VFED..CL ... 0,0-560,89 #7f09013a app:id/contact_edit_content_item_edit_text}
+                  android.widget.Button{113f24a GFED..C. ... 0,0-0,0 #7f09015e app:id/add_more_field}
+              com.tencent.pb.common.view.TopBarView{88ce5bb V.E...C. ... 0,0-720,96 #7f09013b app:id/contact_edit_top_bar}
+                android.widget.RelativeLayout{b9efad8 V.E...C. ... 0,0-720,96 #7f090111 app:id/common_top_wrapper}
+                  android.view.View{e2ece31 V.ED.... ... 0,95-720,96 #7f090112 app:id/top_bar_bottom_line}
+                  android.widget.RelativeLayout{7a6e916 V.E..... ... 0,0-294,96}
+                    android.widget.ImageView{a1a2297 V.ED..C. ... 2,0-90,96 #7f090113 app:id/btn_left}
+                    android.widget.TextView{b74ec84 G.ED.... ... 0,0-0,0 #7f090114 app:id/text_left}
+                    android.widget.LinearLayout{2f11c6d VFE...C. ... 90,0-294,96 #7f090115 app:id/ll_btn_middle}
+                      android.widget.TextView{a080a2 V.ED..C. ... 24,22-204,71 #7f090116 app:id/btn_middle}
+                      android.widget.TextView{ad45133 G.ED.... ... 0,0-0,0 #7f090117 app:id/btn_middle_sub}
+                  android.widget.FrameLayout{d964cf0 V.E..... ... 516,0-720,96 #7f090118 app:id/top_right}
+                    android.widget.RelativeLayout{6101269 G.E..... ... 0,0-0,0 #7f090119 app:id/top_progressbar}
+                      android.widget.ProgressBar{aa04ee V.ED.... ... 0,0-0,0}
+                    android.widget.LinearLayout{3f8cd8f V.E..... ... 0,0-0,96}
+                      android.widget.ImageView{b2b481c G.ED.... ... 0,0-0,0 #7f09011a app:id/btn_right}
+                      android.widget.ImageView{30e6c25 G.ED.... ... 0,0-0,0 #7f09011b app:id/btn_right1}
+                      android.widget.ImageView{bb581fa G.ED.... ... 0,0-0,0 #7f09011c app:id/btn_right2}
+                    android.widget.TextView{b3eb3ab V.ED..C. ... 0,0-204,96 #7f09011d app:id/text_right}
+                  android.widget.ImageView{5b2ca08 G.ED.... ... 0,0-0,0 #7f09011e app:id/right_point}
+
+  ACTIVITY com.tencent.pb/.contact.controller.NewContactDetailActivity 6ee8b46 pid=6807
+    Local FragmentActivity 82ef9d9 State:
+      mCreated=truemResumed=false mStopped=true mReallyStopped=true
+      mLoadersStarted=false
+    FragmentManager misc state:
+      mActivity=com.tencent.pb.contact.controller.NewContactDetailActivity@82ef9d9
+      mContainer=android.support.v4.app.FragmentActivity$2@dea5a1
+      mCurState=2 mStateSaved=true mDestroyed=false
+    View Hierarchy:
+      com.android.internal.policy.PhoneWindow$DecorView{c9c3c6 I.ED.... ... 0,0-720,1184}
+        android.widget.LinearLayout{b2df87 V.E..... ... 0,0-720,1184}
+          android.view.ViewStub{5ae7eb4 G.E..... ... 0,0-0,0 #10203b4 android:id/action_mode_bar_stub}
+          android.widget.FrameLayout{91efadd V.E..... ... 0,48-720,1184 #1020002 android:id/content}
+            com.tencent.pb.common.view.KeyboardListenRelativeLayout{68e5652 V.E..... ... 0,0-720,1136 #7f0900b5 app:id/root_layout}
+              com.tencent.pb.common.view.SuperListView{e53ed23 VFED.VC. F.. 0,96-720,980 #7f09013f app:id/contact_detail_list_view}
+                com.tencent.pb.contact.view.ContactSummaryInfoView{80ed220 V.E..... ... 0,0-720,190}
+                  android.widget.LinearLayout{497859e V.E..... ... 0,0-720,188 #7f09019a app:id/detaillist_header}
+                    android.widget.RelativeLayout{56e387f V.E..... ... 32,32-156,156}
+                      com.tencent.pb.contact.view.PhotoImageView{65ef04c V.ED..C. ... 0,0-124,124 #7f0901b9 app:id/detaillist_header_avatar}
+                      android.widget.ImageView{a6ba895 G.ED.... ... 0,0-0,0 #7f090172 app:id/PhotoViewSimIcon}
+                    android.widget.FrameLayout{5725daa V.E..... ... 188,32-688,156}
+                      android.widget.LinearLayout{5b7dd9b V.E..... ... 0,0-138,124 #7f0901ba app:id/showname_container}
+                        android.widget.LinearLayout{5b0c538 V.E..... ... 0,37-138,86}
+                          android.widget.TextView{9ab3911 V.ED.... ... 0,0-138,49 #7f0901bb app:id/detaillist_header_title}
+                          android.widget.TextView{d70aa76 G.ED.... ... 0,0-0,0 #7f0901bc app:id/detaillist_header_login}
+                          android.widget.LinearLayout{a2cb877 G.E..... ... 0,0-0,0 #7f0901bd app:id/icon_wrapper}
+                            android.widget.ImageView{848fce4 V.ED.... ... 0,0-0,0 #7f0901be app:id/revise_icon}
+                        android.widget.LinearLayout{79554d V.E..... ... 0,86-138,86}
+                          android.widget.TextView{234f802 G.ED.... ... 0,0-0,0 #7f0901bf app:id/detaillist_header_detail}
+                          android.widget.TextView{7aa6513 G.ED.... ... 0,0-0,0 #7f0901c0 app:id/detaillist_header_detail2}
+                      android.widget.LinearLayout{e0b0350 G.E..... ... 0,0-0,0 #7f0901c1 app:id/revised_name_wrapper}
+                        android.widget.EditText{592f949 VFED..CL ... 0,0-0,0 #7f0901c2 app:id/revised_name}
+                        android.widget.ImageView{efe924e V.ED.... ... 0,0-0,0 #7f0901c3 app:id/close_icon}
+                      android.widget.ImageView{94c3f6f G.ED.... ... 0,0-0,0 #7f0901c4 app:id/detaillist_header_image_right}
+                    android.widget.ImageButton{fa5047c GFED..C. ... 0,0-0,0 #7f0901c5 app:id/detaillist_header_button_right}
+                  android.view.View{488e105 V.ED.... ... 0,188-720,190 #7f09019b app:id/detaillist_header_bottomspace}
+                  com.tencent.pb.common.view.DetaillistSectionTitle{1b5855a G.E..... ... 0,0-0,0 #7f09019c app:id/recent_calllog_title}
+                    android.widget.TextView{687638b V.ED.... ... 0,0-0,0 #7f0901cf app:id/detaillist_sectiontitle_textView}
+                    android.view.View{7bec68 V.ED.... ... 0,0-0,0 #7f0901d0 app:id/detaillist_sectiontitle_divider}
+                  com.tencent.pb.common.view.SuperListView{73b8881 G.ED..C. ... 0,0-0,0 #7f09019d app:id/recent_calls_list}
+                  android.widget.Button{cb69d26 GFED..C. ... 0,0-0,0 #7f09019e app:id/more_calls_button}
+                com.tencent.pb.common.view.DetaillistSectionTitle{f06ad67 V.E..... ... 0,189-720,279}
+                  android.widget.TextView{3576714 V.ED.... ... 32,0-720,89 #7f0901cf app:id/detaillist_sectiontitle_textView}
+                  android.view.View{b172bbd V.ED.... ... 32,89-720,90 #7f0901d0 app:id/detaillist_sectiontitle_divider}
+                com.tencent.pb.contact.view.ContactDetaillistPhoneItem{95f65b2 V.E..... ... 0,278-720,406}
+                  android.widget.LinearLayout{846b903 V.E...CL ... 0,0-720,121 #7f09014d app:id/contact_detaillist_phone_item_main}
+                    android.widget.RelativeLayout{dcde080 V.E..... ... 32,20-512,101}
+                      android.widget.TextView{e0fc6b9 G.ED.... ... 0,0-0,0 #7f09014e app:id/contact_detaillist_phone_item_recent}
+                      android.widget.TextView{75a2afe V.ED.... ... 0,0-198,43 #7f09014f app:id/contact_detaillist_phone_item_title}
+                      android.widget.TextView{8f1e25f V.ED.... ... 0,43-480,81 #7f090150 app:id/contact_detaillist_phone_item_detail}
+                    android.widget.ImageButton{67084ac VFED..C. ... 512,20-612,101 #7f090151 app:id/contact_detaillist_phone_item_image_phone}
+                    android.widget.ImageButton{f5d1575 VFED..C. ... 612,20-712,101 #7f090152 app:id/contact_detaillist_phone_item_sms}
+                  android.widget.CheckBox{4a9f90a GFED..C. ... 0,0-0,0 #7f090153 app:id/revise_checkbox}
+                  android.view.View{dfc457b V.ED.... ... 0,20-0,101 #7f090154 app:id/contact_detaillist_phone_item_vertical_divider}
+                  android.view.View{9b73f98 V.ED.... ... 0,128-720,128 #7f090155 app:id/contact_detaillist_phone_item_divider}
+                com.tencent.pb.contact.view.ContactDetaillistPhoneItem{ff693f1 V.E..... ... 0,405-720,533}
+                  android.widget.LinearLayout{a769bd6 V.E...CL ... 0,0-720,121 #7f09014d app:id/contact_detaillist_phone_item_main}
+                    android.widget.RelativeLayout{57fbe57 V.E..... ... 32,20-512,101}
+                      android.widget.TextView{1acbd44 G.ED.... ... 0,0-0,0 #7f09014e app:id/contact_detaillist_phone_item_recent}
+                      android.widget.TextView{ecf7e2d V.ED.... ... 0,0-198,43 #7f09014f app:id/contact_detaillist_phone_item_title}
+                      android.widget.TextView{a989f62 V.ED.... ... 0,43-480,81 #7f090150 app:id/contact_detaillist_phone_item_detail}
+                    android.widget.ImageButton{b57e8f3 VFED..C. ... 512,20-612,101 #7f090151 app:id/contact_detaillist_phone_item_image_phone}
+                    android.widget.ImageButton{c5a69b0 VFED..C. ... 612,20-712,101 #7f090152 app:id/contact_detaillist_phone_item_sms}
+                  android.widget.CheckBox{cd2d029 GFED..C. ... 0,0-0,0 #7f090153 app:id/revise_checkbox}
+                  android.view.View{9e54fae V.ED.... ... 0,20-0,101 #7f090154 app:id/contact_detaillist_phone_item_vertical_divider}
+                  android.view.View{37e214f V.ED.... ... 0,128-720,128 #7f090155 app:id/contact_detaillist_phone_item_divider}
+                com.tencent.pb.contact.view.ContactDetaillistPhoneItem{cf470dc V.E..... ... 0,532-720,660}
+                  android.widget.LinearLayout{49f45e5 V.E...CL ... 0,0-720,121 #7f09014d app:id/contact_detaillist_phone_item_main}
+                    android.widget.RelativeLayout{33ab8ba V.E..... ... 32,20-512,101}
+                      android.widget.TextView{e25836b G.ED.... ... 0,0-0,0 #7f09014e app:id/contact_detaillist_phone_item_recent}
+                      android.widget.TextView{3c5bec8 V.ED.... ... 0,0-198,43 #7f09014f app:id/contact_detaillist_phone_item_title}
+                      android.widget.TextView{2035b61 V.ED.... ... 0,43-480,81 #7f090150 app:id/contact_detaillist_phone_item_detail}
+                    android.widget.ImageButton{f4ba686 VFED..C. ... 512,20-612,101 #7f090151 app:id/contact_detaillist_phone_item_image_phone}
+                    android.widget.ImageButton{196eb47 VFED..C. ... 612,20-712,101 #7f090152 app:id/contact_detaillist_phone_item_sms}
+                  android.widget.CheckBox{8dbff74 GFED..C. ... 0,0-0,0 #7f090153 app:id/revise_checkbox}
+                  android.view.View{5394c9d V.ED.... ... 0,20-0,101 #7f090154 app:id/contact_detaillist_phone_item_vertical_divider}
+                  android.view.View{d2ba512 G.ED.... ... 0,0-0,0 #7f090155 app:id/contact_detaillist_phone_item_divider}
+                com.tencent.pb.contact.view.ContactDetailListFooterView{5ccf4e3 V.E..... ... 0,659-720,879}
+                  com.tencent.pb.common.view.DetaillistSectionTitle{5739ee0 G.E..... ... 0,0-0,0 #7f090144 app:id/contact_detail_list_footer_title_item}
+                    android.widget.TextView{de31599 V.ED.... ... 0,0-0,0 #7f0901cf app:id/detaillist_sectiontitle_textView}
+                    android.view.View{79b005e V.ED.... ... 0,0-0,0 #7f0901d0 app:id/detaillist_sectiontitle_divider}
+                  android.widget.EditText{dcffc3f GFED..CL ... 0,0-0,0 #7f090145 app:id/contact_detail_list_footer_note_edit}
+                  com.tencent.pb.contact.view.DrawableCenterTextView{823c90c V.ED..C. ... 32,32-688,122 #7f090146 app:id/detaillist_invite_wecall_button}
+                  android.widget.LinearLayout{9c67255 V.E..... ... 0,122-720,188 #7f090141 app:id/operation_area_container}
+                    android.widget.LinearLayout{312c46a V.E..... ... 0,0-720,50 #7f090142 app:id/operation_area}
+                    android.widget.LinearLayout{ad21d5b V.E..... ... 0,50-720,66 #7f090143 app:id/operation_area_two}
+              com.tencent.pb.common.view.TopBarView{fca69f8 V.E...C. ... 0,0-720,96 #7f090140 app:id/contact_detail_top_bar}
+                android.widget.RelativeLayout{348ded1 V.E...C. ... 0,0-720,96 #7f090111 app:id/common_top_wrapper}
+                  android.view.View{90bd36 V.ED.... ... 0,95-720,96 #7f090112 app:id/top_bar_bottom_line}
+                  android.widget.RelativeLayout{50b3437 V.E..... ... 0,0-294,96}
+                    android.widget.ImageView{9382da4 V.ED..C. ... 2,0-90,96 #7f090113 app:id/btn_left}
+                    android.widget.TextView{bab970d G.ED.... ... 0,0-0,0 #7f090114 app:id/text_left}
+                    android.widget.LinearLayout{12376c2 VFE...C. ... 90,0-294,96 #7f090115 app:id/ll_btn_middle}
+                      android.widget.TextView{654dcd3 V.ED..C. ... 24,22-204,71 #7f090116 app:id/btn_middle}
+                      android.widget.TextView{b9c8010 G.ED.... ... 0,0-0,0 #7f090117 app:id/btn_middle_sub}
+                  android.widget.FrameLayout{d079709 V.E..... ... 520,0-720,96 #7f090118 app:id/top_right}
+                    android.widget.RelativeLayout{6363d0e G.E..... ... 0,0-0,0 #7f090119 app:id/top_progressbar}
+                      android.widget.ProgressBar{286732f V.ED.... ... 0,0-0,0}
+                    android.widget.LinearLayout{fb18d3c V.E..... ... 0,0-200,96}
+                      android.widget.ImageView{99ac5 V.ED..C. ... 0,0-100,96 #7f09011a app:id/btn_right}
+                      android.widget.ImageView{a9d1c1a V.ED..C. ... 100,0-200,96 #7f09011b app:id/btn_right1}
+                      android.widget.ImageView{991134b G.ED.... ... 0,0-0,0 #7f09011c app:id/btn_right2}
+                    android.widget.TextView{da84128 G.ED.... ... 0,0-0,0 #7f09011d app:id/text_right}
+                  android.widget.ImageView{16e1e41 G.ED.... ... 0,0-0,0 #7f09011e app:id/right_point}
+
+  ACTIVITY com.tencent.pb/.launch.PhoneBookActivity fee8db7 pid=6807
+    Local FragmentActivity 8f19401 State:
+      mCreated=truemResumed=false mStopped=true mReallyStopped=true
+      mLoadersStarted=false
+    Active Fragments in f5b9927:
+      #0: bpu{dd447d4 #0 id=0x7f090028 0}
+        mFragmentId=#7f090028 mContainerId=#7f090028 mTag=0
+        mState=2 mIndex=0 mWho=android:fragment:0 mBackStackNesting=0
+        mAdded=true mRemoving=false mResumed=false mFromLayout=false mInLayout=false
+        mHidden=true mDetached=false mMenuVisible=true mHasMenu=false
+        mRetainInstance=false mRetaining=false mUserVisibleHint=true
+        mFragmentManager=FragmentManager{f5b9927 in PhoneBookActivity{8f19401}}
+        mActivity=com.tencent.pb.launch.PhoneBookActivity@8f19401
+        mSavedViewState={2131296721=android.view.AbsSavedState$1@33d5d7d, 2131296722=android.view.AbsSavedState$1@33d5d7d, 2131296724=android.view.AbsSavedState$1@33d5d7d, 2131296725=TextView.SavedState{f4b1472 start=0 end=0 text=}, 2131296726=android.view.AbsSavedState$1@33d5d7d, 2131296727=android.view.AbsSavedState$1@33d5d7d, 2131296728=android.view.AbsSavedState$1@33d5d7d, 2131296729=android.view.AbsSavedState$1@33d5d7d, 2131296730=android.view.AbsSavedState$1@33d5d7d, 2131296731=android.view.AbsSavedState$1@33d5d7d, 2131296732=android.view.AbsSavedState$1@33d5d7d, 2131296733=android.view.AbsSavedState$1@33d5d7d, 2131296734=android.view.AbsSavedState$1@33d5d7d, 2131296735=android.view.AbsSavedState$1@33d5d7d, 2131296736=android.view.AbsSavedState$1@33d5d7d, 2131296737=android.view.AbsSavedState$1@33d5d7d, 2131296738=android.view.AbsSavedState$1@33d5d7d, 2131296739=android.view.AbsSavedState$1@33d5d7d, 2131296740=android.view.AbsSavedState$1@33d5d7d, 2131296741=android.view.AbsSavedState$1@33d5d7d, 2131296742=android.view.AbsSavedState$1@33d5d7d, 2131296743=android.view.AbsSavedState$1@33d5d7d, 2131296744=android.view.AbsSavedState$1@33d5d7d, 2131296745=android.view.AbsSavedState$1@33d5d7d, 2131296746=android.view.AbsSavedState$1@33d5d7d, 2131296747=android.view.AbsSavedState$1@33d5d7d, 2131296748=android.view.AbsSavedState$1@33d5d7d}
+        mContainer=android.widget.FrameLayout{55ea0c3 V.E...... .......D 0,0-720,1016 #7f090028 app:id/tabcontent}
+        mView=android.support.v4.app.NoSaveStateFrameLayout{8180d40 G.E...... ......ID 0,0-720,1016}
+        mInnerView=android.support.v4.app.NoSaveStateFrameLayout{8180d40 G.E...... ......ID 0,0-720,1016}
+      #1: bmo{5ef823b #1 id=0x7f090028 1}
+        mFragmentId=#7f090028 mContainerId=#7f090028 mTag=1
+        mState=2 mIndex=1 mWho=android:fragment:1 mBackStackNesting=0
+        mAdded=true mRemoving=false mResumed=false mFromLayout=false mInLayout=false
+        mHidden=true mDetached=false mMenuVisible=true mHasMenu=false
+        mRetainInstance=false mRetaining=false mUserVisibleHint=true
+        mFragmentManager=FragmentManager{f5b9927 in PhoneBookActivity{8f19401}}
+        mActivity=com.tencent.pb.launch.PhoneBookActivity@8f19401
+        mSavedViewState={2131296317=android.view.AbsSavedState$1@33d5d7d, 2131296318=CompoundButton.SavedState{5c75479 checked=true}, 2131296319=android.view.AbsSavedState$1@33d5d7d, 2131296323=android.view.AbsSavedState$1@33d5d7d, 2131296324=android.view.AbsSavedState$1@33d5d7d, 2131296325=android.view.AbsSavedState$1@33d5d7d, 2131296394=android.view.AbsSavedState$1@33d5d7d, 2131296395=android.view.AbsSavedState$1@33d5d7d, 2131296396=AbsListView.SavedState{3205be selectedId=-9223372036854775808 firstId=-1 viewTop=0 position=0 height=920 filter=null checkState=null}, 2131296397=android.view.AbsSavedState$1@33d5d7d, 2131296398=android.view.AbsSavedState$1@33d5d7d, 2131296529=android.view.AbsSavedState$1@33d5d7d, 2131296530=android.view.AbsSavedState$1@33d5d7d, 2131296531=android.view.AbsSavedState$1@33d5d7d, 2131296532=android.view.AbsSavedState$1@33d5d7d, 2131296533=android.view.AbsSavedState$1@33d5d7d, 2131296534=android.view.AbsSavedState$1@33d5d7d, 2131296535=android.view.AbsSavedState$1@33d5d7d, 2131296536=android.view.AbsSavedState$1@33d5d7d, 2131296537=android.view.AbsSavedState$1@33d5d7d, 2131296538=android.view.AbsSavedState$1@33d5d7d, 2131296539=android.view.AbsSavedState$1@33d5d7d, 2131296540=android.view.AbsSavedState$1@33d5d7d, 2131296541=android.view.AbsSavedState$1@33d5d7d, 2131296542=android.view.AbsSavedState$1@33d5d7d, 2131296854=android.view.AbsSavedState$1@33d5d7d, 2131296855=android.view.AbsSavedState$1@33d5d7d, 2131296856=android.view.AbsSavedState$1@33d5d7d, 2131296857=android.view.AbsSavedState$1@33d5d7d, 2131296858=android.view.AbsSavedState$1@33d5d7d, 2131296859=android.view.AbsSavedState$1@33d5d7d, 2131297327=android.view.AbsSavedState$1@33d5d7d, 2131297328=android.view.AbsSavedState$1@33d5d7d, 2131297329=android.view.AbsSavedState$1@33d5d7d}
+        mContainer=android.widget.FrameLayout{55ea0c3 V.E...... .......D 0,0-720,1016 #7f090028 app:id/tabcontent}
+        mView=android.support.v4.app.NoSaveStateFrameLayout{200861f G.E...... ......ID 0,0-720,1016}
+        mInnerView=android.support.v4.app.NoSaveStateFrameLayout{200861f G.E...... ......ID 0,0-720,1016}
+      #2: bna{e10bd6c #2 id=0x7f090028 2}
+        mFragmentId=#7f090028 mContainerId=#7f090028 mTag=2
+        mState=2 mIndex=2 mWho=android:fragment:2 mBackStackNesting=0
+        mAdded=true mRemoving=false mResumed=false mFromLayout=false mInLayout=false
+        mHidden=false mDetached=false mMenuVisible=true mHasMenu=false
+        mRetainInstance=false mRetaining=false mUserVisibleHint=true
+        mFragmentManager=FragmentManager{f5b9927 in PhoneBookActivity{8f19401}}
+        mActivity=com.tencent.pb.launch.PhoneBookActivity@8f19401
+        mSavedViewState={2131296317=android.view.AbsSavedState$1@33d5d7d, 2131296318=CompoundButton.SavedState{45fbf35 checked=true}, 2131296319=android.view.AbsSavedState$1@33d5d7d, 2131296323=android.view.AbsSavedState$1@33d5d7d, 2131296324=android.view.AbsSavedState$1@33d5d7d, 2131296325=android.view.AbsSavedState$1@33d5d7d, 2131296406=AbsListView.SavedState{104bfca selectedId=-9223372036854775808 firstId=-1 viewTop=0 position=0 height=840 filter=null checkState=null}, 2131296490=android.view.AbsSavedState$1@33d5d7d, 2131296491=android.view.AbsSavedState$1@33d5d7d, 2131296494=android.view.AbsSavedState$1@33d5d7d, 2131296495=android.view.AbsSavedState$1@33d5d7d, 2131296496=android.view.AbsSavedState$1@33d5d7d, 2131296497=android.view.AbsSavedState$1@33d5d7d, 2131296499=android.view.AbsSavedState$1@33d5d7d, 2131296501=android.view.AbsSavedState$1@33d5d7d, 2131296502=android.view.AbsSavedState$1@33d5d7d, 2131296529=android.view.AbsSavedState$1@33d5d7d, 2131296530=android.view.AbsSavedState$1@33d5d7d, 2131296531=android.view.AbsSavedState$1@33d5d7d, 2131296532=android.view.AbsSavedState$1@33d5d7d, 2131296533=android.view.AbsSavedState$1@33d5d7d, 2131296534=android.view.AbsSavedState$1@33d5d7d, 2131296535=android.view.AbsSavedState$1@33d5d7d, 2131296536=android.view.AbsSavedState$1@33d5d7d, 2131296537=android.view.AbsSavedState$1@33d5d7d, 2131296538=android.view.AbsSavedState$1@33d5d7d, 2131296539=android.view.AbsSavedState$1@33d5d7d, 2131296540=android.view.AbsSavedState$1@33d5d7d, 2131296541=android.view.AbsSavedState$1@33d5d7d, 2131296542=android.view.AbsSavedState$1@33d5d7d, 2131296612=android.view.AbsSavedState$1@33d5d7d, 2131296651=android.view.AbsSavedState$1@33d5d7d, 2131296652=android.view.AbsSavedState$1@33d5d7d, 2131296653=android.view.AbsSavedState$1@33d5d7d, 2131296654=android.view.AbsSavedState$1@33d5d7d, 2131296671=android.view.AbsSavedState$1@33d5d7d, 2131296672=android.view.AbsSavedState$1@33d5d7d, 2131296673=android.view.AbsSavedState$1@33d5d7d, 2131296854=android.view.AbsSavedState$1@33d5d7d, 2131296855=android.view.AbsSavedState$1@33d5d7d, 2131296856=android.view.AbsSavedState$1@33d5d7d, 2131296857=android.view.AbsSavedState$1@33d5d7d, 2131296858=android.view.AbsSavedState$1@33d5d7d, 2131296859=android.view.AbsSavedState$1@33d5d7d, 2131297327=android.view.AbsSavedState$1@33d5d7d, 2131297328=android.view.AbsSavedState$1@33d5d7d, 2131297329=android.view.AbsSavedState$1@33d5d7d}
+        mContainer=android.widget.FrameLayout{55ea0c3 V.E...... .......D 0,0-720,1016 #7f090028 app:id/tabcontent}
+        mView=android.support.v4.app.NoSaveStateFrameLayout{1b1653b V.E...... .......D 0,0-720,1016}
+        mInnerView=android.support.v4.app.NoSaveStateFrameLayout{1b1653b V.E...... .......D 0,0-720,1016}
+      #3: boh{c024458 #3 id=0x7f090028 3}
+        mFragmentId=#7f090028 mContainerId=#7f090028 mTag=3
+        mState=2 mIndex=3 mWho=android:fragment:3 mBackStackNesting=0
+        mAdded=true mRemoving=false mResumed=false mFromLayout=false mInLayout=false
+        mHidden=true mDetached=false mMenuVisible=true mHasMenu=false
+        mRetainInstance=false mRetaining=false mUserVisibleHint=true
+        mFragmentManager=FragmentManager{f5b9927 in PhoneBookActivity{8f19401}}
+        mActivity=com.tencent.pb.launch.PhoneBookActivity@8f19401
+        mSavedViewState={2131296295=android.view.AbsSavedState$1@33d5d7d, 2131296305=android.view.AbsSavedState$1@33d5d7d, 2131296317=android.view.AbsSavedState$1@33d5d7d, 2131296318=CompoundButton.SavedState{1da19b1 checked=true}, 2131296319=android.view.AbsSavedState$1@33d5d7d, 2131296323=android.view.AbsSavedState$1@33d5d7d, 2131296324=android.view.AbsSavedState$1@33d5d7d, 2131296325=android.view.AbsSavedState$1@33d5d7d, 2131296402=android.view.AbsSavedState$1@33d5d7d, 2131296521=android.view.AbsSavedState$1@33d5d7d, 2131296524=android.view.AbsSavedState$1@33d5d7d, 2131296525=TextView.SavedState{d970e96 start=0 end=0 text=}, 2131296526=android.view.AbsSavedState$1@33d5d7d, 2131296527=android.view.AbsSavedState$1@33d5d7d, 2131296528=android.view.AbsSavedState$1@33d5d7d, 2131296529=android.view.AbsSavedState$1@33d5d7d, 2131296530=android.view.AbsSavedState$1@33d5d7d, 2131296531=android.view.AbsSavedState$1@33d5d7d, 2131296532=android.view.AbsSavedState$1@33d5d7d, 2131296533=android.view.AbsSavedState$1@33d5d7d, 2131296534=android.view.AbsSavedState$1@33d5d7d, 2131296535=android.view.AbsSavedState$1@33d5d7d, 2131296536=android.view.AbsSavedState$1@33d5d7d, 2131296537=android.view.AbsSavedState$1@33d5d7d, 2131296538=android.view.AbsSavedState$1@33d5d7d, 2131296539=android.view.AbsSavedState$1@33d5d7d, 2131296540=android.view.AbsSavedState$1@33d5d7d, 2131296541=android.view.AbsSavedState$1@33d5d7d, 2131296542=android.view.AbsSavedState$1@33d5d7d, 2131296646=android.view.AbsSavedState$1@33d5d7d, 2131296854=android.view.AbsSavedState$1@33d5d7d, 2131296855=android.view.AbsSavedState$1@33d5d7d, 2131296856=android.view.AbsSavedState$1@33d5d7d, 2131296857=android.view.AbsSavedState$1@33d5d7d, 2131296858=android.view.AbsSavedState$1@33d5d7d, 2131296859=android.view.AbsSavedState$1@33d5d7d, 2131296893=android.view.AbsSavedState$1@33d5d7d, 2131296894=android.view.AbsSavedState$1@33d5d7d, 2131296895=android.view.AbsSavedState$1@33d5d7d, 2131296896=android.view.AbsSavedState$1@33d5d7d, 2131296897=AbsListView.SavedState{dc71a17 selectedId=-9223372036854775808 firstId=-1 viewTop=0 position=0 height=840 filter=null checkState=null}, 2131296898=AbsListView.SavedState{c834e04 selectedId=-9223372036854775808 firstId=-1 viewTop=0 position=0 height=0 filter=null checkState=null}, 2131296899=android.view.AbsSavedState$1@33d5d7d, 2131296900=android.view.AbsSavedState$1@33d5d7d, 2131296901=android.view.AbsSavedState$1@33d5d7d, 2131297327=android.view.AbsSavedState$1@33d5d7d, 2131297328=android.view.AbsSavedState$1@33d5d7d, 2131297329=android.view.AbsSavedState$1@33d5d7d}
+        mContainer=android.widget.FrameLayout{55ea0c3 V.E...... .......D 0,0-720,1016 #7f090028 app:id/tabcontent}
+        mView=android.support.v4.app.NoSaveStateFrameLayout{c59fed G.E...... ......ID 0,0-720,1016}
+        mInnerView=android.support.v4.app.NoSaveStateFrameLayout{c59fed G.E...... ......ID 0,0-720,1016}
+    Added Fragments:
+      #0: bpu{dd447d4 #0 id=0x7f090028 0}
+      #1: bmo{5ef823b #1 id=0x7f090028 1}
+      #2: bna{e10bd6c #2 id=0x7f090028 2}
+      #3: boh{c024458 #3 id=0x7f090028 3}
+    FragmentManager misc state:
+      mActivity=com.tencent.pb.launch.PhoneBookActivity@8f19401
+      mContainer=android.support.v4.app.FragmentActivity$2@92d7e22
+      mCurState=2 mStateSaved=true mDestroyed=false
+    View Hierarchy:
+      com.android.internal.policy.PhoneWindow$DecorView{51940b3 I.E..... ... 0,0-720,1184}
+        android.widget.LinearLayout{ae94670 V.E..... ... 0,0-720,1184}
+          android.view.ViewStub{3694de9 G.E..... ... 0,0-0,0 #10203b4 android:id/action_mode_bar_stub}
+          android.widget.FrameLayout{4c95a6e V.E..... ... 0,48-720,1184 #1020002 android:id/content}
+            android.widget.LinearLayout{25d350f VFE..... F.. 0,0-720,1136 #7f090027 app:id/main}
+              android.widget.FrameLayout{55ea0c3 V.E..... ... 0,0-720,1016 #7f090028 app:id/tabcontent}
+                android.support.v4.app.NoSaveStateFrameLayout{8180d40 G.E..... ... 0,0-720,1016}
+                  com.tencent.pb.calllog.view.DialPadView{74599c VFE..... ... 0,0-720,1016}
+                    android.widget.RelativeLayout{f7fdfa5 V.E..... ... 0,0-720,461 #7f0901d1 app:id/number_layout}
+                      android.view.ViewStub{e34af7a G.E..... ... 0,0-0,0 #7f0901d2 app:id/t9_stub}
+                      android.widget.TextView{c42132b V.ED.... ... 0,209-720,252 #7f0901d4 app:id/location_tv}
+                      com.tencent.pb.calllog.view.DialerEditText{83b7388 VFED..CL ... 0,0-720,321 #7f0901d5 app:id/phoneNumber_edit}
+                    android.view.View{1b3d121 V.ED.... ... 0,461-720,462}
+                    android.widget.FrameLayout{3ce4946 V.E..... ... 0,462-720,1016 #7f0901d6 app:id/keyboard_container}
+                      android.widget.LinearLayout{b4cb707 V.E..... ... 0,0-720,422 #7f0901d7 app:id/keyboard_buttons}
+                        android.widget.LinearLayout{5d84034 V.E..... ... 0,0-720,105}
+                          android.widget.ImageButton{cdb5e5d VFED..C. ... 0,0-240,105 #7f0901d8 app:id/one}
+                          android.widget.ImageButton{915b3d2 VFED..C. ... 240,0-480,105 #7f0901d9 app:id/two}
+                          android.widget.ImageButton{173bca3 VFED..C. ... 480,0-720,105 #7f0901da app:id/three}
+                        android.widget.LinearLayout{ad32ba0 V.E..... ... 0,105-720,210}
+                          android.widget.ImageButton{f48359 VFED..C. ... 0,0-240,105 #7f0901db app:id/four}
+                          android.widget.ImageButton{7f73b1e VFED..C. ... 240,0-480,105 #7f0901dc app:id/five}
+                          android.widget.ImageButton{f7b7fff VFED..C. ... 480,0-720,105 #7f0901dd app:id/six}
+                        android.widget.LinearLayout{6cf61cc V.E..... ... 0,210-720,316}
+                          android.widget.ImageButton{5e0fc15 VFED..C. ... 0,0-240,106 #7f0901de app:id/seven}
+                          android.widget.ImageButton{ad7eb2a VFED..C. ... 240,0-480,106 #7f0901df app:id/eight}
+                          android.widget.ImageButton{4121d1b VFED..C. ... 480,0-720,106 #7f0901e0 app:id/nine}
+                        android.widget.LinearLayout{e76ceb8 V.E..... ... 0,316-720,422}
+                          android.widget.ImageButton{5e24491 VFED..CL ... 0,0-240,106 #7f0901e1 app:id/star}
+                          android.widget.ImageButton{b618ff6 VFED..CL ... 240,0-480,106 #7f0901e2 app:id/zero}
+                          android.widget.ImageButton{ab6ff7 VFED..C. ... 480,0-720,106 #7f0901e3 app:id/pound}
+                      android.widget.RelativeLayout{5261e64 V.E..... ... 0,422-720,554 #7f0901e4 app:id/dial_dialbar}
+                        android.widget.ImageButton{3d598cd IFED..CL ... 564,0-696,132 #7f0901e5 app:id/delete_bt}
+                        android.widget.ImageButton{20eb582 IFED..C. ... 24,0-156,132 #7f0901e6 app:id/add_contact_button}
+                        android.widget.ImageButton{1d1493 VFED..C. ... 210,20-510,112 #7f0901e7 app:id/dial_callbutton_single}
+                        android.widget.LinearLayout{558bcd0 G.E..... ... 0,0-0,0 #7f0901e8 app:id/dial_callbutton_double_container}
+                          android.widget.LinearLayout{92ff4c9 V.E...C. ... 0,0-0,0 #7f0901e9 app:id/dial_callbutton_double_1_container}
+                            android.widget.Button{276a7ce V.ED.... ... 0,0-0,0 #7f0901ea app:id/dial_callbutton_double_1}
+                          android.widget.LinearLayout{afa66ef V.E...C. ... 0,0-0,0 #7f0901eb app:id/dial_callbutton_double_2_container}
+                            android.widget.Button{3d4d5fc V.ED.... ... 0,0-0,0 #7f0901ec app:id/dial_callbutton_double_2}
+                android.support.v4.app.NoSaveStateFrameLayout{200861f G.E..... ... 0,0-720,1016}
+                  android.widget.RelativeLayout{7ba1485 V.E..... ... 0,0-720,1016}
+                    com.tencent.pb.common.view.BottomSelectTabView{5972da G.E..... ... 0,0-0,0 #7f09008a app:id/calllog_list_bottom_bar}
+                      android.widget.TextView{5b0830b V.ED..C. ... 0,0-0,0 #7f090043 app:id/bottom_left}
+                      android.widget.TextView{99755e8 V.ED..C. ... 0,0-0,0 #7f090044 app:id/bottom_middle}
+                      android.widget.TextView{b0c7401 V.ED..C. ... 0,0-0,0 #7f090045 app:id/bottom_right}
+                    android.widget.LinearLayout{96be2a6 V.E..... ... 0,96-720,1016}
+                      android.widget.RelativeLayout{46244e7 G.E...C. ... 0,0-0,0 #7f09008b app:id/calllog_list_nofloat_only_tip}
+                        android.widget.LinearLayout{7fe894 V.E..... ... 0,0-0,0}
+                          android.widget.TextView{5cb4f3d V.ED.... ... 0,0-0,0 #7f09042f app:id/tip_text}
+                          android.widget.TextView{fe38332 V.ED.... ... 0,0-0,0 #7f090430 app:id/tip_button}
+                        android.widget.ImageButton{844883 VFED..C. ... 0,0-0,0 #7f090431 app:id/tip_close}
+                      com.tencent.pb.contact.view.ContactScrollListView{ebcfa00 VFED.VCL ... 0,0-720,920 #7f09008c app:id/callloglistview}
+                        android.widget.FrameLayout{6a2a239 V.E..... ... 0,0-720,129}
+                          android.widget.RelativeLayout{1c2a07e V.E..... ... 0,0-720,129 #7f0900a4 app:id/parent}
+                            android.widget.FrameLayout{c38e9df V.E..... ... 0,0-720,128 #7f0900a5 app:id/space}
+                              android.view.View{cf7b62c V.ED.... ... 0,0-720,88}
+                            com.tencent.pb.contact.view.ScrollHanlerLinearLayout{10228f5 V.E..... ... 0,0-720,128 #7f0900a6 app:id/scroll_container}
+                              com.tencent.pb.calllog.view.CalllogListItem{8e4468a V.ED.... ... 0,0-720,84 #7f0900a7 app:id/calllogListItemId}
+                                android.widget.ImageView{f6c44fb V.ED..C. ... 640,0-720,84 #522}
+                                android.widget.ImageView{3400918 G.ED.... ... 0,0-0,0}
+                            android.view.View{5995f71 V.ED.... ... 68,128-720,129}
+                        android.widget.FrameLayout{fc84156 V.E..... ... 0,129-720,258}
+                          android.widget.RelativeLayout{ab035d7 V.E..... ... 0,0-720,129 #7f0900a4 app:id/parent}
+                            android.widget.FrameLayout{8b89ec4 V.E..... ... 0,0-720,128 #7f0900a5 app:id/space}
+                              android.view.View{69381ad V.ED.... ... 0,0-720,88}
+                            com.tencent.pb.contact.view.ScrollHanlerLinearLayout{71f1ce2 V.E..... ... 0,0-720,128 #7f0900a6 app:id/scroll_container}
+                              com.tencent.pb.calllog.view.CalllogListItem{bd85873 V.ED.... ... 0,0-720,84 #7f0900a7 app:id/calllogListItemId}
+                                android.widget.ImageView{202e330 V.ED..C. ... 640,0-720,84 #522}
+                                android.widget.ImageView{3938ba9 G.ED.... ... 0,0-0,0}
+                            android.view.View{816252e V.ED.... ... 68,128-720,129}
+                        android.widget.FrameLayout{5608cf V.E..... ... 0,258-720,387}
+                          android.widget.RelativeLayout{a6b025c V.E..... ... 0,0-720,129 #7f0900a4 app:id/parent}
+                            android.widget.FrameLayout{9703965 V.E..... ... 0,0-720,128 #7f0900a5 app:id/space}
+                              android.view.View{f63663a V.ED.... ... 0,0-720,88}
+                            com.tencent.pb.contact.view.ScrollHanlerLinearLayout{15462eb V.E..... ... 0,0-720,128 #7f0900a6 app:id/scroll_container}
+                              com.tencent.pb.calllog.view.CalllogListItem{3d3e848 V.ED.... ... 0,0-720,84 #7f0900a7 app:id/calllogListItemId}
+                                android.widget.ImageView{1b006e1 V.ED..C. ... 640,0-720,84 #522}
+                                android.widget.ImageView{d11ac06 G.ED.... ... 0,0-0,0}
+                            android.view.View{59442c7 V.ED.... ... 68,128-720,129}
+                        android.widget.FrameLayout{96340f4 V.E..... ... 0,387-720,516}
+                          android.widget.RelativeLayout{dc5301d V.E..... ... 0,0-720,129 #7f0900a4 app:id/parent}
+                            android.widget.FrameLayout{50c8292 V.E..... ... 0,0-720,128 #7f0900a5 app:id/space}
+                              android.view.View{5084463 V.ED.... ... 0,0-720,88}
+                            com.tencent.pb.contact.view.ScrollHanlerLinearLayout{ed7860 V.E..... ... 0,0-720,128 #7f0900a6 app:id/scroll_container}
+                              com.tencent.pb.calllog.view.CalllogListItem{a09b119 V.ED.... ... 0,0-720,84 #7f0900a7 app:id/calllogListItemId}
+                                android.widget.ImageView{c6c35de V.ED..C. ... 640,0-720,84 #522}
+                                android.widget.ImageView{a30c3bf G.ED.... ... 0,0-0,0}
+                            android.view.View{721ba8c V.ED.... ... 68,128-720,129}
+                        android.widget.FrameLayout{47b45d5 V.E..... ... 0,516-720,645}
+                          android.widget.RelativeLayout{f81d1ea V.E..... ... 0,0-720,129 #7f0900a4 app:id/parent}
+                            android.widget.FrameLayout{d37dcdb V.E..... ... 0,0-720,128 #7f0900a5 app:id/space}
+                              android.view.View{275f378 V.ED.... ... 0,0-720,88}
+                            com.tencent.pb.contact.view.ScrollHanlerLinearLayout{3376a51 V.E..... ... 0,0-720,128 #7f0900a6 app:id/scroll_container}
+                              com.tencent.pb.calllog.view.CalllogListItem{ca322b6 V.ED.... ... 0,0-720,84 #7f0900a7 app:id/calllogListItemId}
+                                android.widget.ImageView{4cd6bb7 V.ED..C. ... 640,0-720,84 #522}
+                                android.widget.ImageView{8d2cf24 G.ED.... ... 0,0-0,0}
+                            android.view.View{6b75a8d V.ED.... ... 68,128-720,129}
+                        android.widget.FrameLayout{fb6b442 V.E..... ... 0,645-720,774}
+                          android.widget.RelativeLayout{8c30c53 V.E..... ... 0,0-720,129 #7f0900a4 app:id/parent}
+                            android.widget.FrameLayout{3ffb990 V.E..... ... 0,0-720,128 #7f0900a5 app:id/space}
+                              android.view.View{3cc1289 V.ED.... ... 0,0-720,88}
+                            com.tencent.pb.contact.view.ScrollHanlerLinearLayout{a7fd28e V.E..... ... 0,0-720,128 #7f0900a6 app:id/scroll_container}
+                              com.tencent.pb.calllog.view.CalllogListItem{2681aaf V.ED.... ... 0,0-720,84 #7f0900a7 app:id/calllogListItemId}
+                                android.widget.ImageView{cedebc V.ED..C. ... 640,0-720,84 #522}
+                                android.widget.ImageView{15a4e45 G.ED.... ... 0,0-0,0}
+                            android.view.View{5aa899a V.ED.... ... 68,128-720,129}
+                        android.widget.FrameLayout{6a5b2cb V.E..... ... 0,774-720,903}
+                          android.widget.RelativeLayout{5092aa8 V.E..... ... 0,0-720,129 #7f0900a4 app:id/parent}
+                            android.widget.FrameLayout{5d689c1 V.E..... ... 0,0-720,128 #7f0900a5 app:id/space}
+                              android.view.View{697a566 V.ED.... ... 0,0-720,88}
+                            com.tencent.pb.contact.view.ScrollHanlerLinearLayout{5dab0a7 V.E..... ... 0,0-720,128 #7f0900a6 app:id/scroll_container}
+                              com.tencent.pb.calllog.view.CalllogListItem{81a4954 V.ED.... ... 0,0-720,84 #7f0900a7 app:id/calllogListItemId}
+                                android.widget.ImageView{8100fd V.ED..C. ... 640,0-720,84 #522}
+                                android.widget.ImageView{5e8b1f2 G.ED.... ... 0,0-0,0}
+                            android.view.View{d77b043 V.ED.... ... 68,128-720,129}
+                        android.widget.FrameLayout{a7ca6c0 V.E..... ... 0,903-720,1032}
+                          android.widget.RelativeLayout{a61aff9 V.E..... ... 0,0-720,129 #7f0900a4 app:id/parent}
+                            android.widget.FrameLayout{2cbfb3e V.E..... ... 0,0-720,128 #7f0900a5 app:id/space}
+                              android.view.View{75b0d9f V.ED.... ... 0,0-720,88}
+                            com.tencent.pb.contact.view.ScrollHanlerLinearLayout{7e56eec V.E..... ... 0,0-720,128 #7f0900a6 app:id/scroll_container}
+                              com.tencent.pb.calllog.view.CalllogListItem{b0452b5 V.ED.... ... 0,0-720,84 #7f0900a7 app:id/calllogListItemId}
+                                android.widget.ImageView{f088d4a V.ED..C. ... 640,0-720,84 #522}
+                                android.widget.ImageView{2ece4bb G.ED.... ... 0,0-0,0}
+                            android.view.View{308dd8 V.ED.... ... 68,128-720,129}
+                    com.tencent.pb.common.view.ListEmptyView{cf46531 G.E..... ... 0,0-0,0 #7f09008d app:id/calllog_list_empty_view}
+                      android.widget.RelativeLayout{fca3416 V.E..... ... 0,0-0,0}
+                        android.widget.TextView{3fb1197 V.ED.... ... 0,0-0,0 #7f090256 app:id/list_empty_view_text}
+                        android.widget.TextView{30caf84 G.ED.... ... 0,0-0,0 #7f090257 app:id/list_empty_view_sub_text}
+                        android.widget.ImageView{df9236d V.ED.... ... 0,0-0,0 #7f090258 app:id/list_empty_view_image}
+                        android.widget.Button{f2d7ba2 GFED..C. ... 0,0-0,0 #7f090259 app:id/list_empty_view_button}
+                        android.widget.TextView{3553033 VFED..CL ... 0,0-0,0 #7f09025a app:id/list_empty_view_guid_text}
+                      android.widget.TextView{a673ff0 G.ED.... ... 0,0-0,0 #7f09025b app:id/list_empty_view_warning_text}
+                      android.widget.RelativeLayout{7118969 G.E..... ... 0,0-0,0 #7f09003d app:id/login_bottom_items}
+                        android.widget.CheckBox{a8bafee VFED..C. ... 0,0-0,0 #7f09003e app:id/ckAgree}
+                        android.widget.TextView{d289c8f V.ED.... ... 0,0-0,0 #7f09003f app:id/tvNotice}
+                    com.tencent.pb.common.view.TopBarView{f986b1c V.E...C. ... 0,0-720,96 #7f09008e app:id/calllog_list_top_bar}
+                      android.widget.RelativeLayout{8305325 V.E...C. ... 0,0-720,96 #7f090111 app:id/common_top_wrapper}
+                        android.view.View{986dcfa V.ED.... ... 0,95-720,96 #7f090112 app:id/top_bar_bottom_line}
+                        android.widget.RelativeLayout{91c72ab V.E..... ... 0,0-168,96}
+                          android.widget.ImageView{74f1d08 G.ED.... ... 0,0-0,0 #7f090113 app:id/btn_left}
+                          android.widget.TextView{3b7fca1 G.ED.... ... 0,0-0,0 #7f090114 app:id/text_left}
+                          android.widget.LinearLayout{9d5cec6 VFE...C. ... 0,0-168,96 #7f090115 app:id/ll_btn_middle}
+                            android.widget.TextView{82d8e87 V.ED..C. ... 24,22-168,71 #7f090116 app:id/btn_middle}
+                            android.widget.TextView{3d01b4 G.ED.... ... 0,0-0,0 #7f090117 app:id/btn_middle_sub}
+                        android.widget.FrameLayout{5b6c1dd V.E..... ... 720,0-720,96 #7f090118 app:id/top_right}
+                          android.widget.RelativeLayout{bd01152 G.E..... ... 0,0-0,0 #7f090119 app:id/top_progressbar}
+                            android.widget.ProgressBar{44a8c23 V.ED.... ... 0,0-0,0}
+                          android.widget.LinearLayout{828520 V.E..... ... 0,0-0,96}
+                            android.widget.ImageView{2e29ed9 G.ED.... ... 0,0-0,0 #7f09011a app:id/btn_right}
+                            android.widget.ImageView{bb9f09e G.ED.... ... 0,0-0,0 #7f09011b app:id/btn_right1}
+                            android.widget.ImageView{dafc77f G.ED.... ... 0,0-0,0 #7f09011c app:id/btn_right2}
+                          android.widget.TextView{ddad34c G.ED.... ... 0,0-0,0 #7f09011d app:id/text_right}
+                        android.widget.ImageView{b554f95 G.ED.... ... 0,0-0,0 #7f09011e app:id/right_point}
+                android.support.v4.app.NoSaveStateFrameLayout{1b1653b V.E..... ... 0,0-720,1016}
+                  com.tencent.pb.common.view.KeyboardListenRelativeLayout{3d078aa V.E..... ... 0,0-720,1016 #7f090164 app:id/content_root}
+                    com.tencent.pb.common.view.BottomSelectTabView{2035c9b G.E..... ... 0,0-0,0 #7f0900ee app:id/contact_list_bottom_bar}
+                      android.widget.TextView{c87d838 V.ED..C. ... 0,0-0,0 #7f090043 app:id/bottom_left}
+                      android.widget.TextView{d085011 G.ED.... ... 0,0-0,0 #7f090044 app:id/bottom_middle}
+                      android.widget.TextView{3157576 V.ED..C. ... 0,0-0,0 #7f090045 app:id/bottom_right}
+                    android.widget.LinearLayout{9312777 V.E..... ... 0,96-720,1016 #7f0900ef app:id/LinearLayout_main}
+                      android.widget.LinearLayout{fe3fe4 V.E..... ... 0,0-720,80 #7f09018b app:id/all_top_tab_containers}
+                        com.tencent.pb.contact.view.ContactTopChildTab{210dc4d V.E...C. ... 0,0-360,80 #7f09018c app:id/contacttopchildtab_free}
+                          android.widget.RelativeLayout{4db7302 V.E..... ... 0,0-360,80}
+                            android.widget.TextView{406c413 V.ED.... ... 148,0-212,80 #7f09019f app:id/tv_label}
+                            android.widget.TextView{517650 I.ED.... ... 220,23-254,57 #7f0901a0 app:id/tv_red_point}
+                            android.widget.ImageView{69bf049 I.ED.... ... 308,12-324,28 #7f0901a1 app:id/red_point}
+                        android.view.View{511bd4e V.ED.... ... 359,18-360,62}
+                        com.tencent.pb.contact.view.ContactTopChildTab{88f8e6f V.E...C. ... 360,0-720,80 #7f09018d app:id/contacttopchildtab_all}
+                          android.widget.RelativeLayout{b5fa77c V.E..... ... 0,0-360,80}
+                            android.widget.TextView{2aa4805 V.ED.... ... 148,0-212,80 #7f09019f app:id/tv_label}
+                            android.widget.TextView{d50605a I.ED.... ... 220,23-254,57 #7f0901a0 app:id/tv_red_point}
+                            android.widget.ImageView{830a28b I.ED.... ... 308,12-324,28 #7f0901a1 app:id/red_point}
+                      android.widget.RelativeLayout{bdbf68 G.E..... ... 0,0-0,0 #7f0900f1 app:id/contact_list_net_only_tip}
+                        android.widget.LinearLayout{38c5f81 V.E..... ... 0,0-0,0}
+                          android.widget.TextView{6a42826 V.ED.... ... 0,0-0,0 #7f09042f app:id/tip_text}
+                          android.widget.TextView{b84dc67 V.ED.... ... 0,0-0,0 #7f090430 app:id/tip_button}
+                        android.widget.ImageButton{1636a14 GFED..C. ... 0,0-0,0 #7f090431 app:id/tip_close}
+                      android.widget.RelativeLayout{11e72bd G.E..... ... 0,0-0,0 #7f0900f0 app:id/contact_list_auth_expried_tip}
+                        android.widget.LinearLayout{c1aa0b2 V.E..... ... 0,0-0,0}
+                          android.widget.TextView{ff8d803 V.ED.... ... 0,0-0,0 #7f09042f app:id/tip_text}
+                          android.widget.TextView{4171380 V.ED.... ... 0,0-0,0 #7f090430 app:id/tip_button}
+                        android.widget.ImageButton{ac47db9 GFED..C. ... 0,0-0,0 #7f090431 app:id/tip_close}
+                      android.widget.RelativeLayout{a0e15fe G.E..... ... 0,0-0,0 #7f09018e app:id/contact_auth_valid_tip}
+                        android.widget.LinearLayout{326f15f V.E..... ... 0,0-0,0}
+                          android.widget.TextView{399e7ac V.ED.... ... 0,0-0,0 #7f09042f app:id/tip_text}
+                          android.widget.TextView{8263c75 V.ED.... ... 0,0-0,0 #7f090430 app:id/tip_button}
+                        android.widget.ImageButton{631940a GFED..C. ... 0,0-0,0 #7f090431 app:id/tip_close}
+                      android.widget.RelativeLayout{7f3447b V.E..... ... 0,80-720,920 #7f0900f3 app:id/layout_contact}
+                        com.tencent.pb.contact.view.ContactScrollListView{393d298 VFED..CL ... 0,0-720,840 #7f090096 app:id/listview}
+                          android.widget.LinearLayout{9ab2af1 V.E..... ... 0,0-720,128 #7f090178 app:id/contact_list_item_layout}
+                            android.view.View{c5ce6d6 G.ED.... ... 24,0-720,1 #7f0900e6 app:id/contact_list_item_divider}
+                            android.view.View{167ad57 G.ED.... ... 0,0-720,1 #7f090179 app:id/head_title_view_line}
+                            android.widget.TextView{83f8044 G.ED.... ... 0,1-720,45 #7f0900e8 app:id/headtitleview}
+                            com.tencent.pb.contact.view.ScrollHanlerLinearLayout{4b6852d V.E..... ... 0,0-720,128}
+                              android.widget.RelativeLayout{c189a62 V.E..... ... 0,0-720,128 #7f090170 app:id/main_info_view}
+                                android.widget.FrameLayout{f4fc7f3 V.E..... ... 0,0-676,128 #7f0900a5 app:id/space}
+                                  android.view.View{cd65cb0 V.ED.... ... 0,0-676,88}
+                                android.widget.RelativeLayout{7a34729 V.E..... ... 24,20-112,108 #7f090171 app:id/PhotoViewWarp}
+                                  com.tencent.pb.contact.view.PhotoImageView{2e9faae V.ED.... ... 0,0-88,88 #7f0900db app:id/PhotoView}
+                                  android.widget.ImageView{894f04f G.ED.... ... 0,0-0,0 #7f090172 app:id/PhotoViewSimIcon}
+                                android.widget.TextView{4bc93dc G.ED.... ... 0,0-0,0 #7f090173 app:id/PhotoViewTv}
+                                android.widget.RelativeLayout{1802ce5 V.E..... ... 660,64-660,64 #7f0900de app:id/right_view}
+                                  android.widget.ImageView{f5f13ba G.ED.... ... 0,0-0,0 #7f0900df app:id/icon_wecall_free}
+                                  android.widget.CheckBox{f5a426b G.ED.... ... 0,0-0,0 #7f0900e0 app:id/CheckBox_Select}
+                                android.widget.LinearLayout{36d11c8 V.E..... ... 136,42-636,85 #7f0900e2 app:id/info_view}
+                                  android.widget.RelativeLayout{98bb261 V.E..... ... 0,0-500,43}
+                                    android.widget.TextView{8dab186 V.ED.... ... 0,0-64,43 #7f0900e3 app:id/tv_name}
+                                    android.widget.TextView{ad89a47 G.ED.... ... 0,0-0,0 #7f090174 app:id/recent_label}
+                                    android.widget.TextView{7258274 G.ED.... ... 0,0-0,0 #7f090175 app:id/tv_new_badge}
+                                    android.widget.TextView{270139d G.ED.... ... 0,0-0,0 #7f090176 app:id/tv_pinyin}
+                                  com.tencent.pb.common.view.MiddleEllipsizeTextView{8206012 G.E..... ... 0,0-0,0 #7f090177 app:id/layout_des}
+                                    android.widget.TextView{2fa93e3 V.ED.... ... 0,0-0,0 #7f0900e4 app:id/tv_phone}
+                                    android.widget.TextView{25251e0 G.ED.... ... 0,0-0,0 #7f090198 app:id/tv_des}
+                          android.widget.LinearLayout{53f4c99 V.E..... ... 0,128-720,301 #7f090178 app:id/contact_list_item_layout}
+                            android.view.View{ca06b5e V.ED.... ... 24,0-720,1 #7f0900e6 app:id/contact_list_item_divider}
+                            android.view.View{9b88b3f V.ED.... ... 0,0-720,1 #7f090179 app:id/head_title_view_line}
+                            android.widget.TextView{fbaac0c V.ED.... ... 0,1-720,45 #7f0900e8 app:id/headtitleview}
+                            com.tencent.pb.contact.view.ScrollHanlerLinearLayout{2f1955 V.E..... ... 0,45-720,173}
+                              android.widget.RelativeLayout{a83df6a V.E..... ... 0,0-720,128 #7f090170 app:id/main_info_view}
+                                android.widget.FrameLayout{e349c5b V.E..... ... 0,0-676,128 #7f0900a5 app:id/space}
+                                  android.view.View{d6c7cf8 V.ED.... ... 0,0-676,88}
+                                android.widget.RelativeLayout{514f5d1 V.E..... ... 24,20-112,108 #7f090171 app:id/PhotoViewWarp}
+                                  com.tencent.pb.contact.view.PhotoImageView{d788836 V.ED.... ... 0,0-88,88 #7f0900db app:id/PhotoView}
+                                  android.widget.ImageView{596a337 G.ED.... ... 0,0-0,0 #7f090172 app:id/PhotoViewSimIcon}
+                                android.widget.TextView{a6870a4 G.ED.... ... 0,0-0,0 #7f090173 app:id/PhotoViewTv}
+                                android.widget.RelativeLayout{3a21e0d V.E..... ... 660,64-660,64 #7f0900de app:id/right_view}
+                                  android.widget.ImageView{c3cf1c2 G.ED.... ... 0,0-28,28 #7f0900df app:id/icon_wecall_free}
+                                  android.widget.CheckBox{5a83bd3 G.ED.... ... 0,0-0,0 #7f0900e0 app:id/CheckBox_Select}
+                                android.widget.LinearLayout{30df310 V.E..... ... 136,42-636,85 #7f0900e2 app:id/info_view}
+                                  android.widget.RelativeLayout{b5f8e09 V.E..... ... 0,0-500,43}
+                                    android.widget.TextView{8ec680e V.ED.... ... 0,0-17,43 #7f0900e3 app:id/tv_name}
+                                    android.widget.TextView{d30c22f G.ED.... ... 0,0-0,0 #7f090174 app:id/recent_label}
+                                    android.widget.TextView{847303c G.ED.... ... 0,0-0,0 #7f090175 app:id/tv_new_badge}
+                                    android.widget.TextView{16a01c5 G.ED.... ... 0,0-0,0 #7f090176 app:id/tv_pinyin}
+                                  com.tencent.pb.common.view.MiddleEllipsizeTextView{a0af71a G.E..... ... 0,0-0,0 #7f090177 app:id/layout_des}
+                                    android.widget.TextView{611524b V.ED.... ... 0,0-0,0 #7f0900e4 app:id/tv_phone}
+                                    android.widget.TextView{d751428 G.ED.... ... 0,0-0,0 #7f090198 app:id/tv_des}
+                          android.widget.LinearLayout{5edf541 V.E..... ... 0,301-720,430 #7f090178 app:id/contact_list_item_layout}
+                            android.view.View{8516ae6 V.ED.... ... 24,0-720,1 #7f0900e6 app:id/contact_list_item_divider}
+                            android.view.View{d20c827 G.ED.... ... 0,0-720,1 #7f090179 app:id/head_title_view_line}
+                            android.widget.TextView{91b4ad4 G.ED.... ... 0,1-720,45 #7f0900e8 app:id/headtitleview}
+                            com.tencent.pb.contact.view.ScrollHanlerLinearLayout{563a47d V.E..... ... 0,1-720,129}
+                              android.widget.RelativeLayout{d394f72 V.E..... ... 0,0-720,128 #7f090170 app:id/main_info_view}
+                                android.widget.FrameLayout{bc7bfc3 V.E..... ... 0,0-676,128 #7f0900a5 app:id/space}
+                                  android.view.View{44c4040 V.ED.... ... 0,0-676,88}
+                                android.widget.RelativeLayout{e48f0be V.E..... ... 24,20-112,108 #7f090171 app:id/PhotoViewWarp}
+                                  com.tencent.pb.contact.view.PhotoImageView{f5c951f V.ED.... ... 0,0-88,88 #7f0900db app:id/PhotoView}
+                                  android.widget.ImageView{4d5206c G.ED.... ... 0,0-0,0 #7f090172 app:id/PhotoViewSimIcon}
+                                android.widget.TextView{e27e635 G.ED.... ... 0,0-0,0 #7f090173 app:id/PhotoViewTv}
+                                android.widget.RelativeLayout{11f5aca V.E..... ... 660,64-660,64 #7f0900de app:id/right_view}
+                                  android.widget.ImageView{a3f643b G.ED.... ... 0,0-0,0 #7f0900df app:id/icon_wecall_free}
+                                  android.widget.CheckBox{e29d758 G.ED.... ... 0,0-0,0 #7f0900e0 app:id/CheckBox_Select}
+                                android.widget.LinearLayout{d7db0b1 V.E..... ... 136,42-636,85 #7f0900e2 app:id/info_view}
+                                  android.widget.RelativeLayout{4405996 V.E..... ... 0,0-500,43}
+                                    android.widget.TextView{ab60917 V.ED.... ... 0,0-34,43 #7f0900e3 app:id/tv_name}
+                                    android.widget.TextView{5111104 G.ED.... ... 0,0-0,0 #7f090174 app:id/recent_label}
+                                    android.widget.TextView{88ba6ed G.ED.... ... 0,0-0,0 #7f090175 app:id/tv_new_badge}
+                                    android.widget.TextView{8a07922 G.ED.... ... 0,0-0,0 #7f090176 app:id/tv_pinyin}
+                                  com.tencent.pb.common.view.MiddleEllipsizeTextView{3881fb3 G.E..... ... 0,0-0,0 #7f090177 app:id/layout_des}
+                                    android.widget.TextView{2103970 V.ED.... ... 0,0-0,0 #7f0900e4 app:id/tv_phone}
+                                    android.widget.TextView{f08c4e9 G.ED.... ... 0,0-0,0 #7f090198 app:id/tv_des}
+                          android.widget.LinearLayout{7f1056e V.E..... ... 0,430-720,559 #7f090178 app:id/contact_list_item_layout}
+                            android.view.View{25b040f V.ED.... ... 24,0-720,1 #7f0900e6 app:id/contact_list_item_divider}
+                            android.view.View{e977c9c G.ED.... ... 0,0-720,1 #7f090179 app:id/head_title_view_line}
+                            android.widget.TextView{b1fc6a5 G.ED.... ... 0,1-720,45 #7f0900e8 app:id/headtitleview}
+                            com.tencent.pb.contact.view.ScrollHanlerLinearLayout{3ac0a7a V.E..... ... 0,1-720,129}
+                              android.widget.RelativeLayout{fcdd22b V.E..... ... 0,0-720,128 #7f090170 app:id/main_info_view}
+                                android.widget.FrameLayout{8edc688 V.E..... ... 0,0-676,128 #7f0900a5 app:id/space}
+                                  android.view.View{4eb2821 V.ED.... ... 0,0-676,88}
+                                android.widget.RelativeLayout{8e05446 V.E..... ... 24,20-112,108 #7f090171 app:id/PhotoViewWarp}
+                                  com.tencent.pb.contact.view.PhotoImageView{5556607 V.ED.... ... 0,0-88,88 #7f0900db app:id/PhotoView}
+                                  android.widget.ImageView{adcc334 G.ED.... ... 0,0-0,0 #7f090172 app:id/PhotoViewSimIcon}
+                                android.widget.TextView{1b1255d G.ED.... ... 0,0-0,0 #7f090173 app:id/PhotoViewTv}
+                                android.widget.RelativeLayout{4bd6ed2 V.E..... ... 660,64-660,64 #7f0900de app:id/right_view}
+                                  android.widget.ImageView{4d85ba3 G.ED.... ... 0,0-0,0 #7f0900df app:id/icon_wecall_free}
+                                  android.widget.CheckBox{f1cdea0 G.ED.... ... 0,0-0,0 #7f0900e0 app:id/CheckBox_Select}
+                                android.widget.LinearLayout{adfba59 V.E..... ... 136,42-636,85 #7f0900e2 app:id/info_view}
+                                  android.widget.RelativeLayout{5dfa61e V.E..... ... 0,0-500,43}
+                                    android.widget.TextView{e0b0eff V.ED.... ... 0,0-166,43 #7f0900e3 app:id/tv_name}
+                                    android.widget.TextView{18144cc G.ED.... ... 0,0-0,0 #7f090174 app:id/recent_label}
+                                    android.widget.TextView{8c8a315 G.ED.... ... 0,0-0,0 #7f090175 app:id/tv_new_badge}
+                                    android.widget.TextView{65c062a G.ED.... ... 0,0-0,0 #7f090176 app:id/tv_pinyin}
+                                  com.tencent.pb.common.view.MiddleEllipsizeTextView{d8b9c1b G.E..... ... 0,0-0,0 #7f090177 app:id/layout_des}
+                                    android.widget.TextView{5e3e1b8 V.ED.... ... 0,0-0,0 #7f0900e4 app:id/tv_phone}
+                                    android.widget.TextView{d1d5b91 G.ED.... ... 0,0-0,0 #7f090198 app:id/tv_des}
+                          android.widget.LinearLayout{a8c5af6 V.E..... ... 0,559-720,688 #7f090178 app:id/contact_list_item_layout}
+                            android.view.View{1bddef7 V.ED.... ... 24,0-720,1 #7f0900e6 app:id/contact_list_item_divider}
+                            android.view.View{1d16164 G.ED.... ... 0,0-720,1 #7f090179 app:id/head_title_view_line}
+                            android.widget.TextView{92b1fcd G.ED.... ... 0,1-720,45 #7f0900e8 app:id/headtitleview}
+                            com.tencent.pb.contact.view.ScrollHanlerLinearLayout{9b3082 V.E..... ... 0,1-720,129}
+                              android.widget.RelativeLayout{1677393 V.E..... ... 0,0-720,128 #7f090170 app:id/main_info_view}
+                                android.widget.FrameLayout{4f52fd0 V.E..... ... 0,0-676,128 #7f0900a5 app:id/space}
+                                  android.view.View{bd6ebc9 V.ED.... ... 0,0-676,88}
+                                android.widget.RelativeLayout{ccfd2ce V.E..... ... 24,20-112,108 #7f090171 app:id/PhotoViewWarp}
+                                  com.tencent.pb.contact.view.PhotoImageView{bb5ef V.ED.... ... 0,0-88,88 #7f0900db app:id/PhotoView}
+                                  android.widget.ImageView{c4578fc G.ED.... ... 0,0-0,0 #7f090172 app:id/PhotoViewSimIcon}
+                                android.widget.TextView{3597b85 G.ED.... ... 0,0-0,0 #7f090173 app:id/PhotoViewTv}
+                                android.widget.RelativeLayout{e9a4dda V.E..... ... 660,64-660,64 #7f0900de app:id/right_view}
+                                  android.widget.ImageView{c07c20b G.ED.... ... 0,0-0,0 #7f0900df app:id/icon_wecall_free}
+                                  android.widget.CheckBox{bef28e8 G.ED.... ... 0,0-0,0 #7f0900e0 app:id/CheckBox_Select}
+                                android.widget.LinearLayout{ebb4b01 V.E..... ... 136,42-636,85 #7f0900e2 app:id/info_view}
+                                  android.widget.RelativeLayout{a5f6da6 V.E..... ... 0,0-500,43}
+                                    android.widget.TextView{26e73e7 V.ED.... ... 0,0-64,43 #7f0900e3 app:id/tv_name}
+                                    android.widget.TextView{c01eb94 G.ED.... ... 0,0-0,0 #7f090174 app:id/recent_label}
+                                    android.widget.TextView{b10963d G.ED.... ... 0,0-0,0 #7f090175 app:id/tv_new_badge}
+                                    android.widget.TextView{404be32 G.ED.... ... 0,0-0,0 #7f090176 app:id/tv_pinyin}
+                                  com.tencent.pb.common.view.MiddleEllipsizeTextView{4a46783 G.E..... ... 0,0-0,0 #7f090177 app:id/layout_des}
+                                    android.widget.TextView{3dc2d00 V.ED.... ... 0,0-0,0 #7f0900e4 app:id/tv_phone}
+                                    android.widget.TextView{8755939 G.ED.... ... 0,0-0,0 #7f090198 app:id/tv_des}
+                          android.widget.LinearLayout{63c8b7e V.E..... ... 0,688-720,861 #7f090178 app:id/contact_list_item_layout}
+                            android.view.View{bbbf8df V.ED.... ... 24,0-720,1 #7f0900e6 app:id/contact_list_item_divider}
+                            android.view.View{57192c V.ED.... ... 0,0-720,1 #7f090179 app:id/head_title_view_line}
+                            android.widget.TextView{2c94ff5 V.ED.... ... 0,1-720,45 #7f0900e8 app:id/headtitleview}
+                            com.tencent.pb.contact.view.ScrollHanlerLinearLayout{291e18a V.E..... ... 0,45-720,173}
+                              android.widget.RelativeLayout{59143fb V.E..... ... 0,0-720,128 #7f090170 app:id/main_info_view}
+                                android.widget.FrameLayout{b29c18 V.E..... ... 0,0-676,128 #7f0900a5 app:id/space}
+                                  android.view.View{a2bf671 V.ED.... ... 0,0-676,88}
+                                android.widget.RelativeLayout{6348c56 V.E..... ... 24,20-112,108 #7f090171 app:id/PhotoViewWarp}
+                                  com.tencent.pb.contact.view.PhotoImageView{7a624d7 V.ED.... ... 0,0-88,88 #7f0900db app:id/PhotoView}
+                                  android.widget.ImageView{64161c4 G.ED.... ... 0,0-0,0 #7f090172 app:id/PhotoViewSimIcon}
+                                android.widget.TextView{73888ad G.ED.... ... 0,0-0,0 #7f090173 app:id/PhotoViewTv}
+                                android.widget.RelativeLayout{f8517e2 V.E..... ... 660,64-660,64 #7f0900de app:id/right_view}
+                                  android.widget.ImageView{3be3773 G.ED.... ... 0,0-0,0 #7f0900df app:id/icon_wecall_free}
+                                  android.widget.CheckBox{2d4d630 G.ED.... ... 0,0-0,0 #7f0900e0 app:id/CheckBox_Select}
+                                android.widget.LinearLayout{70202a9 V.E..... ... 136,42-636,85 #7f0900e2 app:id/info_view}
+                                  android.widget.RelativeLayout{60d02e V.E..... ... 0,0-500,43}
+                                    android.widget.TextView{a3ad7cf V.ED.... ... 0,0-123,43 #7f0900e3 app:id/tv_name}
+                                    android.widget.TextView{1e9255c G.ED.... ... 0,0-0,0 #7f090174 app:id/recent_label}
+                                    android.widget.TextView{acf2065 G.ED.... ... 0,0-0,0 #7f090175 app:id/tv_new_badge}
+                                    android.widget.TextView{92dc13a G.ED.... ... 0,0-0,0 #7f090176 app:id/tv_pinyin}
+                                  com.tencent.pb.common.view.MiddleEllipsizeTextView{63721eb G.E..... ... 0,0-0,0 #7f090177 app:id/layout_des}
+                                    android.widget.TextView{8913b48 V.ED.... ... 0,0-0,0 #7f0900e4 app:id/tv_phone}
+                                    android.widget.TextView{7965de1 G.ED.... ... 0,0-0,0 #7f090198 app:id/tv_des}
+                        android.widget.TextView{8a6b706 G.ED.... ... 285,345-434,494 #7f0900ea app:id/textview_centerchar}
+                        com.tencent.pb.contact.view.ContactLetterListView{f63f1c7 V.ED.... ... 649,20-739,838 #7f0900eb app:id/contact_Letter_listView}
+                        com.tencent.pb.common.view.ListEmptyView{822c3f4 G.E..... ... 0,0-0,0 #7f0900f5 app:id/contact_list_empty_view}
+                          android.widget.RelativeLayout{139f71d V.E..... ... 0,0-0,0}
+                            android.widget.TextView{c673d92 V.ED.... ... 0,0-0,0 #7f090256 app:id/list_empty_view_text}
+                            android.widget.TextView{da3e363 G.ED.... ... 0,0-0,0 #7f090257 app:id/list_empty_view_sub_text}
+                            android.widget.ImageView{fa22b60 V.ED.... ... 0,0-0,0 #7f090258 app:id/list_empty_view_image}
+                            android.widget.Button{d83e819 GFED..C. ... 0,0-0,0 #7f090259 app:id/list_empty_view_button}
+                            android.widget.TextView{e37a0de VFED..CL ... 0,0-0,0 #7f09025a app:id/list_empty_view_guid_text}
+                          android.widget.TextView{a6752bf G.ED.... ... 0,0-0,0 #7f09025b app:id/list_empty_view_warning_text}
+                          android.widget.RelativeLayout{7ee9d8c G.E..... ... 0,0-0,0 #7f09003d app:id/login_bottom_items}
+                            android.widget.CheckBox{ae1ecd5 VFED..C. ... 0,0-0,0 #7f09003e app:id/ckAgree}
+                            android.widget.TextView{a18ecea V.ED.... ... 0,0-0,0 #7f09003f app:id/tvNotice}
+                    com.tencent.pb.common.view.TopBarView{bc85bdb V.E...C. ... 0,0-720,96 #7f0900f6 app:id/contact_select_list_top_bar}
+                      android.widget.RelativeLayout{6ae0678 V.E...C. ... 0,0-720,96 #7f090111 app:id/common_top_wrapper}
+                        android.view.View{6e18151 V.ED.... ... 0,95-720,96 #7f090112 app:id/top_bar_bottom_line}
+                        android.widget.RelativeLayout{910edb6 V.E..... ... 0,0-160,96}
+                          android.widget.ImageView{566dab7 G.ED.... ... 0,0-0,0 #7f090113 app:id/btn_left}
+                          android.widget.TextView{3f91224 G.ED.... ... 0,0-0,0 #7f090114 app:id/text_left}
+                          android.widget.LinearLayout{6be18d VFE...C. ... 0,0-132,96 #7f090115 app:id/ll_btn_middle}
+                            android.widget.TextView{cb62f42 V.ED..C. ... 24,22-132,71 #7f090116 app:id/btn_middle}
+                            android.widget.TextView{b046b53 G.ED.... ... 0,0-0,0 #7f090117 app:id/btn_middle_sub}
+                        android.widget.FrameLayout{ec72c90 V.E..... ... 510,0-720,96 #7f090118 app:id/top_right}
+                          android.widget.RelativeLayout{1c20989 G.E..... ... 0,0-0,0 #7f090119 app:id/top_progressbar}
+                            android.widget.ProgressBar{77bfd8e V.ED.... ... 0,0-0,0}
+                          android.widget.LinearLayout{e069af V.E..... ... 0,0-210,96}
+                            android.widget.ImageView{c1a81bc G.ED.... ... 0,0-0,0 #7f09011a app:id/btn_right}
+                            android.widget.ImageView{e38b545 V.ED..C. ... 0,0-100,96 #7f09011b app:id/btn_right1}
+                            android.widget.ImageView{dbe649a V.ED..C. ... 100,0-210,96 #7f09011c app:id/btn_right2}
+                          android.widget.TextView{5d3f1cb G.ED.... ... 0,0-0,0 #7f09011d app:id/text_right}
+                        android.widget.ImageView{cebfda8 G.ED.... ... 0,0-0,0 #7f09011e app:id/right_point}
+                android.support.v4.app.NoSaveStateFrameLayout{c59fed G.E..... ... 0,0-720,1016}
+                  android.widget.FrameLayout{fb460c1 V.E..... ... 0,0-720,1016}
+                    android.widget.RelativeLayout{b8e3066 V.E..... ... 0,0-720,1016 #7f090027 app:id/main}
+                      android.widget.LinearLayout{32ddfa7 V.E..... ... 0,96-720,176 #7f09027d app:id/layout_conv_list_header}
+                        com.tencent.pb.common.view.SearchBarView{6d74c54 GFE..... ... 0,0-0,0 #7f09027e app:id/msg_searchbarview}
+                          android.widget.LinearLayout{fe547fd V.E..... ... 0,0-0,0}
+                            android.widget.ImageView{b3cecf2 V.ED..C. ... 0,0-0,0 #7f09010c app:id/btn_back}
+                            android.widget.FrameLayout{e4ecf43 V.E..... ... 0,0-0,0}
+                              android.widget.EditText{b86d9c0 VFED..CL ... 0,0-0,0 #7f09010d app:id/edit_search}
+                              android.widget.ImageView{94366f9 V.ED.... ... 0,0-0,0 #7f090109 app:id/btn_normal}
+                              android.widget.ImageView{8a8e63e G.ED..C. ... 0,0-0,0 #7f09010e app:id/btn_action}
+                              android.view.View{8051c9f G.ED.... ... 0,0-0,0 #7f09010f app:id/searchbar_mask}
+                              android.view.View{adfd1ec G.ED.... ... 0,0-0,0 #7f090110 app:id/search_divider}
+                        android.widget.RelativeLayout{bca79b5 V.E...C. ... 0,0-720,80 #7f09027f app:id/layout_conv_list_defaultsms_tip}
+                          android.widget.LinearLayout{d49284a V.E..... ... 0,0-648,80}
+                            android.widget.TextView{5a8e3bb V.ED.... ... 0,0-448,80 #7f09042f app:id/tip_text}
+                            android.widget.TextView{bee20d8 V.ED.... ... 456,21-520,59 #7f090430 app:id/tip_button}
+                          android.widget.ImageButton{175fc31 VFED..C. ... 640,0-720,80 #7f090431 app:id/tip_close}
+                      com.tencent.pb.common.view.BottomSelectTabView{f97f16 G.E..... ... 0,0-0,0 #7f090186 app:id/bottom_bar}
+                        android.widget.TextView{ff80097 V.ED..C. ... 0,0-0,0 #7f090043 app:id/bottom_left}
+                        android.widget.TextView{8907284 V.ED..C. ... 0,0-0,0 #7f090044 app:id/bottom_middle}
+                        android.widget.TextView{e7d2a6d V.ED..C. ... 0,0-0,0 #7f090045 app:id/bottom_right}
+                      android.widget.FrameLayout{b8676a2 V.E..... ... 0,176-720,1016 #7f090280 app:id/layout_msg_list_body}
+                        com.tencent.pb.msg.view.ScrollListView{3b20f33 VFED.VCL ... 0,0-720,840 #7f090281 app:id/list_conversation}
+                          com.tencent.pb.msg.view.ConvItemLayout{7e432f0 V.E..... ... 0,0-720,128 #7f0902e5 app:id/conversation_item_layout}
+                            android.widget.RelativeLayout{94f0069 V.E..... ... 0,0-720,128}
+                              android.widget.FrameLayout{2f95aee V.E..... ... 0,0-720,128 #7f0900a5 app:id/space}
+                                android.view.View{ff46b8f V.ED.... ... 0,0-720,88}
+                              android.widget.TextView{3718e1c V.ED.... ... 560,0-720,128 #7f0902eb app:id/msg_box_right_delete}
+                              android.widget.CheckBox{64e3a25 G.ED.... ... 0,0-0,0 #7f0902ec app:id/checkbox}
+                              com.tencent.pb.msg.view.HScrollView{2a437fa V.E..... ... 0,0-720,128 #7f0900a6 app:id/scroll_container}
+                                android.view.View{e5631ab V.ED.... ... 0,0-720,0}
+                                android.widget.RelativeLayout{3177008 V.E..... ... 720,0-1440,88}
+                                  com.tencent.pb.contact.view.PhotoImageView{34d53a1 V.ED.... ... 24,0-112,88 #7f0902e6 app:id/msg_photoView}
+                                  android.widget.TextView{6edd9c6 G.ED.... ... 0,0-0,0 #7f090173 app:id/PhotoViewTv}
+                                  android.widget.ImageView{c43d87 V.ED.... ... 101,8-121,28 #7f0902e7 app:id/msg_new_reddot}
+                                  android.widget.ImageView{bb784b4 G.ED.... ... 0,0-0,0 #7f0902e8 app:id/msg_new_reddot_withoutavatar}
+                                  android.widget.RelativeLayout{eca88dd V.E..... ... 136,3-720,84}
+                                    android.widget.TextView{9ddcc52 V.ED.... ... 512,0-560,33 #7f0902e9 app:id/tv_date}
+                                    android.widget.TextView{11d2b23 V.ED.... ... 0,0-506,43 #7f0900e3 app:id/tv_name}
+                                    android.widget.TextView{6ebd5d9 V.ED.... ... 0,43-560,81 #7f0902ea app:id/tv_snippet}
+                                android.view.View{c685b9e V.ED.... ... 1440,0-1920,0}
+                          com.tencent.pb.msg.view.ConvItemLayout{e8d567f V.E..... ... 0,129-720,257 #7f0902e5 app:id/conversation_item_layout}
+                            android.widget.RelativeLayout{7c2b64c V.E..... ... 0,0-720,128}
+                              android.widget.FrameLayout{c3af695 V.E..... ... 0,0-720,128 #7f0900a5 app:id/space}
+                                android.view.View{87a93aa V.ED.... ... 0,0-720,88}
+                              android.widget.TextView{4aadb9b V.ED.... ... 560,0-720,128 #7f0902eb app:id/msg_box_right_delete}
+                              android.widget.CheckBox{8aeb38 G.ED.... ... 0,0-0,0 #7f0902ec app:id/checkbox}
+                              com.tencent.pb.msg.view.HScrollView{4216711 V.E..... ... 0,0-720,128 #7f0900a6 app:id/scroll_container}
+                                android.view.View{7c64076 V.ED.... ... 0,0-720,0}
+                                android.widget.RelativeLayout{8519677 V.E..... ... 720,0-1440,88}
+                                  com.tencent.pb.contact.view.PhotoImageView{d9f82e4 V.ED.... ... 24,0-112,88 #7f0902e6 app:id/msg_photoView}
+                                  android.widget.TextView{724634d G.ED.... ... 0,0-0,0 #7f090173 app:id/PhotoViewTv}
+                                  android.widget.ImageView{b4dee02 V.ED.... ... 101,8-121,28 #7f0902e7 app:id/msg_new_reddot}
+                                  android.widget.ImageView{63f2313 G.ED.... ... 0,0-0,0 #7f0902e8 app:id/msg_new_reddot_withoutavatar}
+                                  android.widget.RelativeLayout{943e950 V.E..... ... 136,3-720,84}
+                                    android.widget.TextView{6e0e749 V.ED.... ... 502,0-560,33 #7f0902e9 app:id/tv_date}
+                                    android.widget.TextView{fb0e84e V.ED.... ... 0,0-496,43 #7f0900e3 app:id/tv_name}
+                                    android.widget.TextView{f6edd6f V.ED.... ... 0,43-560,81 #7f0902ea app:id/tv_snippet}
+                                android.view.View{c864a7c V.ED.... ... 1440,0-1920,0}
+                          com.tencent.pb.msg.view.ConvItemLayout{7c7af05 V.E..... ... 0,258-720,386 #7f0902e5 app:id/conversation_item_layout}
+                            android.widget.RelativeLayout{a373b5a V.E..... ... 0,0-720,128}
+                              android.widget.FrameLayout{f35e18b V.E..... ... 0,0-720,128 #7f0900a5 app:id/space}
+                                android.view.View{12b9268 V.ED.... ... 0,0-720,88}
+                              android.widget.TextView{a993681 V.ED.... ... 560,0-720,128 #7f0902eb app:id/msg_box_right_delete}
+                              android.widget.CheckBox{a9db326 G.ED.... ... 0,0-0,0 #7f0902ec app:id/checkbox}
+                              com.tencent.pb.msg.view.HScrollView{71f0b67 V.E..... ... 0,0-720,128 #7f0900a6 app:id/scroll_container}
+                                android.view.View{65b6d14 V.ED.... ... 0,0-720,0}
+                                android.widget.RelativeLayout{1a1b9bd V.E..... ... 720,0-1440,88}
+                                  com.tencent.pb.contact.view.PhotoImageView{da1dbb2 V.ED.... ... 24,0-112,88 #7f0902e6 app:id/msg_photoView}
+                                  android.widget.TextView{c86f703 G.ED.... ... 0,0-0,0 #7f090173 app:id/PhotoViewTv}
+                                  android.widget.ImageView{40c4680 G.ED.... ... 0,0-0,0 #7f0902e7 app:id/msg_new_reddot}
+                                  android.widget.ImageView{db534b9 G.ED.... ... 0,0-0,0 #7f0902e8 app:id/msg_new_reddot_withoutavatar}
+                                  android.widget.RelativeLayout{c4e00fe V.E..... ... 136,3-720,84}
+                                    android.widget.TextView{3f8005f V.ED.... ... 473,0-560,33 #7f0902e9 app:id/tv_date}
+                                    android.widget.TextView{92f4aac V.ED.... ... 0,0-467,43 #7f0900e3 app:id/tv_name}
+                                    android.widget.TextView{eeb6375 V.ED.... ... 0,43-560,81 #7f0902ea app:id/tv_snippet}
+                                android.view.View{4052f0a V.ED.... ... 1440,0-1920,0}
+                        com.tencent.pb.msg.view.ScrollListView{646437b G.ED.VC. ... 0,0-0,0 #7f090282 app:id/list_msg_search_result}
+                        com.tencent.pb.common.view.ListEmptyView{9c6598 G.E..... ... 0,0-0,0 #7f090283 app:id/sms_list_empty_view}
+                          android.widget.RelativeLayout{51bc1f1 V.E..... ... 0,0-0,0}
+                            android.widget.TextView{34f31d6 V.ED.... ... 0,0-0,0 #7f090256 app:id/list_empty_view_text}
+                            android.widget.TextView{b6b9c57 G.ED.... ... 0,0-0,0 #7f090257 app:id/list_empty_view_sub_text}
+                            android.widget.ImageView{8be4344 V.ED.... ... 0,0-0,0 #7f090258 app:id/list_empty_view_image}
+                            android.widget.Button{c198c2d GFED..C. ... 0,0-0,0 #7f090259 app:id/list_empty_view_button}
+                            android.widget.TextView{7649562 VFED..CL ... 0,0-0,0 #7f09025a app:id/list_empty_view_guid_text}
+                          android.widget.TextView{723a6f3 G.ED.... ... 0,0-0,0 #7f09025b app:id/list_empty_view_warning_text}
+                          android.widget.RelativeLayout{9fe4fb0 G.E..... ... 0,0-0,0 #7f09003d app:id/login_bottom_items}
+                            android.widget.CheckBox{fafbe29 VFED..C. ... 0,0-0,0 #7f09003e app:id/ckAgree}
+                            android.widget.TextView{67aa5ae V.ED.... ... 0,0-0,0 #7f09003f app:id/tvNotice}
+                        android.view.View{347bf4f G.ED.... ... 0,0-0,0 #7f090284 app:id/list_msg_search_mask}
+                      android.widget.TextView{7f0b6dc G.ED.... ... 0,0-0,0 #7f090285 app:id/msg_no_result_search}
+                      com.tencent.pb.common.view.TopBarView{35d13e5 V.E...C. ... 0,0-720,96 #7f090092 app:id/top_bar}
+                        android.widget.RelativeLayout{2cf6eba V.E...C. ... 0,0-720,96 #7f090111 app:id/common_top_wrapper}
+                          android.view.View{3eb016b V.ED.... ... 0,95-720,96 #7f090112 app:id/top_bar_bottom_line}
+                          android.widget.RelativeLayout{94064c8 V.E..... ... 0,0-160,96}
+                            android.widget.ImageView{9d00961 G.ED.... ... 0,0-0,0 #7f090113 app:id/btn_left}
+                            android.widget.TextView{275bc86 V.ED..C. ... 20,0-20,96 #7f090114 app:id/text_left}
+                            android.widget.LinearLayout{1364947 VFE...C. ... 0,0-118,96 #7f090115 app:id/ll_btn_middle}
+                              android.widget.TextView{25b0574 V.ED..C. ... 24,22-118,71 #7f090116 app:id/btn_middle}
+                              android.widget.TextView{822da9d G.ED.... ... 0,0-0,0 #7f090117 app:id/btn_middle_sub}
+                          android.widget.FrameLayout{7e11b12 V.E..... ... 410,0-720,96 #7f090118 app:id/top_right}
+                            android.widget.RelativeLayout{30432e3 G.E..... ... 0,0-0,0 #7f090119 app:id/top_progressbar}
+                              android.widget.ProgressBar{edd04e0 V.ED.... ... 0,0-0,0}
+                            android.widget.LinearLayout{d78399 V.E..... ... 0,0-310,96}
+                              android.widget.ImageView{731d65e V.ED..C. ... 0,0-100,96 #7f09011a app:id/btn_right}
+                              android.widget.ImageView{a3d1a3f V.ED..C. ... 100,0-200,96 #7f09011b app:id/btn_right1}
+                              android.widget.ImageView{5bd8f0c V.ED..C. ... 200,0-310,96 #7f09011c app:id/btn_right2}
+                            android.widget.TextView{293c055 G.ED..C. ... 0,0-0,0 #7f09011d app:id/text_right}
+                          android.widget.ImageView{440fa6a G.ED.... ... 0,0-0,0 #7f09011e app:id/right_point}
+                    android.view.ViewStub{3f31b5b G.E..... ... 0,0-0,0 #7f090031 app:id/id_sms_stub}
+              android.widget.LinearLayout{43a8ff8 V.E..... ... 0,1016-720,1136 #7f090029 app:id/tab_bar}
+                android.widget.Button{69d0cd1 VFED..C. ... 0,0-180,120 #7f09002a app:id/tab_dialer}
+                android.widget.FrameLayout{56c5336 V.E..... ... 180,0-360,120}
+                  android.widget.Button{23e1237 VFED..C. ... 0,0-180,120 #7f09002b app:id/tab_calllog}
+                  android.widget.TextView{b84b3a4 G.ED.... ... 0,0-0,0 #7f09002c app:id/tab_calllog_unread_count}
+                android.widget.FrameLayout{b14a50d V.E..... ... 360,0-540,120}
+                  android.widget.Button{7226cc2 VFED..C. .S. 0,0-180,120 #7f09002d app:id/tab_contacts}
+                  android.widget.ImageView{6d79ad3 G.ED.... ... 0,0-0,0 #7f09002e app:id/tab_contact_new}
+                android.widget.FrameLayout{d2b6610 V.E..... ... 540,0-720,120}
+                  android.widget.Button{4f38509 VFED..C. ... 0,0-180,120 #7f09002f app:id/tab_msg_txt}
+                  android.widget.TextView{c2e930e V.ED.... ... 103,8-141,46 #7f090030 app:id/tab_msg_unread_count}
+            com.tencent.pb.msg.view.InputManagerRelativeLayout{b77112f G.E..... ... 0,0-0,0 #7f0902a3 app:id/msg_list_layout_root}
+              android.widget.LinearLayout{248d33c V.E..... ... 0,0-0,0}
+                android.widget.LinearLayout{5c668c5 V.E..... ... 0,0-0,0 #7f0902a4 app:id/container_sms_body}
+                  android.view.ViewStub{6c4d21a G.E..... ... 0,0-0,0 #7f0902a5 app:id/new_conv_container}
+                  com.tencent.pb.common.view.SuperListView{3ed914b VFED.VC. ... 0,0-0,0 #7f0902a6 app:id/list_view}
+                  android.view.View{96de728 V.ED.... ... 0,0-0,0 #7f0902a7 app:id/blank_fill}
+                android.widget.LinearLayout{129cc41 V.E..... ... 0,0-0,0 #7f0902b1 app:id/layout_send_area_main}
+                  android.widget.RelativeLayout{64df5e6 V.E..... ... 0,0-0,0 #7f0902b3 app:id/layout_msg_send_area}
+                    android.widget.FrameLayout{601f727 V.E..... ... 0,0-0,0 #7f0902b4 app:id/layout_msg_attachment_btn}
+                      android.widget.ImageView{74e4dd4 V.ED.... ... 0,0-0,0 #7f0902b6 app:id/btn_msg_attachment_keyboard}
+                      android.widget.ImageView{e05eb7d V.ED.... ... 0,0-0,0 #7f0902b7 app:id/iv_msg_attachment_select}
+                    android.widget.LinearLayout{5f38a72 V.E..... ... 0,0-0,0 #7f0902b5 app:id/layout_msg_send_singlesim}
+                      android.widget.LinearLayout{30cdec3 V.E..... ... 0,0-0,0 #7f0902b8 app:id/layout_msg_content_editor_root}
+                        android.widget.EditText{62c7340 VFED..CL ... 0,0-0,0 #7f0902b9 app:id/msg_edit_content}
+                        android.view.View{f8ac279 V.ED.... ... 0,0-0,0 #7f0902ba app:id/msg_edit_content_divideline}
+                        android.widget.HorizontalScrollView{7ebdbbe VFED.V.. ... 0,0-0,0 #7f0902bb app:id/msg_edit_content_scrollview}
+                          android.widget.LinearLayout{f54a41f V.E..... ... 0,0-0,0 #7f0902bc app:id/msg_edit_content_layout}
+                            com.tencent.pb.msg.view.MsgContentEditorGridView{5836c V.ED.VC. ... 0,0-0,0}
+                            android.widget.TextView{1ec0d35 V.ED.... ... 0,0-0,0 #7f0902bd app:id/tv_content_desc}
+                      android.widget.LinearLayout{985f5ca V.E..... ... 0,0-0,0 #7f0902be app:id/layout_msg_send_singlesim_area}
+                        android.widget.TextView{329633b G.ED.... ... 0,0-0,0 #7f0902bf app:id/tv_msg_count_singlesim}
+                        android.widget.Button{f7d6a58 VFED..C. ... 0,0-0,0 #7f0902c0 app:id/btn_msg_send}
+                    android.widget.TextView{6dd47b1 V.ED.... ... 0,0-0,0 #7f0902c1 app:id/tv_msg_count_dualsim}
+                    android.widget.LinearLayout{bf5a496 V.E..... ... 0,0-0,0 #7f0902c2 app:id/layout_msg_send_dualsim}
+                      android.widget.Button{1c0f817 VFED..C. ... 0,0-0,0 #7f0902c3 app:id/btn_msg_send_sim1}
+                      android.widget.Button{38ad404 VFED..C. ... 0,0-0,0 #7f0902c4 app:id/btn_msg_send_sim2}
+                  android.widget.LinearLayout{dcdaded V.E..... ... 0,0-0,0 #7f0902c5 app:id/layout_send_area_bottom}
+                    android.view.View{ddf7422 G.ED.... ... 0,0-0,0 #7f0902c6 app:id/msg_attachment_divideline}
+                    android.widget.LinearLayout{1d2feb3 V.E..... ... 0,0-0,0 #7f0902c7 app:id/face_layout}
+                      com.tencent.pb.msg.view.HorizontalScrollGridView{1e32c70 V.E..... ... 0,0-0,0 #7f090292 app:id/hsgv_smiley}
+                        android.widget.LinearLayout{3e43be9 V.E..... ... 0,0-0,0 #7f090315 app:id/view_horizontal_scroll_gridview}
+                          com.tencent.pb.msg.view.ScrollLayout{1a4b06e V.E..... ... 0,0-0,0 #7f090316 app:id/scrollLayout}
+                          android.widget.LinearLayout{3f4d30f G.E..... ... 0,0-0,0 #7f090317 app:id/navigation}
+                      android.widget.LinearLayout{4269f9c V.E..... ... 0,0-0,0 #7f090293 app:id/face_bar}
+                        android.widget.ImageView{7bbada5 V.ED.... ... 0,0-0,0 #7f090294 app:id/tab_emoji_tv}
+                        android.view.View{c6f657a V.ED.... ... 0,0-0,0 #7f090295 app:id/tab_emoji_dv}
+                        android.widget.ImageView{2b5912b V.ED.... ... 0,0-0,0 #7f090296 app:id/tab_char_tv}
+                        android.view.View{bcc1988 V.ED.... ... 0,0-0,0 #7f090297 app:id/tab_char_dv}
+                        android.view.View{cde7f21 V.ED.... ... 0,0-0,0 #7f090298 app:id/tab_empty_tv}
+                        android.view.View{9fe5f46 V.ED.... ... 0,0-0,0 #7f090299 app:id/tab_delete_dv}
+                        android.widget.ImageView{87a1507 V.ED.... ... 0,0-0,0 #7f09029a app:id/tab_delete_tv}
+                  com.tencent.pb.common.view.BottomSelectTabView{8cd4634 G.E..... ... 0,0-0,0 #7f090186 app:id/bottom_bar}
+                    android.widget.TextView{b02ec5d V.ED..C. ... 0,0-0,0 #7f090043 app:id/bottom_left}
+                    android.widget.TextView{13129d2 V.ED..C. ... 0,0-0,0 #7f090044 app:id/bottom_middle}
+                    android.widget.TextView{718faa3 V.ED..C. ... 0,0-0,0 #7f090045 app:id/bottom_right}
+              com.tencent.pb.common.view.TopBarView{f1291a0 V.E..... ... 0,0-0,0 #7f090092 app:id/top_bar}
+                android.widget.RelativeLayout{506f159 V.E..... ... 0,0-0,0 #7f090111 app:id/common_top_wrapper}
+                  android.view.View{554111e V.ED.... ... 0,0-0,0 #7f090112 app:id/top_bar_bottom_line}
+                  android.widget.RelativeLayout{d369dff V.E..... ... 0,0-0,0}
+                    android.widget.ImageView{69f27cc G.ED.... ... 0,0-0,0 #7f090113 app:id/btn_left}
+                    android.widget.TextView{3ac4a15 G.ED.... ... 0,0-0,0 #7f090114 app:id/text_left}
+                    android.widget.LinearLayout{2c212a VFE...C. ... 0,0-0,0 #7f090115 app:id/ll_btn_middle}
+                      android.widget.TextView{5611b1b G.ED.... ... 0,0-0,0 #7f090116 app:id/btn_middle}
+                      android.widget.TextView{27cf4b8 G.ED.... ... 0,0-0,0 #7f090117 app:id/btn_middle_sub}
+                  android.widget.FrameLayout{147291 V.E..... ... 0,0-0,0 #7f090118 app:id/top_right}
+                    android.widget.RelativeLayout{c325f6 G.E..... ... 0,0-0,0 #7f090119 app:id/top_progressbar}
+                      android.widget.ProgressBar{aec4df7 V.ED.... ... 0,0-0,0}
+                    android.widget.LinearLayout{a68a464 V.E..... ... 0,0-0,0}
+                      android.widget.ImageView{9fca6cd G.ED.... ... 0,0-0,0 #7f09011a app:id/btn_right}
+                      android.widget.ImageView{af3ab82 G.ED.... ... 0,0-0,0 #7f09011b app:id/btn_right1}
+                      android.widget.ImageView{8dd293 G.ED.... ... 0,0-0,0 #7f09011c app:id/btn_right2}
+                    android.widget.TextView{33da2d0 G.ED.... ... 0,0-0,0 #7f09011d app:id/text_right}
+                  android.widget.ImageView{5b9e2c9 G.ED.... ... 0,0-0,0 #7f09011e app:id/right_point}

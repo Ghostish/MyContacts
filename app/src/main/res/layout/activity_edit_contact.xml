@@ -3,6 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:focusable="true"
+    android:focusableInTouchMode="true"
     android:orientation="vertical">
 
     <android.support.v7.widget.Toolbar
@@ -16,16 +18,39 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <android.support.v7.widget.RecyclerView
-            android:id="@+id/recycler_view"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:clipToPadding="false"
-            android:padding="8dp" />
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="8dp">
+
+            <learn.android.kangel.mycontacts.ContactCommonEditorView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:dataType="phone"
+                app:isCollapsed="true"
+                app:shouldShowIcon="true" />
+
+            <learn.android.kangel.mycontacts.ContactCommonEditorView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:dataType="email"
+                app:isCollapsed="true"
+                app:shouldShowIcon="true" />
+
+            <learn.android.kangel.mycontacts.ContactCommonEditorView
+                android:id="@+id/address"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:dataType="address"
+                app:isCollapsed="true"
+                app:shouldShowIcon="false" />
+        </LinearLayout>
 
         <View
             android:layout_width="match_parent"
             android:layout_height="3dp"
             android:background="@drawable/toolbar_shadow" />
     </FrameLayout>
+
 </LinearLayout>

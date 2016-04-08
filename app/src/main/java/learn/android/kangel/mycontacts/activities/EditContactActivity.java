@@ -5,6 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
+import learn.android.kangel.mycontacts.ContactCommonEditorView;
 import learn.android.kangel.mycontacts.R;
 import learn.android.kangel.mycontacts.adapters.EditFieldAdapter;
 
@@ -16,9 +17,11 @@ public class EditContactActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_contact);
-        RecyclerView recyclerView = (RecyclerView) findViewById(R.id.recycler_view);
+        ContactCommonEditorView v = (ContactCommonEditorView) findViewById(R.id.address);
+        v.setShouldShowIcon(true);
+        /*RecyclerView recyclerView = (RecyclerView) findViewById(R.id.recycler_view);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         EditFieldAdapter adapter = new EditFieldAdapter(this);
-        recyclerView.setAdapter(adapter);
+        recyclerView.setAdapter(adapter);*/
     }
 }

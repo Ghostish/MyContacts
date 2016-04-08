@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <attr name="dataType" format="enum">
+        <enum name="phone" value="0" />
+        <enum name="email" value="1" />
+        <enum name="address" value="2" />
+    </attr>
+    <declare-styleable name="ContactCommonEditorView">
+        <attr name="dataType"/>
+        <attr name="isCollapsed" format="boolean" />
+        <attr name="shouldShowIcon" format="boolean" />
+    </declare-styleable>
+
+</resources>

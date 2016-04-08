@@ -1,18 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+<merge xmlns:android="http://schemas.android.com/apk/res/android">
 
     <ImageView
-        android:id="@+id/indicate_icon"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:id="@+id/type_icon"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:layout_marginRight="16dp"
         android:layout_marginTop="10dp"
-        android:alpha="0.54"
-        android:src="@drawable/ic_call_black_24dp" />
+        android:alpha="0.54" />
 
     <Spinner
         android:id="@+id/type_spinner"
@@ -20,7 +17,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/input_field"
-        android:layout_toEndOf="@+id/indicate_icon"
+        android:layout_toEndOf="@+id/type_icon"
         android:spinnerMode="dropdown" />
 
     <EditText
@@ -28,7 +25,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
-        android:layout_toEndOf="@+id/indicate_icon"
+        android:layout_toEndOf="@+id/type_icon"
         android:layout_toStartOf="@+id/delete_button"
         android:minEms="10"
         android:singleLine="true" />
@@ -42,4 +39,5 @@
         android:alpha="0.54"
         android:background="?selectableItemBackground"
         android:src="@drawable/ic_close_black_24dp" />
-</RelativeLayout>
+
+</merge>

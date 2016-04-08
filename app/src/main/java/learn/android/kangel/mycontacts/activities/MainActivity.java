@@ -1,18 +1,13 @@
 package learn.android.kangel.mycontacts.activities;
 
 import android.Manifest;
-import android.animation.ValueAnimator;
-import android.content.ContentProviderOperation;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
-import android.provider.ContactsContract;
 import android.support.annotation.NonNull;
-import android.support.design.widget.AppBarLayout;
-import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.design.widget.TabLayout;
@@ -25,21 +20,15 @@ import android.support.v4.content.ContextCompat;
 import android.support.v4.view.ViewCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.CardView;
-import android.support.v7.widget.SearchView;
-import android.util.Log;
 import android.view.View;
-import android.view.ViewGroup;
 import android.view.inputmethod.InputMethodManager;
-import android.widget.Toast;
-
-import java.util.ArrayList;
 
 import learn.android.kangel.mycontacts.R;
 import learn.android.kangel.mycontacts.adapters.CallHistoryAdapter;
 import learn.android.kangel.mycontacts.adapters.ContactListAdapter;
 import learn.android.kangel.mycontacts.fragments.CallHistoryFragment;
 import learn.android.kangel.mycontacts.fragments.ContactListFragment;
+import learn.android.kangel.mycontacts.fragments.EditTextDialogFragment;
 import learn.android.kangel.mycontacts.fragments.SearchFragment;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener, RecyclerViewActivity {

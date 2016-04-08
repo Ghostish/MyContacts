@@ -8,10 +8,10 @@
     <declare-styleable name="ContactCommonEditorView">
         <attr name="dataType"/>
         <attr name="isCollapsed" format="boolean" />
-        <attr name="shouldShowIcon" format="boolean" />
     </declare-styleable>
     <declare-styleable name="ContactEditorViewGroup">
         <attr name="dataType"/>
+        <attr name="typeIconSrc" format="reference"/>
     </declare-styleable>
 
 </resources>

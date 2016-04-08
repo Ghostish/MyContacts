@@ -2,10 +2,16 @@ package learn.android.kangel.mycontacts;
 
 import android.content.Context;
 import android.content.res.TypedArray;
+import android.graphics.drawable.Drawable;
 import android.text.TextUtils;
 import android.util.AttributeSet;
+import android.view.LayoutInflater;
+import android.view.animation.Animation;
+import android.view.animation.TranslateAnimation;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 
 import java.util.ArrayList;
 import java.util.LinkedList;
@@ -15,32 +21,31 @@ import java.util.Stack;
 /**
  * Created by Kangel on 2016/4/8.
  */
-public class ContactEditorViewGroup extends LinearLayout {
+public class ContactEditorViewGroup extends RelativeLayout {
     private List<EditText> mInputFields = new ArrayList<>();
     private int mType;
-    private Stack<ContactCommonEditorView> recycleChildren = new Stack<>();
+    private Stack<ContactCommonEditorView> recycleChildren = new Stack<>();  //keep the children that have been remove for further use
     private List<ContactCommonEditorView> currChildren = new LinkedList<>();
+
+    private LinearLayout mContainer;
+    private ImageView mTypeIcon;
 
     public interface onChildTextChangeListener {
         void onTextChanged(ContactCommonEditorView child, CharSequence s, int before, int count);
     }
 
-    private interface onChildFocusChangeListener {
+    public interface onChildFocusChangeListener {
         void onFocusChanged(ContactCommonEditorView child, boolean hasFocus);
     }
-    private interface onChildDeleteClickListener{
+
+    public interface onChildDeleteClickListener {
         void onChildDeleteClick(ContactCommonEditorView child);
     }
 
     private onChildDeleteClickListener mOnChildDeleteClickListener = new onChildDeleteClickListener() {
         @Override
         public void onChildDeleteClick(ContactCommonEditorView child) {
-            if (currChildren.size()>2) {
-                removeEditor(child);
-            }else {
-                currChildren.get(0).getInputFiled().setText("");
-                currChildren.get(0).setShouldShowIcon(true);
-            }
+            removeEditor(child);
         }
     };
     private onChildTextChangeListener mOnChildTextChangeListener = new onChildTextChangeListener() {
@@ -54,15 +59,15 @@ public class ContactEditorViewGroup extends LinearLayout {
                     addEditor();
                 }
             }
-            if (s.length()==0) {
+            if (s.length() == 0) {
                 int i = 0;
-                for (; i < getChildCount(); i++) {
-                    if (child.equals(getChildAt(i))) {
+                for (; i < mContainer.getChildCount(); i++) {
+                    if (child.equals(mContainer.getChildAt(i))) {
                         break;
                     }
                 }
-                if (i + 1 < getChildCount() && TextUtils.isEmpty(((ContactCommonEditorView) getChildAt(i + 1)).getInputText())) {
-                    removeEditor((ContactCommonEditorView) getChildAt(i + 1));
+                if (i + 1 < mContainer.getChildCount() && TextUtils.isEmpty(((ContactCommonEditorView) mContainer.getChildAt(i + 1)).getInputText())) {
+                    removeEditor((ContactCommonEditorView) mContainer.getChildAt(i + 1));
                 }
             }
         }
@@ -78,37 +83,56 @@ public class ContactEditorViewGroup extends LinearLayout {
 
     public ContactEditorViewGroup(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
-        setOrientation(LinearLayout.VERTICAL);
+        LayoutInflater.from(context).inflate(R.layout.custom_contact_editor_view_group, this);
 
+        mContainer = (LinearLayout) findViewById(R.id.editor_container);
+        mTypeIcon = (ImageView) findViewById(R.id.type_icon);
         TypedArray a = context.getTheme().obtainStyledAttributes(attrs, R.styleable.ContactEditorViewGroup, 0, 0);
         mType = a.getInteger(R.styleable.ContactEditorViewGroup_dataType, ContactCommonEditorView.TYPE_PHONE);
+        Drawable icon = a.getDrawable(R.styleable.ContactEditorViewGroup_typeIconSrc);
         a.recycle();
+        mTypeIcon.setImageDrawable(icon);
     }
 
     public void addEditor() {
-        ContactCommonEditorView child = recycleChildren.isEmpty() ? new ContactCommonEditorView(getContext()) : recycleChildren.pop();
-        child.setType(mType);
-        child.getInputFiled().setText("");
-        if (getChildCount() == 0) {
-            child.setShouldShowIcon(true);
-        }else {
-            child.setShouldShowIcon(false);
+        ContactCommonEditorView child;
+        if (recycleChildren.isEmpty()) {
+            child = new ContactCommonEditorView(getContext());
+            child.setType(mType);
+            child.setOnChildDeleteClickListener(mOnChildDeleteClickListener);
+            child.setOnChildTextChangeListener(mOnChildTextChangeListener);
+        } else {
+            child = recycleChildren.pop();
         }
+        child.setIsCollapsed(true);
+        child.getInputFiled().setText("");
         currChildren.add(child);
-        addView(child);
+        mContainer.addView(child);
     }
 
-    public void removeEditor(ContactCommonEditorView child) {
-        currChildren.remove(child);
-        removeView(child);
-        recycleChildren.add(child);
+    public void removeEditor(final ContactCommonEditorView child) {
+        TranslateAnimation animation = new TranslateAnimation(0.0f, child.getWidth(), 0.0f, 0.0f);
+        animation.setDuration(300);
+        animation.setAnimationListener(new Animation.AnimationListener() {
+            @Override
+            public void onAnimationStart(Animation animation) {
+
+            }
+
+            @Override
+            public void onAnimationEnd(Animation animation) {
+                currChildren.remove(child);
+                mContainer.removeView(child);
+                recycleChildren.add(child);
+            }
+
+            @Override
+            public void onAnimationRepeat(Animation animation) {
+
+            }
+        });
+        child.startAnimation(animation);
+
     }
 
-    public void onChildTextChange(ContactCommonEditorView child, CharSequence s, int before, int count) {
-        mOnChildTextChangeListener.onTextChanged(child, s, before, count);
-    }
-
-    public void onChildDeleteClick(ContactCommonEditorView child) {
-        mOnChildDeleteClickListener.onChildDeleteClick(child);
-    }
 }

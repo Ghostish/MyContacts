@@ -1,0 +1,78 @@
+Applications Graphics Acceleration Info:
+Uptime: 639981191 Realtime: 1850990381
+
+** Graphics info for pid 14585 [com.android.contacts] **
+
+Stats since: 463138346348262ns
+Total frames rendered: 64406
+Janky frames: 8850 (13.74%)
+90th percentile: 19ms
+95th percentile: 26ms
+99th percentile: 61ms
+Number Missed Vsync: 1358
+Number High input latency: 67
+Number Slow UI thread: 3406
+Number Slow bitmap uploads: 282
+Number Slow issue draw commands: 5016
+
+Caches:
+Current memory usage / total memory usage (bytes):
+  TextureCache          5146688 / 25165824
+  LayerCache             163840 / 16777216 (numLayers = 1)
+    Layer size 320x128; isTextureLayer()=0; texid=22 fbo=0; refs=1
+  Layers total     163840 (numLayers = 1)
+  RenderBufferCache           0 /  2097152
+  GradientCache               0 /   524288
+  PathCache                   0 /  4194304
+  TessellationCache       16464 /  1048576
+  TextDropShadowCache         0 /  2097152
+  PatchCache                384 /   131072
+  FontRenderer 0 A8      524288 /   524288
+  FontRenderer 0 RGBA         0 /        0
+  FontRenderer 0 total   524288 /   524288
+Other:
+  FboCache                    0 /        0
+Total memory usage:
+  5851664 bytes, 5.58 MB
+
+Profile data in ms:
+
+	com.android.contacts/com.android.contacts.activities.PeopleActivity/android.view.ViewRootImpl@bb8b29b (visibility=8)
+Stats since: 463138346348262ns
+Total frames rendered: 64406
+Janky frames: 8850 (13.74%)
+90th percentile: 19ms
+95th percentile: 26ms
+99th percentile: 61ms
+Number Missed Vsync: 1358
+Number High input latency: 67
+Number Slow UI thread: 3406
+Number Slow bitmap uploads: 282
+Number Slow issue draw commands: 5016
+
+	com.android.contacts/com.android.contacts.activities.CompactContactEditorActivity/android.view.ViewRootImpl@2f17638 (visibility=0)
+Stats since: 463138346348262ns
+Total frames rendered: 64406
+Janky frames: 8850 (13.74%)
+90th percentile: 19ms
+95th percentile: 26ms
+99th percentile: 61ms
+Number Missed Vsync: 1358
+Number High input latency: 67
+Number Slow UI thread: 3406
+Number Slow bitmap uploads: 282
+Number Slow issue draw commands: 5016
+
+View hierarchy:
+
+  com.android.contacts/com.android.contacts.activities.PeopleActivity/android.view.ViewRootImpl@bb8b29b
+  182 views, 154.52 kB of display lists
+
+  com.android.contacts/com.android.contacts.activities.CompactContactEditorActivity/android.view.ViewRootImpl@2f17638
+  71 views, 70.77 kB of display lists
+
+
+Total ViewRootImpl: 2
+Total Views:        253
+Total DisplayList:  225.29 kB
+

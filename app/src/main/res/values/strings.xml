@@ -19,4 +19,7 @@
     <string name="toast_contact_deleted">删除成功</string>
     <string name="warm_sms">关怀短信</string>
     <string name="name">姓名</string>
+    <string name="hint_email">电子邮箱</string>
+    <string name="hint_address">地址</string>
+    <string name="hint_number">电话号码</string>
 </resources>

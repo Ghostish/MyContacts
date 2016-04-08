@@ -10,5 +10,8 @@
         <attr name="isCollapsed" format="boolean" />
         <attr name="shouldShowIcon" format="boolean" />
     </declare-styleable>
+    <declare-styleable name="ContactEditorViewGroup">
+        <attr name="dataType"/>
+    </declare-styleable>
 
 </resources>

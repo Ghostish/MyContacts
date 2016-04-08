@@ -2887,19 +2887,22 @@ containing a value of this type.
         public static final int dialog_ok=0x7f07001c;
         public static final int empty_desc=0x7f07001d;
         public static final int fail_to_send_Email=0x7f07001e;
-        public static final int msg_delete_contact=0x7f07001f;
-        public static final int name=0x7f070020;
-        public static final int permission_deny=0x7f070021;
-        public static final int search_hint=0x7f070022;
-        public static final int send_email=0x7f070023;
+        public static final int hint_address=0x7f07001f;
+        public static final int hint_email=0x7f070020;
+        public static final int hint_number=0x7f070021;
+        public static final int msg_delete_contact=0x7f070022;
+        public static final int name=0x7f070023;
+        public static final int permission_deny=0x7f070024;
+        public static final int search_hint=0x7f070025;
+        public static final int send_email=0x7f070026;
         public static final int status_bar_notification_info_overflow=0x7f070013;
-        public static final int title_delete_contact=0x7f070024;
-        public static final int toast_contact_deleted=0x7f070025;
-        public static final int type_home=0x7f070026;
-        public static final int type_mobile=0x7f070027;
-        public static final int type_other=0x7f070028;
-        public static final int type_work=0x7f070029;
-        public static final int warm_sms=0x7f07002a;
+        public static final int title_delete_contact=0x7f070027;
+        public static final int toast_contact_deleted=0x7f070028;
+        public static final int type_home=0x7f070029;
+        public static final int type_mobile=0x7f07002a;
+        public static final int type_other=0x7f07002b;
+        public static final int type_work=0x7f07002c;
+        public static final int warm_sms=0x7f07002d;
     }
     public static final class style {
         public static final int AlertDialog_AppCompat=0x7f0a0088;
@@ -6621,6 +6624,37 @@ containing a value of this type.
           @attr name learn.android.kangel.mycontacts:shouldShowIcon
         */
         public static final int ContactCommonEditorView_shouldShowIcon = 2;
+        /** Attributes that can be used with a ContactEditorViewGroup.
+           <p>Includes the following attributes:</p>
+           <table>
+           <colgroup align="left" />
+           <colgroup align="left" />
+           <tr><th>Attribute</th><th>Description</th></tr>
+           <tr><td><code>{@link #ContactEditorViewGroup_dataType learn.android.kangel.mycontacts:dataType}</code></td><td></td></tr>
+           </table>
+           @see #ContactEditorViewGroup_dataType
+         */
+        public static final int[] ContactEditorViewGroup = {
+            0x7f010000
+        };
+        /**
+          <p>This symbol is the offset where the {@link learn.android.kangel.mycontacts.R.attr#dataType}
+          attribute's value can be found in the {@link #ContactEditorViewGroup} array.
+
+
+          <p>Must be one of the following constant values.</p>
+<table>
+<colgroup align="left" />
+<colgroup align="left" />
+<colgroup align="left" />
+<tr><th>Constant</th><th>Value</th><th>Description</th></tr>
+<tr><td><code>phone</code></td><td>0</td><td></td></tr>
+<tr><td><code>email</code></td><td>1</td><td></td></tr>
+<tr><td><code>address</code></td><td>2</td><td></td></tr>
+</table>
+          @attr name learn.android.kangel.mycontacts:dataType
+        */
+        public static final int ContactEditorViewGroup_dataType = 0;
         /** Attributes that can be used with a CoordinatorLayout.
            <p>Includes the following attributes:</p>
            <table>

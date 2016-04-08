@@ -15,6 +15,7 @@
         android:id="@+id/type_spinner"
         style="@style/Widget.AppCompat.Spinner.Underlined"
         android:layout_width="wrap_content"
+        android:paddingStart="0dp"
         android:layout_height="wrap_content"
         android:layout_below="@+id/input_field"
         android:layout_toEndOf="@+id/type_icon"

@@ -18,34 +18,36 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <LinearLayout
+        <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:padding="8dp">
+            android:layout_height="wrap_content">
 
-            <learn.android.kangel.mycontacts.ContactCommonEditorView
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:dataType="phone"
-                app:isCollapsed="true"
-                app:shouldShowIcon="true" />
+                android:orientation="vertical"
+                android:padding="8dp">
 
-            <learn.android.kangel.mycontacts.ContactCommonEditorView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:dataType="email"
-                app:isCollapsed="true"
-                app:shouldShowIcon="true" />
+                <learn.android.kangel.mycontacts.ContactEditorViewGroup
+                    android:id="@+id/phone"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:dataType="phone" />
 
-            <learn.android.kangel.mycontacts.ContactCommonEditorView
-                android:id="@+id/address"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:dataType="address"
-                app:isCollapsed="true"
-                app:shouldShowIcon="false" />
-        </LinearLayout>
+                <learn.android.kangel.mycontacts.ContactEditorViewGroup
+                    android:id="@+id/email"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:dataType="email" />
+
+                <learn.android.kangel.mycontacts.ContactEditorViewGroup
+                    android:id="@+id/address"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:dataType="address" />
+            </LinearLayout>
+        </ScrollView>
+
 
         <View
             android:layout_width="match_parent"

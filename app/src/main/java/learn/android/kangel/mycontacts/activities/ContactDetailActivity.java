@@ -15,7 +15,6 @@ import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.v4.app.LoaderManager;
 import android.support.v4.content.CursorLoader;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.ListPopupWindow;
 import android.support.v7.widget.Toolbar;
 import android.text.ClipboardManager;
 import android.util.Log;
@@ -25,18 +24,15 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewStub;
-import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-
 import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
 
-import de.hdodenhof.circleimageview.CircleImageView;
 import learn.android.kangel.mycontacts.R;
 import learn.android.kangel.mycontacts.fragments.ConfirmDialogFragment;
 
@@ -111,7 +107,7 @@ public class ContactDetailActivity extends AppCompatActivity implements LoaderMa
         collapsingToolbarLayout = (CollapsingToolbarLayout) findViewById(R.id.collapsing_tool_bar);
         collapsingToolbarLayout.setExpandedTitleColor(Color.WHITE);
         collapsingToolbarLayout.setCollapsedTitleTextColor(Color.WHITE);
-        CircleImageView imageView = (CircleImageView) findViewById(R.id.head_show);
+        ImageView imageView = (ImageView) findViewById(R.id.head_show);
         InputStream in = ContactsContract.Contacts.openContactPhotoInputStream(getContentResolver(), Uri.withAppendedPath(ContactsContract.Contacts.CONTENT_LOOKUP_URI, mLookupKey));
         if (in != null) {
             imageView.setImageBitmap(BitmapFactory.decodeStream(in));

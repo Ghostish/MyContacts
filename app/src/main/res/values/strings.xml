@@ -22,4 +22,6 @@
     <string name="hint_email">电子邮箱</string>
     <string name="hint_address">地址</string>
     <string name="hint_number">电话号码</string>
+    <string name="title_input_type">请输入自定义类型</string>
+    <string name="nickname">别名</string>
 </resources>

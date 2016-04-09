@@ -1,27 +1,21 @@
 package learn.android.kangel.mycontacts;
 
-import android.animation.ValueAnimator;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.text.Editable;
-import android.text.InputFilter;
 import android.text.InputType;
 import android.text.TextUtils;
 import android.text.TextWatcher;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
-import android.view.inputmethod.EditorInfo;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ImageButton;
-import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.Spinner;
 import android.widget.SpinnerAdapter;
-import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -34,16 +28,21 @@ public class ContactCommonEditorView extends RelativeLayout {
     public final static int TYPE_PHONE = 0;
     public final static int TYPE_EMAIL = 1;
     public final static int TYPE_ADDRESS = 2;
-    private ImageView mTypeIcon;
     private ImageButton mDeleteButton;
     private EditText mInputFiled;
     private Spinner mTypeSpinner;
 
     private int mType;
+
     private boolean isCollapsed;
-    private boolean shouldShowIcon;
     private List<String> typeStrings;
 
+    private ContactEditorViewGroup.onChildTextChangeListener mOnChildTextChangeListener;
+    private ContactEditorViewGroup.onChildDeleteClickListener mOnChildDeleteClickListener;
+
+    public interface onSpinnerItemSelectedListener{
+        void onCustomTypeRequest(Spinner spinner,List<String> typeStrings);
+    }
     public ContactCommonEditorView(Context context) {
         this(context, null);
     }
@@ -52,7 +51,6 @@ public class ContactCommonEditorView extends RelativeLayout {
         this(context, attrs, 0);
     }
 
-
     public ContactCommonEditorView(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         LayoutInflater.from(context).inflate(R.layout.item_edit_file, this);
@@ -60,10 +58,8 @@ public class ContactCommonEditorView extends RelativeLayout {
 
         mType = a.getInteger(R.styleable.ContactCommonEditorView_dataType, 0);
         isCollapsed = a.getBoolean(R.styleable.ContactCommonEditorView_isCollapsed, true);
-        shouldShowIcon = a.getBoolean(R.styleable.ContactCommonEditorView_shouldShowIcon, false);
         a.recycle();
 
-        mTypeIcon = (ImageView) findViewById(R.id.type_icon);
         mDeleteButton = (ImageButton) findViewById(R.id.delete_button);
         mInputFiled = (EditText) findViewById(R.id.input_field);
         mTypeSpinner = (Spinner) findViewById(R.id.type_spinner);
@@ -71,8 +67,8 @@ public class ContactCommonEditorView extends RelativeLayout {
         mDeleteButton.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (getParent() instanceof ContactEditorViewGroup) {
-                    ((ContactEditorViewGroup) getParent()).onChildDeleteClick(ContactCommonEditorView.this);
+                if (mOnChildDeleteClickListener != null) {
+                    mOnChildDeleteClickListener.onChildDeleteClick(ContactCommonEditorView.this);
                 }
             }
         });
@@ -81,8 +77,9 @@ public class ContactCommonEditorView extends RelativeLayout {
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 if (position == typeStrings.size() - 1) {
                     // TODO: 2016/4/7 show a dialog to let user input a custom type
-                    typeStrings.add(0, "custom");
-                    mTypeSpinner.setSelection(0);
+                    if (getContext() instanceof onSpinnerItemSelectedListener) {
+                        ((onSpinnerItemSelectedListener) getContext()).onCustomTypeRequest(mTypeSpinner,typeStrings);
+                    }
                 }
             }
 
@@ -112,8 +109,8 @@ public class ContactCommonEditorView extends RelativeLayout {
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-                if (getParent() instanceof ContactEditorViewGroup) {
-                    ((ContactEditorViewGroup) getParent()).onChildTextChange(ContactCommonEditorView.this,s,before,count);
+                if (mOnChildTextChangeListener != null) {
+                    mOnChildTextChangeListener.onTextChanged(ContactCommonEditorView.this, s, before, count);
                 }
             }
 
@@ -123,6 +120,7 @@ public class ContactCommonEditorView extends RelativeLayout {
             }
         });
     }
+
 
     @Override
     protected void onAttachedToWindow() {
@@ -136,6 +134,7 @@ public class ContactCommonEditorView extends RelativeLayout {
                 break;
             case TYPE_EMAIL:
                 mInputFiled.setHint(R.string.hint_email);
+                mInputFiled.setInputType(InputType.TYPE_TEXT_VARIATION_EMAIL_ADDRESS);
                 typeStrings = new ArrayList<>(Arrays.asList(getResources().getStringArray(R.array.email_type)));
                 break;
             case TYPE_ADDRESS:
@@ -147,12 +146,7 @@ public class ContactCommonEditorView extends RelativeLayout {
         mTypeSpinner.setAdapter(adapter);
         mTypeSpinner.setVisibility(isCollapsed ? GONE : VISIBLE);
         mDeleteButton.setVisibility(TextUtils.isEmpty(mInputFiled.getText()) ? INVISIBLE : VISIBLE);
-        if (shouldShowIcon) {
-            setIcon(mType);
-            mTypeIcon.setVisibility(VISIBLE);
-        } else {
-            mTypeIcon.setVisibility(INVISIBLE);
-        }
+
     }
 
     public Editable getInputText() {
@@ -171,27 +165,21 @@ public class ContactCommonEditorView extends RelativeLayout {
         mTypeSpinner.setAdapter(adapter);
     }
 
-
-    public void setShouldShowIcon(boolean shouldShowIcon) {
-        this.shouldShowIcon = shouldShowIcon;
-        //mTypeIcon.setVisibility(shouldShowIcon ? VISIBLE : INVISIBLE);
-    }
-
     public void setType(int type) {
         mType = type;
     }
 
-    private void setIcon(int type) {
-        switch (type) {
-            case 0:
-                mTypeIcon.setImageResource(R.drawable.ic_call_black_24dp);
-                break;
-            case 1:
-                mTypeIcon.setImageResource(R.drawable.ic_email_black_24dp);
-                break;
-            case 2:
-                mTypeIcon.setImageResource(R.drawable.ic_location_on_black_24dp);
-                break;
-        }
+    public void setIsCollapsed(boolean isCollapsed) {
+        this.isCollapsed = isCollapsed;
     }
+
+    public void setOnChildTextChangeListener(ContactEditorViewGroup.onChildTextChangeListener mOnChildTextChangeListener) {
+        this.mOnChildTextChangeListener = mOnChildTextChangeListener;
+    }
+
+    public void setOnChildDeleteClickListener(ContactEditorViewGroup.onChildDeleteClickListener mOnChildDeleteClickListener) {
+        this.mOnChildDeleteClickListener = mOnChildDeleteClickListener;
+    }
+
+
 }

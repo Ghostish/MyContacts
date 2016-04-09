@@ -46,8 +46,10 @@ public class ContactDetailActivity extends AppCompatActivity implements LoaderMa
     private final static int NAME_QUERY_ID = 1;
     private final static int EMAIL_QUERY_ID = 2;
     private final static int PHONE_QUERY_ID = 3;
+    private final static int ADDRESS_QUERY_ID = 4;
     private final static String TAG_PHONE = "PHONE";
     private final static String TAG_EMAIL = "EMAIL";
+    private final static String TAG_ADDRESS = "ADDRESS";
     private String infoString;
     private static final String[] PROJECTION =
             new String[]{
@@ -89,6 +91,9 @@ public class ContactDetailActivity extends AppCompatActivity implements LoaderMa
     private static final String EMAIL_SELECTION = ContactsContract.Data.CONTACT_ID + " = ?" + " AND " +
             ContactsContract.Data.MIMETYPE + " = " +
             "'" + ContactsContract.CommonDataKinds.Email.CONTENT_ITEM_TYPE + "'";
+    private static final String ADDRESS_SELECTION = ContactsContract.Data.CONTACT_ID + " = ?" + " AND " +
+            ContactsContract.Data.MIMETYPE + " = " +
+            "'" + ContactsContract.CommonDataKinds.StructuredPostal.CONTENT_ITEM_TYPE + "'";
     // Defines the array to hold the search criteria
     private String[] mSelectionArgs = {""};
 
@@ -96,6 +101,7 @@ public class ContactDetailActivity extends AppCompatActivity implements LoaderMa
     private int mContactId;
     private LinearLayout EmailContainer;
     private LinearLayout phoneNumContainer;
+    private LinearLayout addressContainer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -117,6 +123,7 @@ public class ContactDetailActivity extends AppCompatActivity implements LoaderMa
         getSupportLoaderManager().initLoader(NAME_QUERY_ID, null, this);
         getSupportLoaderManager().initLoader(PHONE_QUERY_ID, null, this);
         getSupportLoaderManager().initLoader(EMAIL_QUERY_ID, null, this);
+        getSupportLoaderManager().initLoader(ADDRESS_QUERY_ID, null, this);
     }
 
     @Override
@@ -150,6 +157,16 @@ public class ContactDetailActivity extends AppCompatActivity implements LoaderMa
                         ContactsContract.Data.CONTENT_URI,
                         PROJECTION,
                         EMAIL_SELECTION,
+                        mSelectionArgs,
+                        SORT_ORDER
+                );
+            }
+            case ADDRESS_QUERY_ID: {
+                return new CursorLoader(
+                        this,
+                        ContactsContract.Data.CONTENT_URI,
+                        PROJECTION,
+                        ADDRESS_SELECTION,
                         mSelectionArgs,
                         SORT_ORDER
                 );
@@ -214,6 +231,30 @@ public class ContactDetailActivity extends AppCompatActivity implements LoaderMa
                         CharSequence typeString = ContactsContract.CommonDataKinds.Email.getTypeLabel(getResources(), type, data.getString(DATA3_INDEX));
                         holder.hintText.setText(typeString);
                         EmailContainer.addView(v);
+                    }
+                }
+                break;
+            }
+            case ADDRESS_QUERY_ID: {
+                if (data != null && data.getCount() > 0) {
+                    if (addressContainer == null) {
+                        ViewStub viewStub = (ViewStub) findViewById(R.id.address_view_stub);
+                        View panel = viewStub.inflate();
+                        addressContainer = (LinearLayout) panel.findViewById(R.id.container);
+                    }
+                    addressContainer.removeAllViews();
+                    for (int i = 0; i < data.getCount(); i++) {
+                        data.moveToPosition(i);
+                        View v = LayoutInflater.from(this).inflate(R.layout.item_contact_info, addressContainer, false);
+                        ViewHolder holder = new ViewHolder(v, TAG_ADDRESS);
+                        if (i == 0) {
+                            holder.indicateIcon.setImageResource(R.drawable.ic_location_on_black_24dp);
+                        }
+                        holder.infoText.setText(data.getString(DATA1_INDEX));
+                        int type = data.getInt(DATA2_INDEX);
+                        CharSequence typeString = ContactsContract.CommonDataKinds.StructuredPostal.getTypeLabel(getResources(), type, data.getString(DATA3_INDEX));
+                        holder.hintText.setText(typeString);
+                        addressContainer.addView(v);
                     }
                 }
                 break;

@@ -11,6 +11,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.text.Editable;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.EditText;
@@ -45,7 +46,6 @@ public class EditContactActivity extends AppCompatActivity implements ContactCom
     private ContactEditorViewGroup emailGroup;
     private ContactEditorViewGroup addressGroup;
     private EditText nameText;
-    private EditText nicknameText;
 
     private boolean isContactHasName = false;
     private int structureNameRowId;
@@ -97,7 +97,6 @@ public class EditContactActivity extends AppCompatActivity implements ContactCom
         Toolbar toolbar = (Toolbar) findViewById(R.id.tool_bar);
 
         nameText = (EditText) findViewById(R.id.name_field);
-        nicknameText = (EditText) findViewById(R.id.nick_name_field);
         phoneGroup = (ContactEditorViewGroup) findViewById(R.id.phone);
         emailGroup = (ContactEditorViewGroup) findViewById(R.id.email);
         addressGroup = (ContactEditorViewGroup) findViewById(R.id.address);
@@ -138,20 +137,6 @@ public class EditContactActivity extends AppCompatActivity implements ContactCom
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
-            case R.id.expand_button:
-                ImageButton button = (ImageButton) v;
-                if (!nicknameText.isShown()) {
-                    nicknameText.setVisibility(View.VISIBLE);
-                    nicknameText.measure(View.MeasureSpec.UNSPECIFIED, View.MeasureSpec.UNSPECIFIED);
-                    AnimationUtil.slide((View) nicknameText.getParent(), ((View) nicknameText.getParent()).getHeight(), ((View) nicknameText.getParent()).getHeight() + nicknameText.getMeasuredHeight());
-                    button.setImageResource(R.drawable.ic_expand_less_black_24dp);
-                } else {
-                    button.setImageResource(R.drawable.ic_expand_more_black_24dp);
-                    nicknameText.setVisibility(View.GONE);
-                    AnimationUtil.slide((View) nicknameText.getParent(), ((View) nicknameText.getParent()).getHeight(), ((View) nicknameText.getParent()).getHeight() - nicknameText.getMeasuredHeight());
-
-                }
-                break;
             case R.id.ok_button:
                 // TODO: 2016/4/9  show a progress dialog , and do the batch work in worker thread
                 commitChanges();
@@ -167,11 +152,14 @@ public class EditContactActivity extends AppCompatActivity implements ContactCom
                     .withValue(ContactsContract.RawContacts.ACCOUNT_TYPE, "learn.kangel.mycontact")
                     .withValue(ContactsContract.RawContacts.ACCOUNT_NAME, "cookie");
             ops.add(op.build());
-            op = ContentProviderOperation.newInsert(ContactsContract.Data.CONTENT_URI)
-                    .withValueBackReference(ContactsContract.Data.RAW_CONTACT_ID, 0)
-                    .withValue(ContactsContract.Data.MIMETYPE, ContactsContract.CommonDataKinds.StructuredName.CONTENT_ITEM_TYPE)
-                    .withValue(ContactsContract.CommonDataKinds.StructuredName.DISPLAY_NAME, nameText.getText().toString());
-            ops.add(op.build());
+            String name = nameText.getText().toString();
+            if (!name.trim().isEmpty()) {
+                op = ContentProviderOperation.newInsert(ContactsContract.Data.CONTENT_URI)
+                        .withValueBackReference(ContactsContract.Data.RAW_CONTACT_ID, 0)
+                        .withValue(ContactsContract.Data.MIMETYPE, ContactsContract.CommonDataKinds.StructuredName.CONTENT_ITEM_TYPE)
+                        .withValue(ContactsContract.CommonDataKinds.StructuredName.DISPLAY_NAME, name);
+                ops.add(op.build());
+            }
             List<ContactInfoBean> phoneBean = phoneGroup.getData();
             List<ContactInfoBean> emailBean = emailGroup.getData();
             List<ContactInfoBean> addressBean = addressGroup.getData();
@@ -227,18 +215,19 @@ public class EditContactActivity extends AppCompatActivity implements ContactCom
         } else if (ACTION_EDIT.equals(getIntent().getAction())) {
             ArrayList<ContentProviderOperation> ops = new ArrayList<>();
             ContentProviderOperation.Builder op;
-            if (isContactHasName && !TextUtils.isEmpty(nameText.getText())) {
+            String name = nameText.getText().toString();
+            if (isContactHasName && !name.trim().isEmpty()) {
                 op = ContentProviderOperation.newUpdate(ContactsContract.Data.CONTENT_URI)
                         .withSelection(ContactsContract.Data._ID + "= ?", new String[]{String.valueOf(structureNameRowId)})
-                        .withValue(ContactsContract.CommonDataKinds.StructuredName.DISPLAY_NAME, nameText.getText().toString());
+                        .withValue(ContactsContract.CommonDataKinds.StructuredName.DISPLAY_NAME, name);
                 ops.add(op.build());
-            } else if (!isContactHasName && !TextUtils.isEmpty(nameText.getText())) {
+            } else if (!isContactHasName && !TextUtils.isEmpty(name)) {
                 op = ContentProviderOperation.newInsert(ContactsContract.Data.CONTENT_URI)
                         .withValue(ContactsContract.Data.RAW_CONTACT_ID, rawContactId)
                         .withValue(ContactsContract.Data.MIMETYPE, ContactsContract.CommonDataKinds.StructuredName.CONTENT_ITEM_TYPE)
-                        .withValue(ContactsContract.CommonDataKinds.StructuredName.DISPLAY_NAME, nameText.getText().toString());
+                        .withValue(ContactsContract.CommonDataKinds.StructuredName.DISPLAY_NAME, name);
                 ops.add(op.build());
-            } else if (isContactHasName && TextUtils.isEmpty(nameText.getText())) {
+            } else if (isContactHasName && TextUtils.isEmpty(name)) {
                 op = ContentProviderOperation.newDelete(ContactsContract.Data.CONTENT_URI)
                         .withSelection(ContactsContract.Data._ID + "= ?", new String[]{String.valueOf(structureNameRowId)});
                 ops.add(op.build());
@@ -246,7 +235,6 @@ public class EditContactActivity extends AppCompatActivity implements ContactCom
             List<ContactInfoBean> phoneBean = phoneGroup.getData();
             List<ContactInfoBean> emailBean = emailGroup.getData();
             List<ContactInfoBean> addressBean = addressGroup.getData();
-            int remainSize = phoneBean.size() + emailBean.size() + addressBean.size(); //use to notify when to add the yield point
             for (ContactInfoBean bean : phoneBean) {
                 if (bean.isDirty()) {
                     switch (bean.getUpdateType()) {
@@ -263,7 +251,7 @@ public class EditContactActivity extends AppCompatActivity implements ContactCom
                                         .withValue(ContactsContract.CommonDataKinds.Phone.TYPE, ContactsContract.CommonDataKinds.Phone.TYPE_CUSTOM)
                                         .withValue(ContactsContract.CommonDataKinds.Phone.LABEL, bean.getLabel());
                                 ops.add(op.build());
-                            }else {
+                            } else {
                                 op = ContentProviderOperation.newDelete(ContactsContract.Data.CONTENT_URI)
                                         .withSelection(ContactsContract.Data._ID + "= ?", new String[]{String.valueOf(bean.getDataRowId())});
                                 ops.add(op.build());
@@ -299,7 +287,7 @@ public class EditContactActivity extends AppCompatActivity implements ContactCom
                                         .withValue(ContactsContract.CommonDataKinds.Email.TYPE, ContactsContract.CommonDataKinds.Email.TYPE_CUSTOM)
                                         .withValue(ContactsContract.CommonDataKinds.Email.LABEL, bean.getLabel());
                                 ops.add(op.build());
-                            }else {
+                            } else {
                                 op = ContentProviderOperation.newDelete(ContactsContract.Data.CONTENT_URI)
                                         .withSelection(ContactsContract.Data._ID + "= ?", new String[]{String.valueOf(bean.getDataRowId())});
                                 ops.add(op.build());
@@ -331,11 +319,11 @@ public class EditContactActivity extends AppCompatActivity implements ContactCom
                             if (!bean.getValue().isEmpty()) {
                                 op = ContentProviderOperation.newUpdate(ContactsContract.Data.CONTENT_URI)
                                         .withSelection(ContactsContract.Data._ID + "= ?", new String[]{String.valueOf(bean.getDataRowId())})
-                                        .withValue(ContactsContract.CommonDataKinds.StructuredPostal.FORMATTED_ADDRESS, nameText.getText().toString())
+                                        .withValue(ContactsContract.CommonDataKinds.StructuredPostal.FORMATTED_ADDRESS, bean.getValue())
                                         .withValue(ContactsContract.CommonDataKinds.StructuredPostal.TYPE, ContactsContract.CommonDataKinds.StructuredPostal.TYPE_CUSTOM)
                                         .withValue(ContactsContract.CommonDataKinds.StructuredPostal.LABEL, bean.getLabel());
                                 ops.add(op.build());
-                            }else {
+                            } else {
                                 op = ContentProviderOperation.newDelete(ContactsContract.Data.CONTENT_URI)
                                         .withSelection(ContactsContract.Data._ID + "= ?", new String[]{String.valueOf(bean.getDataRowId())});
                                 ops.add(op.build());

@@ -40,6 +40,7 @@
 
                 <RelativeLayout
                     android:layout_width="match_parent"
+                    android:paddingEnd="36dp"
                     android:layout_height="wrap_content">
 
                     <ImageView
@@ -60,7 +61,6 @@
                         android:layout_height="wrap_content"
                         android:layout_alignParentTop="true"
                         android:layout_toEndOf="@id/type_icon"
-                        android:layout_toStartOf="@+id/expand_button"
                         android:orientation="vertical">
 
                         <EditText
@@ -71,26 +71,8 @@
                             android:minEms="10"
                             android:singleLine="true" />
 
-                        <EditText
-                            android:id="@+id/nick_name_field"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:hint="@string/nickname"
-                            android:minEms="10"
-                            android:singleLine="true"
-                            android:visibility="gone" />
                     </LinearLayout>
 
-                    <ImageButton
-                        android:id="@id/expand_button"
-                        android:layout_width="36dp"
-                        android:layout_height="36dp"
-                        android:layout_alignParentEnd="true"
-                        android:layout_alignParentTop="true"
-                        android:alpha="0.54"
-                        android:background="?selectableItemBackground"
-                        android:onClick="onClick"
-                        android:src="@drawable/ic_expand_more_black_24dp" />
                 </RelativeLayout>
 
                 <learn.android.kangel.mycontacts.ContactEditorViewGroup

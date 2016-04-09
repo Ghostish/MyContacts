@@ -89,7 +89,7 @@
                 android:layout="@layout/card_recyclerview" />
 
             <ViewStub
-                android:id="@+id/others_view_stub"
+                android:id="@+id/address_view_stub"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout="@layout/card_recyclerview" />

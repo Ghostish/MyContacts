@@ -244,12 +244,12 @@
         "source": "G:\\CD\\android_project\\MyContacts\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.2.1\\res\\drawable-xxhdpi-v4\\abc_list_divider_mtrl_alpha.9.png"
     },
     {
-        "merged": "G:\\CD\\android_project\\MyContacts\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4\\abc_ab_share_pack_mtrl_alpha.9.png",
-        "source": "G:\\CD\\android_project\\MyContacts\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.2.1\\res\\drawable-xxhdpi-v4\\abc_ab_share_pack_mtrl_alpha.9.png"
-    },
-    {
         "merged": "G:\\CD\\android_project\\MyContacts\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4\\ic_expand_more_black_24dp.png",
         "source": "G:\\CD\\android_project\\MyContacts\\app\\src\\main\\res\\drawable-xxhdpi\\ic_expand_more_black_24dp.png"
+    },
+    {
+        "merged": "G:\\CD\\android_project\\MyContacts\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4\\abc_ab_share_pack_mtrl_alpha.9.png",
+        "source": "G:\\CD\\android_project\\MyContacts\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.2.1\\res\\drawable-xxhdpi-v4\\abc_ab_share_pack_mtrl_alpha.9.png"
     },
     {
         "merged": "G:\\CD\\android_project\\MyContacts\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4\\abc_textfield_activated_mtrl_alpha.9.png",

@@ -40,12 +40,12 @@
         "source": "G:\\CD\\android_project\\MyContacts\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.2.1\\res\\layout\\notification_template_media.xml"
     },
     {
-        "merged": "G:\\CD\\android_project\\MyContacts\\app\\build\\intermediates\\res\\merged\\debug\\layout\\item_name_editor.xml",
-        "source": "G:\\CD\\android_project\\MyContacts\\app\\src\\main\\res\\layout\\item_name_editor.xml"
-    },
-    {
         "merged": "G:\\CD\\android_project\\MyContacts\\app\\build\\intermediates\\res\\merged\\debug\\layout\\item_contact_info.xml",
         "source": "G:\\CD\\android_project\\MyContacts\\app\\src\\main\\res\\layout\\item_contact_info.xml"
+    },
+    {
+        "merged": "G:\\CD\\android_project\\MyContacts\\app\\build\\intermediates\\res\\merged\\debug\\layout\\item_name_editor.xml",
+        "source": "G:\\CD\\android_project\\MyContacts\\app\\src\\main\\res\\layout\\item_name_editor.xml"
     },
     {
         "merged": "G:\\CD\\android_project\\MyContacts\\app\\build\\intermediates\\res\\merged\\debug\\layout\\activity_edit_contact.xml",
@@ -76,12 +76,12 @@
         "source": "G:\\CD\\android_project\\MyContacts\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.2.1\\res\\layout\\abc_list_menu_item_checkbox.xml"
     },
     {
-        "merged": "G:\\CD\\android_project\\MyContacts\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_screen_content_include.xml",
-        "source": "G:\\CD\\android_project\\MyContacts\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.2.1\\res\\layout\\abc_screen_content_include.xml"
-    },
-    {
         "merged": "G:\\CD\\android_project\\MyContacts\\app\\build\\intermediates\\res\\merged\\debug\\layout\\item_search_result.xml",
         "source": "G:\\CD\\android_project\\MyContacts\\app\\src\\main\\res\\layout\\item_search_result.xml"
+    },
+    {
+        "merged": "G:\\CD\\android_project\\MyContacts\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_screen_content_include.xml",
+        "source": "G:\\CD\\android_project\\MyContacts\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.2.1\\res\\layout\\abc_screen_content_include.xml"
     },
     {
         "merged": "G:\\CD\\android_project\\MyContacts\\app\\build\\intermediates\\res\\merged\\debug\\layout\\card_recyclerview.xml",
@@ -192,12 +192,12 @@
         "source": "G:\\CD\\android_project\\MyContacts\\app\\src\\main\\res\\layout\\edit_field_dialog_view.xml"
     },
     {
-        "merged": "G:\\CD\\android_project\\MyContacts\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_select_dialog_material.xml",
-        "source": "G:\\CD\\android_project\\MyContacts\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.2.1\\res\\layout\\abc_select_dialog_material.xml"
-    },
-    {
         "merged": "G:\\CD\\android_project\\MyContacts\\app\\build\\intermediates\\res\\merged\\debug\\layout\\custom_contact_editor_view_group.xml",
         "source": "G:\\CD\\android_project\\MyContacts\\app\\src\\main\\res\\layout\\custom_contact_editor_view_group.xml"
+    },
+    {
+        "merged": "G:\\CD\\android_project\\MyContacts\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_select_dialog_material.xml",
+        "source": "G:\\CD\\android_project\\MyContacts\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.2.1\\res\\layout\\abc_select_dialog_material.xml"
     },
     {
         "merged": "G:\\CD\\android_project\\MyContacts\\app\\build\\intermediates\\res\\merged\\debug\\layout\\activity_main.xml",

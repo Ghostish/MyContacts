@@ -24,4 +24,10 @@
     <string name="hint_number">电话号码</string>
     <string name="title_input_type">请输入自定义类型</string>
     <string name="nickname">别名</string>
+    <string name="toast_contact_added">添加成功</string>
+    <string name="toast_contact_failed_add">添加失败，请重试</string>
+    <string name="title_add_contact">新建联系人</string>
+    <string name="title_edit_contact">编辑联系人</string>
+    <string name="toast_contact_edited">编辑成功</string>
+    <string name="toast_contact_failed_editing">编辑无效，请重试</string>
 </resources>

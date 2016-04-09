@@ -80,19 +80,20 @@ public class ContactDetailActivity extends AppCompatActivity implements LoaderMa
             "'" + ContactsContract.CommonDataKinds.Email.CONTENT_ITEM_TYPE + "', " +
             "'" + ContactsContract.CommonDataKinds.Phone.CONTENT_ITEM_TYPE + "', " +
             "'" + ContactsContract.CommonDataKinds.StructuredName.CONTENT_ITEM_TYPE + "')";
-    private static final String NAME_SELECTION = ContactsContract.Data.LOOKUP_KEY + " = ?" + " AND " +
+    private static final String NAME_SELECTION = ContactsContract.Data.CONTACT_ID + " = ?" + " AND " +
             ContactsContract.Data.MIMETYPE + " = " +
             "'" + ContactsContract.CommonDataKinds.StructuredName.CONTENT_ITEM_TYPE + "'";
-    private static final String PHONE_SELECTION = ContactsContract.Data.LOOKUP_KEY + " = ?" + " AND " +
+    private static final String PHONE_SELECTION = ContactsContract.Data.CONTACT_ID + " = ?" + " AND " +
             ContactsContract.Data.MIMETYPE + " = " +
             "'" + ContactsContract.CommonDataKinds.Phone.CONTENT_ITEM_TYPE + "'";
-    private static final String EMAIL_SELECTION = ContactsContract.Data.LOOKUP_KEY + " = ?" + " AND " +
+    private static final String EMAIL_SELECTION = ContactsContract.Data.CONTACT_ID + " = ?" + " AND " +
             ContactsContract.Data.MIMETYPE + " = " +
             "'" + ContactsContract.CommonDataKinds.Email.CONTENT_ITEM_TYPE + "'";
     // Defines the array to hold the search criteria
     private String[] mSelectionArgs = {""};
 
     private String mLookupKey;
+    private int mContactId;
     private LinearLayout EmailContainer;
     private LinearLayout phoneNumContainer;
 
@@ -100,6 +101,7 @@ public class ContactDetailActivity extends AppCompatActivity implements LoaderMa
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         mLookupKey = getIntent().getStringExtra("lookUpKey");
+        mContactId = getIntent().getIntExtra("contactId", -1);
         setContentView(R.layout.activity_contact_detail);
         Toolbar toolbar = (Toolbar) findViewById(R.id.tool_bar);
         toolbar.setTitle("");
@@ -119,7 +121,7 @@ public class ContactDetailActivity extends AppCompatActivity implements LoaderMa
 
     @Override
     public android.support.v4.content.Loader<Cursor> onCreateLoader(int id, Bundle args) {
-        mSelectionArgs[0] = mLookupKey;
+        mSelectionArgs[0] = String.valueOf(mContactId);
         // Starts the query
         switch (id) {
             case NAME_QUERY_ID: {
@@ -251,21 +253,11 @@ public class ContactDetailActivity extends AppCompatActivity implements LoaderMa
                 break;
             }
             case R.id.fab: {
-                if (false) {
-                    ArrayList<ContentProviderOperation> ops = new ArrayList<ContentProviderOperation>();
-                    ContentProviderOperation.Builder op = ContentProviderOperation.newUpdate(ContactsContract.Data.CONTENT_URI)
-                            .withSelection(ContactsContract.Data.LOOKUP_KEY + " = ? and " + ContactsContract.Data.MIMETYPE + " ='" + ContactsContract.CommonDataKinds.Phone.CONTENT_ITEM_TYPE + "'", mSelectionArgs)
-                            .withValue(ContactsContract.CommonDataKinds.Phone.NUMBER, "122222");
-                    op.withYieldAllowed(true);
-                    ops.add(op.build());
-                    try {
-                        getContentResolver().applyBatch(ContactsContract.AUTHORITY, ops);
-                        finish();
-                    } catch (RemoteException | OperationApplicationException e) {
-                        e.printStackTrace();
-                        Log.e("error", "applyerror");
-                    }
-                }
+                Intent intent = new Intent(ContactDetailActivity.this, EditContactActivity.class);
+                intent.setAction(EditContactActivity.ACTION_EDIT);
+                intent.putExtra("lookUpKey", mLookupKey);
+                intent.putExtra("contactId", mContactId);
+                startActivity(intent);
                 break;
             }
         }

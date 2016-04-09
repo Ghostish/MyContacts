@@ -3,6 +3,7 @@ package learn.android.kangel.mycontacts;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.drawable.Drawable;
+import android.provider.ContactsContract;
 import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
@@ -19,6 +20,7 @@ import java.util.List;
 import java.util.Stack;
 
 /**
+
  * Created by Kangel on 2016/4/8.
  */
 public class ContactEditorViewGroup extends RelativeLayout {
@@ -29,22 +31,46 @@ public class ContactEditorViewGroup extends RelativeLayout {
 
     private LinearLayout mContainer;
     private ImageView mTypeIcon;
+    private List<ContactInfoBean> data;
+
+    private String getMIMETYPE(int mType) {
+        switch (mType) {
+            case ContactCommonEditorView.TYPE_PHONE:
+                return ContactsContract.CommonDataKinds.Phone.CONTENT_ITEM_TYPE;
+            case ContactCommonEditorView.TYPE_EMAIL:
+                return ContactsContract.CommonDataKinds.Email.CONTENT_ITEM_TYPE;
+            case ContactCommonEditorView.TYPE_ADDRESS:
+                return ContactsContract.CommonDataKinds.StructuredPostal.CONTENT_ITEM_TYPE;
+            default:
+                return null;
+        }
+
+    }
 
     public interface onChildTextChangeListener {
-        void onTextChanged(ContactCommonEditorView child, CharSequence s, int before, int count);
-    }
 
+        void onTextChanged(ContactCommonEditorView child, CharSequence s, int before, int count);
+
+    }
     public interface onChildFocusChangeListener {
         void onFocusChanged(ContactCommonEditorView child, boolean hasFocus);
-    }
 
+    }
     public interface onChildDeleteClickListener {
         void onChildDeleteClick(ContactCommonEditorView child);
-    }
 
+    }
     private onChildDeleteClickListener mOnChildDeleteClickListener = new onChildDeleteClickListener() {
         @Override
         public void onChildDeleteClick(ContactCommonEditorView child) {
+            ContactInfoBean bean = child.getBean();
+            if (bean.getUpdateType() == ContactInfoBean.TYPE_UPDATE) {
+                bean.setUpdateType(ContactInfoBean.TYPE_DELETE);
+            } else {
+                if (data != null) {
+                    data.remove(bean);
+                }
+            }
             removeEditor(child);
         }
     };
@@ -76,7 +102,6 @@ public class ContactEditorViewGroup extends RelativeLayout {
     public ContactEditorViewGroup(Context context) {
         this(context, null);
     }
-
     public ContactEditorViewGroup(Context context, AttributeSet attrs) {
         this(context, attrs, 0);
     }
@@ -94,7 +119,14 @@ public class ContactEditorViewGroup extends RelativeLayout {
         mTypeIcon.setImageDrawable(icon);
     }
 
-    public void addEditor() {
+    private void addEditor(ContactCommonEditorView child) {
+        currChildren.add(child);
+        mContainer.addView(child);
+        child.setOnChildDeleteClickListener(mOnChildDeleteClickListener);
+        child.setOnChildTextChangeListener(mOnChildTextChangeListener);
+    }
+
+    public ContactCommonEditorView addEditor() {
         ContactCommonEditorView child;
         if (recycleChildren.isEmpty()) {
             child = new ContactCommonEditorView(getContext());
@@ -106,8 +138,14 @@ public class ContactEditorViewGroup extends RelativeLayout {
         }
         child.setIsCollapsed(true);
         child.getInputFiled().setText("");
+        ContactInfoBean bean = new ContactInfoBean(getMIMETYPE(mType));
+        child.setBean(bean);
+        if (data != null) {
+            data.add(bean);
+        }
         currChildren.add(child);
         mContainer.addView(child);
+        return child;
     }
 
     public void removeEditor(final ContactCommonEditorView child) {
@@ -133,6 +171,32 @@ public class ContactEditorViewGroup extends RelativeLayout {
         });
         child.startAnimation(animation);
 
+    }
+
+    public List<ContactInfoBean> getData() {
+        return data;
+    }
+
+    public void setData(List<ContactInfoBean> data) {
+        this.data = data;
+        initData();
+    }
+
+    private void initData() {
+        for (ContactInfoBean bean : data) {
+            int update_type = bean.getUpdateType();
+            switch (update_type) {
+                case ContactInfoBean.TYPE_INSERT:
+                case ContactInfoBean.TYPE_UPDATE:
+                    ContactCommonEditorView child = new ContactCommonEditorView(getContext());
+                    child.setBean(bean);
+                    child.setType(mType);
+                    child.setIsCollapsed(false);
+                    addEditor(child);
+                    break;
+            }
+        }
+        addEditor();
     }
 
 }

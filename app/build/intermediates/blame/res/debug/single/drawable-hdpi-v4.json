@@ -136,12 +136,12 @@
         "source": "G:\\CD\\android_project\\MyContacts\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.2.1\\res\\drawable-hdpi-v4\\abc_popup_background_mtrl_mult.9.png"
     },
     {
-        "merged": "G:\\CD\\android_project\\MyContacts\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\abc_btn_switch_to_on_mtrl_00001.9.png",
-        "source": "G:\\CD\\android_project\\MyContacts\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.2.1\\res\\drawable-hdpi-v4\\abc_btn_switch_to_on_mtrl_00001.9.png"
-    },
-    {
         "merged": "G:\\CD\\android_project\\MyContacts\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\ic_person_black_24dp.png",
         "source": "G:\\CD\\android_project\\MyContacts\\app\\src\\main\\res\\drawable-hdpi\\ic_person_black_24dp.png"
+    },
+    {
+        "merged": "G:\\CD\\android_project\\MyContacts\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\abc_btn_switch_to_on_mtrl_00001.9.png",
+        "source": "G:\\CD\\android_project\\MyContacts\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.2.1\\res\\drawable-hdpi-v4\\abc_btn_switch_to_on_mtrl_00001.9.png"
     },
     {
         "merged": "G:\\CD\\android_project\\MyContacts\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\ic_camera_alt_black_24dp.png",

@@ -110,6 +110,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
             case R.id.fab:
                 Intent intent = new Intent(MainActivity.this, EditContactActivity.class);
+                intent.setAction(EditContactActivity.ACTION_ADD);
                 startActivity(intent);
                 break;
         }

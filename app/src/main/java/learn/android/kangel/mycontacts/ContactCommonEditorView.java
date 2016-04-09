@@ -33,16 +33,22 @@ public class ContactCommonEditorView extends RelativeLayout {
     private Spinner mTypeSpinner;
 
     private int mType;
-
     private boolean isCollapsed;
     private List<String> typeStrings;
+    private SpinnerAdapter mSpinnerAdapter;
+
+    private ContactInfoBean mBean;
 
     private ContactEditorViewGroup.onChildTextChangeListener mOnChildTextChangeListener;
+
     private ContactEditorViewGroup.onChildDeleteClickListener mOnChildDeleteClickListener;
 
-    public interface onSpinnerItemSelectedListener{
-        void onCustomTypeRequest(Spinner spinner,List<String> typeStrings);
+    public interface onSpinnerItemSelectedListener {
+
+        void onCustomTypeRequest(Spinner spinner, List<String> typeStrings);
+
     }
+
     public ContactCommonEditorView(Context context) {
         this(context, null);
     }
@@ -75,10 +81,14 @@ public class ContactCommonEditorView extends RelativeLayout {
         mTypeSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                if (mBean!=null) {
+                    mBean.setLabel(typeStrings.get(position));
+                    mBean.setDirty(true);
+                }
                 if (position == typeStrings.size() - 1) {
                     // TODO: 2016/4/7 show a dialog to let user input a custom type
                     if (getContext() instanceof onSpinnerItemSelectedListener) {
-                        ((onSpinnerItemSelectedListener) getContext()).onCustomTypeRequest(mTypeSpinner,typeStrings);
+                        ((onSpinnerItemSelectedListener) getContext()).onCustomTypeRequest(mTypeSpinner, typeStrings);
                     }
                 }
             }
@@ -116,11 +126,14 @@ public class ContactCommonEditorView extends RelativeLayout {
 
             @Override
             public void afterTextChanged(Editable s) {
+                if (mBean!=null) {
+                    mBean.setDirty(true);
+                    mBean.setValue(s.toString());
+                }
                 mDeleteButton.setVisibility(TextUtils.isEmpty(s) ? INVISIBLE : VISIBLE);
             }
         });
     }
-
 
     @Override
     protected void onAttachedToWindow() {
@@ -142,16 +155,26 @@ public class ContactCommonEditorView extends RelativeLayout {
                 typeStrings = new ArrayList<>(Arrays.asList(getResources().getStringArray(R.array.address_type)));
                 break;
         }
-        SpinnerAdapter adapter = new ArrayAdapter<>(getContext(), android.R.layout.simple_spinner_item, typeStrings);
-        mTypeSpinner.setAdapter(adapter);
+        if (mSpinnerAdapter == null) {
+            mSpinnerAdapter = new ArrayAdapter<>(getContext(), android.R.layout.simple_spinner_item, typeStrings);
+        }
+        mTypeSpinner.setAdapter(mSpinnerAdapter);
         mTypeSpinner.setVisibility(isCollapsed ? GONE : VISIBLE);
         mDeleteButton.setVisibility(TextUtils.isEmpty(mInputFiled.getText()) ? INVISIBLE : VISIBLE);
+        if (mBean != null) {
+            mInputFiled.setText(mBean.getValue());
+            String label = mBean.getLabel();
+            if (label != null && !typeStrings.contains(label)) {
+                typeStrings.add(0, label);
+            }
+        }
 
     }
 
     public Editable getInputText() {
         return mInputFiled != null ? mInputFiled.getText() : null;
     }
+
 
     public void setInputText(String text) {
         mInputFiled.setText(text);
@@ -161,12 +184,17 @@ public class ContactCommonEditorView extends RelativeLayout {
         return mInputFiled;
     }
 
-    public void setTypeAdapter(SpinnerAdapter adapter) {
-        mTypeSpinner.setAdapter(adapter);
-    }
 
     public void setType(int type) {
         mType = type;
+    }
+
+    public ContactInfoBean getBean() {
+        return mBean;
+    }
+
+    public void setBean(ContactInfoBean bean) {
+        this.mBean = bean;
     }
 
     public void setIsCollapsed(boolean isCollapsed) {

@@ -1,6 +1,6 @@
 -- Merging decision tree log ---
 manifest
-ADDED from G:\CD\android_project\MyContacts\app\src\main\AndroidManifest.xml:2:1-37:12
+ADDED from G:\CD\android_project\MyContacts\app\src\main\AndroidManifest.xml:2:1-42:12
 	package
 		ADDED from G:\CD\android_project\MyContacts\app\src\main\AndroidManifest.xml:3:5-46
 		INJECTED from G:\CD\android_project\MyContacts\app\src\main\AndroidManifest.xml
@@ -26,7 +26,7 @@ ADDED from G:\CD\android_project\MyContacts\app\src\main\AndroidManifest.xml:7:5
 	android:name
 		ADDED from G:\CD\android_project\MyContacts\app\src\main\AndroidManifest.xml:7:22-70
 application
-ADDED from G:\CD\android_project\MyContacts\app\src\main\AndroidManifest.xml:9:5-35:19
+ADDED from G:\CD\android_project\MyContacts\app\src\main\AndroidManifest.xml:9:5-40:19
 MERGED from [com.android.support:appcompat-v7:23.2.1] G:\CD\android_project\MyContacts\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\23.2.1\AndroidManifest.xml:25:5-20
 MERGED from [com.android.support:support-v4:23.2.1] G:\CD\android_project\MyContacts\app\build\intermediates\exploded-aar\com.android.support\support-v4\23.2.1\AndroidManifest.xml:22:5-20
 MERGED from [com.android.support:animated-vector-drawable:23.2.1] G:\CD\android_project\MyContacts\app\build\intermediates\exploded-aar\com.android.support\animated-vector-drawable\23.2.1\AndroidManifest.xml:7:5-20
@@ -94,11 +94,21 @@ ADDED from G:\CD\android_project\MyContacts\app\src\main\AndroidManifest.xml:29:
 	android:name
 		ADDED from G:\CD\android_project\MyContacts\app\src\main\AndroidManifest.xml:30:13-61
 activity#learn.android.kangel.mycontacts.activities.EditContactActivity
-ADDED from G:\CD\android_project\MyContacts\app\src\main\AndroidManifest.xml:32:9-34:69
+ADDED from G:\CD\android_project\MyContacts\app\src\main\AndroidManifest.xml:32:9-39:20
 	android:parentActivityName
 		ADDED from G:\CD\android_project\MyContacts\app\src\main\AndroidManifest.xml:34:13-66
 	android:name
 		ADDED from G:\CD\android_project\MyContacts\app\src\main\AndroidManifest.xml:33:13-59
+intent-filter#learn.android.kangel.mycontacts.add+learn.android.kangel.mycontacts.edit
+ADDED from G:\CD\android_project\MyContacts\app\src\main\AndroidManifest.xml:35:13-38:29
+action#learn.android.kangel.mycontacts.add
+ADDED from G:\CD\android_project\MyContacts\app\src\main\AndroidManifest.xml:36:17-78
+	android:name
+		ADDED from G:\CD\android_project\MyContacts\app\src\main\AndroidManifest.xml:36:25-75
+action#learn.android.kangel.mycontacts.edit
+ADDED from G:\CD\android_project\MyContacts\app\src\main\AndroidManifest.xml:37:17-79
+	android:name
+		ADDED from G:\CD\android_project\MyContacts\app\src\main\AndroidManifest.xml:37:25-76
 uses-sdk
 INJECTED from G:\CD\android_project\MyContacts\app\src\main\AndroidManifest.xml reason: use-sdk injection requested
 MERGED from [com.android.support:appcompat-v7:23.2.1] G:\CD\android_project\MyContacts\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\23.2.1\AndroidManifest.xml:21:5-23:78

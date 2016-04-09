@@ -38,7 +38,12 @@
             android:parentActivityName="learn.android.kangel.mycontacts.activities.MainActivity" />
         <activity
             android:name="learn.android.kangel.mycontacts.activities.EditContactActivity"
-            android:parentActivityName="learn.android.kangel.mycontacts.activities.MainActivity" />
+            android:parentActivityName="learn.android.kangel.mycontacts.activities.MainActivity" >
+            <intent-filter>
+                <action android:name="learn.android.kangel.mycontacts.add" />
+                <action android:name="learn.android.kangel.mycontacts.edit" />
+            </intent-filter>
+        </activity>
     </application>
 
 </manifest>

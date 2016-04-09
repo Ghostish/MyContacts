@@ -2904,14 +2904,20 @@ containing a value of this type.
         public static final int search_hint=0x7f070026;
         public static final int send_email=0x7f070027;
         public static final int status_bar_notification_info_overflow=0x7f070013;
-        public static final int title_delete_contact=0x7f070028;
-        public static final int title_input_type=0x7f070029;
-        public static final int toast_contact_deleted=0x7f07002a;
-        public static final int type_home=0x7f07002b;
-        public static final int type_mobile=0x7f07002c;
-        public static final int type_other=0x7f07002d;
-        public static final int type_work=0x7f07002e;
-        public static final int warm_sms=0x7f07002f;
+        public static final int title_add_contact=0x7f070028;
+        public static final int title_delete_contact=0x7f070029;
+        public static final int title_edit_contact=0x7f07002a;
+        public static final int title_input_type=0x7f07002b;
+        public static final int toast_contact_added=0x7f07002c;
+        public static final int toast_contact_deleted=0x7f07002d;
+        public static final int toast_contact_edited=0x7f07002e;
+        public static final int toast_contact_failed_add=0x7f07002f;
+        public static final int toast_contact_failed_editing=0x7f070030;
+        public static final int type_home=0x7f070031;
+        public static final int type_mobile=0x7f070032;
+        public static final int type_other=0x7f070033;
+        public static final int type_work=0x7f070034;
+        public static final int warm_sms=0x7f070035;
     }
     public static final class style {
         public static final int AlertDialog_AppCompat=0x7f0a0089;

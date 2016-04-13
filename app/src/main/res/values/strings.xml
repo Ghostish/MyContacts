@@ -33,4 +33,6 @@
     <string name="no_name">无姓名</string>
     <string name="change_head_show">更改头像</string>
     <string name="permission_write_storage_request">请允许存储空间权限</string>
+    <string name="no_camera">请安装相机</string>
+    <string name="no_gallery">请安装相册</string>
 </resources>

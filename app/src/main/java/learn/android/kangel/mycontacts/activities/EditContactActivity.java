@@ -3,17 +3,13 @@ package learn.android.kangel.mycontacts.activities;
 import android.Manifest;
 import android.content.ContentProviderOperation;
 import android.content.Intent;
-import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
-import android.os.Environment;
 import android.provider.ContactsContract;
 import android.provider.MediaStore;
-import android.support.annotation.NonNull;
-import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.LoaderManager;
 import android.support.v4.content.CursorLoader;
 import android.support.v4.content.Loader;
@@ -29,11 +25,10 @@ import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.Toast;
 
-import java.io.File;
-import java.io.IOException;
-import java.text.SimpleDateFormat;
+import java.io.ByteArrayOutputStream;
+import java.io.FileNotFoundException;
+import java.io.InputStream;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 import learn.android.kangel.mycontacts.ContactCommonEditorView;
@@ -53,9 +48,9 @@ public class EditContactActivity extends AppCompatActivity implements ContactCom
     };
 
 
-    private static final int REQUEST_STORAGE_PERMISSION = 11;
     private static final int REQUEST_TAKE_PHOTO = 211;
     private static final int REQUEST_CROP = 212;
+    private static final int REQUEST_PICK_PHOTO = 213;
 
     private EditTextDialogFragment mEditDialog;
     private Spinner targetSpinner; //reference to the spinner which is about to be modified
@@ -73,6 +68,7 @@ public class EditContactActivity extends AppCompatActivity implements ContactCom
     private int structureNameRowId;
     private int rawContactId;
 
+    private Bitmap mNewHeadShowBitmap;
     private final static int QUERY_CONTACT = 33;
     private static final String[] PROJECTION =
             new String[]{
@@ -111,8 +107,6 @@ public class EditContactActivity extends AppCompatActivity implements ContactCom
     private String mLookUpKey;
     private int mContactId;
 
-    private String mCurrentPhotoPath;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -145,33 +139,27 @@ public class EditContactActivity extends AppCompatActivity implements ContactCom
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (resultCode == RESULT_OK) {
             switch (requestCode) {
-                case REQUEST_TAKE_PHOTO: {
-                    //add the photo to gallery
-                    Intent mediaScanIntent = new Intent(Intent.ACTION_MEDIA_SCANNER_SCAN_FILE);
-                    File f = new File(mCurrentPhotoPath);
-                    Uri contentUri = Uri.fromFile(f);
-                    mediaScanIntent.setData(contentUri);
-                    this.sendBroadcast(mediaScanIntent);
-
-                    //decode a scale image
-                    BitmapFactory.Options options = new BitmapFactory.Options();
-                    options.inJustDecodeBounds = true;
-                    BitmapFactory.decodeFile(mCurrentPhotoPath, options);
-                    int photoWidth = options.outWidth;
-                    int photoHeight = options.outHeight;
-                    int targetWidth= headShowImage.getWidth();
-                    int targetHeight = headShowImage.getHeight();
-                    int scaleFactor = Math.min(photoWidth/targetWidth, photoHeight/targetHeight);
-                    options.inJustDecodeBounds = false;
-                    options.inSampleSize = scaleFactor;
-                    Bitmap bitmap = BitmapFactory.decodeFile(mCurrentPhotoPath, options);
-
-                    //set the image view
-                    headShowImage.setImageBitmap(bitmap);
-                   // startPhotoZoom(Uri.fromFile(temp));
+                case REQUEST_PICK_PHOTO: {
+                    Uri selectedImage = data.getData();
+                    InputStream imageInputStream = null;
+                    try {
+                        imageInputStream = getContentResolver().openInputStream(selectedImage);
+                    } catch (FileNotFoundException e) {
+                        e.printStackTrace();
+                    }
+                    if (imageInputStream != null) {
+                        mNewHeadShowBitmap = BitmapFactory.decodeStream(imageInputStream);
+                        headShowImage.setImageURI(selectedImage);
+                    }
                     break;
                 }
-                case REQUEST_CROP:{
+                case REQUEST_TAKE_PHOTO: {
+                    Bundle extras = data.getExtras();
+                    mNewHeadShowBitmap = (Bitmap) extras.get("data");
+                    headShowImage.setImageBitmap(mNewHeadShowBitmap);
+                    break;
+                }
+                case REQUEST_CROP: {
                     Bundle extras = data.getExtras();
                     if (extras != null) {
                         Bitmap photo = extras.getParcelable("data");
@@ -182,23 +170,6 @@ public class EditContactActivity extends AppCompatActivity implements ContactCom
         }
     }
 
-    private void startPhotoZoom(Uri uri) {
-        Intent intent = new Intent("com.android.camera.action.CROP");
-        if(intent.resolveActivity(getPackageManager()) != null){
-            intent.setDataAndType(uri, "image/*");
-            intent.putExtra("crop", "true");
-            intent.putExtra("aspectX", 1);
-            intent.putExtra("aspectY", 1);
-            intent.putExtra("outputX", 96);
-            intent.putExtra("outputY", 96);
-            intent.putExtra("noFaceDetection", true);
-            intent.putExtra("return-data", true);
-            startActivityForResult(intent, REQUEST_CROP);
-        }else {
-            Toast.makeText(getApplicationContext(), "no such app", Toast.LENGTH_LONG).show();
-        }
-
-    }
 
     @Override
     public void onCustomTypeRequest(Spinner spinner, List<String> typeStrings) {
@@ -243,17 +214,15 @@ public class EditContactActivity extends AppCompatActivity implements ContactCom
                         public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                             switch (position) {
                                 case 0: {
-                                    if (ActivityCompat.checkSelfPermission(EditContactActivity.this, Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
-                                        if (ActivityCompat.shouldShowRequestPermissionRationale(EditContactActivity.this, Manifest.permission.WRITE_EXTERNAL_STORAGE)) {
-                                            Toast.makeText(getApplicationContext(), R.string.permission_write_storage_request, Toast.LENGTH_LONG).show();
-                                        } else {
-                                            ActivityCompat.requestPermissions(EditContactActivity.this, REQUEST_PERMISSION, REQUEST_STORAGE_PERMISSION);
-                                        }
-                                    } else {
-                                        takePicture();
-                                    }
+                                    takePicture();
+                                    break;
+                                }
+                                case 1: {
+                                    pickPicture();
+                                    break;
                                 }
                             }
+                            mListPopupWindow.dismiss();
                         }
                     });
                 }
@@ -263,52 +232,24 @@ public class EditContactActivity extends AppCompatActivity implements ContactCom
         }
     }
 
-    @Override
-    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
-        switch (requestCode) {
-            case REQUEST_STORAGE_PERMISSION:
-                if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                    takePicture();
-                }
-                break;
-        }
-    }
 
     private void takePicture() {
         Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
         // Ensure that there's a camera activity to handle the intent
         if (takePictureIntent.resolveActivity(getPackageManager()) != null) {
-            // Create the File where the photo should go
-            File photoFile = null;
-            try {
-                photoFile = createImageFile();
-            } catch (IOException ex) {
-                // Error occurred while creating the File
-            }
-            // Continue only if the File was successfully created
-            if (photoFile != null) {
-                takePictureIntent.putExtra(MediaStore.EXTRA_OUTPUT,
-                        Uri.fromFile(photoFile));
-                startActivityForResult(takePictureIntent, REQUEST_TAKE_PHOTO);
-            }
+            startActivityForResult(takePictureIntent, REQUEST_TAKE_PHOTO);
+        } else {
+            Toast.makeText(getApplicationContext(), R.string.no_camera, Toast.LENGTH_LONG).show();
         }
     }
 
-    private File createImageFile() throws IOException {
-        // Create an image file name
-        String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
-        String imageFileName = "JPEG_" + timeStamp + "_";
-        File storageDir = Environment.getExternalStoragePublicDirectory(
-                Environment.DIRECTORY_PICTURES);
-        File image = File.createTempFile(
-                imageFileName,  /* prefix */
-                ".jpg",         /* suffix */
-                storageDir      /* directory */
-        );
-
-        // Save a file: path for use with ACTION_VIEW intents
-        mCurrentPhotoPath =  image.getAbsolutePath();
-        return image;
+    private void pickPicture() {
+        Intent pickPhotoIntent = new Intent(Intent.ACTION_PICK, android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+        if (pickPhotoIntent.resolveActivity(getPackageManager()) != null) {
+            startActivityForResult(pickPhotoIntent, REQUEST_PICK_PHOTO);
+        } else {
+            Toast.makeText(getApplicationContext(), R.string.no_gallery, Toast.LENGTH_LONG).show();
+        }
     }
 
     private void commitChanges() {
@@ -318,6 +259,15 @@ public class EditContactActivity extends AppCompatActivity implements ContactCom
                     .withValue(ContactsContract.RawContacts.ACCOUNT_TYPE, "learn.kangel.mycontact")
                     .withValue(ContactsContract.RawContacts.ACCOUNT_NAME, "cookie");
             ops.add(op.build());
+            if (mNewHeadShowBitmap != null) {
+                ByteArrayOutputStream imageStream = new ByteArrayOutputStream();
+                mNewHeadShowBitmap.compress(Bitmap.CompressFormat.JPEG, 100, imageStream);
+                op = ContentProviderOperation.newInsert(ContactsContract.Data.CONTENT_URI)
+                        .withValueBackReference(ContactsContract.Data.RAW_CONTACT_ID, 0)
+                        .withValue(ContactsContract.Data.MIMETYPE, ContactsContract.CommonDataKinds.Photo.CONTENT_ITEM_TYPE)
+                        .withValue(ContactsContract.CommonDataKinds.Photo.PHOTO, imageStream.toByteArray());
+                ops.add(op.build());
+            }
             String name = nameText.getText().toString();
             if (!name.trim().isEmpty()) {
                 op = ContentProviderOperation.newInsert(ContactsContract.Data.CONTENT_URI)
@@ -381,6 +331,15 @@ public class EditContactActivity extends AppCompatActivity implements ContactCom
         } else if (ACTION_EDIT.equals(getIntent().getAction())) {
             ArrayList<ContentProviderOperation> ops = new ArrayList<>();
             ContentProviderOperation.Builder op;
+            if (mNewHeadShowBitmap != null) {
+                ByteArrayOutputStream imageStream = new ByteArrayOutputStream();
+                mNewHeadShowBitmap.compress(Bitmap.CompressFormat.JPEG, 100, imageStream);
+                op = ContentProviderOperation.newInsert(ContactsContract.Data.CONTENT_URI)
+                        .withValue(ContactsContract.Data.RAW_CONTACT_ID, rawContactId)
+                        .withValue(ContactsContract.Data.MIMETYPE, ContactsContract.CommonDataKinds.Photo.CONTENT_ITEM_TYPE)
+                        .withValue(ContactsContract.CommonDataKinds.Photo.PHOTO, imageStream.toByteArray());
+                ops.add(op.build());
+            }
             String name = nameText.getText().toString();
             if (isContactHasName && !name.trim().isEmpty()) {
                 op = ContentProviderOperation.newUpdate(ContactsContract.Data.CONTENT_URI)

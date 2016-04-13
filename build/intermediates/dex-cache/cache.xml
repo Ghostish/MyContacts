@@ -1,3 +1,110 @@
 <?xml version="1.0" encoding="utf-8"?>
-<items version="2" />
+<items version="2" >
 
+    <item
+        jar="G:\CD\android_project\MyContacts\app\build\intermediates\exploded-aar\com.android.support\support-v4\23.2.1\jars\libs\internal_impl-23.2.1.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="607a3d0b8013b4ccbfeb0b7cb293351994e021fb">
+        <dex dex="G:\CD\android_project\MyContacts\app\build\intermediates\pre-dexed\debug\internal_impl-23.2.1_b4536afa307f9b4d0030576108f29884e66feb8e.jar" />
+    </item>
+    <item
+        jar="G:\CD\android_project\MyContacts\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\23.2.1\jars\classes.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="e4d0cbb0b999604b349062f0214a0a228a7fd151">
+        <dex dex="G:\CD\android_project\MyContacts\app\build\intermediates\pre-dexed\debug\com.android.support-appcompat-v7-23.2.1_a1dd2a9ea6a887522594649cb8ac957edd856f91.jar" />
+    </item>
+    <item
+        jar="G:\CD\android_project\MyContacts\app\build\intermediates\exploded-aar\com.android.support\cardview-v7\23.2.1\jars\classes.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="cb86970df0f0f25f766d320b279c7858c1ca0003">
+        <dex dex="G:\CD\android_project\MyContacts\app\build\intermediates\pre-dexed\debug\com.android.support-cardview-v7-23.2.1_0c44490268b60350acdfa82694e4af6f6bc6f1da.jar" />
+    </item>
+    <item
+        jar="G:\CD\android_project\MyContacts\app\build\intermediates\exploded-aar\com.android.support\recyclerview-v7\23.2.1\jars\classes.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="e3885783ff8926ed9e2fdcd16816c2e1e73e7aee">
+        <dex dex="G:\CD\android_project\MyContacts\app\build\intermediates\pre-dexed\debug\com.android.support-recyclerview-v7-23.2.1_caefe1a7cd2283a66689dcb1308d031d9d8a558f.jar" />
+    </item>
+    <item
+        jar="G:\CD\android_project\MyContacts\app\build\intermediates\incremental-classes\debug\instant-run-bootstrap.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="2eb50e3078e5cc4f7707a774a03b8c15295e12a8">
+        <dex dex="G:\CD\android_project\MyContacts\app\build\intermediates\pre-dexed\debug\instant-run-bootstrap_10ae2df9e887b9f0c0a41c407004c488e78e5ddc.jar" />
+    </item>
+    <item
+        jar="F:\Apps\Android\sdk\extras\android\m2repository\com\android\support\support-annotations\23.2.1\support-annotations-23.2.1.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="ccb693bc0774fcb637246f7360de25b4af7df318">
+        <dex dex="G:\CD\android_project\MyContacts\app\build\intermediates\pre-dexed\debug\support-annotations-23.2.1_5daa76a7b6844ad779012021df7f52ed66285e34.jar" />
+    </item>
+    <item
+        jar="G:\CD\android_project\MyContacts\app\build\intermediates\incremental-runtime-classes\debug\instant-run.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="3564adab342a8f431e233b93f98b4191088a7fd1">
+        <dex dex="G:\CD\android_project\MyContacts\app\build\intermediates\pre-dexed\debug\instant-run_a0a1113d3754acec3b5935cc6dad453bfd453f16.jar" />
+    </item>
+    <item
+        jar="G:\CD\android_project\MyContacts\app\build\intermediates\exploded-aar\com.simplecityapps\recyclerview-fastscroll\1.0.6\jars\classes.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="b7e903aca352ee78dc40f5c7332cd5046fcbcbe6">
+        <dex dex="G:\CD\android_project\MyContacts\app\build\intermediates\pre-dexed\debug\com.simplecityapps-recyclerview-fastscroll-1.0.6_f0663813118ccfeb081cd480fc272e408f101b34.jar" />
+    </item>
+    <item
+        jar="G:\CD\android_project\MyContacts\app\build\intermediates\exploded-aar\com.alexzh\circleimageview\1.1.4\jars\classes.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="a94a32b7fd969e39209e746b6d1aa0fa03d8870f">
+        <dex dex="G:\CD\android_project\MyContacts\app\build\intermediates\pre-dexed\debug\com.alexzh-circleimageview-1.1.4_5a9e86b9cc66b124a1a550d59323a4c2a8ead09f.jar" />
+    </item>
+    <item
+        jar="G:\CD\android_project\MyContacts\app\build\intermediates\exploded-aar\de.hdodenhof\circleimageview\2.0.0\jars\classes.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="031e8b3ab2df4ab43b1017f84417d7e10dfbb8d2">
+        <dex dex="G:\CD\android_project\MyContacts\app\build\intermediates\pre-dexed\debug\de.hdodenhof-circleimageview-2.0.0_b9c044600cce7d53d2a62f11f0cb987d2131b534.jar" />
+    </item>
+    <item
+        jar="F:\Apps\Android_studio\globalGradle\.gradle\caches\modules-2\files-2.1\com.github.promeg\tinypinyin\1.0.0\a48301534bbc8eea481f61fa8fbdee80eca49d15\tinypinyin-1.0.0.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="a48301534bbc8eea481f61fa8fbdee80eca49d15">
+        <dex dex="G:\CD\android_project\MyContacts\app\build\intermediates\pre-dexed\debug\tinypinyin-1.0.0_41a4b4ac311e4a215e8db33fa6e73e66672522f2.jar" />
+    </item>
+    <item
+        jar="G:\CD\android_project\MyContacts\app\build\intermediates\exploded-aar\com.android.support\support-v4\23.2.1\jars\classes.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="3be474b1b21b31cf2fa93fe6bd641ae108d96452">
+        <dex dex="G:\CD\android_project\MyContacts\app\build\intermediates\pre-dexed\debug\com.android.support-support-v4-23.2.1_d25dbd7ae629066f0f755cdb3a934127e803367a.jar" />
+    </item>
+    <item
+        jar="G:\CD\android_project\MyContacts\app\build\intermediates\exploded-aar\com.android.support\support-vector-drawable\23.2.1\jars\classes.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="673d77a5bbddd766037f088e775df525c46407f0">
+        <dex dex="G:\CD\android_project\MyContacts\app\build\intermediates\pre-dexed\debug\com.android.support-support-vector-drawable-23.2.1_2d9b9ab27bde285a49d22081cb7b1f4c30d266f7.jar" />
+    </item>
+    <item
+        jar="G:\CD\android_project\MyContacts\app\build\intermediates\exploded-aar\com.android.support\animated-vector-drawable\23.2.1\jars\classes.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="3469cb457f10f74c28cbc05f069b6c894f6cbdd0">
+        <dex dex="G:\CD\android_project\MyContacts\app\build\intermediates\pre-dexed\debug\com.android.support-animated-vector-drawable-23.2.1_b5f7588e97cf713955b4ca4aefb5578242d10d56.jar" />
+    </item>
+    <item
+        jar="G:\CD\android_project\MyContacts\app\build\intermediates\exploded-aar\com.android.support\design\23.2.1\jars\classes.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="72961d8b453b46e277702f18de9d210bc019e36e">
+        <dex dex="G:\CD\android_project\MyContacts\app\build\intermediates\pre-dexed\debug\com.android.support-design-23.2.1_7ad246eb3bec7d1aef92a5b135d448741fe2f996.jar" />
+    </item>
+
+</items>

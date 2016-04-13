@@ -188,6 +188,10 @@
         "source": "G:\\CD\\android_project\\MyContacts\\app\\src\\main\\res\\drawable-mdpi\\ic_location_on_black_24dp.png"
     },
     {
+        "merged": "G:\\CD\\android_project\\MyContacts\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi-v4\\ic_person_add_white_24dp.png",
+        "source": "G:\\CD\\android_project\\MyContacts\\app\\src\\main\\res\\drawable-mdpi\\ic_person_add_white_24dp.png"
+    },
+    {
         "merged": "G:\\CD\\android_project\\MyContacts\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi-v4\\abc_scrubber_control_off_mtrl_alpha.png",
         "source": "G:\\CD\\android_project\\MyContacts\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.2.1\\res\\drawable-mdpi-v4\\abc_scrubber_control_off_mtrl_alpha.png"
     },
@@ -218,6 +222,10 @@
     {
         "merged": "G:\\CD\\android_project\\MyContacts\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi-v4\\ic_email_black_24dp.png",
         "source": "G:\\CD\\android_project\\MyContacts\\app\\src\\main\\res\\drawable-mdpi\\ic_email_black_24dp.png"
+    },
+    {
+        "merged": "G:\\CD\\android_project\\MyContacts\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi-v4\\ic_person_white_24dp.png",
+        "source": "G:\\CD\\android_project\\MyContacts\\app\\src\\main\\res\\drawable-mdpi\\ic_person_white_24dp.png"
     },
     {
         "merged": "G:\\CD\\android_project\\MyContacts\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi-v4\\ic_expand_less_black_24dp.png",

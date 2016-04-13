@@ -1,23 +1,20 @@
 package learn.android.kangel.mycontacts.activities;
 
-import android.content.ContentProviderOperation;
 import android.content.Intent;
-import android.content.OperationApplicationException;
 import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
-import android.os.RemoteException;
 import android.provider.ContactsContract;
+import android.provider.MediaStore;
 import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.v4.app.LoaderManager;
 import android.support.v4.content.CursorLoader;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.text.ClipboardManager;
-import android.util.Log;
 import android.view.ContextMenu;
 import android.view.LayoutInflater;
 import android.view.MenuInflater;
@@ -30,7 +27,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import java.io.InputStream;
-import java.util.ArrayList;
 import java.util.List;
 
 import learn.android.kangel.mycontacts.R;
@@ -182,6 +178,8 @@ public class ContactDetailActivity extends AppCompatActivity implements LoaderMa
                 if (data != null && data.moveToNext()) {
                     collapsingToolbarLayout.setTitleEnabled(true);
                     collapsingToolbarLayout.setTitle(data.getString(DATA1_INDEX));
+                }else {
+                    collapsingToolbarLayout.setTitle(getString(R.string.no_name));
                 }
                 break;
             }
@@ -300,6 +298,8 @@ public class ContactDetailActivity extends AppCompatActivity implements LoaderMa
                 intent.putExtra("contactId", mContactId);
                 startActivity(intent);
                 break;
+            }
+            case R.id.head_show: {
             }
         }
     }

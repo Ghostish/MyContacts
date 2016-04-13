@@ -30,4 +30,7 @@
     <string name="title_edit_contact">编辑联系人</string>
     <string name="toast_contact_edited">编辑成功</string>
     <string name="toast_contact_failed_editing">编辑无效，请重试</string>
+    <string name="no_name">无姓名</string>
+    <string name="change_head_show">更改头像</string>
+    <string name="permission_write_storage_request">请允许存储空间权限</string>
 </resources>

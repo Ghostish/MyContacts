@@ -1,35 +1,45 @@
 package learn.android.kangel.mycontacts.activities;
 
+import android.Manifest;
 import android.content.ContentProviderOperation;
+import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.database.Cursor;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.net.Uri;
 import android.os.Bundle;
+import android.os.Environment;
 import android.provider.ContactsContract;
+import android.provider.MediaStore;
+import android.support.annotation.NonNull;
+import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.LoaderManager;
 import android.support.v4.content.CursorLoader;
 import android.support.v4.content.Loader;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.ListPopupWindow;
 import android.support.v7.widget.Toolbar;
-import android.text.Editable;
 import android.text.TextUtils;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.EditText;
-import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import java.io.File;
+import java.io.IOException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
-import javax.crypto.interfaces.PBEKey;
-
-import learn.android.kangel.mycontacts.AnimationUtil;
 import learn.android.kangel.mycontacts.ContactCommonEditorView;
 import learn.android.kangel.mycontacts.ContactEditorViewGroup;
 import learn.android.kangel.mycontacts.ContactInfoBean;
 import learn.android.kangel.mycontacts.R;
-import learn.android.kangel.mycontacts.adapters.EditFieldAdapter;
 import learn.android.kangel.mycontacts.fragments.EditTextDialogFragment;
 
 /**
@@ -38,6 +48,15 @@ import learn.android.kangel.mycontacts.fragments.EditTextDialogFragment;
 public class EditContactActivity extends AppCompatActivity implements ContactCommonEditorView.onSpinnerItemSelectedListener, EditTextDialogFragment.onEditDialogButtonClickListener, View.OnClickListener, LoaderManager.LoaderCallbacks<Cursor> {
     public final static String ACTION_ADD = "learn.android.kangel.mycontacts.add";
     public final static String ACTION_EDIT = "learn.android.kangel.mycontacts.edit";
+    private static final String[] REQUEST_PERMISSION = new String[]{
+            Manifest.permission.WRITE_EXTERNAL_STORAGE
+    };
+
+
+    private static final int REQUEST_STORAGE_PERMISSION = 11;
+    private static final int REQUEST_TAKE_PHOTO = 211;
+    private static final int REQUEST_CROP = 212;
+
     private EditTextDialogFragment mEditDialog;
     private Spinner targetSpinner; //reference to the spinner which is about to be modified
     private List<String> targetTypeStrings; //reference to the typeStrings which is about to be modified
@@ -46,6 +65,9 @@ public class EditContactActivity extends AppCompatActivity implements ContactCom
     private ContactEditorViewGroup emailGroup;
     private ContactEditorViewGroup addressGroup;
     private EditText nameText;
+    private ImageView headShowImage;
+    private ListPopupWindow mListPopupWindow;
+
 
     private boolean isContactHasName = false;
     private int structureNameRowId;
@@ -89,6 +111,8 @@ public class EditContactActivity extends AppCompatActivity implements ContactCom
     private String mLookUpKey;
     private int mContactId;
 
+    private String mCurrentPhotoPath;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -100,6 +124,8 @@ public class EditContactActivity extends AppCompatActivity implements ContactCom
         phoneGroup = (ContactEditorViewGroup) findViewById(R.id.phone);
         emailGroup = (ContactEditorViewGroup) findViewById(R.id.email);
         addressGroup = (ContactEditorViewGroup) findViewById(R.id.address);
+
+        headShowImage = (ImageView) findViewById(R.id.head_show);
         String action = getIntent().getAction();
         if (ACTION_ADD.equals(action)) {
             toolbar.setTitle(R.string.title_add_contact);
@@ -113,6 +139,65 @@ public class EditContactActivity extends AppCompatActivity implements ContactCom
             mSelectionArgs[0] = String.valueOf(mContactId);
             getSupportLoaderManager().restartLoader(QUERY_CONTACT, null, this);
         }
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (resultCode == RESULT_OK) {
+            switch (requestCode) {
+                case REQUEST_TAKE_PHOTO: {
+                    //add the photo to gallery
+                    Intent mediaScanIntent = new Intent(Intent.ACTION_MEDIA_SCANNER_SCAN_FILE);
+                    File f = new File(mCurrentPhotoPath);
+                    Uri contentUri = Uri.fromFile(f);
+                    mediaScanIntent.setData(contentUri);
+                    this.sendBroadcast(mediaScanIntent);
+
+                    //decode a scale image
+                    BitmapFactory.Options options = new BitmapFactory.Options();
+                    options.inJustDecodeBounds = true;
+                    BitmapFactory.decodeFile(mCurrentPhotoPath, options);
+                    int photoWidth = options.outWidth;
+                    int photoHeight = options.outHeight;
+                    int targetWidth= headShowImage.getWidth();
+                    int targetHeight = headShowImage.getHeight();
+                    int scaleFactor = Math.min(photoWidth/targetWidth, photoHeight/targetHeight);
+                    options.inJustDecodeBounds = false;
+                    options.inSampleSize = scaleFactor;
+                    Bitmap bitmap = BitmapFactory.decodeFile(mCurrentPhotoPath, options);
+
+                    //set the image view
+                    headShowImage.setImageBitmap(bitmap);
+                   // startPhotoZoom(Uri.fromFile(temp));
+                    break;
+                }
+                case REQUEST_CROP:{
+                    Bundle extras = data.getExtras();
+                    if (extras != null) {
+                        Bitmap photo = extras.getParcelable("data");
+                        headShowImage.setImageBitmap(photo);
+                    }
+                }
+            }
+        }
+    }
+
+    private void startPhotoZoom(Uri uri) {
+        Intent intent = new Intent("com.android.camera.action.CROP");
+        if(intent.resolveActivity(getPackageManager()) != null){
+            intent.setDataAndType(uri, "image/*");
+            intent.putExtra("crop", "true");
+            intent.putExtra("aspectX", 1);
+            intent.putExtra("aspectY", 1);
+            intent.putExtra("outputX", 96);
+            intent.putExtra("outputY", 96);
+            intent.putExtra("noFaceDetection", true);
+            intent.putExtra("return-data", true);
+            startActivityForResult(intent, REQUEST_CROP);
+        }else {
+            Toast.makeText(getApplicationContext(), "no such app", Toast.LENGTH_LONG).show();
+        }
+
     }
 
     @Override
@@ -137,12 +222,93 @@ public class EditContactActivity extends AppCompatActivity implements ContactCom
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
-            case R.id.ok_button:
+            case R.id.ok_button: {
                 // TODO: 2016/4/9  show a progress dialog , and do the batch work in worker thread
                 commitChanges();
                 finish();
                 break;
+            }
+            case R.id.change_photo_button: {
+                if (mListPopupWindow == null) {
+                    mListPopupWindow = new ListPopupWindow(this);
+                    mListPopupWindow.setAnchorView(v);
+                    String[] res = getResources().getStringArray(R.array.pick_photo_type);
+                    ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, res);
+                    mListPopupWindow.setAdapter(adapter);
+                    mListPopupWindow.setContentWidth(v.getWidth() * 2);
+                    View.OnTouchListener mListener = mListPopupWindow.createDragToOpenListener(v);
+                    v.setOnTouchListener(mListener);
+                    mListPopupWindow.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                        @Override
+                        public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                            switch (position) {
+                                case 0: {
+                                    if (ActivityCompat.checkSelfPermission(EditContactActivity.this, Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
+                                        if (ActivityCompat.shouldShowRequestPermissionRationale(EditContactActivity.this, Manifest.permission.WRITE_EXTERNAL_STORAGE)) {
+                                            Toast.makeText(getApplicationContext(), R.string.permission_write_storage_request, Toast.LENGTH_LONG).show();
+                                        } else {
+                                            ActivityCompat.requestPermissions(EditContactActivity.this, REQUEST_PERMISSION, REQUEST_STORAGE_PERMISSION);
+                                        }
+                                    } else {
+                                        takePicture();
+                                    }
+                                }
+                            }
+                        }
+                    });
+                }
+                mListPopupWindow.show();
+                break;
+            }
         }
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        switch (requestCode) {
+            case REQUEST_STORAGE_PERMISSION:
+                if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                    takePicture();
+                }
+                break;
+        }
+    }
+
+    private void takePicture() {
+        Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+        // Ensure that there's a camera activity to handle the intent
+        if (takePictureIntent.resolveActivity(getPackageManager()) != null) {
+            // Create the File where the photo should go
+            File photoFile = null;
+            try {
+                photoFile = createImageFile();
+            } catch (IOException ex) {
+                // Error occurred while creating the File
+            }
+            // Continue only if the File was successfully created
+            if (photoFile != null) {
+                takePictureIntent.putExtra(MediaStore.EXTRA_OUTPUT,
+                        Uri.fromFile(photoFile));
+                startActivityForResult(takePictureIntent, REQUEST_TAKE_PHOTO);
+            }
+        }
+    }
+
+    private File createImageFile() throws IOException {
+        // Create an image file name
+        String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
+        String imageFileName = "JPEG_" + timeStamp + "_";
+        File storageDir = Environment.getExternalStoragePublicDirectory(
+                Environment.DIRECTORY_PICTURES);
+        File image = File.createTempFile(
+                imageFileName,  /* prefix */
+                ".jpg",         /* suffix */
+                storageDir      /* directory */
+        );
+
+        // Save a file: path for use with ACTION_VIEW intents
+        mCurrentPhotoPath =  image.getAbsolutePath();
+        return image;
     }
 
     private void commitChanges() {
@@ -400,6 +566,7 @@ public class EditContactActivity extends AppCompatActivity implements ContactCom
         phoneGroup.setData(phoneBean);
         emailGroup.setData(emailBean);
         addressGroup.setData(addressBean);
+        loader.abandon();
     }
 
     @Override

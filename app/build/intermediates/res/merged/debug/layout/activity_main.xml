@@ -68,7 +68,7 @@
         android:onClick="onClick"
         android:scaleX="0.0"
         android:scaleY="0.0"
-        android:src="@drawable/ic_add_white_24dp"
+        android:src="@drawable/ic_person_add_white_24dp"
         app:layout_behavior=".ScrollFabBehavior" />
 
 </android.support.design.widget.CoordinatorLayout>

@@ -132,8 +132,10 @@ public class SearchFragment extends android.support.v4.app.ListFragment implemen
         if (c != null) {
             c.moveToPosition(position);
             String lookUpKey = c.getString(7);
+            int contactId = c.getInt(6);
             Intent intent = new Intent(getActivity(), ContactDetailActivity.class);
             intent.putExtra("lookUpKey", lookUpKey);
+            intent.putExtra("contactId", contactId);
             getActivity().startActivity(intent);
             getFragmentManager().popBackStack();
         }

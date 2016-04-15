@@ -22,17 +22,18 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
+import android.widget.Toast;
 
 import learn.android.kangel.mycontacts.R;
 import learn.android.kangel.mycontacts.adapters.CallHistoryAdapter;
 import learn.android.kangel.mycontacts.adapters.ContactListAdapter;
 import learn.android.kangel.mycontacts.fragments.CallHistoryFragment;
 import learn.android.kangel.mycontacts.fragments.ContactListFragment;
-import learn.android.kangel.mycontacts.fragments.EditTextDialogFragment;
 import learn.android.kangel.mycontacts.fragments.SearchFragment;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener, RecyclerViewActivity {
     private final static int REQUEST_CALL_LOG_CONTACTS = 110;
+    private static final int REQUEST_CALL_PHONE = 111;
     private CallHistoryFragment callHistoryFragment;
     private ContactListFragment contactListFragment;
     private SearchFragment mSearchFragment;
@@ -59,7 +60,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 ActivityCompat.checkSelfPermission(this, Manifest.permission.READ_CONTACTS) != PackageManager.PERMISSION_GRANTED ||
                 ActivityCompat.checkSelfPermission(this, Manifest.permission.WRITE_CONTACTS) != PackageManager.PERMISSION_GRANTED) {
             if (ActivityCompat.shouldShowRequestPermissionRationale(MainActivity.this, Manifest.permission.READ_CALL_LOG) ||
-                    ActivityCompat.shouldShowRequestPermissionRationale(MainActivity.this, Manifest.permission.READ_CONTACTS)||
+                    ActivityCompat.shouldShowRequestPermissionRationale(MainActivity.this, Manifest.permission.READ_CONTACTS) ||
                     ActivityCompat.shouldShowRequestPermissionRationale(MainActivity.this, Manifest.permission.WRITE_CONTACTS)) {
                 Snackbar.make(findViewById(R.id.coordinator), R.string.permission_deny, Snackbar.LENGTH_INDEFINITE).show();
             } else {
@@ -158,9 +159,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             public void onBackStackChanged() {
                 if (mSearchFragment != null && mSearchFragment.isVisible()) {
                     fab.hide();
-                }else {
+                } else {
                     fab.show();
-                    InputMethodManager imm = (InputMethodManager)MainActivity.this.getSystemService(Context.INPUT_METHOD_SERVICE);
+                    InputMethodManager imm = (InputMethodManager) MainActivity.this.getSystemService(Context.INPUT_METHOD_SERVICE);
                     imm.hideSoftInputFromWindow(getWindow().getDecorView().getWindowToken(), 0);
                 }
             }
@@ -173,14 +174,22 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public void onRecyclerViewItemClick(int position, Object tag, Bundle data) {
         switch (((String) tag)) {
             case CallHistoryAdapter.TAG_DIAL: {
+                if (ActivityCompat.checkSelfPermission(this, Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED) {
+                    if (ActivityCompat.shouldShowRequestPermissionRationale(MainActivity.this, Manifest.permission.CALL_PHONE)) {
+                        Toast.makeText(getApplicationContext(), R.string.permission_call_phone_request, Toast.LENGTH_LONG).show();
+                    } else {
+                        ActivityCompat.requestPermissions(MainActivity.this, new String[]{Manifest.permission.CALL_PHONE}, REQUEST_CALL_PHONE);
+                    }
+                    return;
+                }
                 String number = data.getString("number");
-                Intent intent = new Intent(Intent.ACTION_DIAL, Uri.parse("tel:" + number));
+                Intent intent = new Intent(Intent.ACTION_CALL, Uri.parse("tel:" + number));
                 startActivity(intent);
                 break;
             }
             case ContactListAdapter.TAG: {
                 String lookUpkey = data.getString("lookUpKey");
-                int contactId = data.getInt("contactId");
+                long contactId = data.getLong("contactId");
                 Intent intent = new Intent(MainActivity.this, ContactDetailActivity.class);
                 intent.putExtra("lookUpKey", lookUpkey);
                 intent.putExtra("contactId", contactId);

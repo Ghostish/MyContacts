@@ -14,6 +14,7 @@ import android.util.LruCache;
 import android.widget.ImageView;
 
 import java.io.ByteArrayInputStream;
+import java.io.InputStream;
 import java.util.concurrent.SynchronousQueue;
 import java.util.concurrent.ThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
@@ -36,10 +37,13 @@ public class HeadShowLoader {
         }
     });
     private final static int LOAD_OK = 11;
-    private final static LruCache<Long, Bitmap> bitmapLruCache = new LruCache<>(200);
+    private final static LruCache<Uri, Bitmap> bitmapLruCache = new LruCache<>(200);
     private final static ThreadPoolExecutor mExecutor = new ThreadPoolExecutor(0, Integer.MAX_VALUE, 60L, TimeUnit.SECONDS, new SynchronousQueue<Runnable>());
 
-    public void bindImageView(final ImageView imageView, final Context context, final long contactId) {
+    public static void removeCacheItem(Uri key) {
+        bitmapLruCache.remove(key);
+    }
+    /*public void bindImageView(final ImageView imageView, final Context context, final long contactId) {
         if (bitmapLruCache.get(contactId) != null) {
             imageView.setImageBitmap(bitmapLruCache.get(contactId));
         } else {
@@ -70,7 +74,7 @@ public class HeadShowLoader {
                 }
             });
         }
-    }
+    }*/
 
     class LoadResult {
         ImageView resultImage;
@@ -83,14 +87,15 @@ public class HeadShowLoader {
     }
 
     public void bindImageView(final ImageView imageView, final Context context, final String number) {
-        String[] projection = new String[]{ContactsContract.CommonDataKinds.Phone.CONTACT_ID, ContactsContract.CommonDataKinds.Phone.NUMBER};
+        String[] projection = new String[]{ContactsContract.Data.CONTACT_ID, ContactsContract.Data.LOOKUP_KEY, ContactsContract.CommonDataKinds.Phone.NUMBER};
         Uri mUri = Uri.withAppendedPath(ContactsContract.CommonDataKinds.Phone.CONTENT_FILTER_URI, Uri.encode(number));
         Cursor c = context.getContentResolver().query(mUri, projection,
                 null, null, null);
         try {
             if (c != null && c.moveToFirst()) {
                 long contactId = c.getLong(0);
-                String retrievedNumber = c.getString(1);
+                String lookUpKey = c.getString(1);
+                String retrievedNumber = c.getString(2);
                 /**
                  *compare the two numbers to see if they are really matched
                  */
@@ -102,7 +107,7 @@ public class HeadShowLoader {
                     }
                 }
                 if (sb.toString().equals(number)) {
-                    bindImageView(imageView, context, contactId);
+                    bindImageView(imageView, context, contactId, lookUpKey);
                     return;
                 }
             }
@@ -110,6 +115,26 @@ public class HeadShowLoader {
             c.close();
         }
         imageView.setImageResource(R.drawable.default_head_show_list);
+    }
 
+    public void bindImageView(final ImageView imageView, final Context context, final long contactId, final String lookUpKey) {
+        final Uri contactUri = ContactsContract.Contacts.getLookupUri(contactId, lookUpKey);
+        if (bitmapLruCache.get(contactUri) != null) {
+            imageView.setImageBitmap(bitmapLruCache.get(contactUri));
+        } else {
+            imageView.setImageResource(R.drawable.default_head_show_list);
+            mExecutor.execute(new Runnable() {
+                @Override
+                public void run() {
+                    InputStream in = ContactsContract.Contacts.openContactPhotoInputStream(context.getContentResolver(), contactUri);
+                    if (in != null) {
+                        Bitmap bitmap = BitmapFactory.decodeStream(in);
+                        bitmapLruCache.put(contactUri, bitmap);
+                        Message msg = mHandler.obtainMessage(LOAD_OK, new LoadResult(imageView, bitmap));
+                        mHandler.sendMessage(msg);
+                    }
+                }
+            });
+        }
     }
 }

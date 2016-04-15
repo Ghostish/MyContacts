@@ -71,7 +71,9 @@ public class ContactListAdapter extends RecyclerView.Adapter<ContactListAdapter.
         }*/
         if (true) {
             holder.headShow.setTag(position);
-            mHeadShowLoader.bindImageView(holder.headShow, context, cursor.getInt(cursor.getColumnIndex(ContactsContract.Contacts._ID)));
+            long contactId = cursor.getLong(cursor.getColumnIndex(ContactsContract.Contacts._ID));
+            String lookUpKey = cursor.getString(cursor.getColumnIndex(ContactsContract.Contacts.LOOKUP_KEY));
+            mHeadShowLoader.bindImageView(holder.headShow, context, contactId, lookUpKey);
         }
     }
 
@@ -115,8 +117,11 @@ public class ContactListAdapter extends RecyclerView.Adapter<ContactListAdapter.
             cursor.moveToPosition(getAdapterPosition());
             if (context instanceof RecyclerViewActivity) {
                 Bundle data = new Bundle();
-                data.putInt("contactId",cursor.getInt(cursor.getColumnIndex(ContactsContract.Contacts._ID)));
-                data.putString("lookUpKey", cursor.getString(cursor.getColumnIndex(ContactsContract.Contacts.LOOKUP_KEY)));
+                long mContactId = cursor.getLong(cursor.getColumnIndex(ContactsContract.Contacts._ID));
+                String mLookupKey = cursor.getString(cursor.getColumnIndex(ContactsContract.Contacts.LOOKUP_KEY));
+                Log.d("contact info", mContactId + " " + mLookupKey);
+                data.putLong("contactId",mContactId);
+                data.putString("lookUpKey", mLookupKey);
                 ((RecyclerViewActivity) context).onRecyclerViewItemClick(getAdapterPosition(), TAG, data);
             }
         }

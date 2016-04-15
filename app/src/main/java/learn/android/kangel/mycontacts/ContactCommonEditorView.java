@@ -81,7 +81,7 @@ public class ContactCommonEditorView extends RelativeLayout {
         mTypeSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                if (mBean!=null) {
+                if (mBean != null) {
                     mBean.setLabel(typeStrings.get(position));
                     mBean.setDirty(true);
                 }
@@ -126,7 +126,7 @@ public class ContactCommonEditorView extends RelativeLayout {
 
             @Override
             public void afterTextChanged(Editable s) {
-                if (mBean!=null) {
+                if (mBean != null) {
                     mBean.setDirty(true);
                     mBean.setValue(s.toString());
                 }
@@ -157,6 +157,7 @@ public class ContactCommonEditorView extends RelativeLayout {
         }
         if (mSpinnerAdapter == null) {
             mSpinnerAdapter = new ArrayAdapter<>(getContext(), android.R.layout.simple_spinner_item, typeStrings);
+            ((ArrayAdapter) mSpinnerAdapter).setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         }
         mTypeSpinner.setAdapter(mSpinnerAdapter);
         mTypeSpinner.setVisibility(isCollapsed ? GONE : VISIBLE);

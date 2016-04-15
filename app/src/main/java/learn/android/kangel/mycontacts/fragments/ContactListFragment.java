@@ -34,6 +34,7 @@ public class ContactListFragment extends Fragment implements LoaderManager.Loade
                     ContactsContract.Contacts.DISPLAY_NAME_PRIMARY,
                     ContactsContract.Contacts.SORT_KEY_PRIMARY
             };
+    private static final String SELECTION = ContactsContract.Contacts.HAS_PHONE_NUMBER + " = 1";
 
     @Nullable
     @Override
@@ -48,7 +49,7 @@ public class ContactListFragment extends Fragment implements LoaderManager.Loade
             @Override
             public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
                 super.onScrollStateChanged(recyclerView, newState);
-                mAdapter.isIdle = newState == RecyclerView.SCROLL_STATE_IDLE|| newState == RecyclerView.SCROLL_STATE_DRAGGING;
+                mAdapter.isIdle = newState == RecyclerView.SCROLL_STATE_IDLE || newState == RecyclerView.SCROLL_STATE_DRAGGING;
                 mAdapter.notifyDataSetChanged();
             }
         });
@@ -60,7 +61,7 @@ public class ContactListFragment extends Fragment implements LoaderManager.Loade
     @Override
     public Loader<Cursor> onCreateLoader(int id, Bundle args) {
         if (id == QUERY_CONTACT) {
-            return new CursorLoader(getActivity(), ContactsContract.Contacts.CONTENT_URI, CONTACT_PROJECTION, null, null, ContactsContract.Contacts.SORT_KEY_PRIMARY);
+            return new CursorLoader(getActivity(), ContactsContract.Contacts.CONTENT_URI, CONTACT_PROJECTION, SELECTION, null, ContactsContract.Contacts.SORT_KEY_PRIMARY);
         }
         return null;
     }

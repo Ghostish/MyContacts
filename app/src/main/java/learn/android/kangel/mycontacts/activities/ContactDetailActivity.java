@@ -1,5 +1,6 @@
 package learn.android.kangel.mycontacts.activities;
 
+import android.Manifest;
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.animation.AnimatorSet;
@@ -15,12 +16,13 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.provider.ContactsContract;
 import android.support.design.widget.CollapsingToolbarLayout;
-import android.support.design.widget.FloatingActionButton;
+import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.LoaderManager;
 import android.support.v4.content.CursorLoader;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.text.ClipboardManager;
+import android.util.Log;
 import android.view.ContextMenu;
 import android.view.LayoutInflater;
 import android.view.MenuInflater;
@@ -43,6 +45,7 @@ import learn.android.kangel.mycontacts.fragments.ConfirmDialogFragment;
  * Created by Kangel on 2016/3/24.
  */
 public class ContactDetailActivity extends AppCompatActivity implements LoaderManager.LoaderCallbacks<Cursor>, View.OnClickListener, ConfirmDialogFragment.onConfirmDialogButtonClickListener {
+    private static final int REQUEST_CALL_PHONE = 110;
     private CollapsingToolbarLayout collapsingToolbarLayout;
     private ConfirmDialogFragment mConfirmDialog;
     private final static int DETAILS_QUERY_ID = 0;
@@ -101,7 +104,7 @@ public class ContactDetailActivity extends AppCompatActivity implements LoaderMa
     private String[] mSelectionArgs = {""};
 
     private String mLookupKey;
-    private int mContactId;
+    private long mContactId;
     private LinearLayout EmailContainer;
     private LinearLayout phoneNumContainer;
     private LinearLayout addressContainer;
@@ -114,7 +117,7 @@ public class ContactDetailActivity extends AppCompatActivity implements LoaderMa
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         mLookupKey = getIntent().getStringExtra("lookUpKey");
-        mContactId = getIntent().getIntExtra("contactId", -1);
+        mContactId = getIntent().getLongExtra("contactId", -1);
         setContentView(R.layout.activity_contact_detail);
         Toolbar toolbar = (Toolbar) findViewById(R.id.tool_bar);
         toolbar.setTitle("");
@@ -123,8 +126,10 @@ public class ContactDetailActivity extends AppCompatActivity implements LoaderMa
         collapsingToolbarLayout.setExpandedTitleColor(Color.WHITE);
         collapsingToolbarLayout.setCollapsedTitleTextColor(Color.WHITE);
         ImageView imageView = (ImageView) findViewById(R.id.head_show);
-        InputStream in = ContactsContract.Contacts.openContactPhotoInputStream(getContentResolver(), Uri.withAppendedPath(ContactsContract.Contacts.CONTENT_LOOKUP_URI, mLookupKey));
+        Log.d("contact info", mContactId + " " + mLookupKey);
+        InputStream in = ContactsContract.Contacts.openContactPhotoInputStream(getContentResolver(), ContactsContract.Contacts.getLookupUri(mContactId, mLookupKey));
         if (in != null) {
+            Log.d("contact info", mContactId + " " + mLookupKey);
             imageView.setImageBitmap(BitmapFactory.decodeStream(in));
         }
         getResources().getInteger(android.R.integer.config_shortAnimTime);
@@ -285,7 +290,15 @@ public class ContactDetailActivity extends AppCompatActivity implements LoaderMa
                 ViewHolder holder = (ViewHolder) v.getTag();
                 switch (holder.tag) {
                     case TAG_PHONE:
-                        Intent intent = new Intent(Intent.ACTION_DIAL, Uri.parse("tel:" + holder.infoText.getText()));
+                        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED) {
+                            if (ActivityCompat.shouldShowRequestPermissionRationale(ContactDetailActivity.this, Manifest.permission.CALL_PHONE)) {
+                                Toast.makeText(getApplicationContext(), R.string.permission_call_phone_request, Toast.LENGTH_LONG).show();
+                            } else {
+                                ActivityCompat.requestPermissions(ContactDetailActivity.this, new String[]{Manifest.permission.CALL_PHONE}, REQUEST_CALL_PHONE);
+                            }
+                            return;
+                        }
+                        Intent intent = new Intent(Intent.ACTION_CALL, Uri.parse("tel:" + holder.infoText.getText()));
                         startActivity(intent);
                         break;
                 }

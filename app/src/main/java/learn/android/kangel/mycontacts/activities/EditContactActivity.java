@@ -1,11 +1,11 @@
 package learn.android.kangel.mycontacts.activities;
 
-import android.Manifest;
 import android.content.ContentProviderOperation;
 import android.content.Intent;
 import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Point;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.ContactsContract;
@@ -17,6 +17,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.ListPopupWindow;
 import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
+import android.util.Log;
+import android.view.Display;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -27,6 +29,7 @@ import android.widget.Toast;
 
 import java.io.ByteArrayOutputStream;
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
@@ -34,6 +37,7 @@ import java.util.List;
 import learn.android.kangel.mycontacts.ContactCommonEditorView;
 import learn.android.kangel.mycontacts.ContactEditorViewGroup;
 import learn.android.kangel.mycontacts.ContactInfoBean;
+import learn.android.kangel.mycontacts.HeadShowLoader;
 import learn.android.kangel.mycontacts.R;
 import learn.android.kangel.mycontacts.fragments.EditTextDialogFragment;
 
@@ -43,9 +47,6 @@ import learn.android.kangel.mycontacts.fragments.EditTextDialogFragment;
 public class EditContactActivity extends AppCompatActivity implements ContactCommonEditorView.onSpinnerItemSelectedListener, EditTextDialogFragment.onEditDialogButtonClickListener, View.OnClickListener, LoaderManager.LoaderCallbacks<Cursor> {
     public final static String ACTION_ADD = "learn.android.kangel.mycontacts.add";
     public final static String ACTION_EDIT = "learn.android.kangel.mycontacts.edit";
-    private static final String[] REQUEST_PERMISSION = new String[]{
-            Manifest.permission.WRITE_EXTERNAL_STORAGE
-    };
 
 
     private static final int REQUEST_TAKE_PHOTO = 211;
@@ -65,7 +66,9 @@ public class EditContactActivity extends AppCompatActivity implements ContactCom
 
 
     private boolean isContactHasName = false;
+    private boolean isHasHeadShow = false;
     private int structureNameRowId;
+    private int photoRowId;
     private int rawContactId;
 
     private Bitmap mNewHeadShowBitmap;
@@ -102,10 +105,11 @@ public class EditContactActivity extends AppCompatActivity implements ContactCom
             "'" + ContactsContract.CommonDataKinds.Email.CONTENT_ITEM_TYPE + "', " +
             "'" + ContactsContract.CommonDataKinds.Phone.CONTENT_ITEM_TYPE + "', " +
             "'" + ContactsContract.CommonDataKinds.StructuredPostal.CONTENT_ITEM_TYPE + "', " +
+            "'" + ContactsContract.CommonDataKinds.Photo.CONTENT_ITEM_TYPE + "', " +
             "'" + ContactsContract.CommonDataKinds.StructuredName.CONTENT_ITEM_TYPE + "')";
     private String[] mSelectionArgs = {""};
     private String mLookUpKey;
-    private int mContactId;
+    private long mContactId;
 
 
     @Override
@@ -129,8 +133,12 @@ public class EditContactActivity extends AppCompatActivity implements ContactCom
         } else if (ACTION_EDIT.equals(action)) {
             toolbar.setTitle(R.string.title_edit_contact);
             mLookUpKey = getIntent().getStringExtra("lookUpKey");
-            mContactId = getIntent().getIntExtra("contactId", -1);
+            mContactId = getIntent().getLongExtra("contactId", -1);
             mSelectionArgs[0] = String.valueOf(mContactId);
+            InputStream in = ContactsContract.Contacts.openContactPhotoInputStream(getContentResolver(), Uri.withAppendedPath(ContactsContract.Contacts.CONTENT_LOOKUP_URI, mLookUpKey));
+            if (in != null) {
+                headShowImage.setImageBitmap(BitmapFactory.decodeStream(in));
+            }
             getSupportLoaderManager().restartLoader(QUERY_CONTACT, null, this);
         }
     }
@@ -148,8 +156,45 @@ public class EditContactActivity extends AppCompatActivity implements ContactCom
                         e.printStackTrace();
                     }
                     if (imageInputStream != null) {
-                        mNewHeadShowBitmap = BitmapFactory.decodeStream(imageInputStream);
-                        headShowImage.setImageURI(selectedImage);
+                        Display display = getWindowManager().getDefaultDisplay();
+                        Point size = new Point();
+                        display.getSize(size);
+                        int screenWidth = size.x;
+                        int screenHeight = size.y;
+                        BitmapFactory.Options mOptions = new BitmapFactory.Options();
+                        mOptions.inJustDecodeBounds = true;
+                        BitmapFactory.decodeStream(imageInputStream, null, mOptions);
+                        int photoW = mOptions.outWidth;
+                        int photoH = mOptions.outHeight;
+                        int scaleFactor = Math.max(photoH / screenHeight, photoW / screenWidth);
+                        if (scaleFactor != 0) {
+                            Log.d("test", "none zero");
+                            Log.d("test", "screen width " + screenWidth);
+                            Log.d("test", "screen height " + screenHeight);
+                            Log.d("test", "image width " + photoW);
+                            Log.d("test", "image height " + photoH);
+                            mOptions.inJustDecodeBounds = false;
+                            mOptions.inSampleSize = scaleFactor;
+                            try {
+                                imageInputStream.close();
+                                imageInputStream = getContentResolver().openInputStream(selectedImage);
+                            } catch (IOException e) {
+                                e.printStackTrace();
+                            }
+                            mNewHeadShowBitmap = BitmapFactory.decodeStream(imageInputStream, null, mOptions);
+                            Log.d("test", String.valueOf(mNewHeadShowBitmap == null));
+                        } else {
+                            try {
+                                imageInputStream.close();
+                                imageInputStream = getContentResolver().openInputStream(selectedImage);
+                                mNewHeadShowBitmap = BitmapFactory.decodeStream(imageInputStream);
+
+                            } catch (IOException e) {
+                                e.printStackTrace();
+                            }
+                        }
+
+                        headShowImage.setImageBitmap(mNewHeadShowBitmap);
                     }
                     break;
                 }
@@ -256,8 +301,8 @@ public class EditContactActivity extends AppCompatActivity implements ContactCom
         if (ACTION_ADD.equals(getIntent().getAction())) {
             ArrayList<ContentProviderOperation> ops = new ArrayList<ContentProviderOperation>();
             ContentProviderOperation.Builder op = ContentProviderOperation.newInsert(ContactsContract.RawContacts.CONTENT_URI)
-                    .withValue(ContactsContract.RawContacts.ACCOUNT_TYPE, "learn.kangel.mycontact")
-                    .withValue(ContactsContract.RawContacts.ACCOUNT_NAME, "cookie");
+                    .withValue(ContactsContract.RawContacts.ACCOUNT_TYPE, null)
+                    .withValue(ContactsContract.RawContacts.ACCOUNT_NAME, null);
             ops.add(op.build());
             if (mNewHeadShowBitmap != null) {
                 ByteArrayOutputStream imageStream = new ByteArrayOutputStream();
@@ -332,11 +377,16 @@ public class EditContactActivity extends AppCompatActivity implements ContactCom
             ArrayList<ContentProviderOperation> ops = new ArrayList<>();
             ContentProviderOperation.Builder op;
             if (mNewHeadShowBitmap != null) {
+                HeadShowLoader.removeCacheItem(ContactsContract.Contacts.getLookupUri(mContactId, mLookUpKey));
                 ByteArrayOutputStream imageStream = new ByteArrayOutputStream();
                 mNewHeadShowBitmap.compress(Bitmap.CompressFormat.JPEG, 100, imageStream);
+                op = ContentProviderOperation.newDelete(ContactsContract.Data.CONTENT_URI)
+                        .withSelection(ContactsContract.Data.RAW_CONTACT_ID + "= ? AND " + ContactsContract.Data.MIMETYPE +"= '" + ContactsContract.CommonDataKinds.Photo.CONTENT_ITEM_TYPE + "'", new String[]{String.valueOf(rawContactId)});
+                ops.add(op.build());
                 op = ContentProviderOperation.newInsert(ContactsContract.Data.CONTENT_URI)
                         .withValue(ContactsContract.Data.RAW_CONTACT_ID, rawContactId)
                         .withValue(ContactsContract.Data.MIMETYPE, ContactsContract.CommonDataKinds.Photo.CONTENT_ITEM_TYPE)
+                        .withValue(ContactsContract.Data.IS_PRIMARY, 1)
                         .withValue(ContactsContract.CommonDataKinds.Photo.PHOTO, imageStream.toByteArray());
                 ops.add(op.build());
             }
@@ -520,6 +570,16 @@ public class EditContactActivity extends AppCompatActivity implements ContactCom
                     isContactHasName = true;
                     structureNameRowId = rowId;
                     break;
+                /*case ContactsContract.CommonDataKinds.Photo.CONTENT_ITEM_TYPE:
+                    // TODO: 2016/4/13 use options to scale the image
+                    byte[] image = data.getBlob(DATA15_INDEX);
+                    if (image != null) {
+                        isHasHeadShow = true;
+                        photoRowId = rowId;
+                        mNewHeadShowBitmap = BitmapFactory.decodeStream(new ByteArrayInputStream(image));
+                        headShowImage.setImageBitmap(mNewHeadShowBitmap);
+                    }
+                    break;*/
             }
         }
         phoneGroup.setData(phoneBean);

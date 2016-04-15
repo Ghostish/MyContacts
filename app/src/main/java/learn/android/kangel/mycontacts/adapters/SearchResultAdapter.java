@@ -63,6 +63,7 @@ public class SearchResultAdapter extends BaseAdapter {
         String label = cursor.getString(cursor.getColumnIndex(ContactsContract.CommonDataKinds.Phone.LABEL));
         CharSequence numberTypeString = ContactsContract.CommonDataKinds.Phone.getTypeLabel(context.getResources(), type, label);
         int contactId = cursor.getInt(cursor.getColumnIndex(ContactsContract.Data.CONTACT_ID));
+        String lookUpKey = cursor.getString(cursor.getColumnIndex(ContactsContract.Data.LOOKUP_KEY));
         int preContactId = cursor.moveToPrevious() ? cursor.getInt(cursor.getColumnIndex(ContactsContract.Data.CONTACT_ID)) : -1;
         holder.nameText.setText(name);
         holder.numberText.setText(number);
@@ -70,7 +71,7 @@ public class SearchResultAdapter extends BaseAdapter {
         if (preContactId != contactId) {
             holder.headShow.setVisibility(View.VISIBLE);
             holder.nameText.setVisibility(View.VISIBLE);
-            mHeadShowLoader.bindImageView(holder.headShow, context, contactId);
+            mHeadShowLoader.bindImageView(holder.headShow, context, contactId,lookUpKey);
         } else {
             holder.nameText.setVisibility(View.INVISIBLE);
             holder.headShow.setVisibility(View.INVISIBLE);

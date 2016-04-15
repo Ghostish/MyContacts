@@ -35,4 +35,5 @@
     <string name="permission_write_storage_request">请允许存储空间权限</string>
     <string name="no_camera">请安装相机</string>
     <string name="no_gallery">请安装相册</string>
+    <string name="permission_call_phone_request">请允许拨打权限</string>
 </resources>

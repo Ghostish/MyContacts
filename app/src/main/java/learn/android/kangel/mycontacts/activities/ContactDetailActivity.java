@@ -35,6 +35,9 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+
+import com.example.yzh.msg.HelloMsg;
+
 import java.io.InputStream;
 import java.util.List;
 
@@ -105,12 +108,14 @@ public class ContactDetailActivity extends AppCompatActivity implements LoaderMa
 
     private String mLookupKey;
     private long mContactId;
+    private String name;
     private LinearLayout EmailContainer;
     private LinearLayout phoneNumContainer;
     private LinearLayout addressContainer;
 
     private Animator mCurrentAnimator;
     private int mShortAnimationDuration = 300;
+    private HelloMsg msgHelper;
 
 
     @Override
@@ -194,7 +199,8 @@ public class ContactDetailActivity extends AppCompatActivity implements LoaderMa
             case NAME_QUERY_ID: {
                 if (data != null && data.moveToNext()) {
                     collapsingToolbarLayout.setTitleEnabled(true);
-                    collapsingToolbarLayout.setTitle(data.getString(DATA1_INDEX));
+                    name = data.getString(DATA1_INDEX);
+                    collapsingToolbarLayout.setTitle(name);
                 } else {
                     collapsingToolbarLayout.setTitle(getString(R.string.no_name));
                 }
@@ -326,6 +332,7 @@ public class ContactDetailActivity extends AppCompatActivity implements LoaderMa
             }
             case R.id.head_show: {
                 zoomImageFromThumb(v);
+                break;
             }
         }
     }
@@ -350,12 +357,13 @@ public class ContactDetailActivity extends AppCompatActivity implements LoaderMa
     @Override
     public boolean onContextItemSelected(MenuItem item) {
         switch (item.getItemId()) {
-            case R.id.copy:
+            case R.id.copy: {
                 ClipboardManager clipboard = (ClipboardManager) getSystemService(CLIPBOARD_SERVICE);
                 clipboard.setText(infoString);
                 Toast.makeText(ContactDetailActivity.this, getString(R.string.copy_successfully), Toast.LENGTH_SHORT).show();
                 return true;
-            case R.id.send_email:
+            }
+            case R.id.send_email: {
                 Uri mailTo = Uri.parse("mailto:" + infoString);
                 Intent intent = new Intent(Intent.ACTION_SENDTO, mailTo);
                 //Verify There is an App to Receive the Intent
@@ -367,8 +375,17 @@ public class ContactDetailActivity extends AppCompatActivity implements LoaderMa
                     Toast.makeText(ContactDetailActivity.this, getString(R.string.fail_to_send_Email), Toast.LENGTH_SHORT).show();
                 }
                 return true;
+            }
             case R.id.warm_sms: {
                 // TODO: 2016/3/26 send warm sms
+                if (msgHelper == null) {
+                    msgHelper = new HelloMsg(this);
+                }
+                String msg = msgHelper.getMsg(name);
+                Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("sms:" + infoString));
+                intent.putExtra("sms_body", msg);
+                startActivity(intent);
+                return true;
             }
             default:
                 return super.onContextItemSelected(item);

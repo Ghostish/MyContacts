@@ -18,9 +18,7 @@ public class MyDatabaseHelper extends SQLiteOpenHelper {
                     ")";
     private final static String CREATE_BLACK_LIST =
             "CREATE TABLE black_list (" +
-                    "look_up_key text not null, " +
-                    "number text not null," +
-                    "UNIQUE(look_up_key,number))";
+                    "look_up_key text primary key)";
     private final static String CREATE_INDEX_ON_BLACK_LIST =
             "CREATE INDEX BLIndx ON black_list(number)";
 
@@ -31,7 +29,6 @@ public class MyDatabaseHelper extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
         db.execSQL(CREATE_BLACK_LIST);
-        db.execSQL(CREATE_INDEX_ON_BLACK_LIST);
     }
 
     @Override

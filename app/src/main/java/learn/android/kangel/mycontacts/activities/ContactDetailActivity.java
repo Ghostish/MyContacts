@@ -121,7 +121,6 @@ public class ContactDetailActivity extends AppCompatActivity implements LoaderMa
     private HelloMsg msgHelper;
 
     private boolean isContactBlocked = false;
-    private List<String> numberList = new ArrayList<>();
 
 
     @Override
@@ -220,7 +219,6 @@ public class ContactDetailActivity extends AppCompatActivity implements LoaderMa
                         phoneNumContainer = (LinearLayout) panel.findViewById(R.id.container);
                     }
                     phoneNumContainer.removeAllViews();
-                    numberList.clear();
                     for (int i = 0; i < data.getCount(); i++) {
                         data.moveToPosition(i);
                         View v = LayoutInflater.from(this).inflate(R.layout.item_contact_info, phoneNumContainer, false);
@@ -233,7 +231,6 @@ public class ContactDetailActivity extends AppCompatActivity implements LoaderMa
                         int type = data.getInt(DATA2_INDEX);
                         holder.actionButton.setImageResource(R.drawable.ic_message_black_24dp);
                         holder.infoText.setText(number);
-                        numberList.add(number);
                         CharSequence typeString = ContactsContract.CommonDataKinds.Phone.getTypeLabel(getResources(), type, data.getString(DATA3_INDEX));
                         holder.hintText.setText(typeString);
                         phoneNumContainer.addView(v);
@@ -379,10 +376,8 @@ public class ContactDetailActivity extends AppCompatActivity implements LoaderMa
                 if (isContactBlocked) {
                     isContactBlocked = !BlackListUtil.removeFromBlackList(this, mLookupKey);
                     getSupportActionBar().invalidateOptionsMenu();
-                } else if(!numberList.isEmpty()){
-                    String[] numbers = new String[numberList.size()];
-                    numberList.toArray(numbers);
-                    isContactBlocked = BlackListUtil.addToBlackList(this, mLookupKey, numbers);
+                } else {
+                    isContactBlocked = BlackListUtil.addToBlackList(this, mLookupKey);
                     getSupportActionBar().invalidateOptionsMenu();
                 }
                 return true;

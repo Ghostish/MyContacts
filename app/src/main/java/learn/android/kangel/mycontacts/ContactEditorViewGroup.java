@@ -19,6 +19,8 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Stack;
 
+import learn.android.kangel.mycontacts.utils.ContactInfoBean;
+
 /**
 
  * Created by Kangel on 2016/4/8.

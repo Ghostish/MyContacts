@@ -14,11 +14,10 @@ import android.view.ViewStub;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.alexzh.circleimageview.CircleImageView;
 import com.github.promeg.pinyinhelper.Pinyin;
 import com.simplecityapps.recyclerview_fastscroll.views.FastScrollRecyclerView;
 
-import learn.android.kangel.mycontacts.HeadShowLoader;
+import learn.android.kangel.mycontacts.utils.HeadShowLoader;
 import learn.android.kangel.mycontacts.R;
 import learn.android.kangel.mycontacts.activities.RecyclerViewActivity;
 

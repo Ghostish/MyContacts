@@ -36,8 +36,8 @@ import java.util.List;
 
 import learn.android.kangel.mycontacts.ContactCommonEditorView;
 import learn.android.kangel.mycontacts.ContactEditorViewGroup;
-import learn.android.kangel.mycontacts.ContactInfoBean;
-import learn.android.kangel.mycontacts.HeadShowLoader;
+import learn.android.kangel.mycontacts.utils.ContactInfoBean;
+import learn.android.kangel.mycontacts.utils.HeadShowLoader;
 import learn.android.kangel.mycontacts.R;
 import learn.android.kangel.mycontacts.fragments.EditTextDialogFragment;
 

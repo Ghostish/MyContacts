@@ -21,6 +21,9 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import learn.android.kangel.mycontacts.utils.AnimationUtil;
+import learn.android.kangel.mycontacts.utils.ContactInfoBean;
+
 /**
  * Created by Kangel on 2016/4/6.
  */

@@ -1,5 +1,9 @@
 [
     {
+        "merged": "G:\\CD\\android_project\\MyContacts\\app\\build\\intermediates\\res\\merged\\debug\\menu\\menu_contact.xml",
+        "source": "G:\\CD\\android_project\\MyContacts\\app\\src\\main\\res\\menu\\menu_contact.xml"
+    },
+    {
         "merged": "G:\\CD\\android_project\\MyContacts\\app\\build\\intermediates\\res\\merged\\debug\\menu\\menu_context_email.xml",
         "source": "G:\\CD\\android_project\\MyContacts\\app\\src\\main\\res\\menu\\menu_context_email.xml"
     },

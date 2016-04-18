@@ -13,8 +13,8 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import learn.android.kangel.mycontacts.DateParseUtil;
-import learn.android.kangel.mycontacts.HeadShowLoader;
+import learn.android.kangel.mycontacts.utils.DateParseUtil;
+import learn.android.kangel.mycontacts.utils.HeadShowLoader;
 import learn.android.kangel.mycontacts.MyRecyclerView;
 import learn.android.kangel.mycontacts.R;
 import learn.android.kangel.mycontacts.activities.RecyclerViewActivity;

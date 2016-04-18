@@ -328,12 +328,14 @@
     <string name="abc_toolbar_collapse_description">Collapse</string>
     <string name="app_name">MyContacts</string>
     <string name="appbar_scrolling_view_behavior" translatable="false">android.support.design.widget.AppBarLayout$ScrollingViewBehavior</string>
+    <string name="block_contact">屏蔽联系人</string>
     <string name="bottom_sheet_behavior" translatable="false">android.support.design.widget.BottomSheetBehavior</string>
     <string name="call_history">通话记录</string>
     <string name="change_head_show">更改头像</string>
     <string name="character_counter_pattern" translatable="false">%1$d / %2$d</string>
     <string name="copy_successfully">已复制</string>
     <string name="copy_to_clipboard">复制到剪贴板</string>
+    <string name="delete_contact">删除联系人</string>
     <string name="dialog_cancel">取消</string>
     <string name="dialog_ok">确认</string>
     <string name="empty_desc">您没有任何%1$S</string>

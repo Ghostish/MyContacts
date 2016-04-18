@@ -25,6 +25,7 @@ import android.text.ClipboardManager;
 import android.util.Log;
 import android.view.ContextMenu;
 import android.view.LayoutInflater;
+import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
@@ -39,10 +40,12 @@ import android.widget.Toast;
 import com.example.yzh.msg.HelloMsg;
 
 import java.io.InputStream;
+import java.util.ArrayList;
 import java.util.List;
 
 import learn.android.kangel.mycontacts.R;
 import learn.android.kangel.mycontacts.fragments.ConfirmDialogFragment;
+import learn.android.kangel.mycontacts.utils.BlackListUtil;
 
 /**
  * Created by Kangel on 2016/3/24.
@@ -116,6 +119,9 @@ public class ContactDetailActivity extends AppCompatActivity implements LoaderMa
     private Animator mCurrentAnimator;
     private int mShortAnimationDuration = 300;
     private HelloMsg msgHelper;
+
+    private boolean isContactBlocked = false;
+    private List<String> numberList = new ArrayList<>();
 
 
     @Override
@@ -214,6 +220,7 @@ public class ContactDetailActivity extends AppCompatActivity implements LoaderMa
                         phoneNumContainer = (LinearLayout) panel.findViewById(R.id.container);
                     }
                     phoneNumContainer.removeAllViews();
+                    numberList.clear();
                     for (int i = 0; i < data.getCount(); i++) {
                         data.moveToPosition(i);
                         View v = LayoutInflater.from(this).inflate(R.layout.item_contact_info, phoneNumContainer, false);
@@ -222,9 +229,11 @@ public class ContactDetailActivity extends AppCompatActivity implements LoaderMa
                         if (i == 0) {
                             holder.indicateIcon.setImageResource(R.drawable.ic_call_black_24dp);
                         }
-                        holder.actionButton.setImageResource(R.drawable.ic_message_black_24dp);
-                        holder.infoText.setText(data.getString(DATA1_INDEX));
+                        String number = data.getString(DATA1_INDEX);
                         int type = data.getInt(DATA2_INDEX);
+                        holder.actionButton.setImageResource(R.drawable.ic_message_black_24dp);
+                        holder.infoText.setText(number);
+                        numberList.add(number);
                         CharSequence typeString = ContactsContract.CommonDataKinds.Phone.getTypeLabel(getResources(), type, data.getString(DATA3_INDEX));
                         holder.hintText.setText(typeString);
                         phoneNumContainer.addView(v);
@@ -315,13 +324,6 @@ public class ContactDetailActivity extends AppCompatActivity implements LoaderMa
                 startActivity(new Intent(Intent.ACTION_VIEW, Uri.fromParts("sms", holder.infoText.getText().toString(), null)));
                 break;
             }
-            case R.id.delete_button: {
-                if (mConfirmDialog == null) {
-                    mConfirmDialog = ConfirmDialogFragment.newInstance(R.string.title_delete_contact, R.string.msg_delete_contact, R.style.mAlertDialogStyle);
-                }
-                mConfirmDialog.show(getSupportFragmentManager(), "confirm");
-                break;
-            }
             case R.id.fab: {
                 Intent intent = new Intent(ContactDetailActivity.this, EditContactActivity.class);
                 intent.setAction(EditContactActivity.ACTION_EDIT);
@@ -352,6 +354,41 @@ public class ContactDetailActivity extends AppCompatActivity implements LoaderMa
                 inflater.inflate(R.menu.menu_context_email, menu);
                 break;
         }
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_contact, menu);
+        MenuItem block = menu.findItem(R.id.block_contact);
+        isContactBlocked = BlackListUtil.isBlockedContact(this, mLookupKey);
+        block.setTitle(isContactBlocked ? R.string.unblock_contact : R.string.block_contact);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.delete_contact: {
+                if (mConfirmDialog == null) {
+                    mConfirmDialog = ConfirmDialogFragment.newInstance(R.string.title_delete_contact, R.string.msg_delete_contact, R.style.mAlertDialogStyle);
+                }
+                mConfirmDialog.show(getSupportFragmentManager(), "confirm");
+                return true;
+            }
+            case R.id.block_contact: {
+                if (isContactBlocked) {
+                    isContactBlocked = !BlackListUtil.removeFromBlackList(this, mLookupKey);
+                    getSupportActionBar().invalidateOptionsMenu();
+                } else if(!numberList.isEmpty()){
+                    String[] numbers = new String[numberList.size()];
+                    numberList.toArray(numbers);
+                    isContactBlocked = BlackListUtil.addToBlackList(this, mLookupKey, numbers);
+                    getSupportActionBar().invalidateOptionsMenu();
+                }
+                return true;
+            }
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     @Override

@@ -49,14 +49,6 @@
                 app:layout_collapseMode="pin"
                 app:navigationIcon="@drawable/ic_arrow_back_white_24dp">
 
-                <ImageButton
-                    android:id="@+id/delete_button"
-                    android:layout_width="?attr/actionBarSize"
-                    android:layout_height="?attr/actionBarSize"
-                    android:layout_gravity="end"
-                    android:background="?android:selectableItemBackground"
-                    android:onClick="onClick"
-                    android:src="@drawable/ic_delete_white_24dp" />
             </android.support.v7.widget.Toolbar>
         </android.support.design.widget.CollapsingToolbarLayout>
     </android.support.design.widget.AppBarLayout>

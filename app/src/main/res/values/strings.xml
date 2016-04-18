@@ -38,4 +38,5 @@
     <string name="permission_call_phone_request">请允许拨打权限</string>
     <string name="delete_contact">删除联系人</string>
     <string name="block_contact">屏蔽联系人</string>
+    <string name="unblock_contact">取消屏蔽联系人</string>
 </resources>

@@ -5,6 +5,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteAbortException;
 import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteException;
 import android.util.Log;
 
 /**
@@ -45,6 +46,7 @@ public class BlackListUtil {
             ContentValues values = new ContentValues();
             for (String number : numbers) {
                 values.put("number", number);
+                values.put("look_up_key", contactLookUpKey);
                 db.insert("black_list", null, values);
                 values.clear();
             }
@@ -54,6 +56,20 @@ public class BlackListUtil {
             Log.e("SqliteError", e.getLocalizedMessage());
         } finally {
             db.endTransaction();
+        }
+        return result;
+    }
+
+    public static boolean removeFromBlackList(Context context, String lookupKey) {
+        boolean result;
+        MyDatabaseHelper myDatabaseHelper = new MyDatabaseHelper(context);
+        SQLiteDatabase db = myDatabaseHelper.getWritableDatabase();
+        try {
+            db.delete("black_list", SELECTION_CONTACT, new String[]{lookupKey});
+            result = true;
+        } catch (SQLiteException e) {
+            Log.e("SqliteError", e.getLocalizedMessage());
+            result = false;
         }
         return result;
     }

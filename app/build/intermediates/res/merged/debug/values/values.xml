@@ -368,6 +368,7 @@
     <string name="type_mobile">手机</string>
     <string name="type_other">其他</string>
     <string name="type_work">工作</string>
+    <string name="unblock_contact">取消屏蔽联系人</string>
     <string name="warm_sms">关怀短信</string>
     <style name="AlertDialog.AppCompat" parent="Base.AlertDialog.AppCompat"/>
     <style name="AlertDialog.AppCompat.Light" parent="Base.AlertDialog.AppCompat.Light"/>
@@ -388,6 +389,7 @@
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:windowBackground">@drawable/cold_start_background</item>
 
     </style>
     <style name="Base.AlertDialog.AppCompat" parent="android:Widget">

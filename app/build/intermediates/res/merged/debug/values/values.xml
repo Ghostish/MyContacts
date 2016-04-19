@@ -132,8 +132,7 @@
     <declare-styleable name="BottomSheetBehavior_Params"><attr format="dimension" name="behavior_peekHeight"/><attr format="boolean" name="behavior_hideable"/></declare-styleable>
     <declare-styleable name="ButtonBarLayout"><attr format="boolean" name="allowStacking"/></declare-styleable>
     <declare-styleable name="CardView"><attr format="color" name="cardBackgroundColor"/><attr format="dimension" name="cardCornerRadius"/><attr format="dimension" name="cardElevation"/><attr format="dimension" name="cardMaxElevation"/><attr format="boolean" name="cardUseCompatPadding"/><attr format="boolean" name="cardPreventCornerOverlap"/><attr format="dimension" name="contentPadding"/><attr format="dimension" name="contentPaddingLeft"/><attr format="dimension" name="contentPaddingRight"/><attr format="dimension" name="contentPaddingTop"/><attr format="dimension" name="contentPaddingBottom"/><attr name="android:minWidth"/><attr name="android:minHeight"/></declare-styleable>
-    <declare-styleable name="CircleImageView"><attr format="dimension" name="civ_border_width"/><attr format="color" name="civ_border_color"/><attr format="boolean" name="civ_border_overlay"/><attr format="color" name="civ_fill_color"/><attr format="color" name="view_backgroundColor"/><attr format="color" name="view_borderColor"/><attr format="dimension" name="view_borderWidth"/><attr format="color" name="view_selectedColor"/><attr format="dimension" name="view_shadowRadius"/><attr format="dimension" name="view_shadowDx"/><attr format="dimension" name="view_shadowDy"/><attr format="color" name="view_shadowColor"/></declare-styleable>
-    <declare-styleable name="CircleImageViewStyle"><attr format="reference" name="circleImageViewDefault"/></declare-styleable>
+    <declare-styleable name="CircleImageView"><attr format="dimension" name="civ_border_width"/><attr format="color" name="civ_border_color"/><attr format="boolean" name="civ_border_overlay"/><attr format="color" name="civ_fill_color"/></declare-styleable>
     <declare-styleable name="CollapsingAppBarLayout_LayoutParams"><attr name="layout_collapseMode"><enum name="none" value="0"/><enum name="pin" value="1"/><enum name="parallax" value="2"/></attr><attr format="float" name="layout_collapseParallaxMultiplier"/></declare-styleable>
     <declare-styleable name="CollapsingToolbarLayout"><attr format="dimension" name="expandedTitleMargin"/><attr format="dimension" name="expandedTitleMarginStart"/><attr format="dimension" name="expandedTitleMarginTop"/><attr format="dimension" name="expandedTitleMarginEnd"/><attr format="dimension" name="expandedTitleMarginBottom"/><attr format="reference" name="expandedTitleTextAppearance"/><attr format="reference" name="collapsedTitleTextAppearance"/><attr format="color" name="contentScrim"/><attr format="color" name="statusBarScrim"/><attr format="reference" name="toolbarId"/><attr name="collapsedTitleGravity"><flag name="top" value="0x30"/><flag name="bottom" value="0x50"/><flag name="left" value="0x03"/><flag name="right" value="0x05"/><flag name="center_vertical" value="0x10"/><flag name="fill_vertical" value="0x70"/><flag name="center_horizontal" value="0x01"/><flag name="center" value="0x11"/><flag name="start" value="0x00800003"/><flag name="end" value="0x00800005"/></attr><attr name="expandedTitleGravity"><flag name="top" value="0x30"/><flag name="bottom" value="0x50"/><flag name="left" value="0x03"/><flag name="right" value="0x05"/><flag name="center_vertical" value="0x10"/><flag name="fill_vertical" value="0x70"/><flag name="center_horizontal" value="0x01"/><flag name="center" value="0x11"/><flag name="start" value="0x00800003"/><flag name="end" value="0x00800005"/></attr><attr format="boolean" name="titleEnabled"/><attr name="title"/></declare-styleable>
     <declare-styleable name="CompoundButton"><attr name="android:button"/><attr format="color" name="buttonTint"/><attr name="buttonTintMode"><enum name="src_over" value="3"/><enum name="src_in" value="5"/><enum name="src_atop" value="9"/><enum name="multiply" value="14"/><enum name="screen" value="15"/></attr></declare-styleable>
@@ -332,6 +331,7 @@
     <string name="block_contact">屏蔽联系人</string>
     <string name="bottom_sheet_behavior" translatable="false">android.support.design.widget.BottomSheetBehavior</string>
     <string name="call_history">通话记录</string>
+    <string name="call_log_detail">通话详情</string>
     <string name="change_head_show">更改头像</string>
     <string name="character_counter_pattern" translatable="false">%1$d / %2$d</string>
     <string name="copy_successfully">已复制</string>
@@ -344,12 +344,15 @@
     <string name="hint_address">地址</string>
     <string name="hint_email">电子邮箱</string>
     <string name="hint_number">电话号码</string>
+    <string name="incoming_call">外接来电</string>
+    <string name="missed_call">未接来电</string>
     <string name="msg_delete_contact">删除后无法恢复</string>
     <string name="name">姓名</string>
     <string name="nickname">别名</string>
     <string name="no_camera">请安装相机</string>
     <string name="no_gallery">请安装相册</string>
     <string name="no_name">无姓名</string>
+    <string name="outgoing_call">拨出电话</string>
     <string name="permission_call_phone_request">请允许拨打权限</string>
     <string name="permission_deny">无法获得通讯录和通话记录权限</string>
     <string name="permission_write_storage_request">请允许存储空间权限</string>
@@ -370,6 +373,7 @@
     <string name="type_other">其他</string>
     <string name="type_work">工作</string>
     <string name="unblock_contact">取消屏蔽联系人</string>
+    <string name="unknow_call">未知来电</string>
     <string name="warm_sms">关怀短信</string>
     <style name="AlertDialog.AppCompat" parent="Base.AlertDialog.AppCompat"/>
     <style name="AlertDialog.AppCompat.Light" parent="Base.AlertDialog.AppCompat.Light"/>

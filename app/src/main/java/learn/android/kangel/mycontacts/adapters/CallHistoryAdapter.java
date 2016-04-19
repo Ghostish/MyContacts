@@ -1,10 +1,13 @@
 package learn.android.kangel.mycontacts.adapters;
 
+import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.provider.CallLog;
 import android.support.v7.widget.RecyclerView;
+import android.text.format.DateUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,6 +20,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import learn.android.kangel.mycontacts.CallTypeView;
+import learn.android.kangel.mycontacts.activities.CallLogActivity;
+import learn.android.kangel.mycontacts.activities.CallLogDetailActivity;
 import learn.android.kangel.mycontacts.utils.CallogBean;
 import learn.android.kangel.mycontacts.utils.DateParseUtil;
 import learn.android.kangel.mycontacts.utils.HeadShowLoader;
@@ -31,10 +36,16 @@ public class CallHistoryAdapter extends RecyclerView.Adapter<CallHistoryAdapter.
     private Cursor cursor;
     private List<CallogBean> data = new ArrayList<>();
     private Context context;
+    private int mMode;
+
     private final static String infoString = "%s,%s";
+
     public final static String TAG_DIAL = "DIAL_NUMBER";
     private final static int TYPE_HEADER = 110;
     private final static int TYPE_ITEM = 111;
+    private final static int TYPE_FOOTER = 112;
+    public final static int MODE_ALL = 10;
+    public static final int MODE_PARTIAL = 11;
     private int showCount = 10;
     private final static int increment = 20;
 
@@ -50,14 +61,20 @@ public class CallHistoryAdapter extends RecyclerView.Adapter<CallHistoryAdapter.
 
     }
 
-    public CallHistoryAdapter(Context context, Cursor cursor) {
+    public CallHistoryAdapter(Context context, Cursor cursor, int mode) {
         this.context = context;
         this.cursor = cursor;
+        this.mMode = mode;
         convertCursorToBeans(cursor);
     }
 
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+        if (viewType == TYPE_FOOTER) {
+            View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_show_more_card, parent, false);
+            v.setTag(TYPE_FOOTER);
+            return new ViewHolder(v);
+        }
         View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_call_history, parent, false);
         if (viewType == TYPE_HEADER) {
             ViewStub viewStub = (ViewStub) v.findViewById(R.id.header_view_stub);
@@ -71,6 +88,9 @@ public class CallHistoryAdapter extends RecyclerView.Adapter<CallHistoryAdapter.
     public int getItemViewType(int position) {
         if (position == 0 && getItemCount() != 0) {
             return TYPE_HEADER;
+        }
+        if (mMode == MODE_PARTIAL && position == getItemCount() - 1) {
+            return TYPE_FOOTER;
         }
         cursor.moveToPosition(position);
         CallogBean beanCurr = data.get(position);
@@ -86,7 +106,7 @@ public class CallHistoryAdapter extends RecyclerView.Adapter<CallHistoryAdapter.
     }
 
     @Override
-    public void onBindViewHolder(ViewHolder holder, int position) {
+    public void onBindViewHolder(ViewHolder holder, final int position) {
         /*cursor.moveToPosition(position);
         switch (cursor.getInt(cursor.getColumnIndex(CallLog.Calls.TYPE))) {
             case CallLog.Calls.MISSED_TYPE:
@@ -110,6 +130,9 @@ public class CallHistoryAdapter extends RecyclerView.Adapter<CallHistoryAdapter.
         }
         holder.headShow.setTag(position);*//*
         mHeadShowLoader.bindImageView(holder.headShow, context, cursor.getString(cursor.getColumnIndex(CallLog.Calls.NUMBER)));*/
+        if (position == getItemCount() - 1) {
+            return;
+        }
         CallogBean bean = data.get(position);
         String name = bean.getContactName();
         String number = bean.getNumber();
@@ -119,7 +142,7 @@ public class CallHistoryAdapter extends RecyclerView.Adapter<CallHistoryAdapter.
         List<Integer> callTypes = bean.getTypeList();
         List<Integer> subCallTypes = callTypes.subList(0, callTypes.size() >= 3 ? 3 : callTypes.size());
         holder.numOrName.setText(name == null ? number : name);
-        String info = (count > 1 ? "(" + count + ") " : "") + location + " " + DateParseUtil.getTimeString(time);
+        String info = (count > 3 ? "(" + count + ") " : "") + location + " " + DateUtils.getRelativeDateTimeString(context, time, DateUtils.MINUTE_IN_MILLIS, DateUtils.WEEK_IN_MILLIS, DateUtils.FORMAT_NUMERIC_DATE);
         holder.callInfo.setText(info);
         holder.callType.setCallTypes(subCallTypes);
 
@@ -127,12 +150,26 @@ public class CallHistoryAdapter extends RecyclerView.Adapter<CallHistoryAdapter.
             holder.headerText.setText(DateParseUtil.getDateString(time));
         }
 
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(context, CallLogDetailActivity.class);
+                Bundle args = new Bundle();
+                args.putParcelable("data", data.get(position));
+                intent.putExtras(args);
+                context.startActivity(intent);
+            }
+        });
         mHeadShowLoader.bindImageView(holder.headShow, context, number);
     }
 
     @Override
     public int getItemCount() {
-        return data.size();
+        if (mMode == MODE_PARTIAL) {
+            return data.size() + 1;
+        } else {
+            return data.size();
+        }
     }
 
   /*  @Override
@@ -160,6 +197,17 @@ public class CallHistoryAdapter extends RecyclerView.Adapter<CallHistoryAdapter.
 
         public ViewHolder(View itemView) {
             super(itemView);
+            Integer tag = (Integer) itemView.getTag();
+            if (tag != null && tag == TYPE_FOOTER) {
+                itemView.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Intent intent = new Intent(context, CallLogActivity.class);
+                        ((Activity) context).startActivity(intent);
+                    }
+                });
+                return;
+            }
             numOrName = (TextView) itemView.findViewById(R.id.caller_name_or_num);
             callInfo = (TextView) itemView.findViewById(R.id.call_info);
             callType = (CallTypeView) itemView.findViewById(R.id.call_type);
@@ -191,22 +239,21 @@ public class CallHistoryAdapter extends RecyclerView.Adapter<CallHistoryAdapter.
             String name = cursor.getString(cursor.getColumnIndex(CallLog.Calls.CACHED_NAME));
             String number = cursor.getString(cursor.getColumnIndex(CallLog.Calls.NUMBER));
             long time = cursor.getLong(cursor.getColumnIndex(CallLog.Calls.DATE));
+            int duration = cursor.getInt(cursor.getColumnIndex(CallLog.Calls.DURATION));
             String location = cursor.getString(cursor.getColumnIndex(CallLog.Calls.GEOCODED_LOCATION));
             if (curr == 0 || !data.get(curr - 1).getNumber().equals(number)) {
                 CallogBean bean = new CallogBean();
                 bean.setContactName(name);
                 bean.setNumber(number);
                 bean.setLocation(location);
-                bean.addTimeMillis(time);
-                bean.addType(callType);
+                bean.addDetail(time, callType, duration);
                 bean.increamentCount();
                 data.add(bean);
                 curr++;
             } else {
                 CallogBean bean = data.get(curr - 1);
                 if (bean.getNumber().equals(number)) {
-                    bean.addTimeMillis(time);
-                    bean.addType(callType);
+                    bean.addDetail(time, callType, duration);
                     bean.increamentCount();
                 }
             }

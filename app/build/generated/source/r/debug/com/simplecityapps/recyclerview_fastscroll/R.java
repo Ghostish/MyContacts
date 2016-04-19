@@ -8,16 +8,16 @@ package com.simplecityapps.recyclerview_fastscroll;
 
 public final class R {
 	public static final class attr {
-		public static final int fastScrollAutoHide = 0x7f0100db;
-		public static final int fastScrollAutoHideDelay = 0x7f0100dc;
-		public static final int fastScrollPopupBgColor = 0x7f0100d9;
-		public static final int fastScrollPopupTextColor = 0x7f0100da;
-		public static final int fastScrollThumbColor = 0x7f0100d7;
-		public static final int fastScrollTrackColor = 0x7f0100d8;
-		public static final int layoutManager = 0x7f0100f3;
-		public static final int reverseLayout = 0x7f0100f5;
-		public static final int spanCount = 0x7f0100f4;
-		public static final int stackFromEnd = 0x7f0100f6;
+		public static final int fastScrollAutoHide = 0x7f0100d2;
+		public static final int fastScrollAutoHideDelay = 0x7f0100d3;
+		public static final int fastScrollPopupBgColor = 0x7f0100d0;
+		public static final int fastScrollPopupTextColor = 0x7f0100d1;
+		public static final int fastScrollThumbColor = 0x7f0100ce;
+		public static final int fastScrollTrackColor = 0x7f0100cf;
+		public static final int layoutManager = 0x7f0100ea;
+		public static final int reverseLayout = 0x7f0100ec;
+		public static final int spanCount = 0x7f0100eb;
+		public static final int stackFromEnd = 0x7f0100ed;
 	}
 	public static final class dimen {
 		public static final int item_touch_helper_max_drag_scroll_per_frame = 0x7f0a006f;
@@ -26,14 +26,14 @@ public final class R {
 		public static final int item_touch_helper_previous_elevation = 0x7f0f0005;
 	}
 	public static final class styleable {
-		public static final int[] FastScrollRecyclerView = { 0x7f0100d7, 0x7f0100d8, 0x7f0100d9, 0x7f0100da, 0x7f0100db, 0x7f0100dc };
+		public static final int[] FastScrollRecyclerView = { 0x7f0100ce, 0x7f0100cf, 0x7f0100d0, 0x7f0100d1, 0x7f0100d2, 0x7f0100d3 };
 		public static final int FastScrollRecyclerView_fastScrollAutoHide = 4;
 		public static final int FastScrollRecyclerView_fastScrollAutoHideDelay = 5;
 		public static final int FastScrollRecyclerView_fastScrollPopupBgColor = 2;
 		public static final int FastScrollRecyclerView_fastScrollPopupTextColor = 3;
 		public static final int FastScrollRecyclerView_fastScrollThumbColor = 0;
 		public static final int FastScrollRecyclerView_fastScrollTrackColor = 1;
-		public static final int[] RecyclerView = { 0x010100c4, 0x7f0100f3, 0x7f0100f4, 0x7f0100f5, 0x7f0100f6 };
+		public static final int[] RecyclerView = { 0x010100c4, 0x7f0100ea, 0x7f0100eb, 0x7f0100ec, 0x7f0100ed };
 		public static final int RecyclerView_android_orientation = 0;
 		public static final int RecyclerView_layoutManager = 1;
 		public static final int RecyclerView_reverseLayout = 3;

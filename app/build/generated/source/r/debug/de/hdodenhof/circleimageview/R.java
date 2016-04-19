@@ -14,7 +14,7 @@ public final class R {
 		public static final int civ_fill_color = 0x7f0100a9;
 	}
 	public static final class styleable {
-		public static final int[] CircleImageView = { 0x7f0100a6, 0x7f0100a7, 0x7f0100a8, 0x7f0100a9, 0x7f0100aa, 0x7f0100ab, 0x7f0100ac, 0x7f0100ad, 0x7f0100ae, 0x7f0100af, 0x7f0100b0, 0x7f0100b1 };
+		public static final int[] CircleImageView = { 0x7f0100a6, 0x7f0100a7, 0x7f0100a8, 0x7f0100a9 };
 		public static final int CircleImageView_civ_border_color = 1;
 		public static final int CircleImageView_civ_border_overlay = 2;
 		public static final int CircleImageView_civ_border_width = 0;

@@ -46,6 +46,7 @@ import java.util.List;
 import learn.android.kangel.mycontacts.R;
 import learn.android.kangel.mycontacts.fragments.ConfirmDialogFragment;
 import learn.android.kangel.mycontacts.utils.BlackListUtil;
+import learn.android.kangel.mycontacts.utils.HeadShowLoader;
 
 /**
  * Created by Kangel on 2016/3/24.
@@ -121,6 +122,7 @@ public class ContactDetailActivity extends AppCompatActivity implements LoaderMa
     private HelloMsg msgHelper;
 
     private boolean isContactBlocked = false;
+    private HeadShowLoader mHeadShowLoader = new HeadShowLoader();
 
 
     @Override
@@ -137,11 +139,13 @@ public class ContactDetailActivity extends AppCompatActivity implements LoaderMa
         collapsingToolbarLayout.setCollapsedTitleTextColor(Color.WHITE);
         ImageView imageView = (ImageView) findViewById(R.id.head_show);
         Log.d("contact info", mContactId + " " + mLookupKey);
-        InputStream in = ContactsContract.Contacts.openContactPhotoInputStream(getContentResolver(), ContactsContract.Contacts.getLookupUri(mContactId, mLookupKey));
+        /*InputStream in = ContactsContract.Contacts.openContactPhotoInputStream(getContentResolver(), ContactsContract.Contacts.getLookupUri(mContactId, mLookupKey));
         if (in != null) {
             Log.d("contact info", mContactId + " " + mLookupKey);
             imageView.setImageBitmap(BitmapFactory.decodeStream(in));
-        }
+        }*/
+        mHeadShowLoader.bindImageView((ImageView) findViewById(R.id.head_show), this, mContactId, mLookupKey);
+
         getResources().getInteger(android.R.integer.config_shortAnimTime);
         getSupportLoaderManager().initLoader(NAME_QUERY_ID, null, this);
         getSupportLoaderManager().initLoader(PHONE_QUERY_ID, null, this);

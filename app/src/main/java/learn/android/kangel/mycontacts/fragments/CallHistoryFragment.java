@@ -23,6 +23,10 @@ import learn.android.kangel.mycontacts.adapters.CallHistoryAdapter;
  * Created by Kangel on 2016/3/17.
  */
 public class CallHistoryFragment extends Fragment implements LoaderManager.LoaderCallbacks<Cursor> {
+    public final static int MODE_ALL = CallHistoryAdapter.MODE_ALL;
+    public final static int MODE_PARTIAL = CallHistoryAdapter.MODE_PARTIAL;
+
+    private int mMode;
     private CallHistoryAdapter mAdapter;
     private final static int QUERY_CALL_HISTORY = 2;
     private final static String[] CALL_LOG_PROJECTION = new String[]
@@ -31,8 +35,16 @@ public class CallHistoryFragment extends Fragment implements LoaderManager.Loade
                     CallLog.Calls.NUMBER,
                     CallLog.Calls.TYPE,
                     CallLog.Calls.DATE,
+                    CallLog.Calls.DURATION,
                     CallLog.Calls.GEOCODED_LOCATION
             };
+    private final static String SELECTION_PARTIAL = CallLog.Calls.DATE + ">=" + "((SELECT MAX(" + CallLog.Calls.DATE + ") - 259200000 FROM calls))";
+
+    public static CallHistoryFragment newInstance(int mode) {
+        CallHistoryFragment f = new CallHistoryFragment();
+        f.mMode = mode;
+        return f;
+    }
 
     @Nullable
     @Override
@@ -54,10 +66,10 @@ public class CallHistoryFragment extends Fragment implements LoaderManager.Loade
         sections[2] = new SimpleSectionedRecyclerViewAdapter.Section(getFirstOlderPosition(), "更早");
         sectionedRecyclerViewAdapter.setSections(sections);
         recyclerView.setAdapter(sectionedRecyclerViewAdapter);*/
-        mAdapter = new CallHistoryAdapter(getActivity(), null);
+        mAdapter = new CallHistoryAdapter(getActivity(), null, mMode);
         recyclerView.setAdapter(mAdapter);
         recyclerView.setEmptyView(v.findViewById(R.id.empty_view));
-        recyclerView.setLoadingView(v.findViewById(R.id.progress_view));
+       // recyclerView.setLoadingView(v.findViewById(R.id.progress_view));
         getLoaderManager().initLoader(QUERY_CALL_HISTORY, null, this);
         return v;
     }
@@ -65,7 +77,12 @@ public class CallHistoryFragment extends Fragment implements LoaderManager.Loade
     @Override
     public Loader<Cursor> onCreateLoader(int id, Bundle args) {
         if (id == QUERY_CALL_HISTORY) {
-            return new CursorLoader(getActivity(), CallLog.Calls.CONTENT_URI, CALL_LOG_PROJECTION, null, null, CallLog.Calls.DATE + " desc");
+            if (mMode == MODE_PARTIAL) {
+                return new CursorLoader(getActivity(), CallLog.Calls.CONTENT_URI, CALL_LOG_PROJECTION, SELECTION_PARTIAL, null, CallLog.Calls.DATE + " desc");
+            } else {
+                return new CursorLoader(getActivity(), CallLog.Calls.CONTENT_URI, CALL_LOG_PROJECTION, null, null, CallLog.Calls.DATE + " desc");
+
+            }
         }
         return null;
     }

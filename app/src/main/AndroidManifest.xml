@@ -40,6 +40,10 @@
                 <action android:name="learn.android.kangel.mycontacts.edit" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".activities.CallLogActivity"
+            android:parentActivityName=".activities.MainActivity" />
+        <activity android:name=".activities.CallLogDetailActivity" />
         <receiver android:name=".TelephoneReceiver" >
             <intent-filter android:priority="100">
                 <action android:name="android.intent.action.PHONE_STATE" />

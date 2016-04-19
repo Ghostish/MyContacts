@@ -39,4 +39,9 @@
     <string name="delete_contact">删除联系人</string>
     <string name="block_contact">屏蔽联系人</string>
     <string name="unblock_contact">取消屏蔽联系人</string>
+    <string name="call_log_detail">通话详情</string>
+    <string name="incoming_call">外接来电</string>
+    <string name="outgoing_call">拨出电话</string>
+    <string name="missed_call">未接来电</string>
+    <string name="unknow_call">未知来电</string>
 </resources>

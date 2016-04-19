@@ -28,7 +28,6 @@ dependencies {
     compile 'com.android.support:recyclerview-v7:23.3.0'
     compile 'com.simplecityapps:recyclerview-fastscroll:1.0.6'
     compile 'com.android.support:design:23.3.0'
-    compile 'com.alexzh:circleimageview:1.1.4@aar'
     compile 'com.github.promeg:tinypinyin:1.0.0'
     compile 'de.hdodenhof:circleimageview:2.0.0'
 

@@ -47,6 +47,10 @@
                 <action android:name="learn.android.kangel.mycontacts.edit" />
             </intent-filter>
         </activity>
+        <activity
+            android:name="learn.android.kangel.mycontacts.activities.CallLogActivity"
+            android:parentActivityName="learn.android.kangel.mycontacts.activities.MainActivity" />
+        <activity android:name="learn.android.kangel.mycontacts.activities.CallLogDetailActivity" />
 
         <receiver android:name="learn.android.kangel.mycontacts.TelephoneReceiver" >
             <intent-filter android:priority="100" >

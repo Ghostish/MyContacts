@@ -209,7 +209,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         @Override
         public Fragment getItem(int position) {
             if (position == 0) {
-                return callHistoryFragment = new CallHistoryFragment();
+                return callHistoryFragment = CallHistoryFragment.newInstance(CallHistoryFragment.MODE_PARTIAL);
             } else {
                 return contactListFragment = new ContactListFragment();
             }

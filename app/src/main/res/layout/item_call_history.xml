@@ -56,11 +56,11 @@
                     android:gravity="center_vertical"
                     android:orientation="horizontal">
 
-                    <ImageView
+                    <learn.android.kangel.mycontacts.CallTypeView
                         android:id="@+id/call_type"
-                        android:layout_width="24dp"
-                        android:layout_height="24dp"
-                        android:alpha="0.76" />
+                        android:gravity="center_vertical"
+                        android:layout_width="wrap_content"
+                        android:layout_height="24dp" />
 
                     <TextView
                         android:id="@+id/call_info"

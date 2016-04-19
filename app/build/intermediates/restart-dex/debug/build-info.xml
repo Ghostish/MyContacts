@@ -4,26 +4,27 @@
     api-level="23"
     density="xhdpi"
     format="7"
-    timestamp="36880524102527" >
+    timestamp="630462282116"
+    verifier="COMPATIBLE" >
 
     <task
         name="javac"
-        duration="2204" />
+        duration="3602" />
     <task
         name="instant-run-dex"
-        duration="0" />
+        duration="458" />
     <task
         name="instant-run-transform"
-        duration="112" />
+        duration="80" />
     <task
         name="verifier"
-        duration="58" />
+        duration="64" />
 
     <artifact
-        location="G:\CD\android_project\MyContacts\app\build\outputs\apk\app-debug.apk"
-        type="MAIN" />
+        location="G:\CD\android_project\MyContacts\app\build\intermediates\reload-dex\debug\classes.dex"
+        type="RELOAD_DEX" />
 
-    <build timestamp="36880524102527" >
+    <build timestamp="45921955544607" >
         <artifact
             location="G:\CD\android_project\MyContacts\app\build\outputs\apk\app-debug.apk"
             type="MAIN" />

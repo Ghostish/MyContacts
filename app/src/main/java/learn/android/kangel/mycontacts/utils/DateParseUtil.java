@@ -18,10 +18,10 @@ public class DateParseUtil {
         DateFormat dateFormat1 = new SimpleDateFormat("MM月dd日 HH:mm");
         DateFormat dateFormat2 = new SimpleDateFormat("HH:mm");
         if (calendar.get(Calendar.YEAR) == today.get(Calendar.YEAR) && calendar.get(Calendar.DAY_OF_YEAR) == today.get(Calendar.DAY_OF_YEAR)) {
-            return "今天 " + dateFormat2.format(date);
+            return dateFormat2.format(date);
         }
         if (calendar.get(Calendar.YEAR) == yesterday.get(Calendar.YEAR) && calendar.get(Calendar.DAY_OF_YEAR) == yesterday.get(Calendar.DAY_OF_YEAR)) {
-            return "昨天 " + dateFormat2.format(date);
+            return dateFormat2.format(date);
         }
         return dateFormat1.format(date);
     }
@@ -79,6 +79,7 @@ public class DateParseUtil {
         }
         return "更早";
     }
+
     public static String getDateString(Long date) {
         if (isTodayDate(date)) {
             return "今天";

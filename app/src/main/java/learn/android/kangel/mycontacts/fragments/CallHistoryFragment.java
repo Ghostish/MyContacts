@@ -1,9 +1,14 @@
 package learn.android.kangel.mycontacts.fragments;
 
+import android.Manifest;
+import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.database.Cursor;
+import android.net.Uri;
 import android.os.Bundle;
 import android.provider.CallLog;
 import android.support.annotation.Nullable;
+import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.LoaderManager;
 import android.support.v4.content.CursorLoader;
@@ -14,10 +19,14 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import learn.android.kangel.mycontacts.MyRecyclerView;
 import learn.android.kangel.mycontacts.R;
+import learn.android.kangel.mycontacts.activities.CallLogActivity;
+import learn.android.kangel.mycontacts.activities.CallLogDetailActivity;
 import learn.android.kangel.mycontacts.adapters.CallHistoryAdapter;
+import learn.android.kangel.mycontacts.utils.CallogBean;
 
 /**
  * Created by Kangel on 2016/3/17.
@@ -25,6 +34,7 @@ import learn.android.kangel.mycontacts.adapters.CallHistoryAdapter;
 public class CallHistoryFragment extends Fragment implements LoaderManager.LoaderCallbacks<Cursor> {
     public final static int MODE_ALL = CallHistoryAdapter.MODE_ALL;
     public final static int MODE_PARTIAL = CallHistoryAdapter.MODE_PARTIAL;
+    private static final int REQUEST_CALL_PHONE = 22;
 
     private int mMode;
     private CallHistoryAdapter mAdapter;
@@ -45,6 +55,37 @@ public class CallHistoryFragment extends Fragment implements LoaderManager.Loade
         f.mMode = mode;
         return f;
     }
+
+    private final CallHistoryAdapter.onCallLogItemClickListener mListenr = new CallHistoryAdapter.onCallLogItemClickListener() {
+        @Override
+        public void onItemClick(CallogBean bean) {
+            Intent intent = new Intent(getActivity(), CallLogDetailActivity.class);
+            Bundle args = new Bundle();
+            args.putParcelable("data", bean);
+            intent.putExtras(args);
+            startActivity(intent);
+        }
+
+        @Override
+        public void onCallButtonClick(String number) {
+            if (ActivityCompat.checkSelfPermission(getActivity(), Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED) {
+                if (ActivityCompat.shouldShowRequestPermissionRationale(getActivity(), Manifest.permission.CALL_PHONE)) {
+                    Toast.makeText(getContext(), R.string.permission_call_phone_request, Toast.LENGTH_LONG).show();
+                } else {
+                    ActivityCompat.requestPermissions(getActivity(), new String[]{Manifest.permission.CALL_PHONE}, REQUEST_CALL_PHONE);
+                }
+                return;
+            }
+            Intent intent = new Intent(Intent.ACTION_CALL, Uri.parse("tel:" + number));
+            startActivity(intent);
+        }
+
+        @Override
+        public void onShowAllItemClick() {
+            Intent intent = new Intent(getActivity(), CallLogActivity.class);
+            startActivity(intent);
+        }
+    };
 
     @Nullable
     @Override
@@ -67,9 +108,10 @@ public class CallHistoryFragment extends Fragment implements LoaderManager.Loade
         sectionedRecyclerViewAdapter.setSections(sections);
         recyclerView.setAdapter(sectionedRecyclerViewAdapter);*/
         mAdapter = new CallHistoryAdapter(getActivity(), null, mMode);
+        mAdapter.setListener(mListenr);
         recyclerView.setAdapter(mAdapter);
         recyclerView.setEmptyView(v.findViewById(R.id.empty_view));
-       // recyclerView.setLoadingView(v.findViewById(R.id.progress_view));
+        // recyclerView.setLoadingView(v.findViewById(R.id.progress_view));
         getLoaderManager().initLoader(QUERY_CALL_HISTORY, null, this);
         return v;
     }

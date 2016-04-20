@@ -48,6 +48,17 @@ public class CallHistoryAdapter extends RecyclerView.Adapter<CallHistoryAdapter.
     public static final int MODE_PARTIAL = 11;
     private int showCount = 10;
     private final static int increment = 20;
+    private onCallLogItemClickListener mListener;
+
+    public interface onCallLogItemClickListener {
+
+        void onItemClick(CallogBean bean);
+
+        void onCallButtonClick(String number);
+
+        void onShowAllItemClick();
+
+    }
 
     public Cursor getCursor() {
         return cursor;
@@ -59,6 +70,10 @@ public class CallHistoryAdapter extends RecyclerView.Adapter<CallHistoryAdapter.
         this.cursor = cursor;
         convertCursorToBeans(cursor);
 
+    }
+
+    public void setListener(onCallLogItemClickListener mListener) {
+        this.mListener = mListener;
     }
 
     public CallHistoryAdapter(Context context, Cursor cursor, int mode) {
@@ -150,7 +165,7 @@ public class CallHistoryAdapter extends RecyclerView.Adapter<CallHistoryAdapter.
             holder.headerText.setText(DateParseUtil.getDateString(time));
         }
 
-        holder.itemView.setOnClickListener(new View.OnClickListener() {
+        /*holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(context, CallLogDetailActivity.class);
@@ -159,7 +174,7 @@ public class CallHistoryAdapter extends RecyclerView.Adapter<CallHistoryAdapter.
                 intent.putExtras(args);
                 context.startActivity(intent);
             }
-        });
+        });*/
         mHeadShowLoader.bindImageView(holder.headShow, context, number);
     }
 
@@ -187,7 +202,7 @@ public class CallHistoryAdapter extends RecyclerView.Adapter<CallHistoryAdapter.
 */
 
 
-    public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+    public class ViewHolder extends RecyclerView.ViewHolder {
         TextView numOrName;
         TextView callInfo;
         CallTypeView callType;
@@ -202,8 +217,11 @@ public class CallHistoryAdapter extends RecyclerView.Adapter<CallHistoryAdapter.
                 itemView.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        Intent intent = new Intent(context, CallLogActivity.class);
-                        ((Activity) context).startActivity(intent);
+                        /*Intent intent = new Intent(context, CallLogActivity.class);
+                        ((Activity) context).startActivity(intent);*/
+                        if (mListener != null) {
+                            mListener.onShowAllItemClick();
+                        }
                     }
                 });
                 return;
@@ -213,22 +231,31 @@ public class CallHistoryAdapter extends RecyclerView.Adapter<CallHistoryAdapter.
             callType = (CallTypeView) itemView.findViewById(R.id.call_type);
             headShow = (ImageView) itemView.findViewById(R.id.head_show);
             callButton = (ImageButton) itemView.findViewById(R.id.call_button);
-            callButton.setOnClickListener(this);
+            callButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if (mListener != null) {
+                        CallogBean bean = data.get(getAdapterPosition());
+                        String number = bean.getNumber();
+                        mListener.onCallButtonClick(number);
+                    }
+                }
+            });
 
             if (itemView.getTag() != null && ((int) itemView.getTag()) == TYPE_HEADER) {
                 headerText = (TextView) itemView.findViewById(R.id.header_text);
             }
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if (mListener != null) {
+                        CallogBean bean = data.get(getAdapterPosition());
+                        mListener.onItemClick(bean);
+                    }
+                }
+            });
         }
 
-        @Override
-        public void onClick(View v) {
-            if (context instanceof RecyclerViewActivity) {
-                cursor.moveToPosition(getAdapterPosition());
-                Bundle data = new Bundle();
-                data.putString("number", cursor.getString(cursor.getColumnIndex(CallLog.Calls.NUMBER)));
-                ((RecyclerViewActivity) context).onRecyclerViewItemClick(getAdapterPosition(), TAG_DIAL, data);
-            }
-        }
     }
 
     private void convertCursorToBeans(Cursor cursor) {

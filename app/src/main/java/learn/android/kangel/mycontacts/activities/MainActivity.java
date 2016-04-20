@@ -173,7 +173,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     public void onRecyclerViewItemClick(int position, Object tag, Bundle data) {
         switch (((String) tag)) {
-            case CallHistoryAdapter.TAG_DIAL: {
+            /*case CallHistoryAdapter.TAG_DIAL: {
                 if (ActivityCompat.checkSelfPermission(this, Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED) {
                     if (ActivityCompat.shouldShowRequestPermissionRationale(MainActivity.this, Manifest.permission.CALL_PHONE)) {
                         Toast.makeText(getApplicationContext(), R.string.permission_call_phone_request, Toast.LENGTH_LONG).show();
@@ -186,7 +186,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 Intent intent = new Intent(Intent.ACTION_CALL, Uri.parse("tel:" + number));
                 startActivity(intent);
                 break;
-            }
+            }*/
             case ContactListAdapter.TAG: {
                 String lookUpkey = data.getString("lookUpKey");
                 long contactId = data.getLong("contactId");

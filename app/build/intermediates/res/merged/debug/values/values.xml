@@ -358,6 +358,7 @@
     <string name="permission_write_storage_request">请允许存储空间权限</string>
     <string name="search_hint">输入姓名或电话</string>
     <string name="send_email">发送邮件</string>
+    <string name="show_all_call_logs">显示所有通话记录</string>
     <string name="status_bar_notification_info_overflow">999+</string>
     <string name="title_add_contact">新建联系人</string>
     <string name="title_delete_contact">删除联系人</string>

@@ -7,12 +7,10 @@ import android.database.Cursor;
 import android.net.Uri;
 import android.os.IBinder;
 import android.provider.ContactsContract;
-import android.telephony.TelephonyManager;
 
-import java.lang.reflect.InvocationTargetException;
+import com.android.internal.telephony.ITelephony;
+
 import java.lang.reflect.Method;
-
-import com.android.internal.telephony.*;
 
 import learn.android.kangel.mycontacts.utils.BlackListUtil;
 
@@ -33,13 +31,19 @@ public class BlockCallService extends IntentService {
     protected void onHandleIntent(Intent intent) {
         String number = intent.getStringExtra("number");
         if (number != null) {
+            if (BlackListUtil.isBlockedNumber(this, number)) {
+                endCall();
+                return;
+            }
             Uri mUri = Uri.withAppendedPath(ContactsContract.CommonDataKinds.Phone.CONTENT_FILTER_URI, Uri.encode(number));
             Cursor c = getContentResolver().query(mUri, projection, null, null, null);
-            if (c != null && c.moveToNext()) {
+            while (c != null && c.moveToNext()) {
                 String lookUpKey = c.getString(0);
-                c.close();
                 if (BlackListUtil.isBlockedContact(this, lookUpKey)) {
                     endCall();
+                    c.close();
+                    BlackListUtil.addToNumberBlackList(this, lookUpKey, new String[]{number});
+                    break;
                 }
             }
         }

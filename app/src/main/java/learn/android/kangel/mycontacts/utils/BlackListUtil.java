@@ -12,34 +12,36 @@ import android.util.Log;
  * Created by Kangel on 2016/4/17.
  */
 public class BlackListUtil {
-    //private final static String SELECTION_NUMBER = "number = ?";
     private final static String SELECTION_CONTACT = "look_up_key = ?";
-    private final static String TABLE_NAME = "black_list";
+    private final static String SELECTION_NUMBER = "number = ? ";
+    private final static String CONTACT_TABLE_NAME = "black_list_contact";
+    private final static String NUMBER_TABLE_NAME = "black_list_number";
     private final static String LOOK_UP_KEY = "look_up_key";
+    private final static String NUMBER = "number";
 
- /*   public static boolean isBlockedNumber(Context context, String number) {
+    public static boolean isBlockedNumber(Context context, String number) {
         boolean result;
         MyDatabaseHelper myDatabaseHelper = new MyDatabaseHelper(context);
         SQLiteDatabase db = myDatabaseHelper.getReadableDatabase();
-        Cursor c = db.query("black_list", null, SELECTION_NUMBER, new String[]{number}, null, null, null);
-        result = c.moveToNext();
-        c.close();
-        db.close();
-        return result;
-    }*/
-
-    public static boolean isBlockedContact(Context context, String lookupKey) {
-        boolean result;
-        MyDatabaseHelper myDatabaseHelper = new MyDatabaseHelper(context);
-        SQLiteDatabase db = myDatabaseHelper.getReadableDatabase();
-        Cursor c = db.query("black_list", null, SELECTION_CONTACT, new String[]{lookupKey}, null, null, null);
+        Cursor c = db.query(NUMBER_TABLE_NAME, null, SELECTION_NUMBER, new String[]{number}, null, null, null);
         result = c.moveToNext();
         c.close();
         db.close();
         return result;
     }
 
-    /*public static boolean addToBlackList(Context context, String contactLookUpKey, String[] numbers) {
+    public static boolean isBlockedContact(Context context, String lookupKey) {
+        boolean result;
+        MyDatabaseHelper myDatabaseHelper = new MyDatabaseHelper(context);
+        SQLiteDatabase db = myDatabaseHelper.getReadableDatabase();
+        Cursor c = db.query(CONTACT_TABLE_NAME, null, SELECTION_CONTACT, new String[]{lookupKey}, null, null, null);
+        result = c.moveToNext();
+        c.close();
+        db.close();
+        return result;
+    }
+
+    public static boolean addToNumberBlackList(Context context, String contactLookUpKey, String[] numbers) {
         boolean result = false;
         MyDatabaseHelper myDatabaseHelper = new MyDatabaseHelper(context);
         SQLiteDatabase db = myDatabaseHelper.getReadableDatabase();
@@ -47,9 +49,9 @@ public class BlackListUtil {
         try {
             ContentValues values = new ContentValues();
             for (String number : numbers) {
-                values.put("number", number);
+                values.put(NUMBER, number);
                 values.put("look_up_key", contactLookUpKey);
-                db.insert("black_list", null, values);
+                db.insert(NUMBER_TABLE_NAME, null, values);
                 values.clear();
             }
             db.setTransactionSuccessful();
@@ -60,14 +62,27 @@ public class BlackListUtil {
             db.endTransaction();
         }
         return result;
-    }*/
+    }
 
-    public static boolean removeFromBlackList(Context context, String lookupKey) {
+    public static boolean removeContactFromBlackList(Context context, String lookupKey) {
         boolean result;
         MyDatabaseHelper myDatabaseHelper = new MyDatabaseHelper(context);
         SQLiteDatabase db = myDatabaseHelper.getWritableDatabase();
         try {
-            db.delete("black_list", SELECTION_CONTACT, new String[]{lookupKey});
+            db.delete(CONTACT_TABLE_NAME, SELECTION_CONTACT, new String[]{lookupKey});
+            result = true;
+        } catch (SQLiteException e) {
+            Log.e("SqliteError", e.getLocalizedMessage());
+            result = false;
+        }
+        return result;
+    }
+    public static boolean removeNumberFromBlackList(Context context, String number) {
+        boolean result;
+        MyDatabaseHelper myDatabaseHelper = new MyDatabaseHelper(context);
+        SQLiteDatabase db = myDatabaseHelper.getWritableDatabase();
+        try {
+            db.delete(NUMBER_TABLE_NAME, SELECTION_NUMBER, new String[]{number});
             result = true;
         } catch (SQLiteException e) {
             Log.e("SqliteError", e.getLocalizedMessage());
@@ -76,14 +91,15 @@ public class BlackListUtil {
         return result;
     }
 
-    public static boolean addToBlackList(Context context, String contactLookUpKey) {
+
+    public static boolean addToContactBlackList(Context context, String contactLookUpKey) {
         boolean result;
         MyDatabaseHelper myDatabaseHelper = new MyDatabaseHelper(context);
         SQLiteDatabase db = myDatabaseHelper.getReadableDatabase();
         ContentValues values = new ContentValues();
         values.put(LOOK_UP_KEY, contactLookUpKey);
         try {
-            db.insert(TABLE_NAME, null, values);
+            db.insert(CONTACT_TABLE_NAME, null, values);
             result = true;
         } catch (SQLiteException e) {
             Log.e("SqliteError", e.getLocalizedMessage());

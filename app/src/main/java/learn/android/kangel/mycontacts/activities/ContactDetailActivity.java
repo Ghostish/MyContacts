@@ -113,6 +113,8 @@ public class ContactDetailActivity extends AppCompatActivity implements LoaderMa
     private String mLookupKey;
     private long mContactId;
     private String name;
+    private ArrayList<String> mNumberList;
+
     private LinearLayout EmailContainer;
     private LinearLayout phoneNumContainer;
     private LinearLayout addressContainer;
@@ -151,6 +153,13 @@ public class ContactDetailActivity extends AppCompatActivity implements LoaderMa
         getSupportLoaderManager().initLoader(PHONE_QUERY_ID, null, this);
         getSupportLoaderManager().initLoader(EMAIL_QUERY_ID, null, this);
         getSupportLoaderManager().initLoader(ADDRESS_QUERY_ID, null, this);
+    }
+
+    @Override
+    protected void onNewIntent(Intent intent) {
+        super.onNewIntent(intent);
+        mHeadShowLoader.bindImageView((ImageView) findViewById(R.id.head_show), this, mContactId, mLookupKey);
+
     }
 
     @Override
@@ -223,6 +232,10 @@ public class ContactDetailActivity extends AppCompatActivity implements LoaderMa
                         phoneNumContainer = (LinearLayout) panel.findViewById(R.id.container);
                     }
                     phoneNumContainer.removeAllViews();
+                    if (mNumberList == null) {
+                        mNumberList = new ArrayList<>();
+                    }
+                    mNumberList.clear();
                     for (int i = 0; i < data.getCount(); i++) {
                         data.moveToPosition(i);
                         View v = LayoutInflater.from(this).inflate(R.layout.item_contact_info, phoneNumContainer, false);
@@ -237,6 +250,7 @@ public class ContactDetailActivity extends AppCompatActivity implements LoaderMa
                         holder.infoText.setText(number);
                         CharSequence typeString = ContactsContract.CommonDataKinds.Phone.getTypeLabel(getResources(), type, data.getString(DATA3_INDEX));
                         holder.hintText.setText(typeString);
+                        mNumberList.add(number);
                         phoneNumContainer.addView(v);
                     }
                 }
@@ -377,11 +391,16 @@ public class ContactDetailActivity extends AppCompatActivity implements LoaderMa
                 return true;
             }
             case R.id.block_contact: {
+                // TODO: 2016/4/20 try to use a asynchronized way
                 if (isContactBlocked) {
-                    isContactBlocked = !BlackListUtil.removeFromBlackList(this, mLookupKey);
+                    isContactBlocked = !BlackListUtil.removeContactFromBlackList(this, mLookupKey);
                     getSupportActionBar().invalidateOptionsMenu();
                 } else {
-                    isContactBlocked = BlackListUtil.addToBlackList(this, mLookupKey);
+                    isContactBlocked = BlackListUtil.addToContactBlackList(this, mLookupKey);
+                    if (mNumberList != null && mNumberList.size() > 0) {
+                        String[] numbers = new String[mNumberList.size()];
+                        BlackListUtil.addToNumberBlackList(this, mLookupKey, mNumberList.toArray(numbers));
+                    }
                     getSupportActionBar().invalidateOptionsMenu();
                 }
                 return true;

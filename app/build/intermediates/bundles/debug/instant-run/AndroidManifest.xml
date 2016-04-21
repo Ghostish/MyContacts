@@ -38,6 +38,7 @@
         </activity>
         <activity
             android:name="learn.android.kangel.mycontacts.activities.ContactDetailActivity"
+            android:launchMode="singleTask"
             android:parentActivityName="learn.android.kangel.mycontacts.activities.MainActivity" />
         <activity
             android:name="learn.android.kangel.mycontacts.activities.EditContactActivity"

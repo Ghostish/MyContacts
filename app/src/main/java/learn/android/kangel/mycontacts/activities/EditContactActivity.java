@@ -241,6 +241,11 @@ public class EditContactActivity extends AppCompatActivity implements ContactCom
             case R.id.ok_button: {
                 // TODO: 2016/4/9  show a progress dialog , and do the batch work in worker thread
                 commitChanges();
+                if (getIntent().getExtras() != null) {
+                    Intent intent = new Intent(this, ContactDetailActivity.class);
+                    intent.putExtras(getIntent().getExtras());
+                    startActivity(intent);
+                }
                 finish();
                 break;
             }
@@ -381,7 +386,7 @@ public class EditContactActivity extends AppCompatActivity implements ContactCom
                 ByteArrayOutputStream imageStream = new ByteArrayOutputStream();
                 mNewHeadShowBitmap.compress(Bitmap.CompressFormat.JPEG, 100, imageStream);
                 op = ContentProviderOperation.newDelete(ContactsContract.Data.CONTENT_URI)
-                        .withSelection(ContactsContract.Data.RAW_CONTACT_ID + "= ? AND " + ContactsContract.Data.MIMETYPE +"= '" + ContactsContract.CommonDataKinds.Photo.CONTENT_ITEM_TYPE + "'", new String[]{String.valueOf(rawContactId)});
+                        .withSelection(ContactsContract.Data.RAW_CONTACT_ID + "= ? AND " + ContactsContract.Data.MIMETYPE + "= '" + ContactsContract.CommonDataKinds.Photo.CONTENT_ITEM_TYPE + "'", new String[]{String.valueOf(rawContactId)});
                 ops.add(op.build());
                 op = ContentProviderOperation.newInsert(ContactsContract.Data.CONTENT_URI)
                         .withValue(ContactsContract.Data.RAW_CONTACT_ID, rawContactId)

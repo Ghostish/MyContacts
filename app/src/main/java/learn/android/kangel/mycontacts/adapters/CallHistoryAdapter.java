@@ -145,7 +145,7 @@ public class CallHistoryAdapter extends RecyclerView.Adapter<CallHistoryAdapter.
         }
         holder.headShow.setTag(position);*//*
         mHeadShowLoader.bindImageView(holder.headShow, context, cursor.getString(cursor.getColumnIndex(CallLog.Calls.NUMBER)));*/
-        if (position == getItemCount() - 1) {
+        if (mMode == MODE_PARTIAL && position == getItemCount() - 1) {
             return;
         }
         CallogBean bean = data.get(position);

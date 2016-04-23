@@ -181,7 +181,7 @@ public class CallHistoryAdapter extends RecyclerView.Adapter<CallHistoryAdapter.
     @Override
     public int getItemCount() {
         if (mMode == MODE_PARTIAL) {
-            return data.size() + 1;
+            return data.size() == 0 ? 0 : data.size() + 1;
         } else {
             return data.size();
         }

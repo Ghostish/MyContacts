@@ -5,7 +5,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Color;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.FloatingActionButton;
@@ -22,10 +21,8 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
-import android.widget.Toast;
 
 import learn.android.kangel.mycontacts.R;
-import learn.android.kangel.mycontacts.adapters.CallHistoryAdapter;
 import learn.android.kangel.mycontacts.adapters.ContactListAdapter;
 import learn.android.kangel.mycontacts.fragments.CallHistoryFragment;
 import learn.android.kangel.mycontacts.fragments.ContactListFragment;
@@ -34,8 +31,6 @@ import learn.android.kangel.mycontacts.fragments.SearchFragment;
 public class MainActivity extends AppCompatActivity implements View.OnClickListener, RecyclerViewActivity {
     private final static int REQUEST_CALL_LOG_CONTACTS = 110;
     private static final int REQUEST_CALL_PHONE = 111;
-    private CallHistoryFragment callHistoryFragment;
-    private ContactListFragment contactListFragment;
     private SearchFragment mSearchFragment;
     private FloatingActionButton fab;
     int appbarHeight = 0;
@@ -148,6 +143,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         final TabLayout tabLayout = (TabLayout) findViewById(R.id.tab);
         tabLayout.addTab(tabLayout.newTab().setIcon(R.drawable.ic_history_white_24dp));
         tabLayout.addTab(tabLayout.newTab().setIcon(R.drawable.ic_account_box_white_24dp));
+        tabLayout.addTab(tabLayout.newTab().setIcon(R.drawable.ic_star_white_24dp));
         tabLayout.setBackgroundColor(ContextCompat.getColor(this, R.color.colorPrimary));
         tabLayout.setSelectedTabIndicatorColor(Color.WHITE);
         pager = (ViewPager) findViewById(R.id.pager);
@@ -209,15 +205,20 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         @Override
         public Fragment getItem(int position) {
             if (position == 0) {
-                return callHistoryFragment = CallHistoryFragment.newInstance(CallHistoryFragment.MODE_PARTIAL);
-            } else {
-                return contactListFragment = new ContactListFragment();
+                return CallHistoryFragment.newInstance(CallHistoryFragment.MODE_PARTIAL);
             }
+            if (position == 1) {
+                return ContactListFragment.newInstance(ContactListFragment.MODE_ALL);
+            }
+            if (position == 2) {
+                return ContactListFragment.newInstance(ContactListFragment.MODE_STARRED);
+            }
+            return null;
         }
 
         @Override
         public int getCount() {
-            return 2;
+            return 3;
         }
     }
 

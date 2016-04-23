@@ -5,6 +5,7 @@ import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
+import android.content.ContentValues;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.database.Cursor;
@@ -124,6 +125,7 @@ public class ContactDetailActivity extends AppCompatActivity implements LoaderMa
     private HelloMsg msgHelper;
 
     private boolean isContactBlocked = false;
+    private boolean isStar = false;
     private HeadShowLoader mHeadShowLoader = new HeadShowLoader();
 
 
@@ -146,7 +148,7 @@ public class ContactDetailActivity extends AppCompatActivity implements LoaderMa
             Log.d("contact info", mContactId + " " + mLookupKey);
             imageView.setImageBitmap(BitmapFactory.decodeStream(in));
         }*/
-        mHeadShowLoader.bindImageView((ImageView) findViewById(R.id.head_show), this, mContactId, mLookupKey);
+        mHeadShowLoader.bindImageView(imageView, this, mContactId, mLookupKey);
 
         getResources().getInteger(android.R.integer.config_shortAnimTime);
         getSupportLoaderManager().initLoader(NAME_QUERY_ID, null, this);
@@ -375,8 +377,16 @@ public class ContactDetailActivity extends AppCompatActivity implements LoaderMa
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_contact, menu);
         MenuItem block = menu.findItem(R.id.block_contact);
+        MenuItem star = menu.findItem(R.id.star_contact);
         isContactBlocked = BlackListUtil.isBlockedContact(this, mLookupKey);
         block.setTitle(isContactBlocked ? R.string.unblock_contact : R.string.block_contact);
+        final Uri contactUri = ContactsContract.Contacts.getLookupUri(mContactId, mLookupKey);
+        Cursor c = getContentResolver().query(contactUri, new String[]{ContactsContract.Contacts.STARRED}, null, null, null);
+        if (c.moveToNext()) {
+            isStar = c.getInt(0) != 0;
+        }
+        c.close();
+        star.setIcon(isStar ? R.drawable.ic_star_white_24dp : R.drawable.ic_star_border_white_24dp);
         return true;
     }
 
@@ -404,6 +414,10 @@ public class ContactDetailActivity extends AppCompatActivity implements LoaderMa
                     getSupportActionBar().invalidateOptionsMenu();
                 }
                 return true;
+            }
+            case R.id.star_contact: {
+                setStar(isStar = !isStar);
+                getSupportActionBar().invalidateOptionsMenu();
             }
         }
         return super.onOptionsItemSelected(item);
@@ -460,8 +474,15 @@ public class ContactDetailActivity extends AppCompatActivity implements LoaderMa
     }
 
     private void deleteThisContact() {
-        Uri uri = Uri.withAppendedPath(ContactsContract.Contacts.CONTENT_LOOKUP_URI, mLookupKey);
-        getContentResolver().delete(uri, null, null);
+        final Uri contactUri = ContactsContract.Contacts.getLookupUri(mContactId, mLookupKey);
+        getContentResolver().delete(contactUri, null, null);
+    }
+
+    private void setStar(boolean isStar) {
+        final Uri contactUri = ContactsContract.Contacts.getLookupUri(mContactId, mLookupKey);
+        ContentValues values = new ContentValues();
+        values.put(ContactsContract.RawContacts.STARRED, isStar ? 1 : 0);
+        getContentResolver().update(contactUri, values, null, null);
     }
 
     private void zoomImageFromThumb(final View thumbView) {

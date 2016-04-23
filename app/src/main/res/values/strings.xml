@@ -45,4 +45,9 @@
     <string name="missed_call">未接来电</string>
     <string name="unknow_call">未知来电</string>
     <string name="show_all_call_logs">显示所有通话记录</string>
+    <string name="weather">天气</string>
+    <string name="not_know">N/A</string>
+    <string name="star_unstar">星标/取消星标</string>
+    <string name="no_contact">暂无联系人</string>
+    <string name="no_starred_contact">暂无星标联系人</string>
 </resources>

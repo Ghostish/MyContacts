@@ -350,8 +350,11 @@
     <string name="name">姓名</string>
     <string name="nickname">别名</string>
     <string name="no_camera">请安装相机</string>
+    <string name="no_contact">暂无联系人</string>
     <string name="no_gallery">请安装相册</string>
     <string name="no_name">无姓名</string>
+    <string name="no_starred_contact">暂无星标联系人</string>
+    <string name="not_know">N/A</string>
     <string name="outgoing_call">拨出电话</string>
     <string name="permission_call_phone_request">请允许拨打权限</string>
     <string name="permission_deny">无法获得通讯录和通话记录权限</string>
@@ -359,6 +362,7 @@
     <string name="search_hint">输入姓名或电话</string>
     <string name="send_email">发送邮件</string>
     <string name="show_all_call_logs">显示所有通话记录</string>
+    <string name="star_unstar">星标/取消星标</string>
     <string name="status_bar_notification_info_overflow">999+</string>
     <string name="title_add_contact">新建联系人</string>
     <string name="title_delete_contact">删除联系人</string>
@@ -376,6 +380,7 @@
     <string name="unblock_contact">取消屏蔽联系人</string>
     <string name="unknow_call">未知来电</string>
     <string name="warm_sms">关怀短信</string>
+    <string name="weather">天气</string>
     <style name="AlertDialog.AppCompat" parent="Base.AlertDialog.AppCompat"/>
     <style name="AlertDialog.AppCompat.Light" parent="Base.AlertDialog.AppCompat.Light"/>
     <style name="Animation.AppCompat.Dialog" parent="Base.Animation.AppCompat.Dialog"/>

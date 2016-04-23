@@ -66,6 +66,14 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
+            <learn.android.kangel.mycontacts.WeatherInfoView
+                android:id="@+id/weather_view"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:clipToPadding="false"
+                android:foreground="?android:selectableItemBackground"
+                app:cardUseCompatPadding="true" />
+
             <ViewStub
                 android:id="@+id/phone_view_stub"
                 android:layout_width="match_parent"
@@ -98,10 +106,10 @@
         app:layout_anchorGravity="bottom|right|end" />
 
     <ImageView
-        android:translationZ="200dp"
         android:id="@+id/expanded_image"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:translationZ="200dp"
         android:visibility="invisible"
         tools:targetApi="lollipop" />
 </android.support.design.widget.CoordinatorLayout>

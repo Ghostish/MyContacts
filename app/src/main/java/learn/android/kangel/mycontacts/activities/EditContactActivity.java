@@ -304,11 +304,17 @@ public class EditContactActivity extends AppCompatActivity implements ContactCom
 
     private void commitChanges() {
         if (ACTION_ADD.equals(getIntent().getAction())) {
+            String name = nameText.getText().toString();
+
             ArrayList<ContentProviderOperation> ops = new ArrayList<ContentProviderOperation>();
             ContentProviderOperation.Builder op = ContentProviderOperation.newInsert(ContactsContract.RawContacts.CONTENT_URI)
                     .withValue(ContactsContract.RawContacts.ACCOUNT_TYPE, null)
                     .withValue(ContactsContract.RawContacts.ACCOUNT_NAME, null);
+            if (isRelative(name)) {
+                op.withValue(ContactsContract.RawContacts.STARRED, 1);
+            }
             ops.add(op.build());
+
             if (mNewHeadShowBitmap != null) {
                 ByteArrayOutputStream imageStream = new ByteArrayOutputStream();
                 mNewHeadShowBitmap.compress(Bitmap.CompressFormat.JPEG, 100, imageStream);
@@ -318,7 +324,6 @@ public class EditContactActivity extends AppCompatActivity implements ContactCom
                         .withValue(ContactsContract.CommonDataKinds.Photo.PHOTO, imageStream.toByteArray());
                 ops.add(op.build());
             }
-            String name = nameText.getText().toString();
             if (!name.trim().isEmpty()) {
                 op = ContentProviderOperation.newInsert(ContactsContract.Data.CONTENT_URI)
                         .withValueBackReference(ContactsContract.Data.RAW_CONTACT_ID, 0)
@@ -381,6 +386,14 @@ public class EditContactActivity extends AppCompatActivity implements ContactCom
         } else if (ACTION_EDIT.equals(getIntent().getAction())) {
             ArrayList<ContentProviderOperation> ops = new ArrayList<>();
             ContentProviderOperation.Builder op;
+            String name = nameText.getText().toString();
+            if (isRelative(name)) {
+                op = ContentProviderOperation.newUpdate(ContactsContract.RawContacts.CONTENT_URI)
+                        .withSelection(ContactsContract.RawContacts._ID + "=?", new String[]{String.valueOf(rawContactId)})
+                        .withValue(ContactsContract.RawContacts.STARRED, 1);
+                ops.add(op.build());
+            }
+
             if (mNewHeadShowBitmap != null) {
                 HeadShowLoader.removeCacheItem(ContactsContract.Contacts.getLookupUri(mContactId, mLookUpKey));
                 ByteArrayOutputStream imageStream = new ByteArrayOutputStream();
@@ -395,7 +408,6 @@ public class EditContactActivity extends AppCompatActivity implements ContactCom
                         .withValue(ContactsContract.CommonDataKinds.Photo.PHOTO, imageStream.toByteArray());
                 ops.add(op.build());
             }
-            String name = nameText.getText().toString();
             if (isContactHasName && !name.trim().isEmpty()) {
                 op = ContentProviderOperation.newUpdate(ContactsContract.Data.CONTENT_URI)
                         .withSelection(ContactsContract.Data._ID + "= ?", new String[]{String.valueOf(structureNameRowId)})
@@ -596,5 +608,15 @@ public class EditContactActivity extends AppCompatActivity implements ContactCom
     @Override
     public void onLoaderReset(Loader<Cursor> loader) {
 
+    }
+
+    public boolean isRelative(String name) {
+        return name != null && (
+                name.contains("爸") ||
+                        name.contains("妈") ||
+                        name.contains("老婆") ||
+                        name.contains("老公") ||
+                        name.contains("儿子") ||
+                        name.contains("女儿"));
     }
 }

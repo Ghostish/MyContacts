@@ -12,8 +12,7 @@
         <learn.android.kangel.mycontacts.MyRecyclerView
             android:id="@+id/fast_scroll_recycler_view"
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="9"
+            android:layout_height="match_parent"
             android:clipToPadding="false"
             android:padding="8dp"
             app:fastScrollPopupBgColor="?attr/colorPrimary"
@@ -23,13 +22,13 @@
 
         </learn.android.kangel.mycontacts.MyRecyclerView>
 
-        <ProgressBar
+       <!-- <ProgressBar
             android:layout_weight="1"
             android:id="@+id/progress_view"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:visibility="gone"
-            android:indeterminate="true" />
+            android:indeterminate="true" />-->
 
     </LinearLayout>
 

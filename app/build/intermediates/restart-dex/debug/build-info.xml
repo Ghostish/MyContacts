@@ -4,36 +4,61 @@
     api-level="23"
     density="xhdpi"
     format="7"
-    timestamp="28629810940377" >
+    timestamp="31566222520914"
+    verifier="COMPATIBLE" >
 
     <task
         name="javac"
-        duration="522" />
+        duration="538" />
     <task
         name="instant-run-dex"
-        duration="0" />
+        duration="610" />
     <task
         name="instant-run-transform"
-        duration="17" />
+        duration="28" />
     <task
         name="verifier"
-        duration="1" />
+        duration="5" />
 
     <artifact
-        location="G:\CD\android_project\MyContacts\app\build\intermediates\transforms\dex\debug\folders\1000\5\slice_4\classes.dex"
-        type="DEX" />
+        location="G:\CD\android_project\MyContacts\app\build\intermediates\reload-dex\debug\classes.dex"
+        type="RELOAD_DEX" />
 
-    <build
-        timestamp="27863874460462"
-        verifier="COMPATIBLE" >
+    <build timestamp="29218984712672" >
         <artifact
-            location="G:\CD\android_project\MyContacts\app\build\intermediates\builds\debug\27863874460462\classes.dex"
-            type="RELOAD_DEX" />
+            location="G:\CD\android_project\MyContacts\app\build\outputs\apk\app-debug.apk"
+            type="MAIN" />
     </build>
-    <build timestamp="28629810940377" >
+    <build
+        timestamp="31228466384729"
+        verifier="R_CLASS_CHANGE" >
+        <artifact
+            location="G:\CD\android_project\MyContacts\app\build\intermediates\res\resources-debug.ap_"
+            type="RESOURCES" />
+        <artifact
+            location="G:\CD\android_project\MyContacts\app\build\intermediates\transforms\dex\debug\folders\1000\5\slice_1\classes.dex"
+            type="DEX" />
+        <artifact
+            location="G:\CD\android_project\MyContacts\app\build\intermediates\transforms\dex\debug\folders\1000\5\slice_0\classes.dex"
+            type="DEX" />
+        <artifact
+            location="G:\CD\android_project\MyContacts\app\build\intermediates\transforms\dex\debug\folders\1000\5\slice_2\classes.dex"
+            type="DEX" />
         <artifact
             location="G:\CD\android_project\MyContacts\app\build\intermediates\transforms\dex\debug\folders\1000\5\slice_4\classes.dex"
             type="DEX" />
+    </build>
+    <build timestamp="31518900123677" >
+        <artifact
+            location="G:\CD\android_project\MyContacts\app\build\intermediates\transforms\dex\debug\folders\1000\5\slice_7\classes.dex"
+            type="DEX" />
+    </build>
+    <build
+        timestamp="31566222520914"
+        verifier="COMPATIBLE" >
+        <artifact
+            location="G:\CD\android_project\MyContacts\app\build\intermediates\reload-dex\debug\classes.dex"
+            type="RELOAD_DEX" />
     </build>
 
 </instant-run>

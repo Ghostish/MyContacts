@@ -13,6 +13,8 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import java.security.cert.TrustAnchor;
 
@@ -26,7 +28,8 @@ import learn.android.kangel.mycontacts.adapters.ContactListAdapter;
  */
 public class ContactListFragment extends Fragment implements LoaderManager.LoaderCallbacks<Cursor> {
     private final static int QUERY_CONTACT = 1;
-    private ContactListAdapter mAdapter;
+    public final static int MODE_ALL = 110;
+    public final static int MODE_STARRED = 111;
     private static final String[] CONTACT_PROJECTION =
             {
                     ContactsContract.Contacts._ID,
@@ -35,6 +38,16 @@ public class ContactListFragment extends Fragment implements LoaderManager.Loade
                     ContactsContract.Contacts.SORT_KEY_PRIMARY
             };
     private static final String SELECTION = ContactsContract.Contacts.HAS_PHONE_NUMBER + " = 1";
+    private static final String SELECTION_STARRED = ContactsContract.Contacts.STARRED + " <> 0";
+
+    private int mMode;
+    private ContactListAdapter mAdapter;
+
+    public static ContactListFragment newInstance(int mode) {
+        ContactListFragment f = new ContactListFragment();
+        f.mMode = mode;
+        return f;
+    }
 
     @Nullable
     @Override
@@ -45,6 +58,19 @@ public class ContactListFragment extends Fragment implements LoaderManager.Loade
         recyclerView.setHasFixedSize(true);
         mAdapter = new ContactListAdapter(getActivity(), null);
         recyclerView.setAdapter(mAdapter);
+        ImageView emptyImage = (ImageView) v.findViewById(R.id.empty_image);
+        TextView emptyDesc = (TextView) v.findViewById(R.id.empty_desc);
+        switch (mMode) {
+            case MODE_ALL:
+                emptyDesc.setText(R.string.no_contact);
+                break;
+            case MODE_STARRED:
+                emptyDesc.setText(R.string.no_starred_contact);
+                break;
+        }
+        emptyImage.setImageResource(R.drawable.ic_perm_contact_calendar_black_48dp);
+        recyclerView.setEmptyView(v.findViewById(R.id.empty_view));
+
         recyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
             @Override
             public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
@@ -61,7 +87,12 @@ public class ContactListFragment extends Fragment implements LoaderManager.Loade
     @Override
     public Loader<Cursor> onCreateLoader(int id, Bundle args) {
         if (id == QUERY_CONTACT) {
-            return new CursorLoader(getActivity(), ContactsContract.Contacts.CONTENT_URI, CONTACT_PROJECTION, SELECTION, null, ContactsContract.Contacts.SORT_KEY_PRIMARY);
+            if (mMode == MODE_ALL) {
+                return new CursorLoader(getActivity(), ContactsContract.Contacts.CONTENT_URI, CONTACT_PROJECTION, SELECTION, null, ContactsContract.Contacts.SORT_KEY_PRIMARY);
+
+            } else {
+                return new CursorLoader(getActivity(), ContactsContract.Contacts.CONTENT_URI, CONTACT_PROJECTION, SELECTION_STARRED, null, ContactsContract.Contacts.SORT_KEY_PRIMARY);
+            }
         }
         return null;
     }

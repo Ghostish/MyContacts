@@ -7,6 +7,7 @@
     android:padding="16dp">
 
     <ImageView
+        android:tint="@color/colorPrimary"
         android:id="@+id/indicate_icon"
         android:layout_width="@dimen/indicate_icon_size"
         android:layout_height="@dimen/indicate_icon_size"
@@ -43,5 +44,6 @@
         android:layout_alignParentEnd="true"
         android:layout_centerVertical="true"
         android:visibility="gone"
+        android:tint="@color/colorPrimary"
         android:background="?android:selectableItemBackground" />
 </RelativeLayout>

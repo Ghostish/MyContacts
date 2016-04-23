@@ -1,5 +1,13 @@
 [
     {
+        "merged": "G:\\CD\\android_project\\MyContacts\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xhdpi-v4\\sunny.png",
+        "source": "G:\\CD\\android_project\\MyContacts\\app\\src\\main\\res\\mipmap-xhdpi\\sunny.png"
+    },
+    {
+        "merged": "G:\\CD\\android_project\\MyContacts\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xhdpi-v4\\not_know.png",
+        "source": "G:\\CD\\android_project\\MyContacts\\app\\src\\main\\res\\mipmap-xhdpi\\not_know.png"
+    },
+    {
         "merged": "G:\\CD\\android_project\\MyContacts\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xhdpi-v4\\ic_launcher.png",
         "source": "G:\\CD\\android_project\\MyContacts\\app\\src\\main\\res\\mipmap-xhdpi\\ic_launcher.png"
     }

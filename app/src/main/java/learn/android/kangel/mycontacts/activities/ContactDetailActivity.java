@@ -37,17 +37,20 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-
 import com.example.yzh.msg.HelloMsg;
 
 import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
 
+import learn.android.kangel.mycontacts.MyApplication;
 import learn.android.kangel.mycontacts.R;
+import learn.android.kangel.mycontacts.WeatherInfoView;
 import learn.android.kangel.mycontacts.fragments.ConfirmDialogFragment;
+import learn.android.kangel.mycontacts.utils.AttributionUtil;
 import learn.android.kangel.mycontacts.utils.BlackListUtil;
 import learn.android.kangel.mycontacts.utils.HeadShowLoader;
+import learn.android.kangel.mycontacts.utils.WeatherUtil;
 
 /**
  * Created by Kangel on 2016/3/24.
@@ -119,6 +122,7 @@ public class ContactDetailActivity extends AppCompatActivity implements LoaderMa
     private LinearLayout EmailContainer;
     private LinearLayout phoneNumContainer;
     private LinearLayout addressContainer;
+    private WeatherInfoView mWeatherInfoView;
 
     private Animator mCurrentAnimator;
     private int mShortAnimationDuration = 300;
@@ -149,12 +153,13 @@ public class ContactDetailActivity extends AppCompatActivity implements LoaderMa
             imageView.setImageBitmap(BitmapFactory.decodeStream(in));
         }*/
         mHeadShowLoader.bindImageView(imageView, this, mContactId, mLookupKey);
+        mWeatherInfoView = (WeatherInfoView) findViewById(R.id.weather_view);
 
-        getResources().getInteger(android.R.integer.config_shortAnimTime);
         getSupportLoaderManager().initLoader(NAME_QUERY_ID, null, this);
         getSupportLoaderManager().initLoader(PHONE_QUERY_ID, null, this);
         getSupportLoaderManager().initLoader(EMAIL_QUERY_ID, null, this);
         getSupportLoaderManager().initLoader(ADDRESS_QUERY_ID, null, this);
+
     }
 
     @Override
@@ -254,6 +259,14 @@ public class ContactDetailActivity extends AppCompatActivity implements LoaderMa
                         holder.hintText.setText(typeString);
                         mNumberList.add(number);
                         phoneNumContainer.addView(v);
+                    }
+                    if (mNumberList != null) {
+                        AttributionUtil.LocationBean bean = AttributionUtil.getAttribution(this, mNumberList.get(0));
+                        if (bean != null) {
+                            Log.d("CITY", bean.getCity());
+                            mWeatherInfoView.setCity(bean.getCity());
+                            WeatherUtil.getWeather(((MyApplication) getApplication()).getRequestQueue(),bean.getCity(),mWeatherInfoView);
+                        }
                     }
                 }
                 break;
@@ -450,7 +463,12 @@ public class ContactDetailActivity extends AppCompatActivity implements LoaderMa
                 if (msgHelper == null) {
                     msgHelper = new HelloMsg(this);
                 }
-                String msg = msgHelper.getMsg(name);
+                String msg;
+                if (mWeatherInfoView != null && mWeatherInfoView.getWeather() != null) {
+                    msg = msgHelper.getMsg(name, mWeatherInfoView.getTemperature(), mWeatherInfoView.getWeather());
+                }else {
+                    msg = msgHelper.getMsg(name);
+                }
                 Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("sms:" + infoString));
                 intent.putExtra("sms_body", msg);
                 startActivity(intent);

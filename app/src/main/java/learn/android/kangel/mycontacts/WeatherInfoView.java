@@ -18,11 +18,16 @@ public class WeatherInfoView extends CardView {
     private TextView mAirQuality;
     private TextView mTemperatureDesc;
     private TextView mHumidityDesc;
+    private TextView mLabel;
     private ImageView mWeatherImage;
+
     private float mTemperature;
     private float mHumidity;
-    private final static String TEMPERATURE_STRING = "%f°C";
-    private final static String HUMIDITY_STRING = "%f%%";
+    private String mCity;
+    private String mWeather;
+
+    private final static String TEMPERATURE_STRING = "%.2f°C";
+    private final static String HUMIDITY_STRING = "%.2f%%";
 
     public WeatherInfoView(Context context) {
         this(context, null);
@@ -39,13 +44,23 @@ public class WeatherInfoView extends CardView {
         mTemperatureDesc = (TextView) findViewById(R.id.temperature_desc);
         mHumidityDesc = (TextView) findViewById(R.id.humidity_desc);
         mAirQuality = (TextView) findViewById(R.id.quality_desc);
+        mLabel = (TextView) findViewById(R.id.label);
         mWeatherImage = (ImageView) findViewById(R.id.weather_image);
     }
 
     public void setWeatherDesc(CharSequence text) {
+        mWeather = text.toString();
         mWeatherDesc.setText(text);
     }
 
+    public void setCity(String city) {
+        this.mCity = city;
+        mLabel.setText(city);
+    }
+
+    public String getCity() {
+        return mCity;
+    }
     public void setTemperatureDesc(float temperature) {
         mTemperature = temperature;
         mTemperatureDesc.setText(String.format(Locale.CHINA, TEMPERATURE_STRING, temperature));
@@ -64,15 +79,15 @@ public class WeatherInfoView extends CardView {
         mWeatherImage.setImageResource(resId);
     }
 
-    public String getWeather() {
-        return (String) mWeatherDesc.getText();
-    }
-
     public float getHumidity() {
         return mHumidity;
     }
 
     public float getTemperature() {
         return mTemperature;
+    }
+
+    public String getWeather() {
+        return mWeather;
     }
 }

@@ -14,6 +14,7 @@ import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
+import android.support.v4.app.FragmentStatePagerAdapter;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.view.ViewCompat;
@@ -196,7 +197,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
 
-    class contactPagerAdapter extends FragmentPagerAdapter {
+    class contactPagerAdapter extends FragmentStatePagerAdapter {
 
         public contactPagerAdapter(FragmentManager fm) {
             super(fm);

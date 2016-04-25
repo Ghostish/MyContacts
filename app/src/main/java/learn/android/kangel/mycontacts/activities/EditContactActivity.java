@@ -19,6 +19,9 @@ import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.Display;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -36,6 +39,7 @@ import java.util.List;
 
 import learn.android.kangel.mycontacts.ContactCommonEditorView;
 import learn.android.kangel.mycontacts.ContactEditorViewGroup;
+import learn.android.kangel.mycontacts.fragments.ConfirmDialogFragment;
 import learn.android.kangel.mycontacts.utils.ContactInfoBean;
 import learn.android.kangel.mycontacts.utils.HeadShowLoader;
 import learn.android.kangel.mycontacts.R;
@@ -44,7 +48,7 @@ import learn.android.kangel.mycontacts.fragments.EditTextDialogFragment;
 /**
  * Created by Kangel on 2016/3/30.
  */
-public class EditContactActivity extends AppCompatActivity implements ContactCommonEditorView.onSpinnerItemSelectedListener, EditTextDialogFragment.onEditDialogButtonClickListener, View.OnClickListener, LoaderManager.LoaderCallbacks<Cursor> {
+public class EditContactActivity extends AppCompatActivity implements ContactCommonEditorView.onSpinnerItemSelectedListener, EditTextDialogFragment.onEditDialogButtonClickListener,ConfirmDialogFragment.onConfirmDialogButtonClickListener, View.OnClickListener, LoaderManager.LoaderCallbacks<Cursor> {
     public final static String ACTION_ADD = "learn.android.kangel.mycontacts.add";
     public final static String ACTION_EDIT = "learn.android.kangel.mycontacts.edit";
 
@@ -54,6 +58,8 @@ public class EditContactActivity extends AppCompatActivity implements ContactCom
     private static final int REQUEST_PICK_PHOTO = 213;
 
     private EditTextDialogFragment mEditDialog;
+    private ConfirmDialogFragment mConfirmDialog;
+
     private Spinner targetSpinner; //reference to the spinner which is about to be modified
     private List<String> targetTypeStrings; //reference to the typeStrings which is about to be modified
 
@@ -112,6 +118,8 @@ public class EditContactActivity extends AppCompatActivity implements ContactCom
     private long mContactId;
 
 
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -139,10 +147,40 @@ public class EditContactActivity extends AppCompatActivity implements ContactCom
             if (in != null) {
                 headShowImage.setImageBitmap(BitmapFactory.decodeStream(in));
             }
-            getSupportLoaderManager().restartLoader(QUERY_CONTACT, null, this);
         }
+        getSupportLoaderManager().restartLoader(QUERY_CONTACT, null, this);
+        setSupportActionBar(toolbar);
+    }
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_edit_contact, menu);
+        return true;
     }
 
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.submit_edit: {
+                commitChanges();
+                if (getIntent().getExtras() != null) {
+                    Intent intent = new Intent(this, ContactDetailActivity.class);
+                    intent.putExtras(getIntent().getExtras());
+                    startActivity(intent);
+                }
+                finish();
+                return true;
+            }
+            case android.R.id.home: {
+                if (mConfirmDialog == null) {
+                    mConfirmDialog = ConfirmDialogFragment.newInstance(R.string.title_discard_changes, R.string.msg_changes_not_saved,R.style.mAlertDialogStyle);
+                }
+                mConfirmDialog.show(getSupportFragmentManager(), "confirmQuit");
+                return true;
+            }
+
+        }
+        return super.onOptionsItemSelected(item);
+    }
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (resultCode == RESULT_OK) {
@@ -214,7 +252,7 @@ public class EditContactActivity extends AppCompatActivity implements ContactCom
             }
         }
     }
-
+   /*called when spinner user wants to create a custom type*/
 
     @Override
     public void onCustomTypeRequest(Spinner spinner, List<String> typeStrings) {
@@ -227,6 +265,7 @@ public class EditContactActivity extends AppCompatActivity implements ContactCom
 
     }
 
+   /*called when spinner item selected*/
     @Override
     public void onPositiveButtonClick(String s) {
         if (!s.trim().isEmpty()) {
@@ -235,20 +274,19 @@ public class EditContactActivity extends AppCompatActivity implements ContactCom
         }
     }
 
+    /*called when user click the negative button on the confirmQuit */
+    @Override
+    public void onNegativeButtonClick() {
+
+    }
+    /*called when user click the positive button on the confirmQuit */
+    @Override
+    public void onPositiveButtonClick() {
+        finish();
+    }
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
-            case R.id.ok_button: {
-                // TODO: 2016/4/9  show a progress dialog , and do the batch work in worker thread
-                commitChanges();
-                if (getIntent().getExtras() != null) {
-                    Intent intent = new Intent(this, ContactDetailActivity.class);
-                    intent.putExtras(getIntent().getExtras());
-                    startActivity(intent);
-                }
-                finish();
-                break;
-            }
             case R.id.change_photo_button: {
                 if (mListPopupWindow == null) {
                     mListPopupWindow = new ListPopupWindow(this);
@@ -619,4 +657,6 @@ public class EditContactActivity extends AppCompatActivity implements ContactCom
                         name.contains("儿子") ||
                         name.contains("女儿"));
     }
+
+
 }

@@ -50,4 +50,8 @@
     <string name="star_unstar">星标/取消星标</string>
     <string name="no_contact">暂无联系人</string>
     <string name="no_starred_contact">暂无星标联系人</string>
+    <string name="submit_changes">提交修改</string>
+    <string name="title_discard_changes">放弃修改</string>
+    <string name="msg_changes_not_saved">所有修改都不会被保存</string>
+    <string name="block_number">屏蔽此号码</string>
 </resources>

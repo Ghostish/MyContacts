@@ -62,7 +62,7 @@
     <color name="cardview_light_background">#FFFFFFFF</color>
     <color name="cardview_shadow_end_color">#03000000</color>
     <color name="cardview_shadow_start_color">#37000000</color>
-    <color name="colorAccent">#43A047</color>
+    <color name="colorAccent">#ffb521</color>
     <color name="colorPrimary">#FF5722</color>
     <color name="colorPrimaryDark">#E64A19</color>
     <color name="design_fab_shadow_end_color">@android:color/transparent</color>
@@ -346,6 +346,7 @@
     <string name="hint_number">电话号码</string>
     <string name="incoming_call">外接来电</string>
     <string name="missed_call">未接来电</string>
+    <string name="msg_changes_not_saved">所有修改都不会被保存</string>
     <string name="msg_delete_contact">删除后无法恢复</string>
     <string name="name">姓名</string>
     <string name="nickname">别名</string>
@@ -364,8 +365,10 @@
     <string name="show_all_call_logs">显示所有通话记录</string>
     <string name="star_unstar">星标/取消星标</string>
     <string name="status_bar_notification_info_overflow">999+</string>
+    <string name="submit_changes">提交修改</string>
     <string name="title_add_contact">新建联系人</string>
     <string name="title_delete_contact">删除联系人</string>
+    <string name="title_discard_changes">放弃修改</string>
     <string name="title_edit_contact">编辑联系人</string>
     <string name="title_input_type">请输入自定义类型</string>
     <string name="toast_contact_added">添加成功</string>

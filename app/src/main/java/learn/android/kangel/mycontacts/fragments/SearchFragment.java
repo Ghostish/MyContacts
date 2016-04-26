@@ -1,16 +1,17 @@
 package learn.android.kangel.mycontacts.fragments;
 
+import android.Manifest;
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.net.Uri;
-import android.os.Build;
 import android.os.Bundle;
 import android.provider.ContactsContract;
+import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.LoaderManager;
 import android.support.v4.content.CursorLoader;
 import android.support.v4.content.Loader;
-import android.support.v7.widget.Toolbar;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
@@ -18,8 +19,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.inputmethod.InputMethodManager;
-import android.widget.Adapter;
-import android.widget.AdapterView;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Toast;
@@ -31,7 +30,8 @@ import learn.android.kangel.mycontacts.adapters.SearchResultAdapter;
 /**
  * Created by Kangel on 2016/3/24.
  */
-public class SearchFragment extends android.support.v4.app.ListFragment implements LoaderManager.LoaderCallbacks<Cursor>,View.OnClickListener{
+public class SearchFragment extends android.support.v4.app.ListFragment implements LoaderManager.LoaderCallbacks<Cursor>, View.OnClickListener {
+    private static final int REQUEST_CALL_PHONE = 12;
     private SearchResultAdapter mAdapter;
     private final static int SEARCH_QUERY = 23;
     private static final String[] PROJECTION =
@@ -58,6 +58,7 @@ public class SearchFragment extends android.support.v4.app.ListFragment implemen
         super.onActivityCreated(savedInstanceState);
         ListView listView = getListView();
         listView.setDivider(null);
+        mAdapter.setListView(listView);
         InputMethodManager imr = (InputMethodManager) getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
         queryEdit.requestFocus();
         imr.toggleSoftInput(InputMethodManager.SHOW_FORCED, InputMethodManager.HIDE_IMPLICIT_ONLY);
@@ -68,6 +69,22 @@ public class SearchFragment extends android.support.v4.app.ListFragment implemen
         View v = inflater.inflate(R.layout.fragment_search, container, false);
         queryEdit = (EditText) v.findViewById(R.id.edit_query);
         mAdapter = new SearchResultAdapter(getActivity(), null);
+        mAdapter.setListener(new SearchResultAdapter.OnHeadShowClickListener() {
+            @Override
+            public void onHeadShowClick(int position) {
+                Cursor c = mAdapter.getCursor();
+                if (c != null) {
+                    c.moveToPosition(position);
+                    String lookUpKey = c.getString(7);
+                    long contactId = c.getLong(6);
+                    Intent intent = new Intent(getActivity(), ContactDetailActivity.class);
+                    intent.putExtra("lookUpKey", lookUpKey);
+                    intent.putExtra("contactId", contactId);
+                    startActivity(intent);
+                    getFragmentManager().popBackStack();
+                }
+            }
+        });
         setListAdapter(mAdapter);
         v.findViewById(R.id.exit_button).setOnClickListener(this);
         v.findViewById(R.id.clear_text_button).setOnClickListener(this);
@@ -131,13 +148,17 @@ public class SearchFragment extends android.support.v4.app.ListFragment implemen
         Cursor c = mAdapter.getCursor();
         if (c != null) {
             c.moveToPosition(position);
-            String lookUpKey = c.getString(7);
-            long contactId = c.getLong(6);
-            Intent intent = new Intent(getActivity(), ContactDetailActivity.class);
-            intent.putExtra("lookUpKey", lookUpKey);
-            intent.putExtra("contactId", contactId);
-            getActivity().startActivity(intent);
-            getFragmentManager().popBackStack();
+            String number = c.getString(3);
+            if (ActivityCompat.checkSelfPermission(getActivity(), Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED) {
+                if (ActivityCompat.shouldShowRequestPermissionRationale(getActivity(), Manifest.permission.CALL_PHONE)) {
+                    Toast.makeText(getContext(), R.string.permission_call_phone_request, Toast.LENGTH_LONG).show();
+                } else {
+                    ActivityCompat.requestPermissions(getActivity(), new String[]{Manifest.permission.CALL_PHONE}, REQUEST_CALL_PHONE);
+                }
+                return;
+            }
+            Intent intent = new Intent(Intent.ACTION_CALL, Uri.parse("tel:" + number));
+            startActivity(intent);
         }
     }
 

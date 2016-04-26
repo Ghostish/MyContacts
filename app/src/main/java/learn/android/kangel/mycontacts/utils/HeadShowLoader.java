@@ -1,6 +1,5 @@
 package learn.android.kangel.mycontacts.utils;
 
-import android.content.ContentUris;
 import android.content.Context;
 import android.database.Cursor;
 import android.graphics.Bitmap;
@@ -13,7 +12,6 @@ import android.provider.ContactsContract;
 import android.util.LruCache;
 import android.widget.ImageView;
 
-import java.io.ByteArrayInputStream;
 import java.io.InputStream;
 import java.util.concurrent.SynchronousQueue;
 import java.util.concurrent.ThreadPoolExecutor;

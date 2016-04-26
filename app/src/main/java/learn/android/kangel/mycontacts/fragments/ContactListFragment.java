@@ -16,11 +16,8 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import java.security.cert.TrustAnchor;
-
 import learn.android.kangel.mycontacts.MyRecyclerView;
 import learn.android.kangel.mycontacts.R;
-import learn.android.kangel.mycontacts.adapters.CallHistoryAdapter;
 import learn.android.kangel.mycontacts.adapters.ContactListAdapter;
 
 /**

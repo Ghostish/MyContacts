@@ -1,10 +1,9 @@
 package learn.android.kangel.mycontacts.adapters;
 
-import android.app.Activity;
 import android.content.Context;
-import android.content.Intent;
 import android.database.Cursor;
-import android.os.Bundle;
+import android.database.sqlite.SQLiteDatabase;
+import android.os.Build;
 import android.provider.CallLog;
 import android.support.v7.widget.RecyclerView;
 import android.text.format.DateUtils;
@@ -20,14 +19,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 import learn.android.kangel.mycontacts.CallTypeView;
-import learn.android.kangel.mycontacts.activities.CallLogActivity;
-import learn.android.kangel.mycontacts.activities.CallLogDetailActivity;
+import learn.android.kangel.mycontacts.R;
+import learn.android.kangel.mycontacts.utils.AttributionUtil;
 import learn.android.kangel.mycontacts.utils.CallogBean;
 import learn.android.kangel.mycontacts.utils.DateParseUtil;
 import learn.android.kangel.mycontacts.utils.HeadShowLoader;
-import learn.android.kangel.mycontacts.MyRecyclerView;
-import learn.android.kangel.mycontacts.R;
-import learn.android.kangel.mycontacts.activities.RecyclerViewActivity;
+import learn.android.kangel.mycontacts.utils.TelDbHelper;
 
 /**
  * Created by Kangel on 2016/3/17.
@@ -259,6 +256,7 @@ public class CallHistoryAdapter extends RecyclerView.Adapter<CallHistoryAdapter.
     }
 
     private void convertCursorToBeans(Cursor cursor) {
+        SQLiteDatabase db = null;
         data.clear();
         int curr = 0;
         while (cursor != null && cursor.moveToNext()) {
@@ -267,7 +265,19 @@ public class CallHistoryAdapter extends RecyclerView.Adapter<CallHistoryAdapter.
             String number = cursor.getString(cursor.getColumnIndex(CallLog.Calls.NUMBER));
             long time = cursor.getLong(cursor.getColumnIndex(CallLog.Calls.DATE));
             int duration = cursor.getInt(cursor.getColumnIndex(CallLog.Calls.DURATION));
-            String location = cursor.getString(cursor.getColumnIndex(CallLog.Calls.GEOCODED_LOCATION));
+            String location = "";
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                location = cursor.getString(cursor.getColumnIndex(CallLog.Calls.GEOCODED_LOCATION));
+            } else {
+                if (db == null) {
+                    TelDbHelper dbHelper = new TelDbHelper(context);
+                    db = dbHelper.getReadableDatabase();
+                }
+                AttributionUtil.LocationBean bean = AttributionUtil.getAttribution(number, db);
+                if (bean != null) {
+                    location = bean.toString();
+                }
+            }
             if (curr == 0 || !data.get(curr - 1).getNumber().equals(number)) {
                 CallogBean bean = new CallogBean();
                 bean.setContactName(name);
@@ -284,6 +294,9 @@ public class CallHistoryAdapter extends RecyclerView.Adapter<CallHistoryAdapter.
                     bean.increamentCount();
                 }
             }
+        }
+        if (db != null && db.isOpen()) {
+            db.close();
         }
     }
 }

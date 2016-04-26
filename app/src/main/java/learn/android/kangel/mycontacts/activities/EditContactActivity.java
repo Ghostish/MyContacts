@@ -20,7 +20,6 @@ import android.text.TextUtils;
 import android.util.Log;
 import android.view.Display;
 import android.view.Menu;
-import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
@@ -31,7 +30,6 @@ import android.widget.Spinner;
 import android.widget.Toast;
 
 import java.io.ByteArrayOutputStream;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
@@ -39,11 +37,11 @@ import java.util.List;
 
 import learn.android.kangel.mycontacts.ContactCommonEditorView;
 import learn.android.kangel.mycontacts.ContactEditorViewGroup;
+import learn.android.kangel.mycontacts.R;
 import learn.android.kangel.mycontacts.fragments.ConfirmDialogFragment;
+import learn.android.kangel.mycontacts.fragments.EditTextDialogFragment;
 import learn.android.kangel.mycontacts.utils.ContactInfoBean;
 import learn.android.kangel.mycontacts.utils.HeadShowLoader;
-import learn.android.kangel.mycontacts.R;
-import learn.android.kangel.mycontacts.fragments.EditTextDialogFragment;
 
 /**
  * Created by Kangel on 2016/3/30.

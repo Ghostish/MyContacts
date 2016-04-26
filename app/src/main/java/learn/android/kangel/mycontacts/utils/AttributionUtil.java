@@ -5,9 +5,6 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
 
-import java.util.HashMap;
-import java.util.Map;
-
 /**
  * Created by hex on 16/4/16.
  */
@@ -41,6 +38,11 @@ public class AttributionUtil {
 
         public String getIsp() {
             return isp;
+        }
+
+        @Override
+        public String toString() {
+            return province + city;
         }
     }
 
@@ -98,8 +100,15 @@ public class AttributionUtil {
         return bean;
     }
 
-    public static LocationBean getAttribution(Context context, String phone, SQLiteDatabase db) {
-
+    public static LocationBean getAttribution(String phone, SQLiteDatabase db) {
+        String newphone = "";
+        for (char ch : phone.toCharArray()) {
+            if (Character.isDigit(ch)) {
+                newphone += ch;
+            }
+        }
+        phone = newphone;
+        Log.d("ATTR", phone);
         Log.d("ATTR", String.format(QUERY_SQL, phone, phone));
         LocationBean bean = null;
         Cursor c = db.rawQuery(QUERY_SQL, new String[]{phone, phone});

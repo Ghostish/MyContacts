@@ -8,10 +8,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
+import android.widget.ListView;
 import android.widget.TextView;
 
-import learn.android.kangel.mycontacts.utils.HeadShowLoader;
 import learn.android.kangel.mycontacts.R;
+import learn.android.kangel.mycontacts.utils.HeadShowLoader;
 
 /**
  * Created by Kangel on 2016/3/30.
@@ -19,12 +20,26 @@ import learn.android.kangel.mycontacts.R;
 public class SearchResultAdapter extends BaseAdapter {
     private Context context;
     private Cursor cursor;
+
+    public void setListView(ListView listView) {
+        this.listView = listView;
+    }
+
+    private ListView listView;
     private HeadShowLoader mHeadShowLoader = new HeadShowLoader();
+    private OnHeadShowClickListener mListener;
+
+    public void setListener(OnHeadShowClickListener listener) {
+        this.mListener = listener;
+    }
 
     public void setCursor(Cursor cursor) {
         this.cursor = cursor;
     }
 
+    public interface OnHeadShowClickListener {
+        void onHeadShowClick(int position);
+    }
 
     public SearchResultAdapter(Context context, Cursor cursor) {
         this.context = context;
@@ -71,7 +86,7 @@ public class SearchResultAdapter extends BaseAdapter {
         if (preContactId != contactId) {
             holder.headShow.setVisibility(View.VISIBLE);
             holder.nameText.setVisibility(View.VISIBLE);
-            mHeadShowLoader.bindImageView(holder.headShow, context, contactId,lookUpKey);
+            mHeadShowLoader.bindImageView(holder.headShow, context, contactId, lookUpKey);
         } else {
             holder.nameText.setVisibility(View.INVISIBLE);
             holder.headShow.setVisibility(View.INVISIBLE);
@@ -94,6 +109,15 @@ public class SearchResultAdapter extends BaseAdapter {
             nameText = (TextView) v.findViewById(R.id.contact_name);
             numberText = (TextView) v.findViewById(R.id.number);
             numberTypeText = (TextView) v.findViewById(R.id.number_type);
+            headShow.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    int position = listView.getPositionForView(v);
+                    if (mListener != null) {
+                        mListener.onHeadShowClick(position);
+                    }
+                }
+            });
         }
     }
 }

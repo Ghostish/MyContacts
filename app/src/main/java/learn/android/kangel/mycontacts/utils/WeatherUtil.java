@@ -11,9 +11,6 @@ import com.android.volley.toolbox.JsonObjectRequest;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.util.HashMap;
-import java.util.Map;
-
 import learn.android.kangel.mycontacts.R;
 import learn.android.kangel.mycontacts.WeatherInfoView;
 

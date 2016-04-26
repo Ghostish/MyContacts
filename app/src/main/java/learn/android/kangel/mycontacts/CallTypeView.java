@@ -2,7 +2,6 @@ package learn.android.kangel.mycontacts;
 
 import android.content.Context;
 import android.provider.CallLog;
-import android.telecom.Call;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.widget.ImageView;

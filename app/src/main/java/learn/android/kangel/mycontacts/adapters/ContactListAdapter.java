@@ -17,9 +17,9 @@ import android.widget.TextView;
 import com.github.promeg.pinyinhelper.Pinyin;
 import com.simplecityapps.recyclerview_fastscroll.views.FastScrollRecyclerView;
 
-import learn.android.kangel.mycontacts.utils.HeadShowLoader;
 import learn.android.kangel.mycontacts.R;
 import learn.android.kangel.mycontacts.activities.RecyclerViewActivity;
+import learn.android.kangel.mycontacts.utils.HeadShowLoader;
 
 /**
  * Created by Kangel on 2016/3/19.

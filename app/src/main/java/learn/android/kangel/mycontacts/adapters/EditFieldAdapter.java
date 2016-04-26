@@ -1,11 +1,9 @@
 package learn.android.kangel.mycontacts.adapters;
 
 import android.content.Context;
-import android.support.v4.hardware.fingerprint.FingerprintManagerCompatApi23;
 import android.support.v7.widget.RecyclerView;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.util.Size;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;

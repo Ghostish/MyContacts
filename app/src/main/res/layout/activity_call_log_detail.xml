@@ -34,6 +34,8 @@
                     android:layout_width="48dp"
                     android:layout_height="48dp"
                     android:layout_centerVertical="true"
+                    android:onClick="onClick"
+                    android:background="?android:selectableItemBackground"
                     android:layout_marginLeft="16dp"
                     android:layout_marginRight="16dp"
                     android:src="@drawable/default_head_show_list" />

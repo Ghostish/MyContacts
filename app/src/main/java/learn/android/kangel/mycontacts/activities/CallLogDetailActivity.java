@@ -3,11 +3,12 @@ package learn.android.kangel.mycontacts.activities;
 import android.Manifest;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
+import android.provider.ContactsContract;
 import android.support.annotation.Nullable;
 import android.support.v4.app.ActivityCompat;
-import android.support.v4.app.NavUtils;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -39,12 +40,12 @@ public class CallLogDetailActivity extends AppCompatActivity implements View.OnC
             case android.R.id.home:
                 finish();
                 return true;
-            case R.id.block_number:{
+            case R.id.block_number: {
                 boolean result = BlackListUtil.addToNumberBlackList(this, null, new String[]{mBean.getNumber()});
                 if (result) {
-                    Toast.makeText(getApplicationContext(),R.string.block_number_successful,Toast.LENGTH_LONG).show();
-                }else {
-                    Toast.makeText(getApplicationContext(),R.string.block_number_fail,Toast.LENGTH_LONG).show();
+                    Toast.makeText(getApplicationContext(), R.string.block_number_successful, Toast.LENGTH_LONG).show();
+                } else {
+                    Toast.makeText(getApplicationContext(), R.string.block_number_fail, Toast.LENGTH_LONG).show();
                 }
                 return true;
             }
@@ -100,6 +101,23 @@ public class CallLogDetailActivity extends AppCompatActivity implements View.OnC
                 String number = mBean.getNumber();
                 Intent intent = new Intent(Intent.ACTION_CALL, Uri.parse("tel:" + number));
                 startActivity(intent);
+                break;
+            }
+            case R.id.head_show: {
+                String[] projection = new String[]{ContactsContract.Data.CONTACT_ID, ContactsContract.Data.LOOKUP_KEY};
+                Uri mUri = Uri.withAppendedPath(ContactsContract.CommonDataKinds.Phone.CONTENT_FILTER_URI, Uri.encode(mBean.getNumber()));
+                Cursor c = getContentResolver().query(mUri, projection, null, null, null);
+                if (c != null && c.moveToNext()) {
+                    long contactId = c.getLong(0);
+                    String lookUpKey = c.getString(1);
+                    Intent intent = new Intent(this, ContactDetailActivity.class);
+                    intent.putExtra("lookUpKey", lookUpKey);
+                    intent.putExtra("contactId", contactId);
+                    startActivity(intent);
+                    finish();
+                    break;
+                }
+                c.close();
             }
         }
     }

@@ -2,7 +2,6 @@ package learn.android.kangel.mycontacts;
 
 import android.content.Context;
 import android.support.v7.widget.CardView;
-import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.widget.ImageView;

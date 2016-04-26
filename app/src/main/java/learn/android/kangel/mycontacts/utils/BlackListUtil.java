@@ -109,7 +109,7 @@ public class BlackListUtil {
     public static Cursor getBlockedNumbers(SQLiteDatabase db) {
         Cursor c = null;
         try {
-            c = db.query(NUMBER_TABLE_NAME, new String[]{"rowid", "number"}, null, null, null, null, null);
+            c = db.query(NUMBER_TABLE_NAME, new String[]{"rowid", "number"}, null, null, null, null, "rowid");
         } catch (SQLiteException e) {
             e.printStackTrace();
         }
@@ -131,4 +131,34 @@ public class BlackListUtil {
         }
         return result;
     }
+
+    public static boolean addToNumberBlackList(SQLiteDatabase db, String number) {
+        boolean result;
+        ContentValues values = new ContentValues();
+        values.put(NUMBER, number);
+        try {
+            db.insertWithOnConflict(NUMBER_TABLE_NAME, null, values, SQLiteDatabase.CONFLICT_REPLACE);
+            result = true;
+        } catch (SQLiteException e) {
+            Log.e("SqliteError", e.getLocalizedMessage());
+            result = false;
+        }
+        return result;
+    }
+
+    public static boolean updateNumberBlackList(SQLiteDatabase db, String number, int rowid) {
+        boolean result;
+        ContentValues values = new ContentValues();
+        values.put(NUMBER, number);
+        try {
+            db.update(NUMBER_TABLE_NAME, values, "rowid = ?", new String[]{String.valueOf(rowid)});
+            result = true;
+        } catch (SQLiteException e) {
+            Log.e("SqliteError", e.getLocalizedMessage());
+            result = false;
+        }
+        return result;
+    }
+
+
 }

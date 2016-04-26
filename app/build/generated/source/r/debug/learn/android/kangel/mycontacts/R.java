@@ -2555,8 +2555,8 @@ containing a value of this type.
         public static final int always=0x7f0f0036;
         public static final int app_bar=0x7f0f0076;
         public static final int beginning=0x7f0f0034;
-        public static final int block_contact=0x7f0f00c1;
-        public static final int block_number=0x7f0f00be;
+        public static final int block_contact=0x7f0f00c2;
+        public static final int block_number=0x7f0f00bf;
         public static final int bottom=0x7f0f0020;
         public static final int buttonPanel=0x7f0f0047;
         public static final int call_button=0x7f0f0073;
@@ -2580,13 +2580,13 @@ containing a value of this type.
         public static final int container=0x7f0f006d;
         public static final int contentPanel=0x7f0f004d;
         public static final int coordinator=0x7f0f0075;
-        public static final int copy=0x7f0f00c3;
+        public static final int copy=0x7f0f00c4;
         public static final int custom=0x7f0f0053;
         public static final int customPanel=0x7f0f0052;
         public static final int decor_content_parent=0x7f0f005b;
         public static final int default_activity_button=0x7f0f0043;
         public static final int delete_button=0x7f0f00a5;
-        public static final int delete_contact=0x7f0f00bf;
+        public static final int delete_contact=0x7f0f00c0;
         public static final int design_bottom_sheet=0x7f0f008a;
         public static final int design_menu_item_action_area=0x7f0f0091;
         public static final int design_menu_item_action_area_stub=0x7f0f0090;
@@ -2596,6 +2596,7 @@ containing a value of this type.
         public static final int duration_text=0x7f0f009c;
         public static final int edit=0x7f0f0092;
         public static final int edit_query=0x7f0f005f;
+        public static final int edit_text=0x7f0f00be;
         public static final int editor_container=0x7f0f007f;
         public static final int email=0x7f0f000c;
         public static final int email_view_stub=0x7f0f007a;
@@ -2686,12 +2687,12 @@ containing a value of this type.
         public static final int search_view_card=0x7f0f0083;
         public static final int search_voice_btn=0x7f0f006a;
         public static final int select_dialog_listview=0x7f0f006b;
-        public static final int send_email=0x7f0f00c2;
+        public static final int send_email=0x7f0f00c3;
         public static final int shortcut=0x7f0f0056;
         public static final int showCustom=0x7f0f0014;
         public static final int showHome=0x7f0f0015;
         public static final int showTitle=0x7f0f0016;
-        public static final int show_block_numbers=0x7f0f00c6;
+        public static final int show_block_numbers=0x7f0f00c7;
         public static final int snackbar_action=0x7f0f008c;
         public static final int snackbar_text=0x7f0f008b;
         public static final int snap=0x7f0f001c;
@@ -2700,11 +2701,11 @@ containing a value of this type.
         public static final int src_atop=0x7f0f002c;
         public static final int src_in=0x7f0f002d;
         public static final int src_over=0x7f0f002e;
-        public static final int star_contact=0x7f0f00c0;
+        public static final int star_contact=0x7f0f00c1;
         public static final int start=0x7f0f0028;
         public static final int status_bar_latest_event_content=0x7f0f00b0;
         public static final int submit_area=0x7f0f0068;
-        public static final int submit_edit=0x7f0f00c5;
+        public static final int submit_edit=0x7f0f00c6;
         public static final int tab=0x7f0f0085;
         public static final int tabMode=0x7f0f0010;
         public static final int temperature_desc=0x7f0f00ac;
@@ -2725,7 +2726,7 @@ containing a value of this type.
         public static final int up=0x7f0f0009;
         public static final int useLogo=0x7f0f0017;
         public static final int view_offset_helper=0x7f0f000a;
-        public static final int warm_sms=0x7f0f00c4;
+        public static final int warm_sms=0x7f0f00c5;
         public static final int weather_desc=0x7f0f00aa;
         public static final int weather_image=0x7f0f00a8;
         public static final int weather_view=0x7f0f0078;
@@ -2812,8 +2813,9 @@ containing a value of this type.
         public static final int select_dialog_item_material=0x7f040043;
         public static final int select_dialog_multichoice_material=0x7f040044;
         public static final int select_dialog_singlechoice_material=0x7f040045;
-        public static final int support_simple_spinner_dropdown_item=0x7f040046;
-        public static final int view_stub_contact_header_text=0x7f040047;
+        public static final int simple_edit_field=0x7f040046;
+        public static final int support_simple_spinner_dropdown_item=0x7f040047;
+        public static final int view_stub_contact_header_text=0x7f040048;
     }
     public static final class menu {
         public static final int menu_call_log_menu=0x7f100000;

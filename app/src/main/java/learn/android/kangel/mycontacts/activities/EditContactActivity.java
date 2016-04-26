@@ -147,8 +147,8 @@ public class EditContactActivity extends AppCompatActivity implements ContactCom
             if (in != null) {
                 headShowImage.setImageBitmap(BitmapFactory.decodeStream(in));
             }
+            getSupportLoaderManager().restartLoader(QUERY_CONTACT, null, this);
         }
-        getSupportLoaderManager().restartLoader(QUERY_CONTACT, null, this);
         setSupportActionBar(toolbar);
     }
     @Override
@@ -190,8 +190,9 @@ public class EditContactActivity extends AppCompatActivity implements ContactCom
                     InputStream imageInputStream = null;
                     try {
                         imageInputStream = getContentResolver().openInputStream(selectedImage);
-                    } catch (FileNotFoundException e) {
+                    } catch (Exception e) {
                         e.printStackTrace();
+                        Toast.makeText(getApplicationContext(),e.getLocalizedMessage(),Toast.LENGTH_LONG).show();
                     }
                     if (imageInputStream != null) {
                         Display display = getWindowManager().getDefaultDisplay();
@@ -332,12 +333,19 @@ public class EditContactActivity extends AppCompatActivity implements ContactCom
     }
 
     private void pickPicture() {
-        Intent pickPhotoIntent = new Intent(Intent.ACTION_PICK, android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
-        if (pickPhotoIntent.resolveActivity(getPackageManager()) != null) {
+        Intent getIntent = new Intent();
+        getIntent.setAction(Intent.ACTION_GET_CONTENT);
+        getIntent.setType("image/*");
+        Intent pickPhotoIntent = new Intent(Intent.ACTION_GET_CONTENT, android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+        pickPhotoIntent.setType("image/*");
+        Intent chooseIntent = Intent.createChooser(getIntent, "选择图片");
+        chooseIntent.putExtra(Intent.EXTRA_INITIAL_INTENTS, new Intent[]{pickPhotoIntent});
+        startActivityForResult(chooseIntent, REQUEST_PICK_PHOTO);
+        /*if (pickPhotoIntent.resolveActivity(getPackageManager()) != null) {
             startActivityForResult(pickPhotoIntent, REQUEST_PICK_PHOTO);
         } else {
             Toast.makeText(getApplicationContext(), R.string.no_gallery, Toast.LENGTH_LONG).show();
-        }
+        }*/
     }
 
     private void commitChanges() {

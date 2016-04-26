@@ -7,6 +7,8 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.DialogFragment;
+import android.text.InputType;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,7 +21,8 @@ import learn.android.kangel.mycontacts.R;
  */
 public class EditTextDialogFragment extends DialogFragment {
 
-    private EditText mEditText;
+    private String mDisplayText;
+    private int mInputType = InputType.TYPE_CLASS_TEXT;
 
     public interface onEditDialogButtonClickListener {
         void onPositiveButtonClick(String s);
@@ -34,26 +37,18 @@ public class EditTextDialogFragment extends DialogFragment {
         return f;
     }
 
-    public static EditTextDialogFragment newInstance(int titleResId, String text,int style) {
-        EditTextDialogFragment f = new EditTextDialogFragment();
-        Bundle args = new Bundle();
-        args.putInt("style", style);
-        args.putInt("titleResId", titleResId);
-        args.putString("text", text);
-        f.setArguments(args);
-        return f;
-    }
     @NonNull
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
         Bundle args = getArguments();
         int style = args.getInt("style");
         int titleId = args.getInt("titleResId");
-        String text = args.getString("text");
-        mEditText = new EditText(getActivity());
-        if (text != null) {
-            mEditText.setText(text);
-        }
+
+        final EditText editText = new EditText(getActivity());
+        editText.setInputType(mInputType);
+        editText.setSingleLine();
+        editText.setText(mDisplayText);
+
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity(), style);
         builder
                 .setTitle(titleId)
@@ -62,19 +57,21 @@ public class EditTextDialogFragment extends DialogFragment {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         if (getActivity() instanceof onEditDialogButtonClickListener) {
-                            ((onEditDialogButtonClickListener) getActivity()).onPositiveButtonClick(mEditText.getText().toString());
+                            ((onEditDialogButtonClickListener) getActivity()).onPositiveButtonClick(editText.getText().toString());
 
                         }
                     }
                 });
         AlertDialog dialog = builder.create();
-        dialog.setView(mEditText, 50, 50, 50, 50);
+        dialog.setView(editText, 50, 50, 50, 50);
         return dialog;
     }
 
-    public void setEditText(String text) {
-        if (mEditText != null) {
-            mEditText.setText(text);
-        }
+    public void setDisplayTextText(String text) {
+        mDisplayText = text;
+    }
+
+    public void setInputType(int inputType) {
+        this.mInputType = inputType;
     }
 }

@@ -104,12 +104,12 @@
         "source": "G:\\CD\\android_project\\MyContacts\\app\\src\\main\\res\\mipmap-xhdpi\\code200.png"
     },
     {
-        "merged": "G:\\CD\\android_project\\MyContacts\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xhdpi-v4\\code203.png",
-        "source": "G:\\CD\\android_project\\MyContacts\\app\\src\\main\\res\\mipmap-xhdpi\\code203.png"
-    },
-    {
         "merged": "G:\\CD\\android_project\\MyContacts\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xhdpi-v4\\code211.png",
         "source": "G:\\CD\\android_project\\MyContacts\\app\\src\\main\\res\\mipmap-xhdpi\\code211.png"
+    },
+    {
+        "merged": "G:\\CD\\android_project\\MyContacts\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xhdpi-v4\\code203.png",
+        "source": "G:\\CD\\android_project\\MyContacts\\app\\src\\main\\res\\mipmap-xhdpi\\code203.png"
     },
     {
         "merged": "G:\\CD\\android_project\\MyContacts\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xhdpi-v4\\code304.png",
@@ -204,16 +204,16 @@
         "source": "G:\\CD\\android_project\\MyContacts\\app\\src\\main\\res\\mipmap-xhdpi\\code300.png"
     },
     {
+        "merged": "G:\\CD\\android_project\\MyContacts\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xhdpi-v4\\code303.png",
+        "source": "G:\\CD\\android_project\\MyContacts\\app\\src\\main\\res\\mipmap-xhdpi\\code303.png"
+    },
+    {
         "merged": "G:\\CD\\android_project\\MyContacts\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xhdpi-v4\\code207.png",
         "source": "G:\\CD\\android_project\\MyContacts\\app\\src\\main\\res\\mipmap-xhdpi\\code207.png"
     },
     {
         "merged": "G:\\CD\\android_project\\MyContacts\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xhdpi-v4\\code404.png",
         "source": "G:\\CD\\android_project\\MyContacts\\app\\src\\main\\res\\mipmap-xhdpi\\code404.png"
-    },
-    {
-        "merged": "G:\\CD\\android_project\\MyContacts\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xhdpi-v4\\code303.png",
-        "source": "G:\\CD\\android_project\\MyContacts\\app\\src\\main\\res\\mipmap-xhdpi\\code303.png"
     },
     {
         "merged": "G:\\CD\\android_project\\MyContacts\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xhdpi-v4\\code500.png",

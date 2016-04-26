@@ -12,6 +12,9 @@
         <item>其他</item>
         <item>自定义</item>
     </string-array>
+    <string-array name="main_menu">
+        <item>查看号码黑名单</item>
+    </string-array>
     <string-array name="phone_type">
         <item>手机</item>
         <item>住宅</item>
@@ -329,6 +332,10 @@
     <string name="app_name">MyContacts</string>
     <string name="appbar_scrolling_view_behavior" translatable="false">android.support.design.widget.AppBarLayout$ScrollingViewBehavior</string>
     <string name="block_contact">屏蔽联系人</string>
+    <string name="block_number">屏蔽此号码</string>
+    <string name="block_number_fail">黑名单中已包括该号码</string>
+    <string name="block_number_successful">屏蔽成功</string>
+    <string name="blocked_numbers_list">屏蔽列表</string>
     <string name="bottom_sheet_behavior" translatable="false">android.support.design.widget.BottomSheetBehavior</string>
     <string name="call_history">通话记录</string>
     <string name="call_log_detail">通话详情</string>
@@ -348,6 +355,7 @@
     <string name="missed_call">未接来电</string>
     <string name="msg_changes_not_saved">所有修改都不会被保存</string>
     <string name="msg_delete_contact">删除后无法恢复</string>
+    <string name="msg_remove_block">移除后将不再屏蔽此号码来电</string>
     <string name="name">姓名</string>
     <string name="nickname">别名</string>
     <string name="no_camera">请安装相机</string>
@@ -363,14 +371,17 @@
     <string name="search_hint">输入姓名或电话</string>
     <string name="send_email">发送邮件</string>
     <string name="show_all_call_logs">显示所有通话记录</string>
+    <string name="show_block_numbers">显示屏蔽列表</string>
     <string name="star_unstar">星标/取消星标</string>
     <string name="status_bar_notification_info_overflow">999+</string>
     <string name="submit_changes">提交修改</string>
     <string name="title_add_contact">新建联系人</string>
     <string name="title_delete_contact">删除联系人</string>
     <string name="title_discard_changes">放弃修改</string>
+    <string name="title_edit_block_number">编辑号码</string>
     <string name="title_edit_contact">编辑联系人</string>
     <string name="title_input_type">请输入自定义类型</string>
+    <string name="title_remove_block">取消屏蔽</string>
     <string name="toast_contact_added">添加成功</string>
     <string name="toast_contact_deleted">删除成功</string>
     <string name="toast_contact_edited">编辑成功</string>

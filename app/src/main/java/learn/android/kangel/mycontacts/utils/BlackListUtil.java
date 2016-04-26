@@ -4,6 +4,7 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteAbortException;
+import android.database.sqlite.SQLiteConstraintException;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteException;
 import android.util.Log;
@@ -42,7 +43,7 @@ public class BlackListUtil {
     }
 
     public static boolean addToNumberBlackList(Context context, String contactLookUpKey, String[] numbers) {
-        boolean result = false;
+        boolean result;
         MyDatabaseHelper myDatabaseHelper = new MyDatabaseHelper(context);
         SQLiteDatabase db = myDatabaseHelper.getReadableDatabase();
         db.beginTransaction();
@@ -51,13 +52,14 @@ public class BlackListUtil {
             for (String number : numbers) {
                 values.put(NUMBER, number);
                 values.put("look_up_key", contactLookUpKey);
-                db.insert(NUMBER_TABLE_NAME, null, values);
+                db.insertOrThrow(NUMBER_TABLE_NAME, null, values);
                 values.clear();
             }
             db.setTransactionSuccessful();
             result = true;
-        } catch (SQLiteAbortException e) {
+        } catch (SQLiteConstraintException e) {
             Log.e("SqliteError", e.getLocalizedMessage());
+            result = false;
         } finally {
             db.endTransaction();
         }
@@ -77,6 +79,7 @@ public class BlackListUtil {
         }
         return result;
     }
+
     public static boolean removeNumberFromBlackList(Context context, String number) {
         boolean result;
         MyDatabaseHelper myDatabaseHelper = new MyDatabaseHelper(context);
@@ -91,6 +94,27 @@ public class BlackListUtil {
         return result;
     }
 
+    public static boolean removeNumberFromBlackList(SQLiteDatabase db, String number) {
+        boolean result;
+        try {
+            db.delete(NUMBER_TABLE_NAME, SELECTION_NUMBER, new String[]{number});
+            result = true;
+        } catch (SQLiteException e) {
+            Log.e("SqliteError", e.getLocalizedMessage());
+            result = false;
+        }
+        return result;
+    }
+
+    public static Cursor getBlockedNumbers(SQLiteDatabase db) {
+        Cursor c = null;
+        try {
+            c = db.query(NUMBER_TABLE_NAME, new String[]{"rowid", "number"}, null, null, null, null, null);
+        } catch (SQLiteException e) {
+            e.printStackTrace();
+        }
+        return c;
+    }
 
     public static boolean addToContactBlackList(Context context, String contactLookUpKey) {
         boolean result;

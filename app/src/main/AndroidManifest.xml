@@ -46,6 +46,8 @@
             android:name=".activities.CallLogActivity"
             android:parentActivityName=".activities.MainActivity" />
         <activity android:name=".activities.CallLogDetailActivity" />
+        <activity android:name=".activities.ShowBlockedNumbersActivity"
+            android:parentActivityName=".activities.MainActivity"/>
 
         <receiver android:name=".TelephoneReceiver">
             <intent-filter android:priority="100">

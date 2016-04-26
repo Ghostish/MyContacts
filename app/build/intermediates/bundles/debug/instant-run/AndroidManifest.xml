@@ -54,6 +54,9 @@
             android:name="learn.android.kangel.mycontacts.activities.CallLogActivity"
             android:parentActivityName="learn.android.kangel.mycontacts.activities.MainActivity" />
         <activity android:name="learn.android.kangel.mycontacts.activities.CallLogDetailActivity" />
+        <activity
+            android:name="learn.android.kangel.mycontacts.activities.ShowBlockedNumbersActivity"
+            android:parentActivityName="learn.android.kangel.mycontacts.activities.MainActivity" />
 
         <receiver android:name="learn.android.kangel.mycontacts.TelephoneReceiver" >
             <intent-filter android:priority="100" >

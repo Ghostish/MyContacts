@@ -23,5 +23,8 @@
         <item>拍照</item>
         <item>从相册选择</item>
     </string-array>
+    <string-array name="main_menu">
+        <item>查看号码黑名单</item>
+    </string-array>
 
 </resources>

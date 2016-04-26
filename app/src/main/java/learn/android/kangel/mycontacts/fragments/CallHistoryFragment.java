@@ -48,7 +48,7 @@ public class CallHistoryFragment extends Fragment implements LoaderManager.Loade
                     CallLog.Calls.DURATION,
                     CallLog.Calls.GEOCODED_LOCATION
             };
-    private final static String SELECTION_PARTIAL = CallLog.Calls.DATE + ">=" + "((SELECT MAX(" + CallLog.Calls.DATE + ") - 259200000 FROM calls))";
+    private final static String SELECTION_PARTIAL = null;//CallLog.Calls.DATE + ">=" + "((SELECT MAX(" + CallLog.Calls.DATE + ") - 259200000 FROM calls))";
 
     public static CallHistoryFragment newInstance(int mode) {
         CallHistoryFragment f = new CallHistoryFragment();
@@ -56,7 +56,7 @@ public class CallHistoryFragment extends Fragment implements LoaderManager.Loade
         return f;
     }
 
-    private final CallHistoryAdapter.onCallLogItemClickListener mListenr = new CallHistoryAdapter.onCallLogItemClickListener() {
+    private final CallHistoryAdapter.onCallLogItemClickListener mListener = new CallHistoryAdapter.onCallLogItemClickListener() {
         @Override
         public void onItemClick(CallogBean bean) {
             Intent intent = new Intent(getActivity(), CallLogDetailActivity.class);
@@ -108,7 +108,7 @@ public class CallHistoryFragment extends Fragment implements LoaderManager.Loade
         sectionedRecyclerViewAdapter.setSections(sections);
         recyclerView.setAdapter(sectionedRecyclerViewAdapter);*/
         mAdapter = new CallHistoryAdapter(getActivity(), null, mMode);
-        mAdapter.setListener(mListenr);
+        mAdapter.setListener(mListener);
         recyclerView.setAdapter(mAdapter);
         recyclerView.setEmptyView(v.findViewById(R.id.empty_view));
         // recyclerView.setLoadingView(v.findViewById(R.id.progress_view));
@@ -120,7 +120,7 @@ public class CallHistoryFragment extends Fragment implements LoaderManager.Loade
     public Loader<Cursor> onCreateLoader(int id, Bundle args) {
         if (id == QUERY_CALL_HISTORY) {
             if (mMode == MODE_PARTIAL) {
-                return new CursorLoader(getActivity(), CallLog.Calls.CONTENT_URI, CALL_LOG_PROJECTION, SELECTION_PARTIAL, null, CallLog.Calls.DATE + " desc");
+                return new CursorLoader(getActivity(), CallLog.Calls.CONTENT_URI, CALL_LOG_PROJECTION, SELECTION_PARTIAL, null, CallLog.Calls.DATE + " desc limit 50");
             } else {
                 return new CursorLoader(getActivity(), CallLog.Calls.CONTENT_URI, CALL_LOG_PROJECTION, null, null, CallLog.Calls.DATE + " desc");
 

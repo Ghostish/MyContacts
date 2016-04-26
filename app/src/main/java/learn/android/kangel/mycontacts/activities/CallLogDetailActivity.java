@@ -12,6 +12,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
@@ -20,6 +21,7 @@ import android.widget.Toast;
 
 import learn.android.kangel.mycontacts.R;
 import learn.android.kangel.mycontacts.adapters.CallLogDetailAdapter;
+import learn.android.kangel.mycontacts.utils.BlackListUtil;
 import learn.android.kangel.mycontacts.utils.CallogBean;
 import learn.android.kangel.mycontacts.utils.HeadShowLoader;
 
@@ -36,8 +38,24 @@ public class CallLogDetailActivity extends AppCompatActivity implements View.OnC
         switch (item.getItemId()) {
             case android.R.id.home:
                 finish();
+                return true;
+            case R.id.block_number:{
+                boolean result = BlackListUtil.addToNumberBlackList(this, null, new String[]{mBean.getNumber()});
+                if (result) {
+                    Toast.makeText(getApplicationContext(),R.string.block_number_successful,Toast.LENGTH_LONG).show();
+                }else {
+                    Toast.makeText(getApplicationContext(),R.string.block_number_fail,Toast.LENGTH_LONG).show();
+                }
+                return true;
+            }
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_call_log_menu, menu);
+        return true;
     }
 
     @Override

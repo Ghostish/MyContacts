@@ -20,10 +20,19 @@ import android.support.v4.content.ContextCompat;
 import android.support.v4.view.ViewCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.ListPopupWindow;
+import android.support.v7.widget.PopupMenu;
+import android.support.v7.widget.Toolbar;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 
 import learn.android.kangel.mycontacts.R;
+import learn.android.kangel.mycontacts.adapters.BlockNumberAdapter;
 import learn.android.kangel.mycontacts.adapters.ContactListAdapter;
 import learn.android.kangel.mycontacts.fragments.CallHistoryFragment;
 import learn.android.kangel.mycontacts.fragments.ContactListFragment;
@@ -33,8 +42,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private final static int REQUEST_CALL_LOG_CONTACTS = 110;
     private static final int REQUEST_CALL_PHONE = 111;
     private SearchFragment mSearchFragment;
+    private ListPopupWindow mListPopupWindow;
     private FloatingActionButton fab;
-    int appbarHeight = 0;
+    private PopupMenu mPopupMenu;
 
 
     private final static String[] REQUEST_PERMISSION = new String[]
@@ -111,13 +121,38 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 intent.setAction(EditContactActivity.ACTION_ADD);
                 startActivity(intent);
                 break;
+            case R.id.menu_main: {
+                showPopupMenu();
+            }
         }
+    }
+
+    private void showPopupMenu() {
+
+        if (mPopupMenu == null) {
+            mPopupMenu = new PopupMenu(this, findViewById(R.id.menu_main));
+            MenuInflater inflater = mPopupMenu.getMenuInflater();
+            inflater.inflate(R.menu.menu_main, mPopupMenu.getMenu());
+            mPopupMenu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
+                @Override
+                public boolean onMenuItemClick(MenuItem item) {
+                    switch (item.getItemId()) {
+                        case R.id.show_block_numbers:
+                            Intent intent = new Intent(MainActivity.this, ShowBlockedNumbersActivity.class);
+                            startActivity(intent);
+                            return true;
+                    }
+                    return false;
+                }
+            });
+        }
+        mPopupMenu.show();
     }
 
     @Override
     public void onWindowFocusChanged(boolean hasFocus) {
         super.onWindowFocusChanged(hasFocus);
-        if (hasFocus && appbarHeight == 0) {
+        if (hasFocus) {
             /*TabLayout tabLayout = (TabLayout) findViewById(R.id.tab);
             appbarHeight += tabLayout.getHeight();
             CardView cardView = (CardView) findViewById(R.id.search_view_card);
@@ -140,7 +175,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     private void initView(Bundle savedInstanceState) {
-
         final TabLayout tabLayout = (TabLayout) findViewById(R.id.tab);
         tabLayout.addTab(tabLayout.newTab().setIcon(R.drawable.ic_history_white_24dp));
         tabLayout.addTab(tabLayout.newTab().setIcon(R.drawable.ic_account_box_white_24dp));
@@ -197,7 +231,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
 
-    class contactPagerAdapter extends FragmentStatePagerAdapter {
+    static class contactPagerAdapter extends FragmentStatePagerAdapter {
 
         public contactPagerAdapter(FragmentManager fm) {
             super(fm);

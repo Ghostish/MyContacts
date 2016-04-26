@@ -34,13 +34,26 @@ public class EditTextDialogFragment extends DialogFragment {
         return f;
     }
 
+    public static EditTextDialogFragment newInstance(int titleResId, String text,int style) {
+        EditTextDialogFragment f = new EditTextDialogFragment();
+        Bundle args = new Bundle();
+        args.putInt("style", style);
+        args.putInt("titleResId", titleResId);
+        args.putString("text", text);
+        f.setArguments(args);
+        return f;
+    }
     @NonNull
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
         Bundle args = getArguments();
         int style = args.getInt("style");
         int titleId = args.getInt("titleResId");
+        String text = args.getString("text");
         mEditText = new EditText(getActivity());
+        if (text != null) {
+            mEditText.setText(text);
+        }
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity(), style);
         builder
                 .setTitle(titleId)
@@ -57,5 +70,11 @@ public class EditTextDialogFragment extends DialogFragment {
         AlertDialog dialog = builder.create();
         dialog.setView(mEditText, 50, 50, 50, 50);
         return dialog;
+    }
+
+    public void setEditText(String text) {
+        if (mEditText != null) {
+            mEditText.setText(text);
+        }
     }
 }

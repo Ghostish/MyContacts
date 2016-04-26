@@ -37,7 +37,7 @@ public class ContactListFragment extends Fragment implements LoaderManager.Loade
                     ContactsContract.Contacts.DISPLAY_NAME_PRIMARY,
                     ContactsContract.Contacts.SORT_KEY_PRIMARY
             };
-    private static final String SELECTION = ContactsContract.Contacts.HAS_PHONE_NUMBER + " = 1";
+    private static final String SELECTION = ContactsContract.Contacts.HAS_PHONE_NUMBER + " <> 0";
     private static final String SELECTION_STARRED = ContactsContract.Contacts.STARRED + " <> 0";
 
     private int mMode;

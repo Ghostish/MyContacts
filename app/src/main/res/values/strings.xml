@@ -54,4 +54,11 @@
     <string name="title_discard_changes">放弃修改</string>
     <string name="msg_changes_not_saved">所有修改都不会被保存</string>
     <string name="block_number">屏蔽此号码</string>
+    <string name="block_number_successful">屏蔽成功</string>
+    <string name="block_number_fail">黑名单中已包括该号码</string>
+    <string name="blocked_numbers_list">屏蔽列表</string>
+    <string name="show_block_numbers">显示屏蔽列表</string>
+    <string name="title_remove_block">取消屏蔽</string>
+    <string name="msg_remove_block">移除后将不再屏蔽此号码来电</string>
+    <string name="title_edit_block_number">编辑号码</string>
 </resources>

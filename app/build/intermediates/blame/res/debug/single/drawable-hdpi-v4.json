@@ -224,12 +224,12 @@
         "source": "G:\\CD\\android_project\\MyContacts\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.3.0\\res\\drawable-hdpi-v4\\abc_scrubber_control_to_pressed_mtrl_000.png"
     },
     {
-        "merged": "G:\\CD\\android_project\\MyContacts\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\ic_account_box_white_24dp.png",
-        "source": "G:\\CD\\android_project\\MyContacts\\app\\src\\main\\res\\drawable-hdpi\\ic_account_box_white_24dp.png"
-    },
-    {
         "merged": "G:\\CD\\android_project\\MyContacts\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\abc_list_longpressed_holo.9.png",
         "source": "G:\\CD\\android_project\\MyContacts\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.3.0\\res\\drawable-hdpi-v4\\abc_list_longpressed_holo.9.png"
+    },
+    {
+        "merged": "G:\\CD\\android_project\\MyContacts\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\ic_account_box_white_24dp.png",
+        "source": "G:\\CD\\android_project\\MyContacts\\app\\src\\main\\res\\drawable-hdpi\\ic_account_box_white_24dp.png"
     },
     {
         "merged": "G:\\CD\\android_project\\MyContacts\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\ic_more_vert_black_24dp.png",

@@ -1,6 +1,6 @@
 -- Merging decision tree log ---
 manifest
-ADDED from G:\CD\android_project\MyContacts\app\src\main\AndroidManifest.xml:2:1-62:12
+ADDED from G:\CD\android_project\MyContacts\app\src\main\AndroidManifest.xml:2:1-63:12
 	package
 		ADDED from G:\CD\android_project\MyContacts\app\src\main\AndroidManifest.xml:3:5-46
 		INJECTED from G:\CD\android_project\MyContacts\app\src\main\AndroidManifest.xml
@@ -21,28 +21,32 @@ uses-permission#android.permission.READ_CALL_LOG
 ADDED from G:\CD\android_project\MyContacts\app\src\main\AndroidManifest.xml:6:5-72
 	android:name
 		ADDED from G:\CD\android_project\MyContacts\app\src\main\AndroidManifest.xml:6:22-69
+uses-permission#android.permission.WRITE_CALL_LOG
+ADDED from G:\CD\android_project\MyContacts\app\src\main\AndroidManifest.xml:7:5-73
+	android:name
+		ADDED from G:\CD\android_project\MyContacts\app\src\main\AndroidManifest.xml:7:22-70
 uses-permission#android.permission.READ_CONTACTS
-ADDED from G:\CD\android_project\MyContacts\app\src\main\AndroidManifest.xml:7:5-72
+ADDED from G:\CD\android_project\MyContacts\app\src\main\AndroidManifest.xml:8:5-72
 	android:name
-		ADDED from G:\CD\android_project\MyContacts\app\src\main\AndroidManifest.xml:7:22-69
+		ADDED from G:\CD\android_project\MyContacts\app\src\main\AndroidManifest.xml:8:22-69
 uses-permission#android.permission.WRITE_CONTACTS
-ADDED from G:\CD\android_project\MyContacts\app\src\main\AndroidManifest.xml:8:5-73
+ADDED from G:\CD\android_project\MyContacts\app\src\main\AndroidManifest.xml:9:5-73
 	android:name
-		ADDED from G:\CD\android_project\MyContacts\app\src\main\AndroidManifest.xml:8:22-70
+		ADDED from G:\CD\android_project\MyContacts\app\src\main\AndroidManifest.xml:9:22-70
 uses-permission#android.permission.READ_PHONE_STATE
-ADDED from G:\CD\android_project\MyContacts\app\src\main\AndroidManifest.xml:9:5-75
+ADDED from G:\CD\android_project\MyContacts\app\src\main\AndroidManifest.xml:10:5-75
 	android:name
-		ADDED from G:\CD\android_project\MyContacts\app\src\main\AndroidManifest.xml:9:22-72
+		ADDED from G:\CD\android_project\MyContacts\app\src\main\AndroidManifest.xml:10:22-72
 uses-permission#android.permission.INTERNET
-ADDED from G:\CD\android_project\MyContacts\app\src\main\AndroidManifest.xml:10:5-67
+ADDED from G:\CD\android_project\MyContacts\app\src\main\AndroidManifest.xml:11:5-67
 	android:name
-		ADDED from G:\CD\android_project\MyContacts\app\src\main\AndroidManifest.xml:10:22-64
+		ADDED from G:\CD\android_project\MyContacts\app\src\main\AndroidManifest.xml:11:22-64
 uses-permission#android.permission.READ_EXTERNAL_STORAGE
-ADDED from G:\CD\android_project\MyContacts\app\src\main\AndroidManifest.xml:11:5-80
+ADDED from G:\CD\android_project\MyContacts\app\src\main\AndroidManifest.xml:12:5-80
 	android:name
-		ADDED from G:\CD\android_project\MyContacts\app\src\main\AndroidManifest.xml:11:22-77
+		ADDED from G:\CD\android_project\MyContacts\app\src\main\AndroidManifest.xml:12:22-77
 application
-ADDED from G:\CD\android_project\MyContacts\app\src\main\AndroidManifest.xml:13:5-60:19
+ADDED from G:\CD\android_project\MyContacts\app\src\main\AndroidManifest.xml:14:5-61:19
 MERGED from [com.android.support:appcompat-v7:23.3.0] G:\CD\android_project\MyContacts\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\23.3.0\AndroidManifest.xml:25:5-20
 MERGED from [com.android.support:support-vector-drawable:23.3.0] G:\CD\android_project\MyContacts\app\build\intermediates\exploded-aar\com.android.support\support-vector-drawable\23.3.0\AndroidManifest.xml:7:5-20
 MERGED from [com.android.support:support-v4:23.3.0] G:\CD\android_project\MyContacts\app\build\intermediates\exploded-aar\com.android.support\support-v4\23.3.0\AndroidManifest.xml:22:5-20
@@ -73,101 +77,101 @@ MERGED from [com.android.support:support-v4:23.3.0] G:\CD\android_project\MyCont
 MERGED from [de.hdodenhof:circleimageview:2.0.0] G:\CD\android_project\MyContacts\app\build\intermediates\exploded-aar\de.hdodenhof\circleimageview\2.0.0\AndroidManifest.xml:9:5-20
 MERGED from [com.android.volley:volley:1.0.0] G:\CD\android_project\MyContacts\app\build\intermediates\exploded-aar\com.android.volley\volley\1.0.0\AndroidManifest.xml:9:5-20
 	android:label
-		ADDED from G:\CD\android_project\MyContacts\app\src\main\AndroidManifest.xml:17:9-41
+		ADDED from G:\CD\android_project\MyContacts\app\src\main\AndroidManifest.xml:18:9-41
 	android:supportsRtl
-		ADDED from G:\CD\android_project\MyContacts\app\src\main\AndroidManifest.xml:18:9-35
+		ADDED from G:\CD\android_project\MyContacts\app\src\main\AndroidManifest.xml:19:9-35
 	android:allowBackup
-		ADDED from G:\CD\android_project\MyContacts\app\src\main\AndroidManifest.xml:15:9-35
+		ADDED from G:\CD\android_project\MyContacts\app\src\main\AndroidManifest.xml:16:9-35
 	android:icon
-		ADDED from G:\CD\android_project\MyContacts\app\src\main\AndroidManifest.xml:16:9-43
+		ADDED from G:\CD\android_project\MyContacts\app\src\main\AndroidManifest.xml:17:9-43
 	android:theme
-		ADDED from G:\CD\android_project\MyContacts\app\src\main\AndroidManifest.xml:19:9-40
+		ADDED from G:\CD\android_project\MyContacts\app\src\main\AndroidManifest.xml:20:9-40
 	android:name
-		ADDED from G:\CD\android_project\MyContacts\app\src\main\AndroidManifest.xml:14:9-38
+		ADDED from G:\CD\android_project\MyContacts\app\src\main\AndroidManifest.xml:15:9-38
 activity#learn.android.kangel.mycontacts.activities.MainActivity
-ADDED from G:\CD\android_project\MyContacts\app\src\main\AndroidManifest.xml:20:9-33:20
+ADDED from G:\CD\android_project\MyContacts\app\src\main\AndroidManifest.xml:21:9-34:20
 	android:launchMode
-		ADDED from G:\CD\android_project\MyContacts\app\src\main\AndroidManifest.xml:22:13-43
+		ADDED from G:\CD\android_project\MyContacts\app\src\main\AndroidManifest.xml:23:13-43
 	android:theme
-		ADDED from G:\CD\android_project\MyContacts\app\src\main\AndroidManifest.xml:23:13-51
+		ADDED from G:\CD\android_project\MyContacts\app\src\main\AndroidManifest.xml:24:13-51
 	android:name
-		ADDED from G:\CD\android_project\MyContacts\app\src\main\AndroidManifest.xml:21:13-52
+		ADDED from G:\CD\android_project\MyContacts\app\src\main\AndroidManifest.xml:22:13-52
 intent-filter#android.intent.action.MAIN+android.intent.action.SEARCH+android.intent.category.LAUNCHER
-ADDED from G:\CD\android_project\MyContacts\app\src\main\AndroidManifest.xml:24:13-29:29
+ADDED from G:\CD\android_project\MyContacts\app\src\main\AndroidManifest.xml:25:13-30:29
 action#android.intent.action.MAIN
-ADDED from G:\CD\android_project\MyContacts\app\src\main\AndroidManifest.xml:25:17-69
+ADDED from G:\CD\android_project\MyContacts\app\src\main\AndroidManifest.xml:26:17-69
 	android:name
-		ADDED from G:\CD\android_project\MyContacts\app\src\main\AndroidManifest.xml:25:25-66
+		ADDED from G:\CD\android_project\MyContacts\app\src\main\AndroidManifest.xml:26:25-66
 action#android.intent.action.SEARCH
-ADDED from G:\CD\android_project\MyContacts\app\src\main\AndroidManifest.xml:26:17-71
+ADDED from G:\CD\android_project\MyContacts\app\src\main\AndroidManifest.xml:27:17-71
 	android:name
-		ADDED from G:\CD\android_project\MyContacts\app\src\main\AndroidManifest.xml:26:25-68
+		ADDED from G:\CD\android_project\MyContacts\app\src\main\AndroidManifest.xml:27:25-68
 category#android.intent.category.LAUNCHER
-ADDED from G:\CD\android_project\MyContacts\app\src\main\AndroidManifest.xml:28:17-77
+ADDED from G:\CD\android_project\MyContacts\app\src\main\AndroidManifest.xml:29:17-77
 	android:name
-		ADDED from G:\CD\android_project\MyContacts\app\src\main\AndroidManifest.xml:28:27-74
+		ADDED from G:\CD\android_project\MyContacts\app\src\main\AndroidManifest.xml:29:27-74
 meta-data#android.app.searchable
-ADDED from G:\CD\android_project\MyContacts\app\src\main\AndroidManifest.xml:30:13-32:54
+ADDED from G:\CD\android_project\MyContacts\app\src\main\AndroidManifest.xml:31:13-33:54
 	android:resource
-		ADDED from G:\CD\android_project\MyContacts\app\src\main\AndroidManifest.xml:32:17-51
+		ADDED from G:\CD\android_project\MyContacts\app\src\main\AndroidManifest.xml:33:17-51
 	android:name
-		ADDED from G:\CD\android_project\MyContacts\app\src\main\AndroidManifest.xml:31:17-54
+		ADDED from G:\CD\android_project\MyContacts\app\src\main\AndroidManifest.xml:32:17-54
 activity#learn.android.kangel.mycontacts.activities.ContactDetailActivity
-ADDED from G:\CD\android_project\MyContacts\app\src\main\AndroidManifest.xml:34:9-37:69
+ADDED from G:\CD\android_project\MyContacts\app\src\main\AndroidManifest.xml:35:9-38:69
 	android:parentActivityName
-		ADDED from G:\CD\android_project\MyContacts\app\src\main\AndroidManifest.xml:37:13-66
+		ADDED from G:\CD\android_project\MyContacts\app\src\main\AndroidManifest.xml:38:13-66
 	android:launchMode
-		ADDED from G:\CD\android_project\MyContacts\app\src\main\AndroidManifest.xml:36:13-44
+		ADDED from G:\CD\android_project\MyContacts\app\src\main\AndroidManifest.xml:37:13-44
 	android:name
-		ADDED from G:\CD\android_project\MyContacts\app\src\main\AndroidManifest.xml:35:13-61
+		ADDED from G:\CD\android_project\MyContacts\app\src\main\AndroidManifest.xml:36:13-61
 activity#learn.android.kangel.mycontacts.activities.EditContactActivity
-ADDED from G:\CD\android_project\MyContacts\app\src\main\AndroidManifest.xml:38:9-45:20
+ADDED from G:\CD\android_project\MyContacts\app\src\main\AndroidManifest.xml:39:9-46:20
 	android:parentActivityName
-		ADDED from G:\CD\android_project\MyContacts\app\src\main\AndroidManifest.xml:40:13-66
+		ADDED from G:\CD\android_project\MyContacts\app\src\main\AndroidManifest.xml:41:13-66
 	android:name
-		ADDED from G:\CD\android_project\MyContacts\app\src\main\AndroidManifest.xml:39:13-59
+		ADDED from G:\CD\android_project\MyContacts\app\src\main\AndroidManifest.xml:40:13-59
 intent-filter#learn.android.kangel.mycontacts.add+learn.android.kangel.mycontacts.edit
-ADDED from G:\CD\android_project\MyContacts\app\src\main\AndroidManifest.xml:41:13-44:29
+ADDED from G:\CD\android_project\MyContacts\app\src\main\AndroidManifest.xml:42:13-45:29
 action#learn.android.kangel.mycontacts.add
-ADDED from G:\CD\android_project\MyContacts\app\src\main\AndroidManifest.xml:42:17-78
+ADDED from G:\CD\android_project\MyContacts\app\src\main\AndroidManifest.xml:43:17-78
 	android:name
-		ADDED from G:\CD\android_project\MyContacts\app\src\main\AndroidManifest.xml:42:25-75
+		ADDED from G:\CD\android_project\MyContacts\app\src\main\AndroidManifest.xml:43:25-75
 action#learn.android.kangel.mycontacts.edit
-ADDED from G:\CD\android_project\MyContacts\app\src\main\AndroidManifest.xml:43:17-79
+ADDED from G:\CD\android_project\MyContacts\app\src\main\AndroidManifest.xml:44:17-79
 	android:name
-		ADDED from G:\CD\android_project\MyContacts\app\src\main\AndroidManifest.xml:43:25-76
+		ADDED from G:\CD\android_project\MyContacts\app\src\main\AndroidManifest.xml:44:25-76
 activity#learn.android.kangel.mycontacts.activities.CallLogActivity
-ADDED from G:\CD\android_project\MyContacts\app\src\main\AndroidManifest.xml:46:9-48:69
+ADDED from G:\CD\android_project\MyContacts\app\src\main\AndroidManifest.xml:47:9-49:69
 	android:parentActivityName
-		ADDED from G:\CD\android_project\MyContacts\app\src\main\AndroidManifest.xml:48:13-66
+		ADDED from G:\CD\android_project\MyContacts\app\src\main\AndroidManifest.xml:49:13-66
 	android:name
-		ADDED from G:\CD\android_project\MyContacts\app\src\main\AndroidManifest.xml:47:13-55
+		ADDED from G:\CD\android_project\MyContacts\app\src\main\AndroidManifest.xml:48:13-55
 activity#learn.android.kangel.mycontacts.activities.CallLogDetailActivity
-ADDED from G:\CD\android_project\MyContacts\app\src\main\AndroidManifest.xml:49:9-70
+ADDED from G:\CD\android_project\MyContacts\app\src\main\AndroidManifest.xml:50:9-70
 	android:name
-		ADDED from G:\CD\android_project\MyContacts\app\src\main\AndroidManifest.xml:49:19-67
+		ADDED from G:\CD\android_project\MyContacts\app\src\main\AndroidManifest.xml:50:19-67
 activity#learn.android.kangel.mycontacts.activities.ShowBlockedNumbersActivity
-ADDED from G:\CD\android_project\MyContacts\app\src\main\AndroidManifest.xml:50:9-52:69
+ADDED from G:\CD\android_project\MyContacts\app\src\main\AndroidManifest.xml:51:9-53:69
 	android:parentActivityName
+		ADDED from G:\CD\android_project\MyContacts\app\src\main\AndroidManifest.xml:53:13-66
+	android:name
 		ADDED from G:\CD\android_project\MyContacts\app\src\main\AndroidManifest.xml:52:13-66
-	android:name
-		ADDED from G:\CD\android_project\MyContacts\app\src\main\AndroidManifest.xml:51:13-66
 receiver#learn.android.kangel.mycontacts.TelephoneReceiver
-ADDED from G:\CD\android_project\MyContacts\app\src\main\AndroidManifest.xml:54:9-58:20
+ADDED from G:\CD\android_project\MyContacts\app\src\main\AndroidManifest.xml:55:9-59:20
 	android:name
-		ADDED from G:\CD\android_project\MyContacts\app\src\main\AndroidManifest.xml:54:19-52
+		ADDED from G:\CD\android_project\MyContacts\app\src\main\AndroidManifest.xml:55:19-52
 intent-filter#android.intent.action.PHONE_STATE
-ADDED from G:\CD\android_project\MyContacts\app\src\main\AndroidManifest.xml:55:13-57:29
+ADDED from G:\CD\android_project\MyContacts\app\src\main\AndroidManifest.xml:56:13-58:29
 	android:priority
-		ADDED from G:\CD\android_project\MyContacts\app\src\main\AndroidManifest.xml:55:28-50
+		ADDED from G:\CD\android_project\MyContacts\app\src\main\AndroidManifest.xml:56:28-50
 action#android.intent.action.PHONE_STATE
-ADDED from G:\CD\android_project\MyContacts\app\src\main\AndroidManifest.xml:56:17-76
+ADDED from G:\CD\android_project\MyContacts\app\src\main\AndroidManifest.xml:57:17-76
 	android:name
-		ADDED from G:\CD\android_project\MyContacts\app\src\main\AndroidManifest.xml:56:25-73
+		ADDED from G:\CD\android_project\MyContacts\app\src\main\AndroidManifest.xml:57:25-73
 service#learn.android.kangel.mycontacts.BlockCallService
-ADDED from G:\CD\android_project\MyContacts\app\src\main\AndroidManifest.xml:59:9-53
+ADDED from G:\CD\android_project\MyContacts\app\src\main\AndroidManifest.xml:60:9-53
 	android:name
-		ADDED from G:\CD\android_project\MyContacts\app\src\main\AndroidManifest.xml:59:18-50
+		ADDED from G:\CD\android_project\MyContacts\app\src\main\AndroidManifest.xml:60:18-50
 uses-sdk
 INJECTED from G:\CD\android_project\MyContacts\app\src\main\AndroidManifest.xml reason: use-sdk injection requested
 MERGED from [MyContacts:msg:unspecified] G:\CD\android_project\MyContacts\app\build\intermediates\exploded-aar\MyContacts\msg\unspecified\AndroidManifest.xml:7:5-9:41

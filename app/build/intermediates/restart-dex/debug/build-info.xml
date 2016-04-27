@@ -1,37 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
 <instant-run
     abi="armeabi-v7a,armeabi"
-    api-level="23"
-    density="xhdpi"
+    api-level="19"
+    density="xxhdpi"
     format="7"
-    timestamp="2620937309453" >
+    timestamp="414400094767" >
 
     <task
         name="javac"
-        duration="0" />
+        duration="1472" />
     <task
         name="instant-run-dex"
         duration="0" />
     <task
         name="instant-run-transform"
-        duration="0" />
+        duration="125" />
     <task
         name="verifier"
-        duration="0" />
+        duration="8" />
 
     <artifact
-        location="G:\CD\android_project\MyContacts\app\build\intermediates\res\resources-debug.ap_"
-        type="RESOURCES" />
+        location="G:\CD\android_project\MyContacts\app\build\outputs\apk\app-debug.apk"
+        type="MAIN" />
 
-    <build timestamp="1923064253618" >
+    <build timestamp="414400094767" >
         <artifact
             location="G:\CD\android_project\MyContacts\app\build\outputs\apk\app-debug.apk"
             type="MAIN" />
-    </build>
-    <build timestamp="2620937309453" >
-        <artifact
-            location="G:\CD\android_project\MyContacts\app\build\intermediates\res\resources-debug.ap_"
-            type="RESOURCES" />
     </build>
 
 </instant-run>

@@ -265,6 +265,7 @@ public class CallHistoryAdapter extends RecyclerView.Adapter<CallHistoryAdapter.
             String number = cursor.getString(cursor.getColumnIndex(CallLog.Calls.NUMBER));
             long time = cursor.getLong(cursor.getColumnIndex(CallLog.Calls.DATE));
             int duration = cursor.getInt(cursor.getColumnIndex(CallLog.Calls.DURATION));
+            long id = cursor.getLong(cursor.getColumnIndex(CallLog.Calls._ID));
             String location = "";
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
                 location = cursor.getString(cursor.getColumnIndex(CallLog.Calls.GEOCODED_LOCATION));
@@ -283,14 +284,14 @@ public class CallHistoryAdapter extends RecyclerView.Adapter<CallHistoryAdapter.
                 bean.setContactName(name);
                 bean.setNumber(number);
                 bean.setLocation(location);
-                bean.addDetail(time, callType, duration);
+                bean.addDetail(time, callType, duration, id);
                 bean.increamentCount();
                 data.add(bean);
                 curr++;
             } else {
                 CallogBean bean = data.get(curr - 1);
                 if (bean.getNumber().equals(number)) {
-                    bean.addDetail(time, callType, duration);
+                    bean.addDetail(time, callType, duration, id);
                     bean.increamentCount();
                 }
             }

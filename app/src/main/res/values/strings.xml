@@ -61,4 +61,7 @@
     <string name="title_remove_block">取消屏蔽</string>
     <string name="msg_remove_block">移除后将不再屏蔽此号码来电</string>
     <string name="title_edit_block_number">编辑号码</string>
+    <string name="delete_call_log">删除通话记录</string>
+    <string name="permission_call_log_request">请允许通话记录权限</string>
+    <string name="toast_call_log_deleted">记录已删除</string>
 </resources>

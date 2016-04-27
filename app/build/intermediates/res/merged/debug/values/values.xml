@@ -343,6 +343,7 @@
     <string name="character_counter_pattern" translatable="false">%1$d / %2$d</string>
     <string name="copy_successfully">已复制</string>
     <string name="copy_to_clipboard">复制到剪贴板</string>
+    <string name="delete_call_log">删除通话记录</string>
     <string name="delete_contact">删除联系人</string>
     <string name="dialog_cancel">取消</string>
     <string name="dialog_ok">确认</string>
@@ -365,6 +366,7 @@
     <string name="no_starred_contact">暂无星标联系人</string>
     <string name="not_know">N/A</string>
     <string name="outgoing_call">拨出电话</string>
+    <string name="permission_call_log_request">请允许通话记录权限</string>
     <string name="permission_call_phone_request">请允许拨打权限</string>
     <string name="permission_deny">无法获得通讯录和通话记录权限</string>
     <string name="permission_write_storage_request">请允许存储空间权限</string>
@@ -382,6 +384,7 @@
     <string name="title_edit_contact">编辑联系人</string>
     <string name="title_input_type">请输入自定义类型</string>
     <string name="title_remove_block">取消屏蔽</string>
+    <string name="toast_call_log_deleted">记录已删除</string>
     <string name="toast_contact_added">添加成功</string>
     <string name="toast_contact_deleted">删除成功</string>
     <string name="toast_contact_edited">编辑成功</string>

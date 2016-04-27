@@ -6,6 +6,7 @@ import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
+import android.provider.CallLog;
 import android.provider.ContactsContract;
 import android.support.annotation.Nullable;
 import android.support.v4.app.ActivityCompat;
@@ -13,6 +14,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -31,6 +33,7 @@ import learn.android.kangel.mycontacts.utils.HeadShowLoader;
  */
 public class CallLogDetailActivity extends AppCompatActivity implements View.OnClickListener {
     private static final int REQUEST_CALL_PHONE = 22;
+    private static final int REQUEST_CALL_LOG = 23;
     private HeadShowLoader mHeadShowLoader = new HeadShowLoader();
     private CallogBean mBean;
 
@@ -46,6 +49,27 @@ public class CallLogDetailActivity extends AppCompatActivity implements View.OnC
                     Toast.makeText(getApplicationContext(), R.string.block_number_successful, Toast.LENGTH_LONG).show();
                 } else {
                     Toast.makeText(getApplicationContext(), R.string.block_number_fail, Toast.LENGTH_LONG).show();
+                }
+                return true;
+            }
+            case R.id.delete_call_log: {
+                if (ActivityCompat.checkSelfPermission(this, Manifest.permission.WRITE_CALL_LOG) != PackageManager.PERMISSION_GRANTED) {
+                    if (ActivityCompat.shouldShowRequestPermissionRationale(this, Manifest.permission.WRITE_CALL_LOG)) {
+                        Toast.makeText(getApplicationContext(), R.string.permission_call_log_request, Toast.LENGTH_LONG).show();
+                    } else {
+                        ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.WRITE_CALL_LOG}, REQUEST_CALL_LOG);
+                    }
+                    return true;
+                }
+                try {
+                    Log.d("idlist", mBean.getCallIdsString());
+                    int deletedCount = getContentResolver().delete(CallLog.Calls.CONTENT_URI, CallLog.Calls._ID + " in " + mBean.getCallIdsString(), null);
+                    if (deletedCount > 0) {
+                        Toast.makeText(getApplicationContext(), R.string.toast_call_log_deleted, Toast.LENGTH_LONG).show();
+                        finish();
+                    }
+                } catch (Exception e) {
+                    e.printStackTrace();
                 }
                 return true;
             }

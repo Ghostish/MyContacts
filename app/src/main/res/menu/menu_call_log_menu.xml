@@ -5,4 +5,8 @@
         android:icon="@drawable/ic_block_white_24dp"
         android:title="@string/block_number"
         app:showAsAction="ifRoom" />
+    <item
+        android:id="@+id/delete_call_log"
+        android:title="@string/delete_call_log"
+        app:showAsAction="never" />
 </menu>

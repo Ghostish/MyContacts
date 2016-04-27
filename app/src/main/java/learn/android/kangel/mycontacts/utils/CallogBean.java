@@ -18,6 +18,7 @@ public class CallogBean implements Parcelable {
     private List<Long> timeMillis = new ArrayList<>();
     private List<Integer> calltypeList = new ArrayList<>();
     private List<Integer> durationList = new ArrayList<>();
+    private List<Long> callLogIdList = new ArrayList<>();
 
     public CallogBean() {
 
@@ -31,6 +32,7 @@ public class CallogBean implements Parcelable {
         timeMillis = in.readArrayList(null);
         calltypeList = in.readArrayList(null);
         durationList = in.readArrayList(null);
+        callLogIdList = in.readArrayList(null);
     }
 
     @Override
@@ -42,6 +44,7 @@ public class CallogBean implements Parcelable {
         dest.writeList(timeMillis);
         dest.writeList(calltypeList);
         dest.writeList(durationList);
+        dest.writeList(callLogIdList);
     }
 
     public static final Creator<CallogBean> CREATOR = new Creator<CallogBean>() {
@@ -71,6 +74,17 @@ public class CallogBean implements Parcelable {
     /*  public void addTimeString(String timeString) {
           this.timeStrings.add(0, timeString);
       }*/
+    private void addCallLogId(long id) {
+        callLogIdList.add(id);
+    }
+
+    public String getCallIdsString() {
+        String result = callLogIdList.toString();
+        result = result.replace('[', '(');
+        result = result.replace(']', ')');
+        return result;
+    }
+
     private void addTimeMillis(long time) {
         timeMillis.add(time);
     }
@@ -83,7 +97,8 @@ public class CallogBean implements Parcelable {
         this.durationList.add(duration);
     }
 
-    public void addDetail(long time, int type, int duration) {
+    public void addDetail(long time, int type, int duration, long id) {
+        addCallLogId(id);
         addTimeMillis(time);
         addType(type);
         addDuration(duration);

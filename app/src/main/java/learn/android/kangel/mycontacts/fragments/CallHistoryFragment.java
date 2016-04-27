@@ -41,6 +41,7 @@ public class CallHistoryFragment extends Fragment implements LoaderManager.Loade
     private final static int QUERY_CALL_HISTORY = 2;
     private final static String[] CALL_LOG_PROJECTION = new String[]
             {
+                    CallLog.Calls._ID,
                     CallLog.Calls.CACHED_NAME,
                     CallLog.Calls.NUMBER,
                     CallLog.Calls.TYPE,
@@ -48,7 +49,7 @@ public class CallHistoryFragment extends Fragment implements LoaderManager.Loade
                     CallLog.Calls.DURATION,
                     CallLog.Calls.GEOCODED_LOCATION
             };
-    private final static String SELECTION_PARTIAL = null;//CallLog.Calls.DATE + ">=" + "((SELECT MAX(" + CallLog.Calls.DATE + ") - 259200000 FROM calls))";
+    private final static String SELECTION_PARTIAL = CallLog.Calls.DATE + ">=" + "((SELECT MAX(" + CallLog.Calls.DATE + ") - 259200000 FROM logs))";
 
     public static CallHistoryFragment newInstance(int mode) {
         CallHistoryFragment f = new CallHistoryFragment();

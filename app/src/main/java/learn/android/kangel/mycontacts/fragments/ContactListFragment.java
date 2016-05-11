@@ -1,7 +1,9 @@
 package learn.android.kangel.mycontacts.fragments;
 
+import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.provider.ContactsContract;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -34,7 +36,8 @@ public class ContactListFragment extends Fragment implements LoaderManager.Loade
                     ContactsContract.Contacts.DISPLAY_NAME_PRIMARY,
                     ContactsContract.Contacts.SORT_KEY_PRIMARY
             };
-    private static final String SELECTION = ContactsContract.Contacts.HAS_PHONE_NUMBER + " <> 0";
+    private static final String SELECTION_HAS_PHONE = ContactsContract.Contacts.HAS_PHONE_NUMBER + " <> 0";
+    private static final String SELECTION_ALL = null;
     private static final String SELECTION_STARRED = ContactsContract.Contacts.STARRED + " <> 0";
 
     private int mMode;
@@ -85,7 +88,13 @@ public class ContactListFragment extends Fragment implements LoaderManager.Loade
     public Loader<Cursor> onCreateLoader(int id, Bundle args) {
         if (id == QUERY_CONTACT) {
             if (mMode == MODE_ALL) {
-                return new CursorLoader(getActivity(), ContactsContract.Contacts.CONTENT_URI, CONTACT_PROJECTION, SELECTION, null, ContactsContract.Contacts.SORT_KEY_PRIMARY);
+                SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getActivity());
+                switch (preferences.getInt("SHOW_TYPE", 0)) {
+                    case 0:
+                        return new CursorLoader(getActivity(), ContactsContract.Contacts.CONTENT_URI, CONTACT_PROJECTION, SELECTION_ALL, null, ContactsContract.Contacts.SORT_KEY_PRIMARY);
+                    case 1:
+                        return new CursorLoader(getActivity(), ContactsContract.Contacts.CONTENT_URI, CONTACT_PROJECTION, SELECTION_HAS_PHONE, null, ContactsContract.Contacts.SORT_KEY_PRIMARY);
+                }
 
             } else {
                 return new CursorLoader(getActivity(), ContactsContract.Contacts.CONTENT_URI, CONTACT_PROJECTION, SELECTION_STARRED, null, ContactsContract.Contacts.SORT_KEY_PRIMARY);
@@ -107,4 +116,9 @@ public class ContactListFragment extends Fragment implements LoaderManager.Loade
         mAdapter.updateCursor(null);
         mAdapter.notifyDataSetChanged();
     }
+
+    public void restartContactLoader() {
+        getLoaderManager().restartLoader(QUERY_CONTACT, null, this);
+    }
+
 }

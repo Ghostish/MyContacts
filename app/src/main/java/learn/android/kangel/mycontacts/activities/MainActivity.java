@@ -3,9 +3,11 @@ package learn.android.kangel.mycontacts.activities;
 import android.Manifest;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.annotation.NonNull;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -19,7 +21,6 @@ import android.support.v4.content.ContextCompat;
 import android.support.v4.view.ViewCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.ListPopupWindow;
 import android.support.v7.widget.PopupMenu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -29,16 +30,17 @@ import android.view.inputmethod.InputMethodManager;
 import learn.android.kangel.mycontacts.R;
 import learn.android.kangel.mycontacts.adapters.ContactListAdapter;
 import learn.android.kangel.mycontacts.fragments.CallHistoryFragment;
+import learn.android.kangel.mycontacts.fragments.ChooseItemDialog;
 import learn.android.kangel.mycontacts.fragments.ContactListFragment;
 import learn.android.kangel.mycontacts.fragments.SearchFragment;
 
-public class MainActivity extends AppCompatActivity implements View.OnClickListener, RecyclerViewActivity {
+public class MainActivity extends AppCompatActivity implements View.OnClickListener, RecyclerViewActivity, ChooseItemDialog.onDialogItemSelectListener {
     private final static int REQUEST_CALL_LOG_CONTACTS = 110;
     private static final int REQUEST_CALL_PHONE = 111;
     private SearchFragment mSearchFragment;
-    private ListPopupWindow mListPopupWindow;
     private FloatingActionButton fab;
     private PopupMenu mPopupMenu;
+    private ChooseItemDialog mChooseItemDialog;
 
 
     private final static String[] REQUEST_PERMISSION = new String[]
@@ -48,6 +50,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     Manifest.permission.WRITE_CONTACTS
             };
     private ViewPager pager;
+    private ContactListFragment mContactListFragment;
 
 
     @Override
@@ -135,12 +138,43 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                             Intent intent = new Intent(MainActivity.this, ShowBlockedNumbersActivity.class);
                             startActivity(intent);
                             return true;
+                        case R.id.filter_contact_list: {
+                            if (mChooseItemDialog == null) {
+                                mChooseItemDialog = ChooseItemDialog.newInstance(R.array.show_contact_type);
+                            }
+                            mChooseItemDialog.show(getSupportFragmentManager(), "select");
+                            return true;
+                        }
                     }
                     return false;
                 }
             });
         }
         mPopupMenu.show();
+    }
+
+    @Override
+    public void onItemSelected(int which) {
+        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
+        SharedPreferences.Editor editor = preferences.edit();
+        switch (which) {
+            case 0:
+                /*show all contacts*/
+                if (mContactListFragment != null) {
+                    editor.putInt("SHOW_TYPE", 0);
+                    editor.commit();
+                    mContactListFragment.restartContactLoader();
+                }
+                break;
+            case 1:
+                 /*show contacts who have phone number*/
+                if (mContactListFragment != null) {
+                    editor.putInt("SHOW_TYPE", 1);
+                    editor.commit();
+                    mContactListFragment.restartContactLoader();
+                }
+                break;
+        }
     }
 
     @Override
@@ -225,7 +259,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
 
-    static class contactPagerAdapter extends FragmentStatePagerAdapter {
+    class contactPagerAdapter extends FragmentStatePagerAdapter {
 
         public contactPagerAdapter(FragmentManager fm) {
             super(fm);
@@ -237,7 +271,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 return CallHistoryFragment.newInstance(CallHistoryFragment.MODE_PARTIAL);
             }
             if (position == 1) {
-                return ContactListFragment.newInstance(ContactListFragment.MODE_ALL);
+                return mContactListFragment = ContactListFragment.newInstance(ContactListFragment.MODE_ALL);
             }
             if (position == 2) {
                 return ContactListFragment.newInstance(ContactListFragment.MODE_STARRED);

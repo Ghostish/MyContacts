@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/info_item"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/list_item_height"
+    android:background="?android:selectableItemBackground"
+    android:padding="16dp">
+
+    <ImageView
+        android:tint="@color/colorPrimary"
+        android:id="@+id/indicate_icon"
+        android:layout_width="@dimen/indicate_icon_size"
+        android:layout_height="@dimen/indicate_icon_size"
+        android:layout_centerVertical="true" />
+
+    <TextView
+        android:id="@+id/info_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="32dp"
+        android:layout_marginRight="32dp"
+        android:layout_toEndOf="@id/indicate_icon"
+        android:layout_toStartOf="@+id/action_icon"
+        android:singleLine="true"
+        android:text="1322220220022" />
+
+    <TextView
+        android:id="@+id/hint_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginLeft="32dp"
+        android:layout_marginRight="32dp"
+        android:layout_toEndOf="@id/indicate_icon"
+        android:layout_toStartOf="@id/action_icon"
+        android:singleLine="true"
+        android:text="手机" />
+
+    <ImageView
+        android:id="@+id/action_icon"
+        android:layout_width="@dimen/indicate_icon_size"
+        android:layout_height="@dimen/indicate_icon_size"
+        android:layout_alignParentEnd="true"
+        android:layout_centerVertical="true"
+        android:visibility="gone"
+        android:tint="@color/colorPrimary"
+        android:background="?android:selectableItemBackground" />
+</RelativeLayout>

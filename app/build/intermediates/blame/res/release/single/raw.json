@@ -1,0 +1,10 @@
+[
+    {
+        "merged": "G:\\CD\\android_project\\MyContacts\\app\\build\\intermediates\\res\\merged\\release\\raw\\tel.db",
+        "source": "G:\\CD\\android_project\\MyContacts\\app\\src\\main\\res\\raw\\tel.db"
+    },
+    {
+        "merged": "G:\\CD\\android_project\\MyContacts\\app\\build\\intermediates\\res\\merged\\release\\raw\\msg.db",
+        "source": "G:\\CD\\android_project\\MyContacts\\app\\build\\intermediates\\exploded-aar\\MyContacts\\msg\\unspecified\\res\\raw\\msg.db"
+    }
+]

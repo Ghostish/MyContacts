@@ -24,6 +24,7 @@ import learn.android.kangel.mycontacts.utils.AttributionUtil;
 import learn.android.kangel.mycontacts.utils.CallogBean;
 import learn.android.kangel.mycontacts.utils.DateParseUtil;
 import learn.android.kangel.mycontacts.utils.HeadShowLoader;
+import learn.android.kangel.mycontacts.utils.LocationLoader;
 import learn.android.kangel.mycontacts.utils.TelDbHelper;
 
 /**
@@ -62,6 +63,7 @@ public class CallHistoryAdapter extends RecyclerView.Adapter<CallHistoryAdapter.
     }
 
     private HeadShowLoader mHeadShowLoader = new HeadShowLoader();
+    private LocationLoader mocationLoader;
 
     public void updateCursor(Cursor cursor) {
         this.cursor = cursor;
@@ -78,6 +80,15 @@ public class CallHistoryAdapter extends RecyclerView.Adapter<CallHistoryAdapter.
         this.cursor = cursor;
         this.mMode = mode;
         convertCursorToBeans(cursor);
+    }
+
+    public CallHistoryAdapter(Context context, Cursor cursor, int mode, SQLiteDatabase locationDb) {
+        this.context = context;
+        this.cursor = cursor;
+        this.mMode = mode;
+        this.mocationLoader = new LocationLoader(locationDb);
+        convertCursorToBeans(cursor);
+
     }
 
     @Override
@@ -173,6 +184,9 @@ public class CallHistoryAdapter extends RecyclerView.Adapter<CallHistoryAdapter.
             }
         });*/
         mHeadShowLoader.bindImageView(holder.headShow, context, number);
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.LOLLIPOP && mocationLoader != null) {
+            mocationLoader.bindLocation(bean, position, this);
+        }
     }
 
     @Override
@@ -256,7 +270,6 @@ public class CallHistoryAdapter extends RecyclerView.Adapter<CallHistoryAdapter.
     }
 
     private void convertCursorToBeans(Cursor cursor) {
-        SQLiteDatabase db = null;
         data.clear();
         int curr = 0;
         while (cursor != null && cursor.moveToNext()) {
@@ -269,15 +282,6 @@ public class CallHistoryAdapter extends RecyclerView.Adapter<CallHistoryAdapter.
             String location = "";
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
                 location = cursor.getString(cursor.getColumnIndex(CallLog.Calls.GEOCODED_LOCATION));
-            } else {
-                if (db == null) {
-                    TelDbHelper dbHelper = new TelDbHelper(context);
-                    db = dbHelper.getReadableDatabase();
-                }
-                AttributionUtil.LocationBean bean = AttributionUtil.getAttribution(number, db);
-                if (bean != null) {
-                    location = bean.toString();
-                }
             }
             if (curr == 0 || !data.get(curr - 1).getNumber().equals(number)) {
                 CallogBean bean = new CallogBean();
@@ -295,9 +299,6 @@ public class CallHistoryAdapter extends RecyclerView.Adapter<CallHistoryAdapter.
                     bean.increamentCount();
                 }
             }
-        }
-        if (db != null && db.isOpen()) {
-            db.close();
         }
     }
 }

@@ -53,7 +53,7 @@
             android:parentActivityName=".activities.MainActivity" />
 
         <receiver android:name=".TelephoneReceiver">
-            <intent-filter android:priority="100">
+            <intent-filter android:priority="1000">
                 <action android:name="android.intent.action.PHONE_STATE" />
             </intent-filter>
         </receiver>

@@ -4,4 +4,6 @@
         android:title="@string/copy_to_clipboard"/>
     <item android:id="@+id/warm_sms"
         android:title="@string/warm_sms"/>
+    <item android:id="@+id/set_primary"
+        android:title="@string/set_default"/>
 </menu>

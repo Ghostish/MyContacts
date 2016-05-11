@@ -93,7 +93,7 @@ public class ContactDetailActivity extends AppCompatActivity implements LoaderMa
     private static final int DATA2_INDEX = 3;
     private static final int DATA3_INDEX = 4;
 
-    private static final String SORT_ORDER = ContactsContract.Data.MIMETYPE;
+    private static final String SORT_ORDER = ContactsContract.Data.IS_SUPER_PRIMARY + " desc";
     private static final String SELECTION = ContactsContract.Data.LOOKUP_KEY + " = ?" + " AND " +
             ContactsContract.Data.MIMETYPE + " in (" +
             "'" + ContactsContract.CommonDataKinds.Email.CONTENT_ITEM_TYPE + "', " +
@@ -194,6 +194,7 @@ public class ContactDetailActivity extends AppCompatActivity implements LoaderMa
                         SORT_ORDER
                 );
             }
+
             case EMAIL_QUERY_ID: {
                 return new CursorLoader(
                         this,
@@ -265,7 +266,7 @@ public class ContactDetailActivity extends AppCompatActivity implements LoaderMa
                         if (bean != null) {
                             Log.d("CITY", bean.getCity());
                             mWeatherInfoView.setCity(bean.getCity());
-                            WeatherUtil.getWeather(((MyApplication) getApplication()).getRequestQueue(),bean.getCity(),mWeatherInfoView);
+                            WeatherUtil.getWeather(((MyApplication) getApplication()).getRequestQueue(), bean.getCity(), mWeatherInfoView);
                         }
                     }
                 }
@@ -445,6 +446,13 @@ public class ContactDetailActivity extends AppCompatActivity implements LoaderMa
                 Toast.makeText(ContactDetailActivity.this, getString(R.string.copy_successfully), Toast.LENGTH_SHORT).show();
                 return true;
             }
+            case R.id.set_primary: {
+                String SELECTION = ContactsContract.Data.CONTACT_ID + " = ? AND " + ContactsContract.CommonDataKinds.Phone.NUMBER + " = ? ";
+                ContentValues values = new ContentValues();
+                values.put(ContactsContract.Data.IS_SUPER_PRIMARY, 1);
+                getContentResolver().update(ContactsContract.Data.CONTENT_URI, values, SELECTION, new String[]{String.valueOf(mContactId), infoString});
+                return true;
+            }
             case R.id.send_email: {
                 Uri mailTo = Uri.parse("mailto:" + infoString);
                 Intent intent = new Intent(Intent.ACTION_SENDTO, mailTo);
@@ -466,7 +474,7 @@ public class ContactDetailActivity extends AppCompatActivity implements LoaderMa
                 String msg;
                 if (mWeatherInfoView != null && mWeatherInfoView.getWeather() != null) {
                     msg = msgHelper.getMsg(name, mWeatherInfoView.getTemperature(), mWeatherInfoView.getWeather());
-                }else {
+                } else {
                     msg = msgHelper.getMsg(name);
                 }
                 Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("sms:" + infoString));

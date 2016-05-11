@@ -64,4 +64,6 @@
     <string name="delete_call_log">删除通话记录</string>
     <string name="permission_call_log_request">请允许通话记录权限</string>
     <string name="toast_call_log_deleted">记录已删除</string>
+    <string name="set_default">设为默认</string>
+    <string name="contact_filter">选择要显示的联系人</string>
 </resources>

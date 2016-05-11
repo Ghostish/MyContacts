@@ -4,7 +4,9 @@ import android.Manifest;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.provider.CallLog;
 import android.support.annotation.Nullable;
@@ -21,12 +23,15 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.util.Date;
+
 import learn.android.kangel.mycontacts.MyRecyclerView;
 import learn.android.kangel.mycontacts.R;
 import learn.android.kangel.mycontacts.activities.CallLogActivity;
 import learn.android.kangel.mycontacts.activities.CallLogDetailActivity;
 import learn.android.kangel.mycontacts.adapters.CallHistoryAdapter;
 import learn.android.kangel.mycontacts.utils.CallogBean;
+import learn.android.kangel.mycontacts.utils.TelDbHelper;
 
 /**
  * Created by Kangel on 2016/3/17.
@@ -36,6 +41,7 @@ public class CallHistoryFragment extends Fragment implements LoaderManager.Loade
     public final static int MODE_PARTIAL = CallHistoryAdapter.MODE_PARTIAL;
     private static final int REQUEST_CALL_PHONE = 22;
 
+    private SQLiteDatabase locationDB;
     private int mMode;
     private CallHistoryAdapter mAdapter;
     private final static int QUERY_CALL_HISTORY = 2;
@@ -49,7 +55,7 @@ public class CallHistoryFragment extends Fragment implements LoaderManager.Loade
                     CallLog.Calls.DURATION,
                     CallLog.Calls.GEOCODED_LOCATION
             };
-    private final static String SELECTION_PARTIAL = CallLog.Calls.DATE + ">=" + "((SELECT MAX(" + CallLog.Calls.DATE + ") - 259200000 FROM logs))";
+    private final static String SELECTION_PARTIAL = null;//CallLog.Calls.DATE + ">=" + System.currentTimeMillis() + " - 259200000";
 
     public static CallHistoryFragment newInstance(int mode) {
         CallHistoryFragment f = new CallHistoryFragment();
@@ -109,6 +115,13 @@ public class CallHistoryFragment extends Fragment implements LoaderManager.Loade
         sectionedRecyclerViewAdapter.setSections(sections);
         recyclerView.setAdapter(sectionedRecyclerViewAdapter);*/
         mAdapter = new CallHistoryAdapter(getActivity(), null, mMode);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            mAdapter = new CallHistoryAdapter(getActivity(), null, mMode);
+        } else {
+            TelDbHelper dbHelper = new TelDbHelper(getActivity());
+            locationDB = dbHelper.getReadableDatabase();
+            mAdapter = new CallHistoryAdapter(getActivity(), null, mMode, locationDB);
+        }
         mAdapter.setListener(mListener);
         recyclerView.setAdapter(mAdapter);
         recyclerView.setEmptyView(v.findViewById(R.id.empty_view));
@@ -118,10 +131,18 @@ public class CallHistoryFragment extends Fragment implements LoaderManager.Loade
     }
 
     @Override
+    public void onDestroy() {
+        super.onDestroy();
+        if (locationDB != null && locationDB.isOpen()) {
+            locationDB.close();
+        }
+    }
+
+    @Override
     public Loader<Cursor> onCreateLoader(int id, Bundle args) {
         if (id == QUERY_CALL_HISTORY) {
             if (mMode == MODE_PARTIAL) {
-                return new CursorLoader(getActivity(), CallLog.Calls.CONTENT_URI, CALL_LOG_PROJECTION, SELECTION_PARTIAL, null, CallLog.Calls.DATE + " desc limit 50");
+                return new CursorLoader(getActivity(), CallLog.Calls.CONTENT_URI, CALL_LOG_PROJECTION, SELECTION_PARTIAL, null, CallLog.Calls.DATE + " desc limit 20");
             } else {
                 return new CursorLoader(getActivity(), CallLog.Calls.CONTENT_URI, CALL_LOG_PROJECTION, null, null, CallLog.Calls.DATE + " desc");
 

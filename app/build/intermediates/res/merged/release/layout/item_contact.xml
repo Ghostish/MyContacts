@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="72dp"
+    android:background="?selectableItemBackground"
+    android:padding="8dp">
+
+    <ViewStub
+        android:id="@+id/header_view_stub"
+        android:layout_width="48dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_centerVertical="true"
+        android:layout="@layout/view_stub_contact_header_text" />
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/head_show"
+        android:layout_width="@dimen/list_head_show_size"
+        android:layout_height="@dimen/list_head_show_size"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="64dp"
+        android:layout_marginRight="8dp"
+        android:layout_toEndOf="@+id/header_view_stub"
+        android:scaleType="centerCrop"
+        android:src="@drawable/default_head_show_list"
+         />
+
+    <TextView
+        android:id="@+id/contact_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_toEndOf="@id/head_show"
+        android:minEms="12"
+        android:text="Kangel Zenn"
+        android:textColor="@android:color/primary_text_light"
+        android:textAppearance="?android:textAppearanceSmall" />
+</RelativeLayout>
+
+

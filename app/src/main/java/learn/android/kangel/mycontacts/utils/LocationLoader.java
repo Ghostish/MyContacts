@@ -51,18 +51,18 @@ public class LocationLoader {
         }
     }
 
-    public void bindLocation(final CallogBean bean, final String number, Context context, final int itemPosition, final RecyclerView.Adapter adapter) {
-        if (LruCache.get(number) != null) {
-            bean.setLocation(LruCache.get(number));
+    public void bindLocation(final CallogBean bean, final int itemPosition, final RecyclerView.Adapter adapter) {
+        if (LruCache.get(bean.getNumber()) != null) {
+            bean.setLocation(LruCache.get(bean.getNumber()));
         } else {
             mExecutor.execute(new Runnable() {
                 @Override
                 public void run() {
-                    AttributionUtil.LocationBean locationBean = AttributionUtil.getAttribution(number, locationDB);
+                    AttributionUtil.LocationBean locationBean = AttributionUtil.getAttribution(bean.getNumber(), locationDB);
                     if (locationBean != null) {
                         bean.setLocation(locationBean.getCity());
                     }
-                    LruCache.put(number, locationBean == null ? "" : locationBean.getCity());
+                    LruCache.put(bean.getNumber(), locationBean == null ? "" : locationBean.getCity());
                     Message msg = mHandler.obtainMessage(LOAD_OK, new MObj(adapter, itemPosition));
                     mHandler.sendMessage(msg);
                 }

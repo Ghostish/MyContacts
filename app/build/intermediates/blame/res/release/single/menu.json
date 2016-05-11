@@ -1,0 +1,26 @@
+[
+    {
+        "merged": "G:\\CD\\android_project\\MyContacts\\app\\build\\intermediates\\res\\merged\\release\\menu\\menu_contact.xml",
+        "source": "G:\\CD\\android_project\\MyContacts\\app\\src\\main\\res\\menu\\menu_contact.xml"
+    },
+    {
+        "merged": "G:\\CD\\android_project\\MyContacts\\app\\build\\intermediates\\res\\merged\\release\\menu\\menu_call_log_menu.xml",
+        "source": "G:\\CD\\android_project\\MyContacts\\app\\src\\main\\res\\menu\\menu_call_log_menu.xml"
+    },
+    {
+        "merged": "G:\\CD\\android_project\\MyContacts\\app\\build\\intermediates\\res\\merged\\release\\menu\\menu_context_phone.xml",
+        "source": "G:\\CD\\android_project\\MyContacts\\app\\src\\main\\res\\menu\\menu_context_phone.xml"
+    },
+    {
+        "merged": "G:\\CD\\android_project\\MyContacts\\app\\build\\intermediates\\res\\merged\\release\\menu\\menu_main.xml",
+        "source": "G:\\CD\\android_project\\MyContacts\\app\\src\\main\\res\\menu\\menu_main.xml"
+    },
+    {
+        "merged": "G:\\CD\\android_project\\MyContacts\\app\\build\\intermediates\\res\\merged\\release\\menu\\menu_context_email.xml",
+        "source": "G:\\CD\\android_project\\MyContacts\\app\\src\\main\\res\\menu\\menu_context_email.xml"
+    },
+    {
+        "merged": "G:\\CD\\android_project\\MyContacts\\app\\build\\intermediates\\res\\merged\\release\\menu\\menu_edit_contact.xml",
+        "source": "G:\\CD\\android_project\\MyContacts\\app\\src\\main\\res\\menu\\menu_edit_contact.xml"
+    }
+]

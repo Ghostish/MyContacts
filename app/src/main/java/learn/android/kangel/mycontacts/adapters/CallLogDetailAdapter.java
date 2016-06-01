@@ -4,11 +4,15 @@ import android.content.Context;
 import android.provider.CallLog;
 import android.support.v7.widget.RecyclerView;
 import android.text.format.DateUtils;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
 
 import learn.android.kangel.mycontacts.R;
 import learn.android.kangel.mycontacts.utils.CallogBean;
@@ -33,8 +37,24 @@ public class CallLogDetailAdapter extends RecyclerView.Adapter<CallLogDetailAdap
 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
-        holder.timeText.setText(DateUtils.formatDateTime(context, data.getTimeMillisAtPosition(position), DateUtils.FORMAT_SHOW_TIME | DateUtils.FORMAT_SHOW_WEEKDAY|DateUtils.FORMAT_SHOW_DATE));
+        holder.timeText.setText(DateUtils.formatDateTime(context, data.getTimeMillisAtPosition(position), DateUtils.FORMAT_SHOW_TIME | DateUtils.FORMAT_SHOW_WEEKDAY | DateUtils.FORMAT_SHOW_DATE));
         holder.durationText.setText(DateUtils.formatElapsedTime(data.getDurationAtPosition(position)));
+        Class<DateUtils> dateUtilsClass = DateUtils.class;
+        try {
+            /*try to invoke the hidden method "formatDuration" by Java reflection*/
+            Method formatDurationMethod = dateUtilsClass.getDeclaredMethod("formatDuration", long.class);
+            formatDurationMethod.setAccessible(true);
+            holder.durationText.setText((CharSequence) formatDurationMethod.invoke(null, data.getDurationAtPosition(position) * 1000));
+        } catch (NoSuchMethodException e) {
+            Log.e("reflect error", "NoSuchMethodException");
+        } catch (InvocationTargetException e) {
+            e.printStackTrace();
+            Log.e("reflect error", "InvocationTargetException");
+        } catch (IllegalAccessException e) {
+            e.printStackTrace();
+            Log.e("reflect error", "IllegalAccessException");
+
+        }
         switch (data.getCallTypeAtPosition(position)) {
             case CallLog.Calls.INCOMING_TYPE:
                 holder.typeIcon.setImageResource(R.drawable.ic_call_received_24dp);
